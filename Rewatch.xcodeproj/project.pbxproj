@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5B66BAD467DFF519BBB575 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68807BB63403A57D709A3440 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		624CA77C69628172FDAF3A1E /* Pods_Rewatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A85D6A0B92F31E80D846F3AA /* Pods_Rewatch.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */; };
 		7A52A7101BD0544C00D78B39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70F1BD0544C00D78B39 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		1E4804599A21E693098365DA /* Pods-Rewatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rewatch/Pods-Rewatch.release.xcconfig"; sourceTree = "<group>"; };
+		68807BB63403A57D709A3440 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A52A70A1BD0544C00D78B39 /* Rewatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A52A70F1BD0544C00D78B39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +36,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				624CA77C69628172FDAF3A1E /* Pods_Rewatch.framework in Frameworks */,
+				2C5B66BAD467DFF519BBB575 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				A85D6A0B92F31E80D846F3AA /* Pods_Rewatch.framework */,
+				68807BB63403A57D709A3440 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,7 +173,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rewatch/Pods-Rewatch-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		520BFB3F65764EA4F4B392D1 /* Check Pods Manifest.lock */ = {
@@ -199,7 +203,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rewatch/Pods-Rewatch-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
