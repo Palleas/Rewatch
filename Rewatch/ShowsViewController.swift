@@ -16,7 +16,7 @@ class ShowsViewController: UIViewController {
         super.viewDidAppear(animated)
         
         client.fetchShows { (shows) -> Void in
-            print("Fetched \(shows.count) shows")
+            
         }
     }
 }
