@@ -11,11 +11,8 @@ import Keys
 
 class ViewController: UIViewController {
     let keys = RewatchKeys()
-    var token: String? {
-        didSet {
-            print("New token is \(token)")
-        }
-    }
+
+    var client: Client!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,56 +32,11 @@ class ViewController: UIViewController {
             print("Opening URL \(url)")
             UIApplication.sharedApplication().openURL(url)
         }
+        
+        client.authorize { (token, error) -> Void in
+            print(token, error)
+        }
     }
     
-    func handleURL(url: NSURL) {
-        print("Handling url = \(url)")
-        guard let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: false) else { return }
-        guard let code = comps.queryItems?.filter({ $0.name == "code" }).first?.value else { return }
-        
-        let exhangeComponents = NSURLComponents(string: "https://api.betaseries.com/members/access_token")!
-        exhangeComponents.queryItems = []
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "client_id", value: keys.betaseriesAPIKey()))
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "client_secret", value: keys.betaseriesAPISecret()))
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "redirect_uri", value: "rewatch://oauth/handle"))
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "Content-Type", value: "application/x-www-form-urlencoded"))
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "code", value: code))
-        
-        guard let body = exhangeComponents.query else { return }
-        guard let exchangeURL = exhangeComponents.URL else { return }
-
-        exhangeComponents.query = nil
-            
-        let request = NSMutableURLRequest(URL: exchangeURL)
-        request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        request.HTTPMethod = "POST"
-        request.setValue(keys.betaseriesAPIKey(), forHTTPHeaderField: "X-BetaSeries-Key")
-        request.setValue("2.4", forHTTPHeaderField: "X-BetaSeries-Version")
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if let data = data, let payload = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) {
-                print(payload)
-                if let token = payload["token"] as? String {
-                    self.token = token
-                    self.fetchShows()
-                }
-            }
-        }
-        task.resume()
-    }
-    
-    func fetchShows() {
-        let request = NSMutableURLRequest(URL:  NSURL(string: "https://api.betaseries.com/shows/list")!)
-        request.setValue(keys.betaseriesAPIKey(), forHTTPHeaderField: "X-BetaSeries-Key")
-        request.setValue("2.4", forHTTPHeaderField: "X-BetaSeries-Version")
-        request.setValue(token, forHTTPHeaderField: "X-BetaSeries-Token")
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if let data = data, let payload = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) {
-                print(payload)
-            }
-        }
-        task.resume()
-    }
 }
 

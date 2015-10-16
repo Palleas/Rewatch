@@ -1,5 +1,10 @@
 PODS:
+  - Alamofire (3.0.0)
   - Keys (1.0.0)
+  - Moya (4.0.1):
+    - Moya/Core (= 4.0.1)
+  - Moya/Core (4.0.1):
+    - Alamofire (~> 3.0)
   - Realm (0.96.0):
     - Realm/Headers (= 0.96.0)
   - Realm/Headers (0.96.0)
@@ -8,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
+  - Moya
   - RealmSwift
 
 EXTERNAL SOURCES:
@@ -15,8 +21,10 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  Alamofire: b61782387f81bcc538a0284cf2bb5d7995cd0a80
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
+  Moya: 8cdea400271d924df769fbce25a2eee39e9bbeac
   Realm: d1b1eff5264cd6a3158b7a9b6c499d7f6ad3a860
   RealmSwift: 40246e6f57a4e863bfdfc1ca1d7b967f0df607e2
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
