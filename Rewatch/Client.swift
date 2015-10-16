@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Client: NSObject {
     typealias AuthorizationHandler = (String?, ClientError?) -> Void
+    typealias ShowsHandler = ([Show]) -> Void
 
     enum ClientError: ErrorType {
         case InternalError
+    }
+    
+    struct Show {
+        let name: String
     }
     
     let key: String
@@ -70,23 +76,30 @@ class Client: NSObject {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
             if let data = data, let payload = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) {
                 print(payload)
-                if let _ = payload["token"] as? String {
-
+                if let token = payload["token"] as? String {
+                    self.token = token
+                    self.authorizationCompletion?(token, nil)
                 }
             }
         }
         task.resume()
     }
     
-    func fetchShows() {
+    func fetchShows(completion: ShowsHandler) {
         let request = NSMutableURLRequest(URL:  NSURL(string: "https://api.betaseries.com/shows/list")!)
         request.setValue(key, forHTTPHeaderField: "X-BetaSeries-Key")
         request.setValue("2.4", forHTTPHeaderField: "X-BetaSeries-Version")
         request.setValue("", forHTTPHeaderField: "X-BetaSeries-Token")
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if let data = data, let payload = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) {
-                print(payload)
+            if let data = data {
+                let payload = JSON(data: data)
+                
+                let shows = payload["shows"].arrayValue.map({ (node: JSON) in
+                    return Show(name: node["name"].stringValue)
+                })
+                
+                completion(shows)
             }
         }
         task.resume()

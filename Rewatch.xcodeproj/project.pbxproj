@@ -15,6 +15,7 @@
 		7A52A7151BD0544C00D78B39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7141BD0544C00D78B39 /* Assets.xcassets */; };
 		7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */; };
 		7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB238D1BD0A79700E2B86E /* Client.swift */; settings = {ASSET_TAGS = (); }; };
+		7ABB23901BD0ADC900E2B86E /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB238F1BD0ADC900E2B86E /* ShowsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		CA6069659DD1FE75F31AAF83 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68807BB63403A57D709A3440 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		7A52A7171BD0544C00D78B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A52A7191BD0544C00D78B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ABB238D1BD0A79700E2B86E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		7ABB238F1BD0ADC900E2B86E /* ShowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowsViewController.swift; sourceTree = "<group>"; };
 		9704AF778E03221600A99B7D /* Pods-Rewatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rewatch/Pods-Rewatch.debug.xcconfig"; sourceTree = "<group>"; };
 		A85D6A0B92F31E80D846F3AA /* Pods_Rewatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rewatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */,
 				7A52A7191BD0544C00D78B39 /* Info.plist */,
 				7ABB238D1BD0A79700E2B86E /* Client.swift */,
+				7ABB238F1BD0ADC900E2B86E /* ShowsViewController.swift */,
 			);
 			path = Rewatch;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				7A52A7101BD0544C00D78B39 /* ViewController.swift in Sources */,
 				7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */,
 				7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */,
+				7ABB23901BD0ADC900E2B86E /* ShowsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

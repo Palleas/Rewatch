@@ -13,11 +13,6 @@ class ViewController: UIViewController {
     let keys = RewatchKeys()
 
     var client: Client!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
 
     @IBAction func authenticate(sender: AnyObject) {
         guard let comps = NSURLComponents(string: "https://www.betaseries.com/authorize") else { return }
@@ -35,8 +30,19 @@ class ViewController: UIViewController {
         
         client.authorize { (token, error) -> Void in
             print(token, error)
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.performSegueWithIdentifier("ToShowsSegue", sender: self)
+            })
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        if let vc = segue.destinationViewController as? ShowsViewController {
+            vc.client = client
+        }
+    }
 }
 

@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'Rewatch' do
 	pod 'RealmSwift'
-	pod 'Moya' 
+	pod 'SwiftyJSON', '~> 2.3'
 
 	plugin 'cocoapods-keys', { 
 		:project => "Rewatch", 

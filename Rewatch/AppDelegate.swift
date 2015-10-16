@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let keys = RewatchKeys()
         client = Client(key: keys.betaseriesAPIKey(), secret: keys.betaseriesAPISecret())
         
-        (window?.rootViewController as! ViewController).client = client
+        let nav = window?.rootViewController as! UINavigationController
+        (nav.viewControllers.first as? ViewController)?.client = client
+        
         return true
     }
     
