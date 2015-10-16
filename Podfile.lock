@@ -1,8 +1,14 @@
 PODS:
   - Keys (1.0.0)
+  - Realm (0.96.0):
+    - Realm/Headers (= 0.96.0)
+  - Realm/Headers (0.96.0)
+  - RealmSwift (0.96.0):
+    - Realm (= 0.96.0)
 
 DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
+  - RealmSwift
 
 EXTERNAL SOURCES:
   Keys:
@@ -10,5 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
+  Realm: d1b1eff5264cd6a3158b7a9b6c499d7f6ad3a860
+  RealmSwift: 40246e6f57a4e863bfdfc1ca1d7b967f0df607e2
 
 COCOAPODS: 0.38.2

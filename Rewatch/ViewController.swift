@@ -66,7 +66,22 @@ class ViewController: UIViewController {
                 print(payload)
                 if let token = payload["token"] as? String {
                     self.token = token
+                    self.fetchShows()
                 }
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchShows() {
+        let request = NSMutableURLRequest(URL:  NSURL(string: "https://api.betaseries.com/shows/list")!)
+        request.setValue(keys.betaseriesAPIKey(), forHTTPHeaderField: "X-BetaSeries-Key")
+        request.setValue("2.4", forHTTPHeaderField: "X-BetaSeries-Version")
+        request.setValue(token, forHTTPHeaderField: "X-BetaSeries-Token")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if let data = data, let payload = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) {
+                print(payload)
             }
         }
         task.resume()

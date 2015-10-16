@@ -192,7 +192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rewatch/Pods-Rewatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5DC2B8C0F7F8D7B75AE1921E /* Check Pods Manifest.lock */ = {
