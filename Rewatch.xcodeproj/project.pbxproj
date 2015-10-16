@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A7057F1D51024E822CD6E33 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68807BB63403A57D709A3440 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7A04D3E01BD09BBC0012C5CA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A04D3DF1BD09BBC0012C5CA /* CoreLocation.framework */; };
 		7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */; };
 		7A52A7101BD0544C00D78B39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70F1BD0544C00D78B39 /* ViewController.swift */; };
 		7A52A7131BD0544C00D78B39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7111BD0544C00D78B39 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		1E4804599A21E693098365DA /* Pods-Rewatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rewatch/Pods-Rewatch.release.xcconfig"; sourceTree = "<group>"; };
 		68807BB63403A57D709A3440 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A04D3DF1BD09BBC0012C5CA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7A52A70A1BD0544C00D78B39 /* Rewatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A52A70F1BD0544C00D78B39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A04D3E01BD09BBC0012C5CA /* CoreLocation.framework in Frameworks */,
 				EB93687E043D98CEA1D78F1F /* Pods_Rewatch.framework in Frameworks */,
 				4A7057F1D51024E822CD6E33 /* Pods.framework in Frameworks */,
 			);
@@ -86,6 +89,7 @@
 		D722C4D03930D9EAB27E932C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A04D3DF1BD09BBC0012C5CA /* CoreLocation.framework */,
 				A85D6A0B92F31E80D846F3AA /* Pods_Rewatch.framework */,
 				68807BB63403A57D709A3440 /* Pods.framework */,
 			);
@@ -188,7 +192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rewatch/Pods-Rewatch-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5DC2B8C0F7F8D7B75AE1921E /* Check Pods Manifest.lock */ = {

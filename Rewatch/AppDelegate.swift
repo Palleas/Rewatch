@@ -7,18 +7,21 @@
 //
 
 import UIKit
-import Keys
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let keys = RewatchKeys()
-        print(keys.betaseriesAPIKey(), keys.betaseriesAPISecret())
+        return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if let vc = window?.rootViewController as? ViewController {
+            vc.handleURL(url)
+        }
         
         return true
     }

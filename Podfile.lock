@@ -1,10 +1,8 @@
 PODS:
   - Keys (1.0.0)
-  - p2.OAuth2 (2.0.1)
 
 DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
-  - p2.OAuth2 (~> 2.0)
 
 EXTERNAL SOURCES:
   Keys:
@@ -12,6 +10,5 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
-  p2.OAuth2: 6d4183a4dcec05cc6df3bab1110551854a116b9c
 
 COCOAPODS: 0.38.2
