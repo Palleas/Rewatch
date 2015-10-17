@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Keys
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var client: Client!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let keys = RewatchKeys()
-        client = Client(key: keys.betaseriesAPIKey(), secret: keys.betaseriesAPISecret())
+        let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
+        
+        
+        
+        client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!)
         
         let nav = window?.rootViewController as! UINavigationController
         (nav.viewControllers.first as? ViewController)?.client = client

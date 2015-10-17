@@ -8,10 +8,10 @@
 
 import UIKit
 import SwiftyJSON
+import ReactiveCocoa
 
 class Client: NSObject {
     typealias AuthorizationHandler = (String?, ClientError?) -> Void
-    typealias ShowsHandler = ([Show]) -> Void
 
     enum ClientError: ErrorType {
         case InternalError
@@ -85,23 +85,29 @@ class Client: NSObject {
         task.resume()
     }
     
-    func fetchShows(completion: ShowsHandler) {
+    func fetchShows() -> SignalProducer<Show, NSError> {
         let request = NSMutableURLRequest(URL:  NSURL(string: "https://api.betaseries.com/shows/list")!)
         request.setValue(key, forHTTPHeaderField: "X-BetaSeries-Key")
         request.setValue("2.4", forHTTPHeaderField: "X-BetaSeries-Version")
-        request.setValue("", forHTTPHeaderField: "X-BetaSeries-Token")
+        request.setValue(token, forHTTPHeaderField: "X-BetaSeries-Token")
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if let data = data {
-                let payload = JSON(data: data)
-                
-                let shows = payload["shows"].arrayValue.map({ (node: JSON) in
-                    return Show(name: node["name"].stringValue)
-                })
-                
-                completion(shows)
+        return session.rac_dataWithRequest(request)
+            .map({ data, response in
+                return JSON(data: data)
+            })
+            .flatMap(FlattenStrategy.Latest) { (payload) -> SignalProducer<Show, NSError> in
+                return SignalProducer<Show, NSError> { sink, disposable in
+                    payload["shows"].arrayValue.forEach({ showNode in
+                        let show = Show(name: showNode["title"].stringValue)
+                        sink.sendNext(show)
+                    })
+                    sink.sendCompleted()
+                }
             }
-        }
-        task.resume()
+    }
+    
+    func dataToJSON(data: NSData) -> JSON {
+        return JSON(data: data)
     }
 }
+

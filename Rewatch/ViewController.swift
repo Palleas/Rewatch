@@ -7,27 +7,11 @@
 //
 
 import UIKit
-import Keys
 
 class ViewController: UIViewController {
-    let keys = RewatchKeys()
-
     var client: Client!
 
     @IBAction func authenticate(sender: AnyObject) {
-        guard let comps = NSURLComponents(string: "https://www.betaseries.com/authorize") else { return }
-
-        var items = [NSURLQueryItem]()
-        items.append(NSURLQueryItem(name: "client_id", value: keys.betaseriesAPIKey()))
-        items.append(NSURLQueryItem(name: "redirect_uri", value: "rewatch://oauth/handle"))
-        
-        comps.queryItems = items
-        
-        if let url = comps.URL {
-            print("Opening URL \(url)")
-            UIApplication.sharedApplication().openURL(url)
-        }
-        
         client.authorize { (token, error) -> Void in
             print(token, error)
             

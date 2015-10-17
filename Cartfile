@@ -1,0 +1,2 @@
+github "ReactiveCocoa/ReactiveCocoa" "swift2"
+github "SwiftyJSON/SwiftyJSON" "2.3.0"

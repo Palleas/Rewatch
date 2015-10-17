@@ -15,8 +15,8 @@ class ShowsViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        client.fetchShows { (shows) -> Void in
-            
+        client.fetchShows().startWithNext { (show) -> () in
+            print("Current show \(show.name)")
         }
     }
 }
