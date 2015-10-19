@@ -11,6 +11,16 @@ import UIKit
 class ViewController: UIViewController {
     var client: Client!
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if let token = retrieveToken() {
+            client.token = token
+            self.performSegueWithIdentifier("ToShowsSegue", sender: self)
+            return
+        }
+    }
+    
     @IBAction func authenticate(sender: AnyObject) {
         client.authorize { (token, error) -> Void in
             print(token, error)

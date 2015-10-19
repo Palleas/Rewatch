@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import ReactiveCocoa
+import KeychainSwift
 
 class Client: NSObject {
     typealias AuthorizationHandler = (String?, ClientError?) -> Void
@@ -25,6 +26,7 @@ class Client: NSObject {
     let secret: String
     let session: NSURLSession
     var token: String?
+    
     private var authorizationCompletion: AuthorizationHandler?
     
     init(key: String, secret: String, token: String? = nil) {
@@ -78,6 +80,7 @@ class Client: NSObject {
                 print(payload)
                 if let token = payload["token"] as? String {
                     self.token = token
+                    storeToken(token)
                     self.authorizationCompletion?(token, nil)
                 }
             }
@@ -110,5 +113,18 @@ class Client: NSObject {
     func dataToJSON(data: NSData) -> JSON {
         return JSON(data: data)
     }
+}
+
+func retrieveToken() -> String? {
+    let token = KeychainSwift().get("betaseries-token")
+    print("Token = \(token)")
+    
+    return token
+}
+
+func storeToken(token: String) {
+    let k = KeychainSwift()
+    print("Storing token \(token)")
+    k.set(token, forKey: "betaseries-token")
 }
 
