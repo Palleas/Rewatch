@@ -16,7 +16,13 @@
 		7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */; };
 		7A7145FF1BD5B02500492B9B /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; };
 		7A7146001BD5B02500492B9B /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7A7146021BD5B3EC00492B9B /* OuathHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7146011BD5B3EC00492B9B /* OuathHelpers.swift */; };
+		7A7146021BD5B3EC00492B9B /* OauthHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7146011BD5B3EC00492B9B /* OauthHelpers.swift */; };
+		7A73FA821BD68E5F0026D8AD /* OauthHelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73FA811BD68E5F0026D8AD /* OauthHelpersTests.swift */; };
+		7A73FA891BD68EA80026D8AD /* OauthHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7146011BD5B3EC00492B9B /* OauthHelpers.swift */; };
+		7A73FA8A1BD69A330026D8AD /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; };
+		7A73FA8B1BD69A330026D8AD /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */; };
+		7A73FA8C1BD69A330026D8AD /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */; };
+		7A73FA8D1BD69A330026D8AD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44161BD1DDE700B3BD59 /* Result.framework */; };
 		7A7F44141BD1C4C200B3BD59 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F44131BD1C4C200B3BD59 /* Keys.plist */; };
 		7A7F44171BD1DDE700B3BD59 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */; };
 		7A7F44181BD1DDE700B3BD59 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -25,6 +31,16 @@
 		7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB238D1BD0A79700E2B86E /* Client.swift */; };
 		7ABB23901BD0ADC900E2B86E /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB238F1BD0ADC900E2B86E /* ShowsViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A73FA841BD68E5F0026D8AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A52A7021BD0544C00D78B39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A52A7091BD0544C00D78B39;
+			remoteInfo = Rewatch;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7A7F441B1BD1DDE700B3BD59 /* Embed Frameworks */ = {
@@ -53,7 +69,10 @@
 		7A52A7171BD0544C00D78B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A52A7191BD0544C00D78B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
-		7A7146011BD5B3EC00492B9B /* OuathHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OuathHelpers.swift; sourceTree = "<group>"; };
+		7A7146011BD5B3EC00492B9B /* OauthHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthHelpers.swift; sourceTree = "<group>"; };
+		7A73FA7F1BD68E5F0026D8AD /* RewatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A73FA811BD68E5F0026D8AD /* OauthHelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthHelpersTests.swift; sourceTree = "<group>"; };
+		7A73FA831BD68E5F0026D8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A7F44131BD1C4C200B3BD59 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		7A7F44161BD1DDE700B3BD59 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -70,6 +89,17 @@
 				7A7F44171BD1DDE700B3BD59 /* ReactiveCocoa.framework in Frameworks */,
 				7A7F44191BD1DDE700B3BD59 /* Result.framework in Frameworks */,
 				7A2E23521BD1E20F00D0B869 /* SwiftyJSON.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A73FA7C1BD68E5F0026D8AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A73FA8A1BD69A330026D8AD /* KeychainSwift.framework in Frameworks */,
+				7A73FA8B1BD69A330026D8AD /* SwiftyJSON.framework in Frameworks */,
+				7A73FA8C1BD69A330026D8AD /* ReactiveCocoa.framework in Frameworks */,
+				7A73FA8D1BD69A330026D8AD /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +122,7 @@
 			children = (
 				7A2E23501BD1E1F600D0B869 /* Frameworks */,
 				7A52A70C1BD0544C00D78B39 /* Rewatch */,
+				7A73FA801BD68E5F0026D8AD /* RewatchTests */,
 				7A52A70B1BD0544C00D78B39 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				7A52A70A1BD0544C00D78B39 /* Rewatch.app */,
+				7A73FA7F1BD68E5F0026D8AD /* RewatchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,9 +148,18 @@
 				7ABB238D1BD0A79700E2B86E /* Client.swift */,
 				7ABB238F1BD0ADC900E2B86E /* ShowsViewController.swift */,
 				7A7F44131BD1C4C200B3BD59 /* Keys.plist */,
-				7A7146011BD5B3EC00492B9B /* OuathHelpers.swift */,
+				7A7146011BD5B3EC00492B9B /* OauthHelpers.swift */,
 			);
 			path = Rewatch;
+			sourceTree = "<group>";
+		};
+		7A73FA801BD68E5F0026D8AD /* RewatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A73FA811BD68E5F0026D8AD /* OauthHelpersTests.swift */,
+				7A73FA831BD68E5F0026D8AD /* Info.plist */,
+			);
+			path = RewatchTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,17 +184,40 @@
 			productReference = 7A52A70A1BD0544C00D78B39 /* Rewatch.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7A73FA7E1BD68E5F0026D8AD /* RewatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A73FA881BD68E5F0026D8AD /* Build configuration list for PBXNativeTarget "RewatchTests" */;
+			buildPhases = (
+				7A73FA7B1BD68E5F0026D8AD /* Sources */,
+				7A73FA7C1BD68E5F0026D8AD /* Frameworks */,
+				7A73FA7D1BD68E5F0026D8AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A73FA851BD68E5F0026D8AD /* PBXTargetDependency */,
+			);
+			name = RewatchTests;
+			productName = RewatchTests;
+			productReference = 7A73FA7F1BD68E5F0026D8AD /* RewatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		7A52A7021BD0544C00D78B39 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Perfectly-Cooked";
 				TargetAttributes = {
 					7A52A7091BD0544C00D78B39 = {
 						CreatedOnToolsVersion = 7.0.1;
+					};
+					7A73FA7E1BD68E5F0026D8AD = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 7A52A7091BD0544C00D78B39;
 					};
 				};
 			};
@@ -171,6 +235,7 @@
 			projectRoot = "";
 			targets = (
 				7A52A7091BD0544C00D78B39 /* Rewatch */,
+				7A73FA7E1BD68E5F0026D8AD /* RewatchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -184,6 +249,13 @@
 				7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */,
 				7A52A7151BD0544C00D78B39 /* Assets.xcassets in Resources */,
 				7A52A7131BD0544C00D78B39 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A73FA7D1BD68E5F0026D8AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,13 +288,30 @@
 			files = (
 				7A52A7101BD0544C00D78B39 /* ViewController.swift in Sources */,
 				7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */,
-				7A7146021BD5B3EC00492B9B /* OuathHelpers.swift in Sources */,
+				7A7146021BD5B3EC00492B9B /* OauthHelpers.swift in Sources */,
 				7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */,
 				7ABB23901BD0ADC900E2B86E /* ShowsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A73FA7B1BD68E5F0026D8AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A73FA821BD68E5F0026D8AD /* OauthHelpersTests.swift in Sources */,
+				7A73FA891BD68EA80026D8AD /* OauthHelpers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A73FA851BD68E5F0026D8AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A52A7091BD0544C00D78B39 /* Rewatch */;
+			targetProxy = 7A73FA841BD68E5F0026D8AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7A52A7111BD0544C00D78B39 /* Main.storyboard */ = {
@@ -357,6 +446,40 @@
 			};
 			name = Release;
 		};
+		7A73FA861BD68E5F0026D8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = RewatchTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.RewatchTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rewatch.app/Rewatch";
+			};
+			name = Debug;
+		};
+		7A73FA871BD68E5F0026D8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = RewatchTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.RewatchTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rewatch.app/Rewatch";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -377,6 +500,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7A73FA881BD68E5F0026D8AD /* Build configuration list for PBXNativeTarget "RewatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A73FA861BD68E5F0026D8AD /* Debug */,
+				7A73FA871BD68E5F0026D8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
