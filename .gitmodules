@@ -10,3 +10,6 @@
 [submodule "Carthage/Checkouts/keychain-swift"]
 	path = Carthage/Checkouts/keychain-swift
 	url = https://github.com/exchangegroup/keychain-swift.git
+[submodule "Carthage/Checkouts/realm-cocoa"]
+	path = Carthage/Checkouts/realm-cocoa
+	url = https://github.com/realm/realm-cocoa.git

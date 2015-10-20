@@ -68,14 +68,14 @@ class Client: NSObject {
                 .map({ (payload) -> String in
                     return payload["token"].stringValue
                 })
-                .flatMap(.Latest, transform: { (token) -> SignalProducer<(Show, [Episode]), NSError> in
+                .flatMap(.Latest, transform: { (token) -> SignalProducer<(Show, Episode), NSError> in
                     self.token = token
-                    return self.fetchShows().flatMap(FlattenStrategy.Merge, transform: { (show) -> SignalProducer<(Show, [Episode]), NSError> in
-                        return zip(SignalProducer<Show, NSError>(value: show), self.fetchEpisodesFromShow(show).collect())
+                    return self.fetchShows().flatMap(FlattenStrategy.Merge, transform: { (show) -> SignalProducer<(Show, Episode), NSError> in
+                        return combineLatest(SignalProducer<Show, NSError>(value: show), self.fetchEpisodesFromShow(show))
                     })
                 })
-                .startWithNext({ (tuple: (Show, [Episode])) -> () in
-                    print("Show : \(tuple.0.name) (\(tuple.1.count) episodes)")
+                .startWithNext({ (results) -> () in
+                    print("Show: \(results.0.name) | Episode: \(results.1.title)")
                 })
         } catch {
             print("Got error while handling url \(url) : \(error)")
