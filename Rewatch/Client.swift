@@ -53,39 +53,20 @@ class Client: NSObject {
     }
     
     func handleURL(url: NSURL) {
-        guard let comps = NSURLComponents(URL: url, resolvingAgainstBaseURL: false) else { return }
-        guard let code = comps.queryItems?.filter({ $0.name == "code" }).first?.value else { return }
-        
-        let exhangeComponents = NSURLComponents(string: "https://api.betaseries.com/members/access_token")!
-        exhangeComponents.queryItems = []
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "client_id", value: key))
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "client_secret", value: secret))
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "redirect_uri", value: "rewatch://oauth/handle"))
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "Content-Type", value: "application/x-www-form-urlencoded"))
-        exhangeComponents.queryItems?.append(NSURLQueryItem(name: "code", value: code))
-        
-        guard let body = exhangeComponents.query else { return }
-        guard let exchangeURL = exhangeComponents.URL else { return }
-        
-        exhangeComponents.query = nil
-        
-        let request = NSMutableURLRequest(URL: exchangeURL)
-        request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        request.HTTPMethod = "POST"
-        request.setValue(key, forHTTPHeaderField: "X-BetaSeries-Key")
-        request.setValue("2.4", forHTTPHeaderField: "X-BetaSeries-Version")
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if let data = data, let payload = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) {
-                print(payload)
-                if let token = payload["token"] as? String {
-                    self.token = token
-                    storeToken(token)
-                    self.authorizationCompletion?(token, nil)
-                }
-            }
+        do {
+            let code = try extractCodeFromURL(url)
+            let params = ["client_id":key, "client_secret":secret, "redirect_uri": "rewatch://oauth/handle", "code": code]
+            sendRequestToPath("members/access_token", params: params, method: "POST")
+                .observeOn(UIScheduler())
+                .map({ (payload) -> String in
+                    return payload["token"].stringValue
+                })
+                .startWithNext({ (token) -> () in
+                    print("Got token \(token)")
+                })
+        } catch {
+            print("Got error while handling url \(url) : \(error)")
         }
-        task.resume()
     }
     
     func fetchShows() -> SignalProducer<Show, NSError> {
@@ -110,21 +91,34 @@ class Client: NSObject {
             }
     }
     
-    func dataToJSON(data: NSData) -> JSON {
-        return JSON(data: data)
+    func sendRequestToPath(path: String, params: [String: String], method: String) -> SignalProducer<JSON, NSError> {
+        let base = "https://api.betaseries.com/\(path)"
+        
+        let exhangeComponents = NSURLComponents(string: base)!
+        exhangeComponents.queryItems = []
+        
+        for (key, value) in params {
+            exhangeComponents.queryItems?.append(NSURLQueryItem(name: key, value: value))
+        }
+        
+        let request = NSMutableURLRequest(URL: exhangeComponents.URL!)
+        request.setValue(key, forHTTPHeaderField: "X-BetaSeries-Key")
+        request.setValue("2.4", forHTTPHeaderField: "X-BetaSeries-Version")
+        request.setValue(token, forHTTPHeaderField: "X-BetaSeries-Token")
+        
+        if method == "POST" {
+            request.HTTPBody = exhangeComponents.query?.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+            exhangeComponents.query = nil
+        }
+        request.HTTPMethod = method
+        
+        return session
+            .rac_dataWithRequest(request)
+            .map({ data, response in
+                return JSON(data: data)
+            })
     }
 }
 
-func retrieveToken() -> String? {
-    let token = KeychainSwift().get("betaseries-token")
-    print("Token = \(token)")
-    
-    return token
-}
 
-func storeToken(token: String) {
-    let k = KeychainSwift()
-    print("Storing token \(token)")
-    k.set(token, forKey: "betaseries-token")
-}
 

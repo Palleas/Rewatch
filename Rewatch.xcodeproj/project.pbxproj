@@ -16,6 +16,7 @@
 		7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */; };
 		7A7145FF1BD5B02500492B9B /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; };
 		7A7146001BD5B02500492B9B /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A7146021BD5B3EC00492B9B /* OuathHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7146011BD5B3EC00492B9B /* OuathHelpers.swift */; };
 		7A7F44141BD1C4C200B3BD59 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F44131BD1C4C200B3BD59 /* Keys.plist */; };
 		7A7F44171BD1DDE700B3BD59 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */; };
 		7A7F44181BD1DDE700B3BD59 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -52,6 +53,7 @@
 		7A52A7171BD0544C00D78B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A52A7191BD0544C00D78B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
+		7A7146011BD5B3EC00492B9B /* OuathHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OuathHelpers.swift; sourceTree = "<group>"; };
 		7A7F44131BD1C4C200B3BD59 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		7A7F44161BD1DDE700B3BD59 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				7ABB238D1BD0A79700E2B86E /* Client.swift */,
 				7ABB238F1BD0ADC900E2B86E /* ShowsViewController.swift */,
 				7A7F44131BD1C4C200B3BD59 /* Keys.plist */,
+				7A7146011BD5B3EC00492B9B /* OuathHelpers.swift */,
 			);
 			path = Rewatch;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				7A52A7101BD0544C00D78B39 /* ViewController.swift in Sources */,
 				7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */,
+				7A7146021BD5B3EC00492B9B /* OuathHelpers.swift in Sources */,
 				7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */,
 				7ABB23901BD0ADC900E2B86E /* ShowsViewController.swift in Sources */,
 			);
