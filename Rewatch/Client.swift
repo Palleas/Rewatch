@@ -19,6 +19,7 @@ class Client: NSObject {
     }
     
     struct Show {
+        let id: Int
         let name: String
     }
     
@@ -66,7 +67,7 @@ class Client: NSObject {
                     return self.fetchShows()
                 })
                 .startWithNext({ (show) -> () in
-                    return "Show: \(show.name)"
+                    print("Show #\(show.id) - \(show.name)")
                 })
         } catch {
             print("Got error while handling url \(url) : \(error)")
@@ -77,9 +78,8 @@ class Client: NSObject {
         return sendRequestToPath("members/infos", params: nil, method: "GET")
             .flatMap(FlattenStrategy.Latest) { (payload) -> SignalProducer<Show, NSError> in
                 return SignalProducer<Show, NSError> { sink, disposable in
-                    print(payload)
                     payload["member"]["shows"].arrayValue.forEach({ showNode in
-                        let show = Show(name: showNode["title"].stringValue)
+                        let show = Show(id: showNode["id"].intValue, name: showNode["title"].stringValue)
                         sink.sendNext(show)
                     })
                     sink.sendCompleted()
