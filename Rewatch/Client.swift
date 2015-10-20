@@ -74,8 +74,11 @@ class Client: NSObject {
                         return combineLatest(SignalProducer<Show, NSError>(value: show), self.fetchEpisodesFromShow(show))
                     })
                 })
-                .startWithNext({ (results) -> () in
-                    print("Show: \(results.0.name) | Episode: \(results.1.title)")
+                .map({ (show, episode) -> [String: String] in
+                    return ["show_id": String(show.id), "show_name": show.name, "episode_id": String(episode.id), "episode_title": episode.title]
+                })
+                .startWithNext({ (line) -> () in
+                    print(line)
                 })
         } catch {
             print("Got error while handling url \(url) : \(error)")
