@@ -21,6 +21,12 @@ class Client: NSObject {
     struct Show {
         let id: Int
         let name: String
+        var episodes: [Episode]? = []
+    }
+    
+    struct Episode {
+        let id: Int
+        let title: String
     }
     
     let key: String
@@ -62,12 +68,14 @@ class Client: NSObject {
                 .map({ (payload) -> String in
                     return payload["token"].stringValue
                 })
-                .flatMap(.Latest, transform: { (token) -> SignalProducer<Show, NSError> in
+                .flatMap(.Latest, transform: { (token) -> SignalProducer<(Show, [Episode]), NSError> in
                     self.token = token
-                    return self.fetchShows()
+                    return self.fetchShows().flatMap(FlattenStrategy.Merge, transform: { (show) -> SignalProducer<(Show, [Episode]), NSError> in
+                        return zip(SignalProducer<Show, NSError>(value: show), self.fetchEpisodesFromShow(show).collect())
+                    })
                 })
-                .startWithNext({ (show) -> () in
-                    print("Show #\(show.id) - \(show.name)")
+                .startWithNext({ (tuple: (Show, [Episode])) -> () in
+                    print("Show : \(tuple.0.name) (\(tuple.1.count) episodes)")
                 })
         } catch {
             print("Got error while handling url \(url) : \(error)")
@@ -79,12 +87,26 @@ class Client: NSObject {
             .flatMap(FlattenStrategy.Latest) { (payload) -> SignalProducer<Show, NSError> in
                 return SignalProducer<Show, NSError> { sink, disposable in
                     payload["member"]["shows"].arrayValue.forEach({ showNode in
-                        let show = Show(id: showNode["id"].intValue, name: showNode["title"].stringValue)
+                        let show = Show(id: showNode["id"].intValue, name: showNode["title"].stringValue, episodes: [])
                         sink.sendNext(show)
                     })
                     sink.sendCompleted()
                 }
             }
+    }
+    
+    func fetchEpisodesFromShow(show: Show) -> SignalProducer<Episode, NSError> {
+        let params = ["id": String(show.id)]
+        return sendRequestToPath("shows/episodes", params: params, method: "GET")
+            .flatMap(FlattenStrategy.Latest, transform: { (payload) -> SignalProducer<Episode, NSError> in
+                return SignalProducer<Episode, NSError> { sink, disposable in
+                    payload["episodes"].arrayValue.forEach({ episodeNode in
+                        let episode = Episode(id: episodeNode["id"].intValue, title: episodeNode["title"].stringValue)
+                        sink.sendNext(episode)
+                    })
+                    sink.sendCompleted()
+                }
+            })
     }
     
     func sendRequestToPath(path: String, params: [String: String]?, method: String) -> SignalProducer<JSON, NSError> {
