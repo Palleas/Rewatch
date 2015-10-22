@@ -92,11 +92,75 @@
                     </view>
                     <connections>
                         <segue destination="FUF-v1-ihB" kind="presentation" identifier="LoginSegue" id="2Pt-zs-IVb"/>
+                        <segue destination="MiB-0P-3o9" kind="show" identifier="ShowsSegue" id="vKa-GB-pT5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHm-mZ-V1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-134" y="1646"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sjx-vi-jbU">
+            <objects>
+                <navigationController id="MiB-0P-3o9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9pj-8J-xGq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXm-Yd-Hyn" kind="relationship" relationship="rootViewController" id="oBB-QM-gsw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9JE-zs-AHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="676" y="1747"/>
+        </scene>
+        <!--Shows View Controller-->
+        <scene sceneID="JnC-lC-EDe">
+            <objects>
+                <viewController id="vXm-Yd-Hyn" customClass="ShowsViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rV8-Bg-3ji"/>
+                        <viewControllerLayoutGuide type="bottom" id="iIh-lA-Q34"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J5p-Tf-FCR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4C-Ee-CAO">
+                                <rect key="frame" x="274" y="179" width="52" height="26"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="On9-Sh-gEw">
+                                <rect key="frame" x="268" y="108" width="64" height="33"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="On9-Sh-gEw" firstAttribute="centerX" secondItem="J5p-Tf-FCR" secondAttribute="centerX" id="1fO-kQ-1V5"/>
+                            <constraint firstItem="On9-Sh-gEw" firstAttribute="top" secondItem="rV8-Bg-3ji" secondAttribute="bottom" constant="44" id="M5b-wS-b1B"/>
+                            <constraint firstItem="n4C-Ee-CAO" firstAttribute="top" secondItem="On9-Sh-gEw" secondAttribute="bottom" constant="38.5" id="RFp-8Z-mlM"/>
+                            <constraint firstItem="n4C-Ee-CAO" firstAttribute="centerX" secondItem="J5p-Tf-FCR" secondAttribute="centerX" id="iSq-7J-7Iq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NgK-hu-zks"/>
+                    <connections>
+                        <outlet property="episodeTitleLabel" destination="n4C-Ee-CAO" id="hOB-yk-sR7"/>
+                        <outlet property="showNameLabel" destination="On9-Sh-gEw" id="bjy-BB-uWP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6M8-UA-Akv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1469" y="1747"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="93B-5Y-FcW">

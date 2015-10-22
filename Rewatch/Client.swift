@@ -110,7 +110,6 @@ class Client: NSObject {
                 .flatMap(FlattenStrategy.Latest, transform: { (results) -> SignalProducer<[[String: String]], NSError> in
                     let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
                     let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
-                    print(filePath)
                     return store(results, toPath: filePath)
                 })
                 .startWithNext({ (line) -> () in
