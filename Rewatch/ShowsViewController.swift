@@ -24,6 +24,8 @@ class ShowsViewController: UIViewController {
         let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
         let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
         shows = NSArray(contentsOfFile: filePath) as! [[String: String]]
+        
+        title = "Rewatch"
     }
     
     override func canBecomeFirstResponder() -> Bool {

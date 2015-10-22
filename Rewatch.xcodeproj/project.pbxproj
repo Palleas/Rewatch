@@ -45,6 +45,7 @@
 		7AF8A0191BD9803D00969B23 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8A00D1BD97FF900969B23 /* Roboto-Regular.ttf */; };
 		7AF8A01A1BD9803D00969B23 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8A00E1BD97FF900969B23 /* Roboto-Thin.ttf */; };
 		7AF8A01B1BD9803D00969B23 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8A00F1BD97FF900969B23 /* Roboto-ThinItalic.ttf */; };
+		7AF8A01D1BD9830E00969B23 /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8A01C1BD9830E00969B23 /* Stylesheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		7AF8A00D1BD97FF900969B23 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		7AF8A00E1BD97FF900969B23 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		7AF8A00F1BD97FF900969B23 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		7AF8A01C1BD9830E00969B23 /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF8A0031BD97FE800969B23 /* Fonts */,
+				7AF8A01C1BD9830E00969B23 /* Stylesheet.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				7ABB23901BD0ADC900E2B86E /* ShowsViewController.swift in Sources */,
 				7AED90571BD7F9F2002B024C /* DownloadViewController.swift in Sources */,
 				7A73FA8F1BD6B8930026D8AD /* Storage.swift in Sources */,
+				7AF8A01D1BD9830E00969B23 /* Stylesheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

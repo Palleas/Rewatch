@@ -16,14 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var client: Client!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
+        // Setup stylesheet
+        let stylesheet = Stylesheet()
+        stylesheet.apply()
         
+        // Retrieve API Keys
+        let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
         let keychain = KeychainSwift()
         let token = keychain.get("betaseries-token")
         
         client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
         
         (window?.rootViewController as? RootViewController)?.client = client
+        
         
         return true
     }
