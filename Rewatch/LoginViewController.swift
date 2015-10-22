@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
     var client: Client!
 
     override func viewDidAppear(animated: Bool) {
@@ -22,21 +23,24 @@ class ViewController: UIViewController {
     }
     
     @IBAction func authenticate(sender: AnyObject) {
-        client.authorize { (token, error) -> Void in
-            print(token, error)
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.performSegueWithIdentifier("ToShowsSegue", sender: self)
+        client.authenticate()
+            .on(next: { (client) -> () in
+                if let token = client.token {
+                    print("Storing token \(token)")
+                    storeToken(token)
+                }
             })
-        }
+            .observeOn(UIScheduler())
+            .startWithNext { (authenticatedClient) -> () in
+                self.performSegueWithIdentifier("DownloadSegue", sender: self)
+            }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
-        if let vc = segue.destinationViewController as? ShowsViewController {
+        if let vc = segue.destinationViewController as? DownloadViewController {
             vc.client = client
         }
     }
 }
-

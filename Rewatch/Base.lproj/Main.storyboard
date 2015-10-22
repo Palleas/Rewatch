@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FUF-v1-ihB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3Nm-CX-pAt">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -34,12 +34,69 @@
                     </view>
                     <navigationItem key="navigationItem" id="M7G-JX-RbM"/>
                     <connections>
-                        <segue destination="igq-XO-GCn" kind="show" identifier="ToShowsSegue" id="fpB-aH-HNL"/>
+                        <segue destination="7IM-Rb-a4q" kind="show" identifier="DownloadSegue" id="cIr-Mz-bAT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="962" y="887"/>
+            <point key="canvasLocation" x="1390" y="887"/>
+        </scene>
+        <!--Download View Controller-->
+        <scene sceneID="mog-Y6-uDP">
+            <objects>
+                <viewController id="7IM-Rb-a4q" customClass="DownloadViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pdH-ha-1Ud"/>
+                        <viewControllerLayoutGuide type="bottom" id="3uZ-fB-8dx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HMj-7q-yfw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-fY-ZOi">
+                                <rect key="frame" x="214" y="290" width="173" height="20"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nhv-fY-ZOi" firstAttribute="centerX" secondItem="HMj-7q-yfw" secondAttribute="centerX" id="AMI-Fr-ytZ"/>
+                            <constraint firstItem="nhv-fY-ZOi" firstAttribute="centerY" secondItem="HMj-7q-yfw" secondAttribute="centerY" id="QHq-Mp-Mjd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="episodeLabel" destination="nhv-fY-ZOi" id="Hs6-7f-ya2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wnH-te-iRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2080" y="892"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="E5E-e7-lWu">
+            <objects>
+                <viewController id="3Nm-CX-pAt" customClass="RootViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O8T-4j-BCd"/>
+                        <viewControllerLayoutGuide type="bottom" id="z9a-uF-ebx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hfA-AU-Isf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="FUF-v1-ihB" kind="presentation" identifier="LoginSegue" id="2Pt-zs-IVb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHm-mZ-V1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-134" y="1646"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="93B-5Y-FcW">
@@ -56,26 +113,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rlq-US-gKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246" y="887"/>
-        </scene>
-        <!--Shows View Controller-->
-        <scene sceneID="Uez-Pa-zs4">
-            <objects>
-                <viewController id="igq-XO-GCn" customClass="ShowsViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="i0j-UM-dU0"/>
-                        <viewControllerLayoutGuide type="bottom" id="Hbg-F3-uF0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="UZF-87-wMj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fxe-t6-AQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1692" y="887"/>
+            <point key="canvasLocation" x="676" y="887"/>
         </scene>
     </scenes>
 </document>

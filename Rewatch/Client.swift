@@ -34,7 +34,15 @@ class Client: NSObject {
     let session: NSURLSession
     var token: String?
     
-    private var authorizationCompletion: AuthorizationHandler?
+    var authenticated: Bool {
+        get {
+            return token != nil
+        }
+    }
+
+    lazy private var urlPipe: (Signal<NSURL, NSError>, Observer<NSURL, NSError>) = {
+        return Signal<NSURL, NSError>.pipe()
+    }()
     
     init(key: String, secret: String, token: String? = nil) {
         self.key = key
@@ -44,9 +52,9 @@ class Client: NSObject {
         self.session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: NSOperationQueue())
     }
     
-    func authorize(completion: AuthorizationHandler) {
-        guard let comps = NSURLComponents(string: "https://www.betaseries.com/authorize") else { return }
-        self.authorizationCompletion = completion
+    // Opens the browser and sends a code
+    func authorize() -> SignalProducer<String, NSError> {
+        let comps = NSURLComponents(string: "https://www.betaseries.com/authorize")!
         
         var items = [NSURLQueryItem]()
         items.append(NSURLQueryItem(name: "client_id", value: key))
@@ -57,25 +65,53 @@ class Client: NSObject {
         if let url = comps.URL {
             UIApplication.sharedApplication().openURL(url)
         }
+
+        return SignalProducer(signal: urlPipe.0.map({ (url) -> String in
+            return try! extractCodeFromURL(url)
+        }))
+    }
+    
+    func completeSigninWithURL(url: NSURL) {
+        urlPipe.1.sendNext(url)
+    }
+    
+    func requestAccessToken(code: String) -> SignalProducer<String, NSError> {
+        let params = ["client_id":key, "client_secret":secret, "redirect_uri": "rewatch://oauth/handle", "code": code]
+        return sendRequestToPath("members/access_token", params: params, method: "POST")
+            .map({ (payload) -> String in
+                return payload["token"].stringValue
+            })
+    }
+    
+    func authenticate() -> SignalProducer<Client, NSError> {
+        return authorize()
+            .flatMap(FlattenStrategy.Latest, transform: { (code) -> SignalProducer<Client, NSError> in
+                return self.requestAccessToken(code)
+                    .flatMap(FlattenStrategy.Latest, transform: { (token) -> SignalProducer<Client, NSError> in
+                        self.token = token
+                        return SignalProducer(value: self)
+                    })
+            })
     }
     
     func handleURL(url: NSURL) {
         do {
             let code = try extractCodeFromURL(url)
-            let params = ["client_id":key, "client_secret":secret, "redirect_uri": "rewatch://oauth/handle", "code": code]
-            sendRequestToPath("members/access_token", params: params, method: "POST")
-                .observeOn(UIScheduler())
-                .map({ (payload) -> String in
-                    return payload["token"].stringValue
-                })
+            requestAccessToken(code)
                 .flatMap(.Latest, transform: { (token) -> SignalProducer<(Show, Episode), NSError> in
-                    self.token = token
                     return self.fetchShows().flatMap(FlattenStrategy.Merge, transform: { (show) -> SignalProducer<(Show, Episode), NSError> in
                         return combineLatest(SignalProducer<Show, NSError>(value: show), self.fetchEpisodesFromShow(show))
                     })
                 })
                 .map({ (show, episode) -> [String: String] in
                     return ["show_id": String(show.id), "show_name": show.name, "episode_id": String(episode.id), "episode_title": episode.title]
+                })
+                .collect()
+                .flatMap(FlattenStrategy.Latest, transform: { (results) -> SignalProducer<[[String: String]], NSError> in
+                    let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
+                    let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
+                    print(filePath)
+                    return store(results, toPath: filePath)
                 })
                 .startWithNext({ (line) -> () in
                     print(line)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,18 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
         
+        let keychain = KeychainSwift()
+        let token = keychain.get("betaseries-token")
         
+        client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
         
-        client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!)
-        
-        let nav = window?.rootViewController as! UINavigationController
-        (nav.viewControllers.first as? ViewController)?.client = client
+        (window?.rootViewController as? RootViewController)?.client = client
         
         return true
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        client.handleURL(url)
+        client.completeSigninWithURL(url)
         
         return true
     }
