@@ -147,7 +147,26 @@ class Client: NSObject {
             })
     }
     
+    func fetchPictureForEpisodeId(id: String) -> SignalProducer<UIImage, NSError> {
+        let request = requestForPath("pictures/episodes", params: ["id" : id], method: "GET")
+        return session
+            .rac_dataWithRequest(request)
+            .map({ (data, _) -> UIImage in
+                return UIImage(data: data)!
+            })
+    }
+    
     func sendRequestToPath(path: String, params: [String: String]?, method: String) -> SignalProducer<JSON, NSError> {
+        let request = requestForPath(path, params: params, method: method)
+        
+        return session
+            .rac_dataWithRequest(request)
+            .map({ data, response in
+                return JSON(data: data)
+            })
+    }
+    
+    func requestForPath(path: String, params: [String: String]?, method: String) -> NSURLRequest {
         let base = "https://api.betaseries.com/\(path)"
         
         let exhangeComponents = NSURLComponents(string: base)!
@@ -169,12 +188,8 @@ class Client: NSObject {
             exhangeComponents.query = nil
         }
         request.HTTPMethod = method
-        
-        return session
-            .rac_dataWithRequest(request)
-            .map({ data, response in
-                return JSON(data: data)
-            })
+
+        return request
     }
 }
 

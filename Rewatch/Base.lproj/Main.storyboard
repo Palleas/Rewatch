@@ -143,28 +143,28 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the show name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLk-rg-Lml">
-                                                <rect key="frame" x="0.0" y="138" width="600" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="138" width="600" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uZ-R3-rdz">
-                                                <rect key="frame" x="0.0" y="168.5" width="600" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="169" width="600" height="20"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04J-8G-9LP">
-                                                <rect key="frame" x="0.0" y="199" width="600" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="199" width="600" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the title of the episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxj-A3-9II">
-                                                <rect key="frame" x="0.0" y="229.5" width="600" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="230" width="600" height="20"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -201,21 +201,21 @@
                                 <rect key="frame" x="111" y="194" width="379" height="212"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake your phone" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghh-eA-Nar">
-                                        <rect key="frame" x="50" y="34" width="279" height="20.5"/>
+                                        <rect key="frame" x="50" y="34" width="279" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYm-ei-D1z">
-                                        <rect key="frame" x="181" y="62" width="16" height="20.5"/>
+                                        <rect key="frame" x="181" y="62" width="16" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the button" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oj9-CA-AJ9">
-                                        <rect key="frame" x="50" y="91" width="279" height="20.5"/>
+                                        <rect key="frame" x="50" y="91" width="279" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -227,7 +227,7 @@
                                         <state key="normal" title="[button]"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to get a suggested episode to watch" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-Gg-Y5a">
-                                        <rect key="frame" x="50" y="157" width="279" height="20.5"/>
+                                        <rect key="frame" x="50" y="157" width="279" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -284,6 +284,7 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="yHJ-0e-Srp" id="8qC-Ks-vg0"/>
                         <outlet property="episodeNumberLabel" destination="04J-8G-9LP" id="eDZ-YB-Cen"/>
+                        <outlet property="episodePictureView" destination="9LR-Ld-Tvd" id="zmd-7n-uYY"/>
                         <outlet property="episodeTitleLabel" destination="kxj-A3-9II" id="9bn-3w-f1N"/>
                         <outlet property="orLabel" destination="LYm-ei-D1z" id="GbV-hA-j4T"/>
                         <outlet property="scrollView" destination="LNN-Ix-qON" id="EqQ-zb-Vgc"/>

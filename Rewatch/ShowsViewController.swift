@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class ShowsViewController: UIViewController {
 
@@ -84,6 +85,8 @@ class ShowsViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var episodePictureView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -105,7 +108,6 @@ class ShowsViewController: UIViewController {
         let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
         let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
         shows = NSArray(contentsOfFile: filePath) as! [[String: String]]
-        
     }
     
     override func canBecomeFirstResponder() -> Bool {
@@ -124,5 +126,12 @@ class ShowsViewController: UIViewController {
         
         showNameLabel.text = show["show_name"]
         episodeTitleLabel.text = show["episode_title"]
+        
+        client
+            .fetchPictureForEpisodeId(show["episode_id"]!)
+            .observeOn(UIScheduler())
+            .startWithNext { (image) -> () in
+                self.episodePictureView.image = image
+            }
     }
 }
