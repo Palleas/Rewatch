@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7A2E23521BD1E20F00D0B869 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */; };
 		7A2E23531BD1E20F00D0B869 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4536151BD9BED700A680CB /* Stylesheet.swift */; };
+		7A45361A1BD9BFE900A680CB /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4536191BD9BFE900A680CB /* HEXColor.framework */; };
+		7A45361B1BD9BFE900A680CB /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4536191BD9BFE900A680CB /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */; };
 		7A52A7101BD0544C00D78B39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */; };
 		7A52A7131BD0544C00D78B39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7111BD0544C00D78B39 /* Main.storyboard */; };
@@ -45,7 +48,6 @@
 		7AF8A0191BD9803D00969B23 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8A00D1BD97FF900969B23 /* Roboto-Regular.ttf */; };
 		7AF8A01A1BD9803D00969B23 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8A00E1BD97FF900969B23 /* Roboto-Thin.ttf */; };
 		7AF8A01B1BD9803D00969B23 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8A00F1BD97FF900969B23 /* Roboto-ThinItalic.ttf */; };
-		7AF8A01D1BD9830E00969B23 /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8A01C1BD9830E00969B23 /* Stylesheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,7 @@
 				7A7146001BD5B02500492B9B /* KeychainSwift.framework in Embed Frameworks */,
 				7A7F44181BD1DDE700B3BD59 /* ReactiveCocoa.framework in Embed Frameworks */,
 				7A7F441A1BD1DDE700B3BD59 /* Result.framework in Embed Frameworks */,
+				7A45361B1BD9BFE900A680CB /* HEXColor.framework in Embed Frameworks */,
 				7A2E23531BD1E20F00D0B869 /* SwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -77,6 +80,8 @@
 
 /* Begin PBXFileReference section */
 		7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		7A4536151BD9BED700A680CB /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
+		7A4536191BD9BFE900A680CB /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
 		7A52A70A1BD0544C00D78B39 /* Rewatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +114,6 @@
 		7AF8A00D1BD97FF900969B23 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		7AF8A00E1BD97FF900969B23 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		7AF8A00F1BD97FF900969B23 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		7AF8A01C1BD9830E00969B23 /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 				7A7145FF1BD5B02500492B9B /* KeychainSwift.framework in Frameworks */,
 				7A7F44171BD1DDE700B3BD59 /* ReactiveCocoa.framework in Frameworks */,
 				7A7F44191BD1DDE700B3BD59 /* Result.framework in Frameworks */,
+				7A45361A1BD9BFE900A680CB /* HEXColor.framework in Frameworks */,
 				7A2E23521BD1E20F00D0B869 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +164,7 @@
 		7A2E23501BD1E1F600D0B869 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A4536191BD9BFE900A680CB /* HEXColor.framework */,
 				7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */,
 				7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */,
 				7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */,
@@ -218,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF8A0031BD97FE800969B23 /* Fonts */,
-				7AF8A01C1BD9830E00969B23 /* Stylesheet.swift */,
+				7A4536151BD9BED700A680CB /* Stylesheet.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/HEXColor.framework",
 			);
 			outputPaths = (
 			);
@@ -386,7 +393,7 @@
 				7ABB23901BD0ADC900E2B86E /* ShowsViewController.swift in Sources */,
 				7AED90571BD7F9F2002B024C /* DownloadViewController.swift in Sources */,
 				7A73FA8F1BD6B8930026D8AD /* Storage.swift in Sources */,
-				7AF8A01D1BD9830E00969B23 /* Stylesheet.swift in Sources */,
+				7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

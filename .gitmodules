@@ -11,3 +11,6 @@
 [submodule "Carthage/Checkouts/ReactiveCocoa"]
 	path = Carthage/Checkouts/ReactiveCocoa
 	url = https://github.com/ReactiveCocoa/ReactiveCocoa.git
+[submodule "Carthage/Checkouts/UIColor-Hex-Swift"]
+	path = Carthage/Checkouts/UIColor-Hex-Swift
+	url = https://github.com/yeahdongcn/UIColor-Hex-Swift.git
