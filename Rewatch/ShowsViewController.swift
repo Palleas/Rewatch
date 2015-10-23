@@ -13,6 +13,14 @@ class ShowsViewController: UIViewController {
     var client: Client!
     var shows: [[String: String]] = []
     
+    @IBOutlet weak var stackViewWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+            scrollView.backgroundColor = Stylesheet.showBackgroundColor
+        }
+    }
     @IBOutlet weak var shakeLabel: UILabel! {
         didSet {
             shakeLabel.font = Stylesheet.textFont
@@ -29,14 +37,14 @@ class ShowsViewController: UIViewController {
     
     @IBOutlet weak var showNameLabel: UILabel! {
         didSet {
-            showNameLabel.font = Stylesheet.textFont
+            showNameLabel.font = Stylesheet.showNameTextFont
             showNameLabel.textColor = .whiteColor()
         }
     }
     
     @IBOutlet weak var episodeTitleLabel: UILabel! {
         didSet {
-            episodeTitleLabel.font = Stylesheet.textFont
+            episodeTitleLabel.font = Stylesheet.episodeTitleTextFont
             episodeTitleLabel.textColor = .whiteColor()
         }
     }
@@ -53,6 +61,33 @@ class ShowsViewController: UIViewController {
             suggestedLabel.font = Stylesheet.textFont
             suggestedLabel.textColor = .whiteColor()
         }
+    }
+        
+    @IBOutlet weak var seasonNumberLabel: UILabel! {
+        didSet {
+            seasonNumberLabel.font = Stylesheet.episodeNumberFont
+            seasonNumberLabel.textColor = Stylesheet.episodeNumberTextColor
+        }
+    }
+    
+    @IBOutlet weak var episodeNumberLabel: UILabel! {
+        didSet {
+            episodeNumberLabel.font = Stylesheet.seasonNumbertextFont
+            episodeNumberLabel.textColor = Stylesheet.episodeNumberTextColor
+        }
+    }
+
+    @IBOutlet weak var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.font = Stylesheet.textFont
+            descriptionLabel.textColor = .whiteColor()
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        stackViewWidth.constant = view.frame.width - 40
     }
         
     override func viewWillAppear(animated: Bool) {
@@ -84,10 +119,10 @@ class ShowsViewController: UIViewController {
     }
     
     func fetchRandomItem() {
-//        let index = Int(arc4random_uniform(UInt32(shows.count)))
-//        let show = shows[index]
-//        
-////        showNameLabel.text = show["show_name"]
-////        episodeTitleLabel.text = show["episode_title"]
+        let index = Int(arc4random_uniform(UInt32(shows.count)))
+        let show = shows[index]
+        
+        showNameLabel.text = show["show_name"]
+        episodeTitleLabel.text = show["episode_title"]
     }
 }
