@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LI6-ou-q3j">
-                                <rect key="frame" x="110.5" y="193.5" width="379" height="213"/>
+                                <rect key="frame" x="110" y="193" width="379" height="213"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake your phone" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghh-eA-Nar">
                                         <rect key="frame" x="50" y="34" width="279" height="20.5"/>
@@ -139,7 +139,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYm-ei-D1z">
-                                        <rect key="frame" x="181.5" y="63" width="16" height="20.5"/>
+                                        <rect key="frame" x="181" y="63" width="16" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -153,7 +153,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7Y-SQ-D4b">
-                                        <rect key="frame" x="161.5" y="121" width="56" height="30"/>
+                                        <rect key="frame" x="161" y="121" width="56" height="30"/>
                                         <animations/>
                                         <state key="normal" title="[button]"/>
                                     </button>
@@ -197,12 +197,20 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNN-Ix-qON">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
+                            </scrollView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LNN-Ix-qON" secondAttribute="trailing" id="4SM-ze-Fct"/>
                             <constraint firstItem="LI6-ou-q3j" firstAttribute="centerY" secondItem="J5p-Tf-FCR" secondAttribute="centerY" id="9Nf-mZ-wqT"/>
+                            <constraint firstItem="iIh-lA-Q34" firstAttribute="top" secondItem="LNN-Ix-qON" secondAttribute="bottom" id="EeW-6Q-37l"/>
+                            <constraint firstItem="LNN-Ix-qON" firstAttribute="top" secondItem="rV8-Bg-3ji" secondAttribute="bottom" id="QRM-iz-cIF"/>
                             <constraint firstItem="LI6-ou-q3j" firstAttribute="centerX" secondItem="J5p-Tf-FCR" secondAttribute="centerX" id="YdJ-B5-SDz"/>
+                            <constraint firstItem="LNN-Ix-qON" firstAttribute="leading" secondItem="J5p-Tf-FCR" secondAttribute="leading" id="yY1-gg-ay8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NgK-hu-zks"/>
