@@ -44,7 +44,6 @@ class DownloadViewController: UIViewController {
             })
             .observeOn(UIScheduler())
             .startWithNext { (results) -> () in
-                print("Downloaded \(results.count) shows")
                 self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
             }
     }

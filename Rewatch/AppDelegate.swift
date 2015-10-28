@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Retrieve API Keys
         let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
         let keychain = KeychainSwift()
-        keychain.clear()
         
         let token = keychain.get("betaseries-token")
         
