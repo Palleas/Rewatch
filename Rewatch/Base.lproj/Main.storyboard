@@ -20,13 +20,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="sMk-5p-9wd">
                                 <rect key="frame" x="70" y="250" width="460" height="149"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avP-Xh-ypN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avP-Xh-ypN">
                                         <rect key="frame" x="0.0" y="0.0" width="460" height="78"/>
                                         <animations/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="30" maxX="0.0" maxY="30"/>
                                         <state key="normal" title="AUTHENTICATE"/>
+                                        <connections>
+                                            <action selector="authenticate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S6B-j5-Hog"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This will open the betaseries website where you'll be able to fill in your credentials" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjd-tc-nCa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This will open the betaseries website where you'll be able to fill in your credentials" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjd-tc-nCa">
                                         <rect key="frame" x="0.0" y="108" width="460" height="41"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -68,24 +71,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-fY-ZOi">
-                                <rect key="frame" x="214" y="290" width="173" height="20"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FOH-lj-iF9">
+                                <rect key="frame" x="173" y="227" width="254" height="146.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oeil" translatesAutoresizingMaskIntoConstraints="NO" id="lZj-FB-3ug">
+                                        <rect key="frame" x="0.0" y="0.0" width="254" height="126"/>
+                                        <animations/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOWNLOADING EPISODES..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7j-Ed-0B4">
+                                        <rect key="frame" x="0.0" y="126" width="254" height="20.5"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nhv-fY-ZOi" firstAttribute="centerX" secondItem="HMj-7q-yfw" secondAttribute="centerX" id="AMI-Fr-ytZ"/>
-                            <constraint firstItem="nhv-fY-ZOi" firstAttribute="centerY" secondItem="HMj-7q-yfw" secondAttribute="centerY" id="QHq-Mp-Mjd"/>
+                            <constraint firstItem="FOH-lj-iF9" firstAttribute="centerX" secondItem="HMj-7q-yfw" secondAttribute="centerX" id="5B0-T3-IBB"/>
+                            <constraint firstItem="FOH-lj-iF9" firstAttribute="centerY" secondItem="HMj-7q-yfw" secondAttribute="centerY" id="f0u-fj-vTv"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="episodeLabel" destination="nhv-fY-ZOi" id="Hs6-7f-ya2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wnH-te-iRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -333,4 +343,7 @@
             <point key="canvasLocation" x="676" y="887"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Oeil" width="254" height="126"/>
+    </resources>
 </document>

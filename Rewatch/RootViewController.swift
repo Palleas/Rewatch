@@ -18,8 +18,6 @@ class RootViewController: UIViewController {
             performSegueWithIdentifier("ShowsSegue", sender: self)
         } else {
             performSegueWithIdentifier("LoginSegue", sender: self)
-            let login = LoginViewController()
-            presentViewController(login, animated: true, completion: nil)
         }
     }
     
