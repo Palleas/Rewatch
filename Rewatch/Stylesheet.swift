@@ -14,10 +14,14 @@ class Stylesheet: NSObject {
     static let navigationBarTextColor = UIColor(rgba: "#222222")
     static let navigationBarTintColor = UIColor.whiteColor()
     static let commonBackgroundColor = UIColor(rgba: "#222222")
+    static let appBackgroundColor = UIColor.blackColor()
+    
     static let showBackgroundColor = UIColor(rgba: "#F74D40")
     static let episodeNumberTextColor = UIColor(rgba: "#222222")
     static let seasonNumberTextColor = UIColor(rgba: "#222222")
     
+    static let buttonBorderColor = UIColor(rgba: "#979797")
+    static let explainationTextColor = UIColor(rgba: "#F74E40")
     // Fonts
     static let titleFont = UIFont(name: "Roboto-Bold", size: 14)!
     static let textFont = UIFont(name: "Roboto", size: 18)!
@@ -26,6 +30,9 @@ class Stylesheet: NSObject {
     static let episodeNumberFont = UIFont(name: "Roboto-Light", size: 50)!
     static let seasonNumbertextFont = UIFont(name: "Roboto-Light", size: 50)!
     
+    static let buttonFont = UIFont(name: "Roboto-Bold", size: 16)!
+    static let explainationFont = UIFont(name: "Roboto-Light", size: 15)!
+
     func apply() {
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Stylesheet.navigationBarTextColor, NSFontAttributeName: Stylesheet.titleFont]

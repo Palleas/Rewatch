@@ -18,6 +18,8 @@ class RootViewController: UIViewController {
             performSegueWithIdentifier("ShowsSegue", sender: self)
         } else {
             performSegueWithIdentifier("LoginSegue", sender: self)
+            let login = LoginViewController()
+            presentViewController(login, animated: true, completion: nil)
         }
     }
     
@@ -25,11 +27,7 @@ class RootViewController: UIViewController {
         super.prepareForSegue(segue, sender: sender)
         
         // I hate this so much it hurts
-        if let destination = segue.destinationViewController as? LoginViewController {
-            destination.client = client
-        } else if let wrapper = segue.destinationViewController as? UINavigationController, let destination = wrapper.viewControllers.first as? ShowsViewController {
-            destination.client = client
-        } else if let wrapper = segue.destinationViewController as? UINavigationController, let destination = wrapper.viewControllers.first as? LoginViewController {
+        if let wrapper = segue.destinationViewController as? UINavigationController, let destination = wrapper.viewControllers.first as? ShowsViewController {
             destination.client = client
         }
     }

@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3Nm-CX-pAt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--REWATCH-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="REWATCH" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,24 +17,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92B-rY-cff">
-                                <rect key="frame" x="202" y="285" width="196" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="sMk-5p-9wd">
+                                <rect key="frame" x="70" y="250" width="460" height="149"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avP-Xh-ypN">
+                                        <rect key="frame" x="0.0" y="0.0" width="460" height="78"/>
+                                        <animations/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="30" maxX="0.0" maxY="30"/>
+                                        <state key="normal" title="AUTHENTICATE"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This will open the betaseries website where you'll be able to fill in your credentials" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjd-tc-nCa">
+                                        <rect key="frame" x="0.0" y="108" width="460" height="41"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <animations/>
-                                <state key="normal" title="Authenticate with betaseries"/>
-                                <connections>
-                                    <action selector="authenticate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3vu-EY-zDY"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="92B-rY-cff" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2fl-GG-Qkr"/>
-                            <constraint firstItem="92B-rY-cff" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3TB-UI-3Sh"/>
+                            <constraint firstItem="sMk-5p-9wd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="H3J-uh-X1B"/>
+                            <constraint firstItem="sMk-5p-9wd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="PRF-Ym-6Fz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sMk-5p-9wd" secondAttribute="trailing" constant="50" id="Qh7-U1-hVH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="M7G-JX-RbM"/>
                     <connections>
+                        <outlet property="authenticateButton" destination="avP-Xh-ypN" id="Qvg-Iw-TjY"/>
+                        <outlet property="explanationLabel" destination="xjd-tc-nCa" id="tpG-gy-YrF"/>
                         <segue destination="7IM-Rb-a4q" kind="show" identifier="DownloadSegue" id="cIr-Mz-bAT"/>
                     </connections>
                 </viewController>

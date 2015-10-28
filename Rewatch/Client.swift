@@ -21,7 +21,6 @@ class Client: NSObject {
     struct Show {
         let id: Int
         let name: String
-        var episodes: [Episode]? = []
     }
     
     struct Episode {
@@ -125,7 +124,7 @@ class Client: NSObject {
             .flatMap(FlattenStrategy.Latest) { (payload) -> SignalProducer<Show, NSError> in
                 return SignalProducer<Show, NSError> { sink, disposable in
                     payload["member"]["shows"].arrayValue.forEach({ showNode in
-                        let show = Show(id: showNode["id"].intValue, name: showNode["title"].stringValue, episodes: [])
+                        let show = Show(id: showNode["id"].intValue, name: showNode["title"].stringValue)
                         sink.sendNext(show)
                     })
                     sink.sendCompleted()
@@ -148,7 +147,7 @@ class Client: NSObject {
     }
     
     func fetchPictureForEpisodeId(id: String) -> SignalProducer<UIImage, NSError> {
-        let request = requestForPath("pictures/episodes", params: ["id" : id], method: "GET")
+        let request = requestForPath("pictures/episodes", params: ["id" : id, "width": "640"], method: "GET")
         return session
             .rac_dataWithRequest(request)
             .map({ (data, _) -> UIImage in
