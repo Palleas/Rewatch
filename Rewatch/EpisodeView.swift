@@ -8,14 +8,59 @@
 
 import UIKit
 
-class EpisodeView: UIStackView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+class EpisodeView: UIView {
+    @IBOutlet var showNameLabel: UILabel! {
+        didSet {
+            showNameLabel.font = Stylesheet.showNameTextFont
+            showNameLabel.textColor = .whiteColor()
+        }
     }
-    */
+    
+    @IBOutlet var seasonNumberLabel: UILabel! {
+        didSet {
+            seasonNumberLabel.font = Stylesheet.episodeNumberFont
+            seasonNumberLabel.textColor = Stylesheet.episodeNumberTextColor
+        }
+    }
+    
+    @IBOutlet var episodeNumberLabel: UILabel! {
+        didSet {
+            episodeNumberLabel.font = Stylesheet.seasonNumbertextFont
+            episodeNumberLabel.textColor = Stylesheet.episodeNumberTextColor
+        }
+    }
 
+    @IBOutlet var episodeTitleLabel: UILabel! {
+        didSet {
+            episodeTitleLabel.font = Stylesheet.episodeTitleTextFont
+            episodeTitleLabel.textColor = .whiteColor()
+        }
+    }
+
+    @IBOutlet var summaryLabel: UILabel! {
+        didSet {
+            summaryLabel.font = Stylesheet.textFont
+            summaryLabel.textColor = .whiteColor()
+        }
+    }
+    
+    var theme: Theme? {
+        didSet {
+            guard let theme = theme else { return }
+            
+            showNameLabel.textColor = theme.showNameColor
+            seasonNumberLabel.textColor = theme.seasonNumberColor
+            episodeNumberLabel.textColor = theme.episodeNumberColor
+            summaryLabel.textColor = theme.summaryColor
+            episodeTitleLabel.textColor = theme.episodeTitleColor
+            backgroundColor = theme.backgroundColor
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        backgroundColor = .clearColor()
+        theme = RedTheme()
+    }
 }

@@ -27,8 +27,8 @@ class Stylesheet: NSObject {
     // Fonts
     static let titleFont = UIFont(name: "Roboto-Bold", size: 14)!
     static let textFont = UIFont(name: "Roboto", size: 18)!
-    static let showNameTextFont = UIFont(name: "Roboto-Light", size: 18)!
-    static let episodeTitleTextFont = UIFont(name: "Roboto-Bold", size: 24)!
+    static let showNameTextFont = UIFont(name: "Roboto", size: 21)!
+    static let episodeTitleTextFont = UIFont(name: "Roboto-Bold", size: 26)!
     static let episodeNumberFont = UIFont(name: "Roboto-Light", size: 50)!
     static let seasonNumbertextFont = UIFont(name: "Roboto-Light", size: 50)!
     

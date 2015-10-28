@@ -21,7 +21,7 @@ class ShowsViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
-            scrollView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+            scrollView.contentInset = UIEdgeInsets(top: 180, left: 0, bottom: 0, right: 0)
         }
     }
     @IBOutlet weak var shakeLabel: UILabel! {
@@ -30,48 +30,13 @@ class ShowsViewController: UIViewController {
             shakeLabel.textColor = .whiteColor()
         }
     }
-    
-    @IBOutlet weak var showNameLabel: UILabel! {
-        didSet {
-            showNameLabel.font = Stylesheet.showNameTextFont
-            showNameLabel.textColor = .whiteColor()
-        }
-    }
-    
-    @IBOutlet weak var episodeTitleLabel: UILabel! {
-        didSet {
-            episodeTitleLabel.font = Stylesheet.episodeTitleTextFont
-            episodeTitleLabel.textColor = .whiteColor()
-        }
-    }
-
-    @IBOutlet weak var seasonNumberLabel: UILabel! {
-        didSet {
-            seasonNumberLabel.font = Stylesheet.episodeNumberFont
-            seasonNumberLabel.textColor = Stylesheet.episodeNumberTextColor
-        }
-    }
-    
-    @IBOutlet weak var episodeNumberLabel: UILabel! {
-        didSet {
-            episodeNumberLabel.font = Stylesheet.seasonNumbertextFont
-            episodeNumberLabel.textColor = Stylesheet.episodeNumberTextColor
-        }
-    }
-
-    @IBOutlet weak var descriptionLabel: UILabel! {
-        didSet {
-            descriptionLabel.font = Stylesheet.textFont
-            descriptionLabel.textColor = .whiteColor()
-        }
-    }
 
     @IBOutlet weak var episodePictureView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        stackViewWidth.constant = view.frame.width - 40
+        stackViewWidth.constant = view.frame.width
     }
         
     override func viewWillAppear(animated: Bool) {
@@ -108,8 +73,9 @@ class ShowsViewController: UIViewController {
         shakeView.hidden = true
         episodeView.hidden = false
         
-        showNameLabel.text = show["show_name"]
-        episodeTitleLabel.text = show["episode_title"]
+        episodeView.showNameLabel.text = show["show_name"]
+        episodeView.episodeTitleLabel.text = show["episode_title"]
+        episodeView.summaryLabel.text = "Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb. Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb.Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb."
 
         client
             .fetchPictureForEpisodeId(show["episode_id"]!)
