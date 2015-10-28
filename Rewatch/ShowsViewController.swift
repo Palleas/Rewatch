@@ -14,6 +14,8 @@ class ShowsViewController: UIViewController {
     var client: Client!
     var shows: [[String: String]] = []
     
+    @IBOutlet weak var shakeView: ShakeView!
+
     @IBOutlet weak var stackViewWidth: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView! {
@@ -26,13 +28,6 @@ class ShowsViewController: UIViewController {
         didSet {
             shakeLabel.font = Stylesheet.textFont
             shakeLabel.textColor = .whiteColor()
-        }
-    }
-    
-    @IBOutlet weak var orLabel: UILabel! {
-        didSet {
-            orLabel.font = Stylesheet.textFont
-            orLabel.textColor = .whiteColor()
         }
     }
     
@@ -49,21 +44,7 @@ class ShowsViewController: UIViewController {
             episodeTitleLabel.textColor = .whiteColor()
         }
     }
-    
-    @IBOutlet weak var useLabel: UILabel! {
-        didSet {
-            useLabel.font = Stylesheet.textFont
-            useLabel.textColor = .whiteColor()
-        }
-    }
-    
-    @IBOutlet weak var suggestedLabel: UILabel! {
-        didSet {
-            suggestedLabel.font = Stylesheet.textFont
-            suggestedLabel.textColor = .whiteColor()
-        }
-    }
-        
+
     @IBOutlet weak var seasonNumberLabel: UILabel! {
         didSet {
             seasonNumberLabel.font = Stylesheet.episodeNumberFont

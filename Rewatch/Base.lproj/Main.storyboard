@@ -156,7 +156,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNN-Ix-qON">
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNN-Ix-qON">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t5g-lc-oWl">
@@ -171,28 +171,28 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the show name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLk-rg-Lml">
-                                                <rect key="frame" x="0.0" y="138" width="600" height="21"/>
+                                                <rect key="frame" x="0.0" y="138" width="600" height="20.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uZ-R3-rdz">
-                                                <rect key="frame" x="0.0" y="169" width="600" height="20"/>
+                                                <rect key="frame" x="0.0" y="168" width="600" height="20.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04J-8G-9LP">
-                                                <rect key="frame" x="0.0" y="199" width="600" height="21"/>
+                                                <rect key="frame" x="0.0" y="199" width="600" height="20.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the title of the episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxj-A3-9II">
-                                                <rect key="frame" x="0.0" y="230" width="600" height="20"/>
+                                                <rect key="frame" x="0.0" y="229" width="600" height="20.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -225,37 +225,22 @@
                                     <constraint firstItem="t5g-lc-oWl" firstAttribute="top" secondItem="LNN-Ix-qON" secondAttribute="top" id="nvV-9t-Meq"/>
                                 </constraints>
                             </scrollView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LI6-ou-q3j">
-                                <rect key="frame" x="111" y="194" width="379" height="212"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5o3-zQ-oVe" customClass="ShakeView" customModule="Rewatch" customModuleProvider="target">
+                                <rect key="frame" x="151.5" y="161" width="297.5" height="278"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake your phone" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghh-eA-Nar">
-                                        <rect key="frame" x="50" y="34" width="279" height="21"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shake" translatesAutoresizingMaskIntoConstraints="NO" id="4Z0-GH-xLi">
+                                        <rect key="frame" x="0.0" y="0.0" width="297.5" height="237"/>
+                                        <animations/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake your phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xan-pD-2ea">
+                                        <rect key="frame" x="0.0" y="237" width="297.5" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYm-ei-D1z">
-                                        <rect key="frame" x="181" y="62" width="16" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the button" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oj9-CA-AJ9">
-                                        <rect key="frame" x="50" y="91" width="279" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7Y-SQ-D4b">
-                                        <rect key="frame" x="161" y="119" width="56" height="30"/>
-                                        <animations/>
-                                        <state key="normal" title="[button]"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to get a suggested episode to watch" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-Gg-Y5a">
-                                        <rect key="frame" x="50" y="157" width="279" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get a suggested episode to rewatch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-CW-8r2">
+                                        <rect key="frame" x="0.0" y="257" width="297.5" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -263,48 +248,23 @@
                                     </label>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="e7Y-SQ-D4b" firstAttribute="leading" secondItem="LI6-ou-q3j" secondAttribute="leading" constant="169" id="EIC-fb-f2k"/>
-                                    <constraint firstItem="ghh-eA-Nar" firstAttribute="top" secondItem="LI6-ou-q3j" secondAttribute="top" constant="34" id="ICt-Vg-j8w"/>
-                                    <constraint firstAttribute="bottom" secondItem="RTZ-Gg-Y5a" secondAttribute="bottom" constant="34" id="S3g-hD-hsS"/>
-                                    <constraint firstItem="LYm-ei-D1z" firstAttribute="top" secondItem="ghh-eA-Nar" secondAttribute="bottom" constant="8" id="VJd-lP-Uih"/>
-                                    <constraint firstItem="ghh-eA-Nar" firstAttribute="leading" secondItem="LI6-ou-q3j" secondAttribute="leading" constant="50" id="Wkg-Wu-JNq"/>
-                                    <constraint firstItem="e7Y-SQ-D4b" firstAttribute="top" secondItem="oj9-CA-AJ9" secondAttribute="bottom" constant="8" id="Yi6-RC-Hfh"/>
-                                    <constraint firstItem="e7Y-SQ-D4b" firstAttribute="centerX" secondItem="LI6-ou-q3j" secondAttribute="centerX" id="bKx-8c-ddh"/>
-                                    <constraint firstItem="oj9-CA-AJ9" firstAttribute="top" secondItem="LYm-ei-D1z" secondAttribute="bottom" constant="8.5" id="bgk-eV-kui"/>
-                                    <constraint firstItem="LYm-ei-D1z" firstAttribute="centerX" secondItem="LI6-ou-q3j" secondAttribute="centerX" id="dbN-M5-DG6"/>
-                                    <constraint firstItem="RTZ-Gg-Y5a" firstAttribute="leading" secondItem="LI6-ou-q3j" secondAttribute="leading" constant="50" id="eMx-wf-xGJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="RTZ-Gg-Y5a" secondAttribute="trailing" constant="50" id="ecm-ye-EJ5"/>
-                                    <constraint firstItem="RTZ-Gg-Y5a" firstAttribute="top" secondItem="e7Y-SQ-D4b" secondAttribute="bottom" constant="8" id="pm7-XR-0CK"/>
-                                    <constraint firstItem="oj9-CA-AJ9" firstAttribute="top" secondItem="LYm-ei-D1z" secondAttribute="bottom" constant="8" id="tHl-Ub-Jw8"/>
-                                    <constraint firstItem="oj9-CA-AJ9" firstAttribute="leading" secondItem="LI6-ou-q3j" secondAttribute="leading" constant="50" id="w9L-M5-Czn"/>
-                                    <constraint firstAttribute="trailing" secondItem="oj9-CA-AJ9" secondAttribute="trailing" constant="50" id="xj2-eq-p0h"/>
-                                    <constraint firstAttribute="trailing" secondItem="ghh-eA-Nar" secondAttribute="trailing" constant="50" id="zCn-zh-ZnL"/>
-                                    <constraint firstAttribute="trailing" secondItem="e7Y-SQ-D4b" secondAttribute="trailing" constant="169" id="zWv-xk-bge"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="nil" keyPath="backgroundColor"/>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="tHl-Ub-Jw8"/>
-                                        <exclude reference="EIC-fb-f2k"/>
-                                        <exclude reference="zWv-xk-bge"/>
-                                    </mask>
-                                </variation>
-                            </view>
+                                <connections>
+                                    <outlet property="shakeimageView" destination="4Z0-GH-xLi" id="hbj-ej-m8s"/>
+                                    <outlet property="subtitleLabel" destination="bwA-CW-8r2" id="ZkZ-Pn-YhC"/>
+                                    <outlet property="titleLabel" destination="Xan-pD-2ea" id="YwO-HJ-eH7"/>
+                                </connections>
+                            </stackView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5o3-zQ-oVe" firstAttribute="centerY" secondItem="J5p-Tf-FCR" secondAttribute="centerY" id="2mI-fj-iyy"/>
                             <constraint firstAttribute="trailing" secondItem="LNN-Ix-qON" secondAttribute="trailing" id="4SM-ze-Fct"/>
-                            <constraint firstItem="LI6-ou-q3j" firstAttribute="centerY" secondItem="J5p-Tf-FCR" secondAttribute="centerY" id="9Nf-mZ-wqT"/>
                             <constraint firstItem="iIh-lA-Q34" firstAttribute="top" secondItem="LNN-Ix-qON" secondAttribute="bottom" id="EeW-6Q-37l"/>
                             <constraint firstAttribute="trailing" secondItem="LNN-Ix-qON" secondAttribute="trailing" id="FKi-EX-BMK"/>
+                            <constraint firstItem="5o3-zQ-oVe" firstAttribute="centerX" secondItem="J5p-Tf-FCR" secondAttribute="centerX" id="Li2-l2-opV"/>
                             <constraint firstItem="LNN-Ix-qON" firstAttribute="leading" secondItem="J5p-Tf-FCR" secondAttribute="leading" id="QFF-if-kMt"/>
                             <constraint firstItem="LNN-Ix-qON" firstAttribute="top" secondItem="rV8-Bg-3ji" secondAttribute="bottom" id="QRM-iz-cIF"/>
-                            <constraint firstItem="LI6-ou-q3j" firstAttribute="centerX" secondItem="J5p-Tf-FCR" secondAttribute="centerX" id="YdJ-B5-SDz"/>
                             <constraint firstItem="LNN-Ix-qON" firstAttribute="leading" secondItem="J5p-Tf-FCR" secondAttribute="leading" id="yY1-gg-ay8"/>
                         </constraints>
                     </view>
@@ -314,14 +274,11 @@
                         <outlet property="episodeNumberLabel" destination="04J-8G-9LP" id="eDZ-YB-Cen"/>
                         <outlet property="episodePictureView" destination="9LR-Ld-Tvd" id="zmd-7n-uYY"/>
                         <outlet property="episodeTitleLabel" destination="kxj-A3-9II" id="9bn-3w-f1N"/>
-                        <outlet property="orLabel" destination="LYm-ei-D1z" id="GbV-hA-j4T"/>
                         <outlet property="scrollView" destination="LNN-Ix-qON" id="EqQ-zb-Vgc"/>
                         <outlet property="seasonNumberLabel" destination="6uZ-R3-rdz" id="4fc-Zu-d3N"/>
-                        <outlet property="shakeLabel" destination="ghh-eA-Nar" id="ZaH-VU-Z8X"/>
+                        <outlet property="shakeView" destination="5o3-zQ-oVe" id="aJ9-le-KAS"/>
                         <outlet property="showNameLabel" destination="kLk-rg-Lml" id="t4P-xf-G7P"/>
                         <outlet property="stackViewWidth" destination="IH3-mf-So6" id="NPB-Ht-VQW"/>
-                        <outlet property="suggestedLabel" destination="RTZ-Gg-Y5a" id="H1a-dK-7Fa"/>
-                        <outlet property="useLabel" destination="oj9-CA-AJ9" id="YbW-q3-Bri"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6M8-UA-Akv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,5 +305,6 @@
     </scenes>
     <resources>
         <image name="Oeil" width="254" height="126"/>
+        <image name="Shake" width="225" height="237"/>
     </resources>
 </document>

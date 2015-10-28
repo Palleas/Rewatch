@@ -46,3 +46,10 @@ class Stylesheet: NSObject {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
     }
 }
+
+
+extension UIFont {
+    class func robotoWithSize(size: CGFloat) -> UIFont {
+        return UIFont(name: "Roboto", size: size)!
+    }
+}
