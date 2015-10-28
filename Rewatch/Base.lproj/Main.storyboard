@@ -156,10 +156,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNN-Ix-qON">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNN-Ix-qON">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t5g-lc-oWl">
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t5g-lc-oWl" customClass="EpisodeView" customModule="Rewatch" customModuleProvider="target">
                                         <rect key="frame" x="20" y="0.0" width="600" height="382"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9LR-Ld-Tvd">
@@ -274,6 +274,7 @@
                         <outlet property="episodeNumberLabel" destination="04J-8G-9LP" id="eDZ-YB-Cen"/>
                         <outlet property="episodePictureView" destination="9LR-Ld-Tvd" id="zmd-7n-uYY"/>
                         <outlet property="episodeTitleLabel" destination="kxj-A3-9II" id="9bn-3w-f1N"/>
+                        <outlet property="episodeView" destination="t5g-lc-oWl" id="dIa-yo-zWg"/>
                         <outlet property="scrollView" destination="LNN-Ix-qON" id="EqQ-zb-Vgc"/>
                         <outlet property="seasonNumberLabel" destination="6uZ-R3-rdz" id="4fc-Zu-d3N"/>
                         <outlet property="shakeView" destination="5o3-zQ-oVe" id="aJ9-le-KAS"/>

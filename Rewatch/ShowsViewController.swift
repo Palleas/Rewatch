@@ -16,12 +16,12 @@ class ShowsViewController: UIViewController {
     
     @IBOutlet weak var shakeView: ShakeView!
 
+    @IBOutlet weak var episodeView: EpisodeView!
     @IBOutlet weak var stackViewWidth: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             scrollView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-            scrollView.backgroundColor = Stylesheet.showBackgroundColor
         }
     }
     @IBOutlet weak var shakeLabel: UILabel! {
@@ -105,9 +105,12 @@ class ShowsViewController: UIViewController {
         let index = Int(arc4random_uniform(UInt32(shows.count)))
         let show = shows[index]
         
+        shakeView.hidden = true
+        episodeView.hidden = false
+        
         showNameLabel.text = show["show_name"]
         episodeTitleLabel.text = show["episode_title"]
-        
+
         client
             .fetchPictureForEpisodeId(show["episode_id"]!)
             .observeOn(UIScheduler())
