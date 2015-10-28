@@ -11,8 +11,21 @@ import ReactiveCocoa
 
 class DownloadViewController: UIViewController {
     var client: Client!
-    @IBOutlet weak var episodeLabel: UILabel!
 
+    @IBOutlet weak var statusLabel: UILabel! {
+        didSet {
+            statusLabel.font = Stylesheet.statusFont
+            statusLabel.textColor = Stylesheet.statusTextColor
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "REWATCH"
+        view.backgroundColor = Stylesheet.appBackgroundColor
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 

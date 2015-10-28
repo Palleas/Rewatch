@@ -78,7 +78,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="254" height="126"/>
                                         <animations/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOWNLOADING EPISODES..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7j-Ed-0B4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOWNLOADING EPISODES..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7j-Ed-0B4">
                                         <rect key="frame" x="0.0" y="126" width="254" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -96,6 +96,9 @@
                             <constraint firstItem="FOH-lj-iF9" firstAttribute="centerY" secondItem="HMj-7q-yfw" secondAttribute="centerY" id="f0u-fj-vTv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="statusLabel" destination="N7j-Ed-0B4" id="y3Q-lP-hen"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wnH-te-iRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
