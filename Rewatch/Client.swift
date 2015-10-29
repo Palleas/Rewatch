@@ -150,9 +150,14 @@ class Client: NSObject {
         let request = requestForPath("pictures/episodes", params: ["id" : id, "width": "640"], method: "GET")
         return session
             .rac_dataWithRequest(request)
-            .map({ (data, _) -> UIImage in
-                return UIImage(data: data)!
+            .flatMap(.Latest, transform: { (data, response) -> SignalProducer<NSData, NSError> in
+                if let response = response as? NSHTTPURLResponse where response.statusCode == 404 {
+                    return SignalProducer.empty
+                }
+                
+                return SignalProducer(value: data)
             })
+            .map({ data in UIImage(data: data)! })
     }
     
     func sendRequestToPath(path: String, params: [String: String]?, method: String) -> SignalProducer<JSON, NSError> {
@@ -160,7 +165,7 @@ class Client: NSObject {
         
         return session
             .rac_dataWithRequest(request)
-            .map({ data, response in
+            .map({ data, _ in
                 return JSON(data: data)
             })
     }
