@@ -51,6 +51,16 @@ class EpisodeViewController: UIViewController {
         let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
         let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
         shows = NSArray(contentsOfFile: filePath) as! [[String: String]]
+
+        let leftButton = UIButton(type: .Custom)
+        leftButton.setImage(UIImage(named: "Hamburger"), forState: .Normal)
+        leftButton.sizeToFit()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
+        
+        let rightButton = UIButton(type: .Custom)
+        rightButton.setImage(UIImage(named: "Options"), forState: .Normal)
+        rightButton.sizeToFit()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
     }
     
     override func viewWillAppear(animated: Bool) {
