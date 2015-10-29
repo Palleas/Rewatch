@@ -34,7 +34,18 @@ class DownloadViewController: UIViewController {
                 return combineLatest(SignalProducer<Client.Show, NSError>(value: show), self.client.fetchEpisodesFromShow(show))
             })
             .map({ (show, episode) -> [String: String] in
-                return ["show_id": String(show.id), "show_name": show.name, "episode_id": String(episode.id), "episode_title": episode.title]
+                let episodeId = String(episode.id)
+                let seasonNumber =  String(format: "%02d", episode.season)
+                let episodeNumber = String(format: "%02d", episode.episode)
+                
+                return ["show_id": String(show.id),
+                    "show_name": show.name,
+                    "episode_id": episodeId,
+                    "episode_title": episode.title,
+                    "season": seasonNumber,
+                    "episode": episodeNumber,
+                    "summary": episode.summary]
+            
             })
             .collect()
             .flatMap(.Latest, transform: { (results) -> SignalProducer<[[String: String]], NSError> in

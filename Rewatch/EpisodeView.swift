@@ -88,8 +88,8 @@ class EpisodeView: UIView {
             guard let episode = episode else { return }
             showNameLabel.text = episode.showName
             episodeTitleLabel.text = episode.title
-            seasonNumberLabel.text = episode.season
-            episodeNumberLabel.text = episode.number
+            seasonNumberLabel.text = "S\(episode.season)"
+            episodeNumberLabel.text = "E\(episode.number)"
             summaryLabel.text = episode.description
         }
     }

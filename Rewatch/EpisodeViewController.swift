@@ -19,10 +19,10 @@ class EpisodeWrapper: EpisodeViewData {
     
     var showName : String { get { return wrapped["show_name"]! } }
     var title : String { get { return wrapped["episode_title"]! } }
-    var season : String { get { return "1" } }
-    var number : String { get { return "1" } }
-    var description : String { get { return "LOL" } }
-    
+    var season : String { get { return wrapped["season"]! } }
+    var number : String { get { return wrapped["episode"]! } }
+    var description : String { get { return wrapped["summary"]! } }
+
 }
 
 class EpisodeViewController: UIViewController {
@@ -51,7 +51,7 @@ class EpisodeViewController: UIViewController {
         let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
         let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
         shows = NSArray(contentsOfFile: filePath) as! [[String: String]]
-
+        print(shows)
         let leftButton = UIButton(type: .Custom)
         leftButton.setImage(UIImage(named: "Hamburger"), forState: .Normal)
         leftButton.sizeToFit()
