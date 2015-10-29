@@ -26,6 +26,8 @@ class EpisodeWrapper: EpisodeViewData {
 }
 
 class EpisodeViewController: UIViewController {
+    let themes: [Theme] = [WhiteTheme(), RedTheme(), DarkTheme()]
+
     var episodeView: EpisodeView {
         get {
             return view as! EpisodeView
@@ -39,6 +41,7 @@ class EpisodeViewController: UIViewController {
         self.client = client
         
         super.init(nibName: nil, bundle: nil)
+        title = "REWATCH"
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -51,7 +54,7 @@ class EpisodeViewController: UIViewController {
         let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
         let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
         shows = NSArray(contentsOfFile: filePath) as! [[String: String]]
-        print(shows)
+
         let leftButton = UIButton(type: .Custom)
         leftButton.setImage(UIImage(named: "Hamburger"), forState: .Normal)
         leftButton.sizeToFit()
@@ -84,7 +87,7 @@ class EpisodeViewController: UIViewController {
         let show = shows[index]
         let episode = EpisodeWrapper(wrapped: show)
         
-        episodeView.theme = RedTheme()
+        episodeView.theme = themes[Int(arc4random_uniform(UInt32(themes.count)))]
         episodeView.episode = episode
 
         episodeView.shakeView.hidden = true

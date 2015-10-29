@@ -26,6 +26,28 @@ struct RedTheme: Theme {
     var seasonNumberColor: UIColor { get { return .blackColor() } }
     var episodeTitleColor: UIColor { get { return .whiteColor() } }
     var summaryColor: UIColor { get { return .whiteColor() } }
-    var noteColor: UIColor { get { return .redColor() } }
-    var sharingTintColor: UIColor  { get { return .redColor() } }
+    var noteColor: UIColor { get { return .blackColor() } }
+    var sharingTintColor: UIColor  { get { return .whiteColor() } }
+}
+
+struct DarkTheme: Theme {
+    var backgroundColor: UIColor { get { return UIColor(rgba: "#222222") } }
+    var showNameColor: UIColor { get { return .whiteColor() } }
+    var episodeNumberColor: UIColor { get { return UIColor(rgba: "#F74E40") } }
+    var seasonNumberColor: UIColor { get { return UIColor(rgba: "#F74E40") } }
+    var episodeTitleColor: UIColor { get { return .whiteColor() } }
+    var summaryColor: UIColor { get { return .whiteColor() } }
+    var noteColor: UIColor { get { return UIColor(rgba: "#B4B4B4") } }
+    var sharingTintColor: UIColor  { get { return .whiteColor() } }
+}
+
+struct WhiteTheme: Theme {
+    var backgroundColor: UIColor { get { return .whiteColor() } }
+    var showNameColor: UIColor { get { return .blackColor() } }
+    var episodeNumberColor: UIColor { get { return UIColor(rgba: "#F74E40") } }
+    var seasonNumberColor: UIColor { get { return UIColor(rgba: "#F74E40") } }
+    var episodeTitleColor: UIColor { get { return .blackColor() } }
+    var summaryColor: UIColor { get { return .blackColor() } }
+    var noteColor: UIColor { get { return UIColor(rgba: "#B4B4B4") } }
+    var sharingTintColor: UIColor  { get { return .blackColor() } }
 }
