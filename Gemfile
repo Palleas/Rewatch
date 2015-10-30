@@ -1,5 +1,4 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem 'cocoapods', '~> 0.39.0'
-gem 'cocoapods-keys', '~> 1.5.2'
+gem 'fastlane', '~> 1.36', '>= 1.36.4'
