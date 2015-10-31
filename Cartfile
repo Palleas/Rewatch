@@ -1,5 +1,4 @@
 github "ReactiveCocoa/ReactiveCocoa" "swift2"
 github "SwiftyJSON/SwiftyJSON" "2.3.0"
 github "exchangegroup/keychain-swift" "3.0.7"
-github "yeahdongcn/UIColor-Hex-Swift" >= 1.5
 

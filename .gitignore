@@ -33,3 +33,4 @@ Pods/
 Carthage/Build
 Rewatch/Keys.plist
 */Carthage
+fastlane/report.xml

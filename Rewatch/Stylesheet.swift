@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import HEXColor
 
 class Stylesheet: NSObject {
     // Colors
