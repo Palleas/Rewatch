@@ -19,6 +19,8 @@ protocol EpisodeViewData {
 class EpisodeView: UIView {
     @IBOutlet weak var shakeView: ShakeView!
     
+    @IBOutlet weak var episodePictureHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var episodeImageView: UIImageView! {
         didSet {
             episodeImageView.hidden = true
@@ -29,6 +31,7 @@ class EpisodeView: UIView {
         didSet {
             episodeContainerView.contentInset = UIEdgeInsets(top: 180, left: 0, bottom: 0, right: 0)
             episodeContainerView.hidden = true
+            episodeContainerView.delegate = self
         }
     }
     
@@ -98,5 +101,13 @@ class EpisodeView: UIView {
         super.awakeFromNib()
         
         backgroundColor = Stylesheet.commonBackgroundColor
+    }
+}
+
+extension EpisodeView: UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if abs(scrollView.contentOffset.y) > 180 {
+            episodePictureHeightConstraint.constant = abs(scrollView.contentOffset.y)
+        }
     }
 }
