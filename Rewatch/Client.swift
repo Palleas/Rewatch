@@ -42,9 +42,7 @@ class Client: NSObject {
         }
     }
 
-    lazy private var urlPipe: (Signal<NSURL, NSError>, Observer<NSURL, NSError>) = {
-        return Signal<NSURL, NSError>.pipe()
-    }()
+    lazy private var urlPipe = Signal<NSURL, NSError>.pipe()
     
     init(key: String, secret: String, token: String? = nil) {
         self.key = key
