@@ -21,11 +21,19 @@ class EpisodeView: UIView {
     
     @IBOutlet weak var episodePictureHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var episodeImageContainer: UIView! {
+        didSet {
+            episodeImageContainer.hidden = true
+        }
+    }
     @IBOutlet weak var episodeImageView: UIImageView! {
         didSet {
             episodeImageView.hidden = true
         }
     }
+    
+    @IBOutlet weak var bnwEpisodeImageView: UIImageView!
+    
 
     @IBOutlet weak var episodeContainerView: UIScrollView! {
         didSet {
@@ -106,7 +114,9 @@ class EpisodeView: UIView {
 
 extension EpisodeView: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        if abs(scrollView.contentOffset.y) > 180 {
+        let offset = abs(scrollView.contentOffset.y)
+        if offset > 180 {
+            bnwEpisodeImageView.alpha = max(180 - abs(180 - offset), 0) / 180
             episodePictureHeightConstraint.constant = abs(scrollView.contentOffset.y)
         }
     }

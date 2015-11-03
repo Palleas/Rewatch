@@ -95,10 +95,14 @@ class EpisodeViewController: UIViewController {
         episodeView.episodeImageView.hidden = false
         
         client.fetchPictureForEpisodeId(show["episode_id"]!)
-            .map(convertToBlackAndWhite)
+            .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
+                return SignalProducer(value: (image, convertToBlackAndWhite(image)))
+            })
             .observeOn(UIScheduler())
             .startWithNext { (image) -> () in
-                self.episodeView.episodeImageView.image = image
+                self.episodeView.episodeImageContainer.hidden = false
+                self.episodeView.episodeImageView.image = image.0
+                self.episodeView.bnwEpisodeImageView.image = image.1
             }
 
         

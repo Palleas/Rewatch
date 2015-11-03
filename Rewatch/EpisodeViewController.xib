@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fBE-uC-9We" customClass="ShakeView" customModule="Rewatch" customModuleProvider="target">
-                    <rect key="frame" x="151.5" y="161" width="297.5" height="278"/>
+                    <rect key="frame" x="151" y="161" width="297.5" height="278"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shake" translatesAutoresizingMaskIntoConstraints="NO" id="Wuf-ez-aMw">
                             <rect key="frame" x="0.0" y="0.0" width="297.5" height="237"/>
@@ -29,7 +29,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get a suggested episode to rewatch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L68-6t-djE">
-                            <rect key="frame" x="0.0" y="257.5" width="297.5" height="20.5"/>
+                            <rect key="frame" x="0.0" y="257" width="297.5" height="20.5"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,14 +43,45 @@
                         <outlet property="titleLabel" destination="4ae-vV-ASw" id="Oza-cG-fqg"/>
                     </connections>
                 </stackView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-TW-Eqk">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enn-gp-Ppz" userLabel="Episode Image Container">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                    <subviews>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-TW-Eqk">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                            <animations/>
+                            <color key="backgroundColor" red="0.83090641359999995" green="0.83090641359999995" blue="0.83090641359999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCY-WS-9eC" userLabel="B&amp;W - Episode Image View">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                            <animations/>
+                        </imageView>
+                    </subviews>
                     <animations/>
-                    <color key="backgroundColor" red="0.83090641359999995" green="0.83090641359999995" blue="0.83090641359999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="180" id="sdp-Ed-bQk"/>
+                        <constraint firstItem="bXL-TW-Eqk" firstAttribute="leading" secondItem="enn-gp-Ppz" secondAttribute="leading" id="4b5-CQ-QG8"/>
+                        <constraint firstAttribute="trailing" secondItem="bXL-TW-Eqk" secondAttribute="trailing" id="6ys-VN-n8d"/>
+                        <constraint firstItem="bXL-TW-Eqk" firstAttribute="leading" secondItem="enn-gp-Ppz" secondAttribute="leading" id="96o-iS-Zfq"/>
+                        <constraint firstAttribute="height" constant="180" id="Nj0-Nw-yzs"/>
+                        <constraint firstAttribute="bottom" secondItem="bXL-TW-Eqk" secondAttribute="bottom" id="P9e-qz-O86"/>
+                        <constraint firstAttribute="trailing" secondItem="bXL-TW-Eqk" secondAttribute="trailing" id="Svl-oQ-tfT"/>
+                        <constraint firstAttribute="trailing" secondItem="bCY-WS-9eC" secondAttribute="trailing" id="asZ-0T-0nL"/>
+                        <constraint firstItem="bXL-TW-Eqk" firstAttribute="top" secondItem="enn-gp-Ppz" secondAttribute="top" id="ipq-i5-u3d"/>
+                        <constraint firstAttribute="bottom" secondItem="bCY-WS-9eC" secondAttribute="bottom" id="lkk-0W-bqm"/>
+                        <constraint firstItem="bCY-WS-9eC" firstAttribute="top" secondItem="enn-gp-Ppz" secondAttribute="top" id="nqf-YS-eIF"/>
+                        <constraint firstItem="bCY-WS-9eC" firstAttribute="leading" secondItem="enn-gp-Ppz" secondAttribute="leading" id="ow0-9x-ucS"/>
+                        <constraint firstAttribute="bottom" secondItem="bXL-TW-Eqk" secondAttribute="bottom" id="ru5-sa-L7B"/>
+                        <constraint firstItem="bXL-TW-Eqk" firstAttribute="top" secondItem="enn-gp-Ppz" secondAttribute="top" id="vBA-9I-bWa"/>
                     </constraints>
-                </imageView>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="96o-iS-Zfq"/>
+                            <exclude reference="Svl-oQ-tfT"/>
+                            <exclude reference="ru5-sa-L7B"/>
+                            <exclude reference="vBA-9I-bWa"/>
+                        </mask>
+                    </variation>
+                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZhB-br-aUZ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
@@ -68,7 +99,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs3-SM-SrG">
-                                            <rect key="frame" x="0.0" y="30.5" width="560" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="30" width="560" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,7 +113,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the title of the episode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFS-m6-A47">
-                                            <rect key="frame" x="0.0" y="91.5" width="560" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="91" width="560" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -134,20 +165,22 @@
             <constraints>
                 <constraint firstItem="ZhB-br-aUZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2Fr-R4-g3o"/>
                 <constraint firstItem="fBE-uC-9We" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3Ed-9R-f4z"/>
+                <constraint firstAttribute="trailing" secondItem="enn-gp-Ppz" secondAttribute="trailing" id="6sX-Vv-nN4"/>
+                <constraint firstItem="enn-gp-Ppz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="72m-eC-acl"/>
                 <constraint firstAttribute="bottom" secondItem="ZhB-br-aUZ" secondAttribute="bottom" id="7Er-s8-T0K"/>
                 <constraint firstItem="ZhB-br-aUZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Lox-sm-JZ2"/>
-                <constraint firstItem="bXL-TW-Eqk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RUx-su-NhY"/>
                 <constraint firstItem="fBE-uC-9We" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Zk9-V3-dqO"/>
-                <constraint firstAttribute="trailing" secondItem="bXL-TW-Eqk" secondAttribute="trailing" id="f5J-3F-bfX"/>
+                <constraint firstItem="enn-gp-Ppz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fS3-Y0-Xks"/>
                 <constraint firstAttribute="trailing" secondItem="ZhB-br-aUZ" secondAttribute="trailing" id="yly-vY-KkO"/>
-                <constraint firstItem="bXL-TW-Eqk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zrg-Bc-UaC"/>
             </constraints>
             <connections>
+                <outlet property="bnwEpisodeImageView" destination="bCY-WS-9eC" id="HZm-5i-CJZ"/>
                 <outlet property="episodeContainerView" destination="ZhB-br-aUZ" id="3kb-zy-Wcx"/>
                 <outlet property="episodeContentView" destination="ca9-Qb-jjo" id="zKy-Ra-Ht8"/>
+                <outlet property="episodeImageContainer" destination="enn-gp-Ppz" id="g0p-te-kui"/>
                 <outlet property="episodeImageView" destination="bXL-TW-Eqk" id="B4K-JJ-Hwm"/>
                 <outlet property="episodeNumberLabel" destination="wri-wU-9sI" id="W5p-a7-7Ws"/>
-                <outlet property="episodePictureHeightConstraint" destination="sdp-Ed-bQk" id="OUD-Ue-YmG"/>
+                <outlet property="episodePictureHeightConstraint" destination="Nj0-Nw-yzs" id="GId-Vk-eJ4"/>
                 <outlet property="episodeTitleLabel" destination="GFS-m6-A47" id="9x3-W3-VN0"/>
                 <outlet property="seasonNumberLabel" destination="zs3-SM-SrG" id="L7z-Rg-uHK"/>
                 <outlet property="shakeView" destination="fBE-uC-9We" id="hB0-X9-4P5"/>
