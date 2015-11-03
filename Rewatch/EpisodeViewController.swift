@@ -95,6 +95,7 @@ class EpisodeViewController: UIViewController {
         episodeView.episodeImageView.hidden = false
         
         client.fetchPictureForEpisodeId(show["episode_id"]!)
+            .map(convertToBlackAndWhite)
             .observeOn(UIScheduler())
             .startWithNext { (image) -> () in
                 self.episodeView.episodeImageView.image = image
