@@ -8,6 +8,8 @@
 
 import UIKit
 import KeychainSwift
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var client: Client!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Fabric.with([Crashlytics.self])
+
         // Setup stylesheet
         let stylesheet = Stylesheet()
         stylesheet.apply()

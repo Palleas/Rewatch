@@ -38,6 +38,8 @@
 		7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */; };
 		7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */; };
 		7ADB25811BE06B09006DBDE4 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB25801BE06B09006DBDE4 /* Themes.swift */; };
+		7AEAF54C1BE582EF005D5A8F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEAF54A1BE582EF005D5A8F /* Fabric.framework */; };
+		7AEAF54D1BE582EF005D5A8F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */; };
 		7AED90551BD7F7EE002B024C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AED90541BD7F7EE002B024C /* RootViewController.swift */; };
 		7AED90571BD7F9F2002B024C /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AED90561BD7F9F2002B024C /* DownloadViewController.swift */; };
 		7AF8A0101BD9803D00969B23 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8A0041BD97FF800969B23 /* Roboto-Black.ttf */; };
@@ -84,6 +86,7 @@
 /* Begin PBXFileReference section */
 		7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		7A4536151BD9BED700A680CB /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
+		7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Rewatch.xcconfig; sourceTree = "<group>"; };
 		7A52A70A1BD0544C00D78B39 /* Rewatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 		7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
 		7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
 		7ADB25801BE06B09006DBDE4 /* Themes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		7AEAF54A1BE582EF005D5A8F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		7AED90541BD7F7EE002B024C /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		7AED90561BD7F9F2002B024C /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		7AF8A0041BD97FF800969B23 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
@@ -134,6 +139,8 @@
 				7A7F44191BD1DDE700B3BD59 /* Result.framework in Frameworks */,
 				7A8096321BE1A965002F5278 /* Reveal.framework in Frameworks */,
 				7A2E23521BD1E20F00D0B869 /* SwiftyJSON.framework in Frameworks */,
+				7AEAF54C1BE582EF005D5A8F /* Fabric.framework in Frameworks */,
+				7AEAF54D1BE582EF005D5A8F /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +179,8 @@
 		7A2E23501BD1E1F600D0B869 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7AEAF54A1BE582EF005D5A8F /* Fabric.framework */,
+				7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */,
 				7A8096311BE1A965002F5278 /* Reveal.framework */,
 				7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */,
 				7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */,
@@ -219,6 +228,7 @@
 				7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */,
 				7A880B6C1BE1791C004A7D7C /* EpisodeViewController.xib */,
 				7A8F7F921BE460C800CA501A /* HEXColor.swift */,
+				7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */,
 			);
 			path = Rewatch;
 			sourceTree = "<group>";
@@ -273,6 +283,7 @@
 				7A52A7081BD0544C00D78B39 /* Resources */,
 				7A7F441B1BD1DDE700B3BD59 /* Embed Frameworks */,
 				7A7F441D1BD1DDF800B3BD59 /* ShellScript */,
+				7AEAF5491BE582C2005D5A8F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -391,6 +402,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		7AEAF5491BE582C2005D5A8F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -537,6 +561,7 @@
 		};
 		7A52A71D1BD0544C00D78B39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
