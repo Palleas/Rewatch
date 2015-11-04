@@ -29,6 +29,7 @@ class Client: NSObject {
         let episode: Int
         let season: Int
         let summary: String
+        let seen: Bool
     }
     
     let key: String
@@ -113,7 +114,7 @@ class Client: NSObject {
             .flatMap(FlattenStrategy.Latest, transform: { (payload) -> SignalProducer<Episode, NSError> in
                 return SignalProducer<Episode, NSError> { sink, disposable in
                     payload["episodes"].arrayValue.forEach({ episodeNode in
-                        let episode = Episode(id: episodeNode["id"].intValue, title: episodeNode["title"].stringValue, episode: episodeNode["episode"].intValue, season: episodeNode["season"].intValue, summary: episodeNode["description"].stringValue)
+                        let episode = Episode(id: episodeNode["id"].intValue, title: episodeNode["title"].stringValue, episode: episodeNode["episode"].intValue, season: episodeNode["season"].intValue, summary: episodeNode["description"].stringValue, seen: episodeNode["user"]["seen"].boolValue)
                         sink.sendNext(episode)
                     })
                     sink.sendCompleted()
