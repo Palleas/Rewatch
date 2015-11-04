@@ -50,7 +50,7 @@ class PersistenceController: NSObject {
             let fileManager = NSFileManager.defaultManager()
             guard let documentsURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last else { return }
             let storeURL = documentsURL.URLByAppendingPathComponent("DataModel.sqlite")
-            
+            print("store URL is \(storeURL)")
             do {
                 try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -63,13 +63,30 @@ class PersistenceController: NSObject {
     }
     
     func save() {
-        guard !privateObjectContext.hasChanges && !managedObjectContext.hasChanges else { return }
+        print("Private Context has changes \(privateObjectContext.hasChanges)")
+        print("Main Context has changes \(managedObjectContext.hasChanges)")
+        guard privateObjectContext.hasChanges || managedObjectContext.hasChanges else { return }
         
         managedObjectContext.performBlockAndWait { () -> Void in
-            guard let _ = try? self.managedObjectContext.save() else { return }
-            self.privateObjectContext.performBlockAndWait({ () -> Void in
-                let _ = try? self.privateObjectContext.save()
-            })
+            if let _ = try? self.managedObjectContext.save() {
+                print("Saved main context")
+                self.privateObjectContext.performBlock({ () -> Void in
+                    if let _ = try? self.privateObjectContext.save() {
+                        print("Saved private context")
+                    } else {
+                        print("Unable to save private context")
+                    }
+                })
+            } else {
+                print("Unable to save main context")
+            }
         }
+    }
+
+    func spawnManagedObjectContext() -> NSManagedObjectContext {
+        let spawn = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        spawn.parentContext = managedObjectContext
+        
+        return spawn
     }
 }
