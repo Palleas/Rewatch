@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7A0488941BE98D8800F7C890 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0488931BE98D8800F7C890 /* PersistenceController.swift */; };
 		7A0488971BE98E7400F7C890 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A0488951BE98E7400F7C890 /* DataModel.xcdatamodeld */; };
+		7A04889E1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04889C1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift */; };
+		7A04889F1BE9AAD000F7C890 /* StoredShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04889D1BE9AAD000F7C890 /* StoredShow.swift */; };
 		7A2E23521BD1E20F00D0B869 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */; };
 		7A2E23531BD1E20F00D0B869 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4536151BD9BED700A680CB /* Stylesheet.swift */; };
@@ -89,6 +91,8 @@
 /* Begin PBXFileReference section */
 		7A0488931BE98D8800F7C890 /* PersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		7A0488961BE98E7400F7C890 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		7A04889C1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredShow+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A04889D1BE9AAD000F7C890 /* StoredShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredShow.swift; sourceTree = "<group>"; };
 		7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		7A4536151BD9BED700A680CB /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		7A4AB29A1BE82A12006FBDFD /* PictureHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureHelpers.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */,
 				7A0488931BE98D8800F7C890 /* PersistenceController.swift */,
 				7A0488951BE98E7400F7C890 /* DataModel.xcdatamodeld */,
+				7A04889C1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift */,
+				7A04889D1BE9AAD000F7C890 /* StoredShow.swift */,
 			);
 			path = Rewatch;
 			sourceTree = "<group>";
@@ -443,8 +449,10 @@
 				7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */,
 				7A0488971BE98E7400F7C890 /* DataModel.xcdatamodeld in Sources */,
 				7A0488941BE98D8800F7C890 /* PersistenceController.swift in Sources */,
+				7A04889F1BE9AAD000F7C890 /* StoredShow.swift in Sources */,
 				7AED90571BD7F9F2002B024C /* DownloadViewController.swift in Sources */,
 				7A73FA8F1BD6B8930026D8AD /* Storage.swift in Sources */,
+				7A04889E1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift in Sources */,
 				7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */,
 				7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */,
 				7A8F7F931BE460C800CA501A /* HEXColor.swift in Sources */,
