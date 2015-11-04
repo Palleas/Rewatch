@@ -15,7 +15,6 @@ class RootViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if client.authenticated {
-//            performSegueWithIdentifier("ShowsSegue", sender: self)
             let episodeViewController = UINavigationController(rootViewController: EpisodeViewController(client: client))
             presentViewController(episodeViewController, animated: true, completion: nil)
         } else {

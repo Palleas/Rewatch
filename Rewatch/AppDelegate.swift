@@ -10,6 +10,9 @@ import UIKit
 import KeychainSwift
 import Fabric
 import Crashlytics
+import CoreData
+
+import ReactiveCocoa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +37,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
         persistence = try! PersistenceController(initCallback: { () -> Void in
             print("Persistence layer is ready")
+            let importMoc = self.persistence.spawnManagedObjectContext()
+
+            self.client
+                .fetchShows()
+                .map({ show -> StoredShow in
+                    let storedShow = NSEntityDescription.insertNewObjectForEntityForName("Show", inManagedObjectContext: importMoc) as! StoredShow
+                    storedShow.id = show.id
+                    storedShow.name = show.name
+                    
+                    return storedShow
+                })
+                .flatMap(FlattenStrategy.Merge, transform: { (storedShow) -> SignalProducer<(StoredShow, StoredEpisode), NSError> in
+                    let showId = storedShow.id!.stringValue
+                    let fetchEpisodeSignal = self.client
+                        .fetchEpisodesFromShow(showId)
+                        .filter({ $0.seen })
+                        .map({ (episode) -> StoredEpisode in
+                            let storedEpisode = NSEntityDescription.insertNewObjectForEntityForName("Episode", inManagedObjectContext: importMoc) as! StoredEpisode
+                            storedEpisode.id = episode.id
+                            storedEpisode.title = episode.title
+                            storedEpisode.season = episode.season
+                            storedEpisode.episode = episode.episode
+                            storedEpisode.summary = episode.summary
+                            
+                            return storedEpisode
+                        })
+
+                    return combineLatest(SignalProducer(value: storedShow), fetchEpisodeSignal)
+                })
+                .collect()
+                .flatMap(FlattenStrategy.Latest, transform: { (shows) -> SignalProducer<Int, NSError> in
+                    return SignalProducer { sink, disposable in
+                        try! importMoc.save()
+                        sink.sendNext(shows.count)
+                        sink.sendCompleted()
+                    }
+                })
+                .startWithNext({ (shows) -> () in
+                    print("imported \(shows) shows")
+                })
         })
         
         (window?.rootViewController as? RootViewController)?.client = client
