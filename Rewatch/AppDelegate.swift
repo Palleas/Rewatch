@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var client: Client!
+    var persistence: PersistenceController!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self])
@@ -31,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = keychain.get("betaseries-token")
         
         client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
+        persistence = try! PersistenceController(initCallback: { () -> Void in
+            print("Persistence layer is ready")
+        })
         
         (window?.rootViewController as? RootViewController)?.client = client
         
@@ -42,5 +46,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func applicationWillResignActive(application: UIApplication) {
+        persistence.save()
+    }
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+        persistence.save()
+    }
 
+    func applicationWillTerminate(application: UIApplication) {
+        persistence.save()
+    }
 }
