@@ -107,8 +107,8 @@ class Client: NSObject {
             }
     }
     
-    func fetchEpisodesFromShow(show: Show) -> SignalProducer<Episode, NSError> {
-        let params = ["id": String(show.id)]
+    func fetchEpisodesFromShow(showId: String) -> SignalProducer<Episode, NSError> {
+        let params = ["id": showId]
         return sendRequestToPath("shows/episodes", params: params, method: "GET")
             .flatMap(FlattenStrategy.Latest, transform: { (payload) -> SignalProducer<Episode, NSError> in
                 return SignalProducer<Episode, NSError> { sink, disposable in
