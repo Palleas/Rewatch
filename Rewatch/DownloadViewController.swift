@@ -44,11 +44,7 @@ class DownloadViewController: UIViewController {
         
         downloadController.download().observeOn(UIScheduler()).startWithNext { (count) -> () in
             print("Downloaded \(count) episodes!")
+            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
         }
-//        client.fetchShows()
-//            .observeOn(UIScheduler())
-//            .startWithNext { (results) -> () in
-//                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-//            }
     }
 }
