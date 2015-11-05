@@ -17,6 +17,8 @@ class DownloadView: UIView {
         }
     }
     
+    @IBOutlet weak var animationView: DownloadAnimationView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
