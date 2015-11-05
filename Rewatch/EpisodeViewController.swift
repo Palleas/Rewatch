@@ -10,19 +10,18 @@ import UIKit
 import ReactiveCocoa
 
 class EpisodeWrapper: EpisodeViewData {
-    typealias Element = [String:String]
+    typealias Element = StoredEpisode
     let wrapped: Element
     
     init(wrapped: Element) {
         self.wrapped = wrapped
     }
     
-    var showName : String { get { return wrapped["show_name"]! } }
-    var title : String { get { return wrapped["episode_title"]! } }
-    var season : String { get { return wrapped["season"]! } }
-    var number : String { get { return wrapped["episode"]! } }
-    var description : String { get { return wrapped["summary"]! } }
-
+    var showName : String { get { return "Show name" } }
+    var title : String { get { return wrapped.title ?? "" } }
+    var season : String { get { return String(wrapped.season) } }
+    var number : String { get { return String(wrapped.episode) } }
+    var description : String { get { return wrapped.summary ?? "" } }
 }
 
 class EpisodeViewController: UIViewController {
@@ -35,10 +34,12 @@ class EpisodeViewController: UIViewController {
     }
     
     let client: Client
-    var shows = [[String: String]]()
+    let persistenceController: PersistenceController
+    var episodes: [StoredEpisode] = []
     
-    init(client: Client) {
+    init(client: Client, persistenceController: PersistenceController) {
         self.client = client
+        self.persistenceController = persistenceController
         
         super.init(nibName: nil, bundle: nil)
         title = "REWATCH"
@@ -51,9 +52,6 @@ class EpisodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
-//        let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
-//        shows = NSArray(contentsOfFile: filePath) as! [[String: String]]
 
         let leftButton = UIButton(type: .Custom)
         leftButton.setImage(UIImage(named: "Hamburger"), forState: .Normal)
@@ -69,6 +67,7 @@ class EpisodeViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        episodes = persistenceController.allEpisodes()
         becomeFirstResponder()
     }
     
@@ -83,9 +82,11 @@ class EpisodeViewController: UIViewController {
     }
     
     func fetchRandomItem() {
-        let index = Int(arc4random_uniform(UInt32(shows.count)))
-        let show = shows[index]
-        let episode = EpisodeWrapper(wrapped: show)
+        guard episodes.count > 0 else { return }
+        
+        let index = Int(arc4random_uniform(UInt32(episodes.count)))
+        let randomEpisode = episodes[index]
+        let episode = EpisodeWrapper(wrapped: randomEpisode)
         
         episodeView.theme = themes[Int(arc4random_uniform(UInt32(themes.count)))]
         episodeView.episode = episode
@@ -94,7 +95,7 @@ class EpisodeViewController: UIViewController {
         episodeView.episodeContainerView.hidden = false
         episodeView.episodeImageView.hidden = false
         
-        client.fetchPictureForEpisodeId(show["episode_id"]!)
+        client.fetchPictureForEpisodeId(String(randomEpisode.id))
             .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
                 return SignalProducer(value: (image, convertToBlackAndWhite(image)))
             })
@@ -104,7 +105,5 @@ class EpisodeViewController: UIViewController {
                 self.episodeView.episodeImageView.image = image.0
                 self.episodeView.bnwEpisodeImageView.image = image.1
             }
-
-        
     }
 }

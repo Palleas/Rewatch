@@ -10,9 +10,11 @@ import UIKit
 
 class RootViewController: UIViewController {
     let client: Client
+    let persistenceController: PersistenceController
     
-    init(client: Client) {
+    init(client: Client, persistenceController: PersistenceController) {
         self.client = client
+        self.persistenceController = persistenceController
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,7 +31,7 @@ class RootViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if client.authenticated {
-            let episodeViewController = UINavigationController(rootViewController: EpisodeViewController(client: client))
+            let episodeViewController = UINavigationController(rootViewController: EpisodeViewController(client: client, persistenceController: persistenceController))
             presentViewController(episodeViewController, animated: true, completion: nil)
         } else {
             let login = LoginViewController(client: client)
