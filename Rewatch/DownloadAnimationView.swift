@@ -59,7 +59,6 @@ class DownloadAnimationView: UIView {
         animation.repeatCount = HUGE
         
         arrow.layer.addAnimation(animation, forKey: "rotation")
-        
     }
     
     func stopAnimating() {

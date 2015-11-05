@@ -183,11 +183,8 @@
 		7A1633001BD876A000EB7281 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */,
-				7AED90561BD7F9F2002B024C /* DownloadViewController.swift */,
-				7AE290601BEAF339005838AB /* DownloadView.swift */,
-				7AE290621BEAF50E005838AB /* DownloadViewController.xib */,
-				7AE290641BEAFC92005838AB /* DownloadAnimationView.swift */,
+				7A8CC2651BEB0A5D003BFE11 /* Authentication */,
+				7A8CC2641BEB0A4B003BFE11 /* Download */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -237,30 +234,16 @@
 		7A52A70C1BD0544C00D78B39 /* Rewatch */ = {
 			isa = PBXGroup;
 			children = (
-				7AF8A0021BD97FCB00969B23 /* UI */,
 				7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */,
-				7A1633001BD876A000EB7281 /* Onboarding */,
-				7A52A7111BD0544C00D78B39 /* Main.storyboard */,
-				7A52A7141BD0544C00D78B39 /* Assets.xcassets */,
-				7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */,
-				7A52A7191BD0544C00D78B39 /* Info.plist */,
-				7ABB238D1BD0A79700E2B86E /* Client.swift */,
-				7A7F44131BD1C4C200B3BD59 /* Keys.plist */,
-				7A1633011BD876AE00EB7281 /* Helpers */,
 				7AED90541BD7F7EE002B024C /* RootViewController.swift */,
-				7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */,
-				7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */,
-				7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */,
-				7A880B6C1BE1791C004A7D7C /* EpisodeViewController.xib */,
-				7A8F7F921BE460C800CA501A /* HEXColor.swift */,
-				7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */,
-				7A0488931BE98D8800F7C890 /* PersistenceController.swift */,
-				7A0488951BE98E7400F7C890 /* DataModel.xcdatamodeld */,
-				7A04889C1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift */,
-				7A04889D1BE9AAD000F7C890 /* StoredShow.swift */,
-				7AE2905A1BEABD65005838AB /* StoredEpisode+CoreDataProperties.swift */,
-				7AE2905B1BEABD65005838AB /* StoredEpisode.swift */,
-				7AE2905E1BEACFA0005838AB /* DownloadController.swift */,
+				7AF8A0021BD97FCB00969B23 /* UI */,
+				7A1633001BD876A000EB7281 /* Onboarding */,
+				7A8CC2621BEB0A18003BFE11 /* Resources */,
+				7A8CC2631BEB0A44003BFE11 /* Domain */,
+				7A1633011BD876AE00EB7281 /* Helpers */,
+				7A8CC2691BEB0AC3003BFE11 /* Episode */,
+				7A8CC2671BEB0A96003BFE11 /* Model */,
+				7A8CC2681BEB0AB0003BFE11 /* Vendor */,
 			);
 			path = Rewatch;
 			sourceTree = "<group>";
@@ -274,13 +257,94 @@
 			path = RewatchTests;
 			sourceTree = "<group>";
 		};
+		7A8CC2621BEB0A18003BFE11 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7A52A7191BD0544C00D78B39 /* Info.plist */,
+				7A7F44131BD1C4C200B3BD59 /* Keys.plist */,
+				7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7A8CC2631BEB0A44003BFE11 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				7ABB238D1BD0A79700E2B86E /* Client.swift */,
+				7AE2905E1BEACFA0005838AB /* DownloadController.swift */,
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
+		7A8CC2641BEB0A4B003BFE11 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				7AED90561BD7F9F2002B024C /* DownloadViewController.swift */,
+				7AE290601BEAF339005838AB /* DownloadView.swift */,
+				7AE290621BEAF50E005838AB /* DownloadViewController.xib */,
+				7AE290641BEAFC92005838AB /* DownloadAnimationView.swift */,
+			);
+			name = Download;
+			sourceTree = "<group>";
+		};
+		7A8CC2651BEB0A5D003BFE11 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		7A8CC2661BEB0A72003BFE11 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7A4536151BD9BED700A680CB /* Stylesheet.swift */,
+				7A4AB29A1BE82A12006FBDFD /* PictureHelpers.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		7A8CC2671BEB0A96003BFE11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A0488931BE98D8800F7C890 /* PersistenceController.swift */,
+				7A0488951BE98E7400F7C890 /* DataModel.xcdatamodeld */,
+				7A04889C1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift */,
+				7A04889D1BE9AAD000F7C890 /* StoredShow.swift */,
+				7AE2905A1BEABD65005838AB /* StoredEpisode+CoreDataProperties.swift */,
+				7AE2905B1BEABD65005838AB /* StoredEpisode.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7A8CC2681BEB0AB0003BFE11 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				7A8F7F921BE460C800CA501A /* HEXColor.swift */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		7A8CC2691BEB0AC3003BFE11 /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */,
+				7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */,
+				7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */,
+				7A880B6C1BE1791C004A7D7C /* EpisodeViewController.xib */,
+			);
+			name = Episode;
+			sourceTree = "<group>";
+		};
 		7AF8A0021BD97FCB00969B23 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7A52A7141BD0544C00D78B39 /* Assets.xcassets */,
+				7A52A7111BD0544C00D78B39 /* Main.storyboard */,
+				7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */,
 				7AF8A0031BD97FE800969B23 /* Fonts */,
-				7A4536151BD9BED700A680CB /* Stylesheet.swift */,
+				7A8CC2661BEB0A72003BFE11 /* Helpers */,
 				7ADB25801BE06B09006DBDE4 /* Themes.swift */,
-				7A4AB29A1BE82A12006FBDFD /* PictureHelpers.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
