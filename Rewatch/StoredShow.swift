@@ -20,10 +20,10 @@ class StoredShow: NSManagedObject {
 extension StoredShow {
     static func showInContext(context: NSManagedObjectContext, mappedOnShow show: Client.Show?) -> StoredShow {
         // TODO use throws + attemptMap ?
-        let stored = NSEntityDescription.insertNewObjectForEntityForName("StoredShow", inManagedObjectContext: context) as! StoredShow
+        let stored = NSEntityDescription.insertNewObjectForEntityForName("Show", inManagedObjectContext: context) as! StoredShow
         
         if let show = show {
-            stored.id = Int32(show.id)
+            stored.id = Int64(show.id)
             stored.name = show.name
         }
         

@@ -2,7 +2,7 @@
 //  StoredShow+CoreDataProperties.swift
 //  Rewatch
 //
-//  Created by Romain Pouclet on 2015-11-03.
+//  Created by Romain Pouclet on 2015-11-04.
 //  Copyright © 2015 Perfectly-Cooked. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,7 +14,7 @@ import CoreData
 
 extension StoredShow {
 
-    @NSManaged var id: Int32
+    @NSManaged var id: Int64
     @NSManaged var name: String?
 
 }

@@ -18,13 +18,13 @@ class StoredEpisode: NSManagedObject {
 
 extension StoredEpisode {
     static func episodeInContext(context: NSManagedObjectContext, mappedOnEpisode episode: Client.Episode?) -> StoredEpisode {
-        let stored = NSEntityDescription.insertNewObjectForEntityForName("StoredEpisode", inManagedObjectContext: context) as! StoredEpisode
+        let stored = NSEntityDescription.insertNewObjectForEntityForName("Episode", inManagedObjectContext: context) as! StoredEpisode
         
         if let episode = episode {
-            stored.id = episode.id
+            stored.id = Int64(episode.id)
             stored.title = episode.title
-            stored.season = episode.season
-            stored.episode = episode.episode
+            stored.season = Int64(episode.season)
+            stored.episode = Int64(episode.episode)
             stored.summary = episode.summary
         }
         
