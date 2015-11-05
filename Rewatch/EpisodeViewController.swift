@@ -51,9 +51,9 @@ class EpisodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
-        let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
-        shows = NSArray(contentsOfFile: filePath) as! [[String: String]]
+//        let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
+//        let filePath = (path as NSString).stringByAppendingPathComponent("series.cache")
+//        shows = NSArray(contentsOfFile: filePath) as! [[String: String]]
 
         let leftButton = UIButton(type: .Custom)
         leftButton.setImage(UIImage(named: "Hamburger"), forState: .Normal)

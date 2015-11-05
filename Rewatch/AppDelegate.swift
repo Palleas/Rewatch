@@ -35,50 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = keychain.get("betaseries-token")
         
         client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
+
         persistence = try! PersistenceController(initCallback: { () -> Void in
             print("Persistence layer is ready")
-//            let importMoc = self.persistence.spawnManagedObjectContext()
-//
-//            self.client
-//                .fetchShows()
-//                .on(next: { print("Downloading \($0.name) | MT: \(NSThread.isMainThread())") })
-//                .map({ show -> StoredShow in
-//                    print("Storing \(show.name) | MT: \(NSThread.isMainThread())")
-//                    let storedShow = NSEntityDescription.insertNewObjectForEntityForName("Show", inManagedObjectContext: importMoc) as! StoredShow
-//                    storedShow.id = Int32(show.id)
-//                    storedShow.name = show.name
-//                    
-//                    return storedShow
-//                })
-//                .flatMap(FlattenStrategy.Merge, transform: { (storedShow) -> SignalProducer<(StoredShow, StoredEpisode), NSError> in
-//                    let showId = storedShow.id.stringValue
-//                    let fetchEpisodeSignal = self.client
-//                        .fetchEpisodesFromShow(showId)
-//                        .filter({ $0.seen })
-//                        .map({ (episode) -> StoredEpisode in
-//                            let storedEpisode = NSEntityDescription.insertNewObjectForEntityForName("Episode", inManagedObjectContext: importMoc) as! StoredEpisode
-//                            storedEpisode.id = episode.id
-//                            storedEpisode.title = episode.title
-//                            storedEpisode.season = episode.season
-//                            storedEpisode.episode = episode.episode
-//                            storedEpisode.summary = episode.summary
-//                            
-//                            return storedEpisode
-//                        })
-//
-//                    return combineLatest(SignalProducer(value: storedShow), fetchEpisodeSignal)
-//                })
-//                .collect()
-//                .flatMap(FlattenStrategy.Latest, transform: { (shows) -> SignalProducer<Int, NSError> in
-//                    return SignalProducer { sink, disposable in
-//                        try! importMoc.save()
-//                        sink.sendNext(shows.count)
-//                        sink.sendCompleted()
-//                    }
-//                })
-//                .startWithNext({ (shows) -> () in
-//                    print("imported \(shows) shows")
-//                })
+            if self.client.authenticated {
+                let controller = DownloadViewController(client: self.client, downloadController: DownloadController(client: self.client, persistenceController: self.persistence))
+                
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue(), { () -> Void in
+                    self.window?.rootViewController?.presentedViewController?.presentViewController(UINavigationController(rootViewController: controller), animated: true, completion: nil)
+                })
+            }
+
         })
         
         (window?.rootViewController as? RootViewController)?.client = client

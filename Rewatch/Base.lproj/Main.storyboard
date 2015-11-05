@@ -52,57 +52,11 @@
                     <connections>
                         <outlet property="authenticateButton" destination="avP-Xh-ypN" id="Qvg-Iw-TjY"/>
                         <outlet property="explanationLabel" destination="xjd-tc-nCa" id="tpG-gy-YrF"/>
-                        <segue destination="7IM-Rb-a4q" kind="show" identifier="DownloadSegue" id="cIr-Mz-bAT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1390" y="887"/>
-        </scene>
-        <!--Download View Controller-->
-        <scene sceneID="mog-Y6-uDP">
-            <objects>
-                <viewController id="7IM-Rb-a4q" customClass="DownloadViewController" customModule="Rewatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pdH-ha-1Ud"/>
-                        <viewControllerLayoutGuide type="bottom" id="3uZ-fB-8dx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HMj-7q-yfw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FOH-lj-iF9">
-                                <rect key="frame" x="173" y="227" width="254" height="147"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oeil" translatesAutoresizingMaskIntoConstraints="NO" id="lZj-FB-3ug">
-                                        <rect key="frame" x="0.0" y="0.0" width="254" height="126"/>
-                                        <animations/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOWNLOADING EPISODES..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7j-Ed-0B4">
-                                        <rect key="frame" x="0.0" y="126" width="254" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <animations/>
-                            </stackView>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="FOH-lj-iF9" firstAttribute="centerX" secondItem="HMj-7q-yfw" secondAttribute="centerX" id="5B0-T3-IBB"/>
-                            <constraint firstItem="FOH-lj-iF9" firstAttribute="centerY" secondItem="HMj-7q-yfw" secondAttribute="centerY" id="f0u-fj-vTv"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="statusLabel" destination="N7j-Ed-0B4" id="y3Q-lP-hen"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wnH-te-iRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2080" y="892"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="E5E-e7-lWu">
@@ -159,7 +113,4 @@
             <point key="canvasLocation" x="676" y="887"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Oeil" width="254" height="126"/>
-    </resources>
 </document>

@@ -49,11 +49,4 @@ class LoginViewController: UIViewController {
         view.backgroundColor = Stylesheet.appBackgroundColor
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        
-        if let vc = segue.destinationViewController as? DownloadViewController {
-            vc.client = client
-        }
-    }
 }

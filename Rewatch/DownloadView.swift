@@ -10,5 +10,16 @@ import UIKit
 
 class DownloadView: UIView {
 
-
+    @IBOutlet weak var statusLabel: UILabel! {
+        didSet {
+            statusLabel.font = Stylesheet.statusFont
+            statusLabel.textColor = Stylesheet.statusTextColor
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        print("Awakening from nib")
+    }
 }
