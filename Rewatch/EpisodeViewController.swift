@@ -60,6 +60,7 @@ class EpisodeViewController: UIViewController {
         
         let rightButton = UIButton(type: .Custom)
         rightButton.setImage(UIImage(named: "Options"), forState: .Normal)
+        rightButton.addTarget(self, action: Selector("didTapSettingsButton:"), forControlEvents: .TouchUpInside)
         rightButton.sizeToFit()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
     }
@@ -105,5 +106,10 @@ class EpisodeViewController: UIViewController {
                 self.episodeView.episodeImageView.image = image.0
                 self.episodeView.bnwEpisodeImageView.image = image.1
             }
+    }
+    
+    func didTapSettingsButton(button: UIButton) {
+        let settings = SettingsViewController(client: client, persistenceController: persistenceController)
+        presentViewController(settings, animated: true, completion: nil)
     }
 }

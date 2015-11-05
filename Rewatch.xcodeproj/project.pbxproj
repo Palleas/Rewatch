@@ -19,6 +19,7 @@
 		7A52A7101BD0544C00D78B39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */; };
 		7A52A7151BD0544C00D78B39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7141BD0544C00D78B39 /* Assets.xcassets */; };
 		7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */; };
+		7A59CEED1BEBCAA200B17A71 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */; };
 		7A7145FF1BD5B02500492B9B /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; };
 		7A7146001BD5B02500492B9B /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A7146021BD5B3EC00492B9B /* OauthHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7146011BD5B3EC00492B9B /* OauthHelpers.swift */; };
@@ -111,6 +112,7 @@
 		7A52A7141BD0544C00D78B39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A52A7171BD0544C00D78B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A52A7191BD0544C00D78B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		7A7146011BD5B3EC00492B9B /* OauthHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthHelpers.swift; sourceTree = "<group>"; };
 		7A73FA7F1BD68E5F0026D8AD /* RewatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 		7A52A70C1BD0544C00D78B39 /* Rewatch */ = {
 			isa = PBXGroup;
 			children = (
+				7A59CEEB1BEBCA8700B17A71 /* Settings */,
 				7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */,
 				7A8CC2701BEB0EA7003BFE11 /* Root */,
 				7AF8A0021BD97FCB00969B23 /* UI */,
@@ -250,6 +253,14 @@
 				7A8CC2681BEB0AB0003BFE11 /* Vendor */,
 			);
 			path = Rewatch;
+			sourceTree = "<group>";
+		};
+		7A59CEEB1BEBCA8700B17A71 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		7A73FA801BD68E5F0026D8AD /* RewatchTests */ = {
@@ -558,6 +569,7 @@
 				7A04889E1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift in Sources */,
 				7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */,
 				7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */,
+				7A59CEED1BEBCAA200B17A71 /* SettingsViewController.swift in Sources */,
 				7A8F7F931BE460C800CA501A /* HEXColor.swift in Sources */,
 				7A8CC26F1BEB0E9F003BFE11 /* RootView.swift in Sources */,
 			);

@@ -102,5 +102,13 @@ class PersistenceController: NSObject {
             return []
         }
     }
+    
+    func numberOfEpisodes() -> Int {
+        return 0
+    }
+    
+    func numberOfShows() -> Int {
+        return 0
+    }
 }
 
