@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol LoginViewDelegate: class {
+    func didStartAuthenticationInLoginView(loginView: LoginView)
+}
+
 class LoginView: UIView {
+    weak var delegate: LoginViewDelegate?
+    
     @IBOutlet weak var authenticateButton: UIButton! {
         didSet {
             authenticateButton.setTitleColor(.whiteColor(), forState: .Normal)
@@ -23,5 +29,9 @@ class LoginView: UIView {
             explanationLabel.textColor = Stylesheet.explainationTextColor
             explanationLabel.font = Stylesheet.explainationFont
         }
+    }
+    
+    @IBAction func authenticate(sender: AnyObject) {
+        delegate?.didStartAuthenticationInLoginView(self)
     }
 }

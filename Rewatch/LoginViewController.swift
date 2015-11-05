@@ -11,15 +11,17 @@ import ReactiveCocoa
 
 class LoginViewController: UIViewController {
     let client: Client
+    let persistenceController: PersistenceController
 
-    var login: LoginView {
+    var loginView: LoginView {
         get {
             return view as! LoginView
         }
     }
     
-    init(client: Client) {
+    init(client: Client, persistenceController: PersistenceController) {
         self.client = client
+        self.persistenceController = persistenceController
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -45,8 +47,26 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loginView.delegate = self
+        
         title = "REWATCH"
         view.backgroundColor = Stylesheet.appBackgroundColor
     }
-    
+}
+
+extension LoginViewController: LoginViewDelegate {
+    func didStartAuthenticationInLoginView(loginView: LoginView) {
+        client.authenticate()
+            .on(next: { (client) -> () in
+                if let token = client.token {
+                    print("Storing token \(token)")
+                    storeToken(token)
+                }
+            })
+            .observeOn(UIScheduler())
+            .startWithNext { (authenticatedClient) -> () in
+                let downloadViewController = DownloadViewController(client: self.client, downloadController: DownloadController(client: self.client, persistenceController: self.persistenceController))
+                self.navigationController?.pushViewController(downloadViewController, animated: true)
+            }
+    }
 }

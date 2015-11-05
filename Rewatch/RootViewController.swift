@@ -34,7 +34,7 @@ class RootViewController: UIViewController {
             let episodeViewController = UINavigationController(rootViewController: EpisodeViewController(client: client, persistenceController: persistenceController))
             presentViewController(episodeViewController, animated: true, completion: nil)
         } else {
-            let login = LoginViewController(client: client)
+            let login = LoginViewController(client: client, persistenceController: persistenceController)
             presentViewController(UINavigationController(rootViewController: login), animated: true, completion: nil)
         }
     }

@@ -23,6 +23,9 @@
                             <animations/>
                             <inset key="contentEdgeInsets" minX="0.0" minY="30" maxX="0.0" maxY="30"/>
                             <state key="normal" title="AUTHENTICATE"/>
+                            <connections>
+                                <action selector="authenticate:" destination="iN0-l3-epB" eventType="touchUpInside" id="lBw-uN-uxj"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This will open the betaseries website where you'll be able to fill in your credentials" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZv-9U-tkZ">
                             <rect key="frame" x="0.0" y="108" width="484" height="41"/>
@@ -48,6 +51,10 @@
                     <exclude reference="YLz-CM-eME"/>
                 </mask>
             </variation>
+            <connections>
+                <outlet property="authenticateButton" destination="JUe-id-Fzi" id="Ll1-8m-e3t"/>
+                <outlet property="explanationLabel" destination="mZv-9U-tkZ" id="D53-da-BsY"/>
+            </connections>
         </view>
     </objects>
 </document>
