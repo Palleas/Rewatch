@@ -716,6 +716,7 @@
 		};
 		7A52A71E1BD0544C00D78B39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
