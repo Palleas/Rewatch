@@ -104,11 +104,15 @@ class PersistenceController: NSObject {
     }
     
     func numberOfEpisodes() -> Int {
-        return 0
+        let request = NSFetchRequest(entityName: "Episode")
+
+        return managedObjectContext.countForFetchRequest(request, error: nil)
     }
     
     func numberOfShows() -> Int {
-        return 0
+        let request = NSFetchRequest(entityName: "Show")
+        
+        return managedObjectContext.countForFetchRequest(request, error: nil)
     }
 }
 
