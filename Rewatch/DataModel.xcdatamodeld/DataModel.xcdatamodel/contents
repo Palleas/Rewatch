@@ -6,13 +6,15 @@
         <attribute name="season" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="show" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Show" inverseName="episodes" inverseEntity="Show" syncable="YES"/>
     </entity>
     <entity name="Show" representedClassName=".StoredShow" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Episode" inverseName="show" inverseEntity="Episode" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Show" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="Episode" positionX="-63" positionY="0" width="128" height="120"/>
+        <element name="Episode" positionX="-63" positionY="0" width="128" height="135"/>
+        <element name="Show" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

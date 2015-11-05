@@ -17,7 +17,7 @@ class EpisodeWrapper: EpisodeViewData {
         self.wrapped = wrapped
     }
     
-    var showName : String { get { return "Show name" } }
+    var showName : String { get { return wrapped.show?.name ?? "" } }
     var title : String { get { return wrapped.title ?? "" } }
     var season : String { get { return String(wrapped.season) } }
     var number : String { get { return String(wrapped.episode) } }

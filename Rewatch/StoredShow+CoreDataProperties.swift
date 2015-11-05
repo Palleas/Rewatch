@@ -16,5 +16,6 @@ extension StoredShow {
 
     @NSManaged var id: Int64
     @NSManaged var name: String?
+    @NSManaged var episodes: NSSet?
 
 }

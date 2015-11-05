@@ -14,10 +14,11 @@ import CoreData
 
 extension StoredEpisode {
 
-    @NSManaged var id: Int64
-    @NSManaged var title: String?
     @NSManaged var episode: Int64
+    @NSManaged var id: Int64
     @NSManaged var season: Int64
     @NSManaged var summary: String?
+    @NSManaged var title: String?
+    @NSManaged var show: StoredShow?
 
 }
