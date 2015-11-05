@@ -15,3 +15,18 @@ class StoredShow: NSManagedObject {
 // Insert code here to add functionality to your managed object subclass
 
 }
+
+
+extension StoredShow {
+    static func showInContext(context: NSManagedObjectContext, mappedOnShow show: Client.Show?) -> StoredShow {
+        // TODO use throws + attemptMap ?
+        let stored = NSEntityDescription.insertNewObjectForEntityForName("StoredShow", inManagedObjectContext: context) as! StoredShow
+        
+        if let show = show {
+            stored.id = Int32(show.id)
+            stored.name = show.name
+        }
+        
+        return stored
+    }
+}

@@ -14,6 +14,7 @@ class PersistenceController: NSObject {
     
     enum PersistenceError: ErrorType {
         case InitializationError
+        case EntityError
     }
     
     private(set) var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -90,3 +91,4 @@ class PersistenceController: NSObject {
         return spawn
     }
 }
+

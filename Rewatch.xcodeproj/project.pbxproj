@@ -45,6 +45,8 @@
 		7ADB25811BE06B09006DBDE4 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB25801BE06B09006DBDE4 /* Themes.swift */; };
 		7AE2905C1BEABD65005838AB /* StoredEpisode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE2905A1BEABD65005838AB /* StoredEpisode+CoreDataProperties.swift */; };
 		7AE2905D1BEABD65005838AB /* StoredEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE2905B1BEABD65005838AB /* StoredEpisode.swift */; };
+		7AE2905F1BEACFA0005838AB /* DownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE2905E1BEACFA0005838AB /* DownloadController.swift */; };
+		7AE290611BEAF339005838AB /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE290601BEAF339005838AB /* DownloadView.swift */; };
 		7AEAF54C1BE582EF005D5A8F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEAF54A1BE582EF005D5A8F /* Fabric.framework */; };
 		7AEAF54D1BE582EF005D5A8F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */; };
 		7AED90551BD7F7EE002B024C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AED90541BD7F7EE002B024C /* RootViewController.swift */; };
@@ -125,6 +127,8 @@
 		7ADB25801BE06B09006DBDE4 /* Themes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		7AE2905A1BEABD65005838AB /* StoredEpisode+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredEpisode+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7AE2905B1BEABD65005838AB /* StoredEpisode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredEpisode.swift; sourceTree = "<group>"; };
+		7AE2905E1BEACFA0005838AB /* DownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadController.swift; sourceTree = "<group>"; };
+		7AE290601BEAF339005838AB /* DownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		7AEAF54A1BE582EF005D5A8F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		7AED90541BD7F7EE002B024C /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			children = (
 				7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */,
 				7AED90561BD7F9F2002B024C /* DownloadViewController.swift */,
+				7AE290601BEAF339005838AB /* DownloadView.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				7A04889D1BE9AAD000F7C890 /* StoredShow.swift */,
 				7AE2905A1BEABD65005838AB /* StoredEpisode+CoreDataProperties.swift */,
 				7AE2905B1BEABD65005838AB /* StoredEpisode.swift */,
+				7AE2905E1BEACFA0005838AB /* DownloadController.swift */,
 			);
 			path = Rewatch;
 			sourceTree = "<group>";
@@ -444,11 +450,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AE2905F1BEACFA0005838AB /* DownloadController.swift in Sources */,
 				7A52A7101BD0544C00D78B39 /* LoginViewController.swift in Sources */,
 				7ADB25811BE06B09006DBDE4 /* Themes.swift in Sources */,
 				7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */,
 				7A7146021BD5B3EC00492B9B /* OauthHelpers.swift in Sources */,
 				7AE2905D1BEABD65005838AB /* StoredEpisode.swift in Sources */,
+				7AE290611BEAF339005838AB /* DownloadView.swift in Sources */,
 				7A4AB29B1BE82A12006FBDFD /* PictureHelpers.swift in Sources */,
 				7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */,
 				7AED90551BD7F7EE002B024C /* RootViewController.swift in Sources */,
