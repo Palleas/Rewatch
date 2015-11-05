@@ -10,22 +10,22 @@ import UIKit
 import ReactiveCocoa
 
 class LoginViewController: UIViewController {
-    var client: Client!
+    let client: Client
 
-    @IBOutlet weak var authenticateButton: UIButton! {
-        didSet {
-            authenticateButton.setTitleColor(.whiteColor(), forState: .Normal)
-            authenticateButton.titleLabel?.font = Stylesheet.buttonFont
-            authenticateButton.layer.borderColor = Stylesheet.buttonBorderColor.CGColor
-            authenticateButton.layer.borderWidth = 1.0
+    var login: LoginView {
+        get {
+            return view as! LoginView
         }
     }
     
-    @IBOutlet weak var explanationLabel: UILabel! {
-        didSet {
-            explanationLabel.textColor = Stylesheet.explainationTextColor
-            explanationLabel.font = Stylesheet.explainationFont
-        }
+    init(client: Client) {
+        self.client = client
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     @IBAction func authenticate(sender: AnyObject) {

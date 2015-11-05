@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self])
 
+        
+        
         // Setup stylesheet
         let stylesheet = Stylesheet()
         stylesheet.apply()
@@ -36,21 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
 
-        persistence = try! PersistenceController(initCallback: { () -> Void in
-            print("Persistence layer is ready")
-            if self.client.authenticated {
-                let controller = DownloadViewController(client: self.client, downloadController: DownloadController(client: self.client, persistenceController: self.persistence))
-                
-                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
-                dispatch_after(delayTime, dispatch_get_main_queue(), { () -> Void in
-                    self.window?.rootViewController?.presentedViewController?.presentViewController(UINavigationController(rootViewController: controller), animated: true, completion: nil)
-                })
-            }
+        // Setup Window
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.rootViewController = RootViewController(client: client)
+        self.window = window
 
+        persistence = try! PersistenceController(initCallback: { () -> Void in
+            window.makeKeyAndVisible()
         })
-        
-        (window?.rootViewController as? RootViewController)?.client = client
-        
+
         return true
     }
     

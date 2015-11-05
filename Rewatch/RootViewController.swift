@@ -9,7 +9,21 @@
 import UIKit
 
 class RootViewController: UIViewController {
-    var client: Client!
+    let client: Client
+    
+    init(client: Client) {
+        self.client = client
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        view = RootView()
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -18,18 +32,9 @@ class RootViewController: UIViewController {
             let episodeViewController = UINavigationController(rootViewController: EpisodeViewController(client: client))
             presentViewController(episodeViewController, animated: true, completion: nil)
         } else {
-            performSegueWithIdentifier("LoginSegue", sender: self)
+            let login = LoginViewController(client: client)
+            presentViewController(UINavigationController(rootViewController: login), animated: true, completion: nil)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        
-        // I hate this so much it hurts
-        if let destination = segue.destinationViewController as? LoginViewController {
-            destination.client = client
-        } else if let wrapper = segue.destinationViewController as? UINavigationController, let destination = wrapper.viewControllers.first as? LoginViewController {
-            destination.client = client
-        }
-    }
 }
