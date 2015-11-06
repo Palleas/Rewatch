@@ -41,10 +41,9 @@ class DownloadViewController: UIViewController {
         super.viewDidAppear(animated)
 
         downloadView.animationView.startAnimating()
-        
+
         downloadController.download().observeOn(UIScheduler()).startWithNext { (count) -> () in
-            print("Downloaded \(count) episodes!")
-            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }

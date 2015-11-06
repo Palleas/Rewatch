@@ -117,7 +117,7 @@ class SettingsViewController: UITableViewController {
         let keychain = KeychainSwift()
         keychain.clear()
         
-        // SORRY 😱🔥
-        exit(0)
+        client.token = nil
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }

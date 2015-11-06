@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class RootViewController: UIViewController {
     let client: Client
     let persistenceController: PersistenceController
+    
+    var rootView: RootView {
+        get {
+            return view as! RootView
+        }
+    }
     
     init(client: Client, persistenceController: PersistenceController) {
         self.client = client
@@ -29,14 +36,28 @@ class RootViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if client.authenticated {
-            let episodeViewController = UINavigationController(rootViewController: EpisodeViewController(client: client, persistenceController: persistenceController))
-            presentViewController(episodeViewController, animated: true, completion: nil)
-        } else {
-            let login = LoginViewController(client: client, persistenceController: persistenceController)
-            presentViewController(UINavigationController(rootViewController: login), animated: true, completion: nil)
+
+        client.authenticated.producer.observeOn(UIScheduler()).startWithNext { (authenticated) -> () in
+            let target: UIViewController
+
+            if authenticated {
+                let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController)
+                target = UINavigationController(rootViewController: episode)
+            } else {
+                let login = LoginViewController(client: self.client, persistenceController: self.persistenceController)
+                target = UINavigationController(rootViewController: login)
+            }
+
+            self.transitionToViewController(target)
         }
+        
+    }
+    
+    func transitionToViewController(controller: UIViewController) {
+        addChildViewController(controller)
+        controller.willMoveToParentViewController(self)
+        rootView.transitionToView(controller.view)
+        controller.didMoveToParentViewController(self)
     }
     
 }

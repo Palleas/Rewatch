@@ -57,16 +57,12 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginViewDelegate {
     func didStartAuthenticationInLoginView(loginView: LoginView) {
         client.authenticate()
-            .on(next: { (client) -> () in
-                if let token = client.token {
-                    print("Storing token \(token)")
+            .on(next: {
+                if let token = $0.token {
                     storeToken(token)
                 }
             })
             .observeOn(UIScheduler())
-            .startWithNext { (authenticatedClient) -> () in
-                let downloadViewController = DownloadViewController(client: self.client, downloadController: DownloadController(client: self.client, persistenceController: self.persistenceController))
-                self.navigationController?.pushViewController(downloadViewController, animated: true)
-            }
+            .startWithCompleted({ print("Authentication complete") })
     }
 }

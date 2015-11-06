@@ -64,22 +64,22 @@ class PersistenceController: NSObject {
     }
     
     func save() {
-        print("Private Context has changes \(privateObjectContext.hasChanges)")
-        print("Main Context has changes \(managedObjectContext.hasChanges)")
+//        print("Private Context has changes \(privateObjectContext.hasChanges)")
+//        print("Main Context has changes \(managedObjectContext.hasChanges)")
         guard privateObjectContext.hasChanges || managedObjectContext.hasChanges else { return }
         
         managedObjectContext.performBlockAndWait { () -> Void in
             if let _ = try? self.managedObjectContext.save() {
-                print("Saved main context")
+//                print("Saved main context")
                 self.privateObjectContext.performBlock({ () -> Void in
                     if let _ = try? self.privateObjectContext.save() {
-                        print("Saved private context")
+//                        print("Saved private context")
                     } else {
-                        print("Unable to save private context")
+//                        print("Unable to save private context")
                     }
                 })
             } else {
-                print("Unable to save main context")
+//                print("Unable to save main context")
             }
         }
     }

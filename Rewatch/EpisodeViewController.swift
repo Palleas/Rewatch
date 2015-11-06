@@ -69,7 +69,14 @@ class EpisodeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         episodes = persistenceController.allEpisodes()
-        becomeFirstResponder()
+        
+        if episodes.count == 0 {
+            let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
+            let navigation = UINavigationController(rootViewController: downloadViewController)
+            presentViewController(navigation, animated: true, completion: nil)
+        } else {
+            becomeFirstResponder()
+        }
     }
     
     override func canBecomeFirstResponder() -> Bool {

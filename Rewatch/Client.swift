@@ -35,20 +35,26 @@ class Client: NSObject {
     let key: String
     let secret: String
     let session: NSURLSession
-    var token: String?
-    
-    var authenticated: Bool {
-        get {
-            return token != nil
+    var token: String? {
+        didSet {
+            print("Set token to \(token)")
+            authenticated.value = token != nil
+            print("Authenticated: \(authenticated.value)")
         }
     }
+    
+    let authenticated = MutableProperty(false)
 
     lazy private var urlPipe = Signal<NSURL, NSError>.pipe()
     
     init(key: String, secret: String, token: String? = nil) {
         self.key = key
         self.secret = secret
-        self.token = token
+        
+        if let token = token {
+            self.token = token
+            self.authenticated.value = true
+        }
         
         self.session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: NSOperationQueue())
     }
