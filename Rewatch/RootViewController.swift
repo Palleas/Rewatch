@@ -34,9 +34,7 @@ class RootViewController: UIViewController {
         view = RootView()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
+    func boot() {
         client.authenticated.producer.observeOn(UIScheduler()).startWithNext { (authenticated) -> () in
             let target: UIViewController
 

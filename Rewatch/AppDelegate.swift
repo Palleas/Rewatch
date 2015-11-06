@@ -41,10 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
 
         persistence = try! PersistenceController(initCallback: { () -> Void in
-            window.rootViewController = RootViewController(client: self.client, persistenceController: self.persistence)
-            window.makeKeyAndVisible()
+            if let rootViewController = window.rootViewController as? RootViewController {
+                rootViewController.boot()
+            }
         })
 
+        window.rootViewController = RootViewController(client: self.client, persistenceController: self.persistence)
+        window.makeKeyAndVisible()
         return true
     }
     
