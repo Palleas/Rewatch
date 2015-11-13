@@ -19,6 +19,9 @@
 		7A52A7101BD0544C00D78B39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */; };
 		7A52A7151BD0544C00D78B39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7141BD0544C00D78B39 /* Assets.xcassets */; };
 		7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */; };
+		7A5686211BF64C6A006BDEB3 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */; };
+		7A5686221BF64C6A006BDEB3 /* Mixpanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5686241BF64D6A006BDEB3 /* Analytics.swift */; };
 		7A59CEED1BEBCAA200B17A71 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */; };
 		7A7145FF1BD5B02500492B9B /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; };
 		7A7146001BD5B02500492B9B /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -92,6 +95,7 @@
 				7A7F44181BD1DDE700B3BD59 /* ReactiveCocoa.framework in Embed Frameworks */,
 				7A7F441A1BD1DDE700B3BD59 /* Result.framework in Embed Frameworks */,
 				7A2E23531BD1E20F00D0B869 /* SwiftyJSON.framework in Embed Frameworks */,
+				7A5686221BF64C6A006BDEB3 /* Mixpanel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +117,8 @@
 		7A52A7141BD0544C00D78B39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A52A7171BD0544C00D78B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A52A7191BD0544C00D78B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mixpanel.framework; path = Carthage/Build/iOS/Mixpanel.framework; sourceTree = "<group>"; };
+		7A5686241BF64D6A006BDEB3 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		7A7146011BD5B3EC00492B9B /* OauthHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthHelpers.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 				7A7F44171BD1DDE700B3BD59 /* ReactiveCocoa.framework in Frameworks */,
 				7A7F44191BD1DDE700B3BD59 /* Result.framework in Frameworks */,
 				7A8096321BE1A965002F5278 /* Reveal.framework in Frameworks */,
+				7A5686211BF64C6A006BDEB3 /* Mixpanel.framework in Frameworks */,
 				7A2E23521BD1E20F00D0B869 /* SwiftyJSON.framework in Frameworks */,
 				7AEAF54C1BE582EF005D5A8F /* Fabric.framework in Frameworks */,
 				7AEAF54D1BE582EF005D5A8F /* Crashlytics.framework in Frameworks */,
@@ -209,6 +216,7 @@
 		7A2E23501BD1E1F600D0B869 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */,
 				7AEAF54A1BE582EF005D5A8F /* Fabric.framework */,
 				7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */,
 				7A8096311BE1A965002F5278 /* Reveal.framework */,
@@ -242,6 +250,7 @@
 		7A52A70C1BD0544C00D78B39 /* Rewatch */ = {
 			isa = PBXGroup;
 			children = (
+				7A5686231BF64D43006BDEB3 /* Analytics */,
 				7A59CEEB1BEBCA8700B17A71 /* Settings */,
 				7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */,
 				7A8CC2701BEB0EA7003BFE11 /* Root */,
@@ -255,6 +264,14 @@
 				7A8CC2681BEB0AB0003BFE11 /* Vendor */,
 			);
 			path = Rewatch;
+			sourceTree = "<group>";
+		};
+		7A5686231BF64D43006BDEB3 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				7A5686241BF64D6A006BDEB3 /* Analytics.swift */,
+			);
+			name = Analytics;
 			sourceTree = "<group>";
 		};
 		7A59CEEB1BEBCA8700B17A71 /* Settings */ = {
@@ -571,6 +588,7 @@
 				7AE290651BEAFC92005838AB /* DownloadAnimationView.swift in Sources */,
 				7A04889E1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift in Sources */,
 				7A91752E1BEC57D2009FAE52 /* RootView.swift in Sources */,
+				7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */,
 				7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */,
 				7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */,
 				7A59CEED1BEBCAA200B17A71 /* SettingsViewController.swift in Sources */,

@@ -1,4 +1,5 @@
 github "ReactiveCocoa/ReactiveCocoa" "swift2"
 github "SwiftyJSON/SwiftyJSON" "2.3.0"
 github "exchangegroup/keychain-swift" "3.0.7"
+github "mixpanel/mixpanel-iphone" "v2.9.0"
 

@@ -12,6 +12,7 @@ import ReactiveCocoa
 class RootViewController: UIViewController {
     let client: Client
     let persistenceController: PersistenceController
+    let analyticsController: AnalyticsController
     
     var rootView: RootView {
         get {
@@ -19,9 +20,10 @@ class RootViewController: UIViewController {
         }
     }
     
-    init(client: Client, persistenceController: PersistenceController) {
+    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController) {
         self.client = client
         self.persistenceController = persistenceController
+        self.analyticsController = analyticsController
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,7 +41,7 @@ class RootViewController: UIViewController {
             let target: UIViewController
 
             if authenticated {
-                let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController)
+                let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController)
                 target = UINavigationController(rootViewController: episode)
             } else {
                 let login = LoginViewController(client: self.client, persistenceController: self.persistenceController)
@@ -48,7 +50,6 @@ class RootViewController: UIViewController {
 
             self.transitionToViewController(target)
         }
-        
     }
     
     func transitionToViewController(controller: UIViewController) {

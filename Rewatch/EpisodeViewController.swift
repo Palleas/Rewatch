@@ -35,11 +35,14 @@ class EpisodeViewController: UIViewController {
     
     let client: Client
     let persistenceController: PersistenceController
+    let analyticsController: AnalyticsController
+    
     var episodes: [StoredEpisode] = []
     
-    init(client: Client, persistenceController: PersistenceController) {
+    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController) {
         self.client = client
         self.persistenceController = persistenceController
+        self.analyticsController = analyticsController
         
         super.init(nibName: nil, bundle: nil)
         title = "REWATCH"
@@ -104,6 +107,7 @@ class EpisodeViewController: UIViewController {
         episodeView.episodeImageView.hidden = false
         
         client.fetchPictureForEpisodeId(String(randomEpisode.id))
+            .on(completed: { self.analyticsController.trackEvent(.Shake) })
             .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
                 return SignalProducer(value: (image, convertToBlackAndWhite(image)))
             })

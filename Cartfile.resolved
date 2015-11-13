@@ -1,4 +1,5 @@
 github "antitypical/Result" "0.6.0-beta.3"
 github "SwiftyJSON/SwiftyJSON" "2.3.0"
 github "exchangegroup/keychain-swift" "3.0.7"
+github "mixpanel/mixpanel-iphone" "v2.9.0"
 github "ReactiveCocoa/ReactiveCocoa" "9af5f32b4f9f908ae5f26904fbaf49d0a9039e24"
