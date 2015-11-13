@@ -14,3 +14,4 @@
 [submodule "Carthage/Checkouts/mixpanel-iphone"]
 	path = Carthage/Checkouts/mixpanel-iphone
 	url = https://github.com/mixpanel/mixpanel-iphone.git
+	ignore = dirty
