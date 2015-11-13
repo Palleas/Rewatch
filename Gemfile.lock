@@ -17,8 +17,10 @@ GEM
       fastlane_core (>= 0.19.0, < 1.0.0)
       spaceship (>= 0.6.0)
     claide (0.9.1)
+    clamp (0.6.5)
     coderay (1.1.0)
     colored (1.2)
+    colorize (0.7.7)
     commander (4.3.5)
       highline (~> 1.7.2)
     credentials_manager (0.10.0)
@@ -208,6 +210,10 @@ GEM
       credentials_manager (>= 0.8.2)
       fastlane_core (>= 0.19.0)
       google-api-client (~> 0.8.6)
+    synx (0.1.1)
+      clamp (~> 0.6)
+      colorize (~> 0.7)
+      xcodeproj (~> 0.28.2)
     terminal-notifier (1.6.3)
     terminal-table (1.4.5)
     thread_safe (0.3.5)
@@ -230,6 +236,7 @@ PLATFORMS
 
 DEPENDENCIES
   fastlane (~> 1.36, >= 1.36.4)
+  synx (~> 0.1.1)
 
 BUNDLED WITH
    1.10.6
