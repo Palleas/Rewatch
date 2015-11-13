@@ -22,6 +22,7 @@
 		7A5686211BF64C6A006BDEB3 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */; };
 		7A5686221BF64C6A006BDEB3 /* Mixpanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5686241BF64D6A006BDEB3 /* Analytics.swift */; };
+		7A5686281BF653B7006BDEB3 /* pop_drip.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7A5686271BF653B7006BDEB3 /* pop_drip.aif */; };
 		7A59CEED1BEBCAA200B17A71 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */; };
 		7A7145FF1BD5B02500492B9B /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; };
 		7A7146001BD5B02500492B9B /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -119,6 +120,7 @@
 		7A52A7191BD0544C00D78B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mixpanel.framework; path = Carthage/Build/iOS/Mixpanel.framework; sourceTree = "<group>"; };
 		7A5686241BF64D6A006BDEB3 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		7A5686271BF653B7006BDEB3 /* pop_drip.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop_drip.aif; sourceTree = "<group>"; };
 		7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7A7145FE1BD5B02500492B9B /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		7A7146011BD5B3EC00492B9B /* OauthHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthHelpers.swift; sourceTree = "<group>"; };
@@ -274,6 +276,14 @@
 			name = Analytics;
 			sourceTree = "<group>";
 		};
+		7A5686261BF6539C006BDEB3 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7A5686271BF653B7006BDEB3 /* pop_drip.aif */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		7A59CEEB1BEBCA8700B17A71 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +304,7 @@
 		7A8CC2621BEB0A18003BFE11 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7A5686261BF6539C006BDEB3 /* Sounds */,
 				7A52A7191BD0544C00D78B39 /* Info.plist */,
 				7A7F44131BD1C4C200B3BD59 /* Keys.plist */,
 				7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */,
@@ -512,6 +523,7 @@
 				7AF8A0191BD9803D00969B23 /* Roboto-Regular.ttf in Resources */,
 				7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */,
 				7AF8A0171BD9803D00969B23 /* Roboto-Medium.ttf in Resources */,
+				7A5686281BF653B7006BDEB3 /* pop_drip.aif in Resources */,
 				7AF8A01B1BD9803D00969B23 /* Roboto-ThinItalic.ttf in Resources */,
 				7AE290631BEAF50E005838AB /* DownloadViewController.xib in Resources */,
 				7AF8A0101BD9803D00969B23 /* Roboto-Black.ttf in Resources */,

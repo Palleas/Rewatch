@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import AVFoundation
 
 class EpisodeWrapper: EpisodeViewData {
     typealias Element = StoredEpisode
@@ -33,6 +34,12 @@ class EpisodeViewController: UIViewController {
         }
     }
     
+    lazy private(set) var randomSound: AVAudioPlayer? = {
+        guard let path = NSBundle.mainBundle().pathForResource("pop_drip", ofType: "aif") else { return nil }
+        let url = NSURL.fileURLWithPath(path)
+        return try? AVAudioPlayer(contentsOfURL: url)
+    }()
+    
     let client: Client
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
@@ -54,7 +61,6 @@ class EpisodeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         let leftButton = UIButton(type: .Custom)
         leftButton.setImage(UIImage(named: "Hamburger"), forState: .Normal)
@@ -98,7 +104,9 @@ class EpisodeViewController: UIViewController {
         let index = Int(arc4random_uniform(UInt32(episodes.count)))
         let randomEpisode = episodes[index]
         let episode = EpisodeWrapper(wrapped: randomEpisode)
-        
+
+        self.randomSound?.play()
+
         episodeView.theme = themes[Int(arc4random_uniform(UInt32(themes.count)))]
         episodeView.episode = episode
 
