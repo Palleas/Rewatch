@@ -1,9 +1,0 @@
-//
-//  Rewatch.xcconfig
-//  Rewatch
-//
-//  Created by Romain Pouclet on 2015-11-02.
-//  Copyright © 2015 Perfectly-Cooked. All rights reserved.
-//
-CRASHLYTICS_API_KEY = ab1cf535c2ef72090ba8bd05bff1adf07f35eaba
-CRASHLYTICS_BUILD_SECRET = a6e138c2bea50a3fa4b1e534449a8479d1cc9b40b5e448a2e89d9147c0893bd5

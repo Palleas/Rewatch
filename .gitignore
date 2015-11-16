@@ -40,3 +40,5 @@ GH4C5UK9B4.cer
 private_key.p12
 Rewatch.app.dSYM.zip
 Rewatch/Rewatch.xcconfig
+Rewatch/Resources/Rewatch.xcconfig
+Rewatch/Resources/Keys.plist
