@@ -18,14 +18,19 @@ class StoredShow: NSManagedObject {
 
 
 extension StoredShow {
-    static func showInContext(context: NSManagedObjectContext, mappedOnShow show: Client.Show?) -> StoredShow {
+    static func showInContext(context: NSManagedObjectContext, mappedOnShow show: Client.Show) -> StoredShow {
         // TODO use throws + attemptMap ?
-        let stored = NSEntityDescription.insertNewObjectForEntityForName("Show", inManagedObjectContext: context) as! StoredShow
-        
-        if let show = show {
-            stored.id = Int64(show.id)
-            stored.name = show.name
+        let stored: StoredShow
+        if let localStored = showWithId(show.id, inContext: context) {
+            print("Show #\(show.id) already exists")
+            stored = localStored
+        } else {
+            print("Show #\(show.id) does not exist: creating")
+            stored = NSEntityDescription.insertNewObjectForEntityForName("Show", inManagedObjectContext: context) as! StoredShow
         }
+        
+        stored.id = Int64(show.id)
+        stored.name = show.name
         
         return stored
     }

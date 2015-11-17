@@ -35,7 +35,7 @@ class DownloadController: NSObject {
             .flatMap(.Merge, transform: { (storedShow) -> SignalProducer<(StoredShow, StoredEpisode), NSError> in
                 let fetchEpisodeSignal = self.fetchSeenEpisodeFromShow(Int(storedShow.id))
                     .map({ episode -> StoredEpisode in
-                        let storedEpisode = StoredEpisode.episodeInContext(importMoc, mappedOnEpisode: episode)
+                        let storedEpisode: StoredEpisode = .episodeInContext(importMoc, mappedOnEpisode: episode)
                         storedEpisode.show = storedShow
                         
                         return storedEpisode

@@ -116,3 +116,21 @@ class PersistenceController: NSObject {
     }
 }
 
+func showWithId(id: Int, inContext managedObjectContext: NSManagedObjectContext) -> StoredShow? {
+    let request = NSFetchRequest(entityName: "Show")
+    request.predicate = NSPredicate(format: "id = %ld", id)
+    request.fetchLimit = 1
+    
+    let shows = try? managedObjectContext.executeFetchRequest(request)
+    return shows?.first as? StoredShow
+}
+
+func episodeWithId(id: Int, inContext managedObjectContext: NSManagedObjectContext) -> StoredEpisode? {
+    let request = NSFetchRequest(entityName: "Episode")
+    request.predicate = NSPredicate(format: "id = %ld", id)
+    request.fetchLimit = 1
+    
+    let shows = try? managedObjectContext.executeFetchRequest(request)
+    return shows?.first as? StoredEpisode
+}
+
