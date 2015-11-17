@@ -20,17 +20,21 @@ class DebugCell: UITableViewCell {
 }
 
 class SettingsViewController: UITableViewController {
+    typealias Completion = () -> Void
+    
     let MemberCellIdentifier = "MemberCell"
     let MemberLogoutCellIdentifier = "MemberLogoutCell"
     let DebugCellIdentifier = "DebugCell"
     let VersionCellIdentifier = "VersionCell"
+    let completion: Completion
     
     let client: Client
     let persistenceController: PersistenceController
     
-    init(client: Client, persistenceController: PersistenceController) {
+    init(client: Client, persistenceController: PersistenceController, completion: Completion) {
         self.client = client
         self.persistenceController = persistenceController
+        self.completion = completion
         
         super.init(style: .Grouped)
         
@@ -40,6 +44,12 @@ class SettingsViewController: UITableViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: VersionCellIdentifier)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: Selector("didTapDismissSettingsPanel"))
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -119,5 +129,9 @@ class SettingsViewController: UITableViewController {
         
         client.token = nil
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func didTapDismissSettingsPanel() {
+        completion()
     }
 }

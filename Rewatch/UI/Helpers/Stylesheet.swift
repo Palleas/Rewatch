@@ -43,6 +43,7 @@ class Stylesheet: NSObject {
         UINavigationBar.appearance().backgroundColor = Stylesheet.navigationBarTintColor
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Stylesheet.navigationBarTextColor, NSFontAttributeName: Stylesheet.titleFont], forState: .Normal)
     }
 }
 

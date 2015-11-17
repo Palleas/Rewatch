@@ -128,7 +128,9 @@ class EpisodeViewController: UIViewController {
     }
     
     func didTapSettingsButton(button: UIButton) {
-        let settings = SettingsViewController(client: client, persistenceController: persistenceController)
+        let settings = UINavigationController(rootViewController: SettingsViewController(client: client, persistenceController: persistenceController, completion: { () -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
         presentViewController(settings, animated: true, completion: nil)
     }
 }
