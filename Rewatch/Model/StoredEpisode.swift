@@ -20,10 +20,8 @@ extension StoredEpisode {
     static func episodeInContext(context: NSManagedObjectContext, mappedOnEpisode episode: Client.Episode) -> StoredEpisode {
         let stored: StoredEpisode
         if let localStored = episodeWithId(episode.id, inContext: context) {
-            print("Episode #\(episode.id) already exists")
             stored = localStored
         } else {
-            print("Episode #\(episode.id) does not exist: creating")
             stored = NSEntityDescription.insertNewObjectForEntityForName("Episode", inManagedObjectContext: context) as! StoredEpisode
         }
         

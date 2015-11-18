@@ -22,10 +22,8 @@ extension StoredShow {
         // TODO use throws + attemptMap ?
         let stored: StoredShow
         if let localStored = showWithId(show.id, inContext: context) {
-            print("Show #\(show.id) already exists")
             stored = localStored
         } else {
-            print("Show #\(show.id) does not exist: creating")
             stored = NSEntityDescription.insertNewObjectForEntityForName("Show", inManagedObjectContext: context) as! StoredShow
         }
         
