@@ -23,7 +23,7 @@ class SettingsViewController: UITableViewController {
     typealias Completion = () -> Void
     
     let MemberCellIdentifier = "MemberCell"
-    let MemberLogoutCellIdentifier = "MemberLogoutCell"
+    let MemberActionCellIdentifier = "MemberActionCell"
     let DebugCellIdentifier = "DebugCell"
     let VersionCellIdentifier = "VersionCell"
     let completion: Completion
@@ -39,7 +39,7 @@ class SettingsViewController: UITableViewController {
         super.init(style: .Grouped)
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: MemberCellIdentifier)
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: MemberLogoutCellIdentifier)
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: MemberActionCellIdentifier)
         tableView.registerClass(DebugCell.self, forCellReuseIdentifier: DebugCellIdentifier)
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: VersionCellIdentifier)
     }
@@ -61,12 +61,12 @@ class SettingsViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Member
         if section == 0 {
-            return 2
+            return 3
         }
 
         // Debug
         if section == 1 {
-            return 2
+            return 3
         }
         
         // Current version
@@ -81,8 +81,12 @@ class SettingsViewController: UITableViewController {
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier(MemberCellIdentifier, forIndexPath: indexPath)
                 cell.textLabel?.text = "Current user (SOON)"
+            } else if indexPath.row == 1 {
+                cell = tableView.dequeueReusableCellWithIdentifier(MemberActionCellIdentifier, forIndexPath: indexPath)
+                cell.textLabel?.text = "Sync now"
+                cell.textLabel?.textColor = .blueColor()
             } else {
-                cell = tableView.dequeueReusableCellWithIdentifier(MemberLogoutCellIdentifier, forIndexPath: indexPath)
+                cell = tableView.dequeueReusableCellWithIdentifier(MemberActionCellIdentifier, forIndexPath: indexPath)
                 cell.textLabel?.text = "Log Out"
                 cell.textLabel?.textColor = .redColor()
             }
@@ -92,9 +96,12 @@ class SettingsViewController: UITableViewController {
             if indexPath.row == 0 {
                 cell.textLabel?.text = "Number of shows"
                 cell.detailTextLabel?.text = String(persistenceController.numberOfShows())
-            } else {
+            } else if indexPath.row == 1 {
                 cell.textLabel?.text = "Number of episodes"
                 cell.detailTextLabel?.text = String(persistenceController.numberOfEpisodes())
+            } else {
+                cell.textLabel?.text = "Last sync"
+                cell.detailTextLabel?.text = lastSyncDate()
             }
         // Current Version
         } else {
@@ -120,15 +127,21 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return indexPath == NSIndexPath(forRow: 1, inSection: 0) ? indexPath : nil
+        return indexPath == NSIndexPath(forRow: 1, inSection: 0) || indexPath == NSIndexPath(forRow: 2, inSection: 0) ? indexPath : nil
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let keychain = KeychainSwift()
-        keychain.clear()
-        
-        client.token = nil
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        if indexPath.row == 1 {
+            let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
+            let navigation = UINavigationController(rootViewController: downloadViewController)
+            presentViewController(navigation, animated: true, completion: nil)
+        } else {
+            let keychain = KeychainSwift()
+            keychain.clear()
+            
+            client.token = nil
+            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func didTapDismissSettingsPanel() {

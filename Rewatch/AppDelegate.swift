@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self])
 
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
         // Setup stylesheet
         let stylesheet = Stylesheet()
         stylesheet.apply()
@@ -71,5 +73,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         persistence.save()
+    }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        let downloadController = DownloadController(client: client, persistenceController: persistence)
+        downloadController
+            .download()
+            .on(error: { _ in completionHandler(.Failed) })
+            .startWithNext({ completionHandler($0 > 0 ? .NewData : .NoData) })
     }
 }

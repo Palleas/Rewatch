@@ -11,7 +11,22 @@ import ReactiveCocoa
 import Result
 import CoreData
 
+let DownloadControllerLastSyncKey = "LastSyncKey"
+
+func lastSyncDate() -> String? {
+    guard let date = NSUserDefaults.standardUserDefaults().objectForKey(DownloadControllerLastSyncKey) as? NSDate  else {
+        return nil
+    }
+
+    let formatter = NSDateFormatter()
+    formatter.dateStyle = .ShortStyle
+    formatter.timeStyle = .ShortStyle
+    
+    return formatter.stringFromDate(date)
+}
+
 class DownloadController: NSObject {
+    
     let client: Client
     let persistenceController: PersistenceController
     
@@ -35,7 +50,7 @@ class DownloadController: NSObject {
             .flatMap(.Merge, transform: { (storedShow) -> SignalProducer<(StoredShow, StoredEpisode), NSError> in
                 let fetchEpisodeSignal = self.fetchSeenEpisodeFromShow(Int(storedShow.id))
                     .map({ episode -> StoredEpisode in
-                        let storedEpisode = StoredEpisode.episodeInContext(importMoc, mappedOnEpisode: episode)
+                        let storedEpisode: StoredEpisode = .episodeInContext(importMoc, mappedOnEpisode: episode)
                         storedEpisode.show = storedShow
                         
                         return storedEpisode
@@ -49,6 +64,11 @@ class DownloadController: NSObject {
                     sink.sendNext(shows.count)
                     sink.sendCompleted()
                 }
+            })
+            .on(completed: {
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(NSDate(), forKey: DownloadControllerLastSyncKey)
+                defaults.synchronize()
             })
     }
     
