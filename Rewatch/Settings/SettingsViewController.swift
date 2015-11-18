@@ -66,7 +66,7 @@ class SettingsViewController: UITableViewController {
 
         // Debug
         if section == 1 {
-            return 2
+            return 3
         }
         
         // Current version
@@ -92,9 +92,12 @@ class SettingsViewController: UITableViewController {
             if indexPath.row == 0 {
                 cell.textLabel?.text = "Number of shows"
                 cell.detailTextLabel?.text = String(persistenceController.numberOfShows())
-            } else {
+            } else if indexPath.row == 1 {
                 cell.textLabel?.text = "Number of episodes"
                 cell.detailTextLabel?.text = String(persistenceController.numberOfEpisodes())
+            } else {
+                cell.textLabel?.text = "Last sync"
+                cell.detailTextLabel?.text = lastSyncDate()
             }
         // Current Version
         } else {
