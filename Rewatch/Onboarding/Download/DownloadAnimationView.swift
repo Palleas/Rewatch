@@ -33,20 +33,16 @@ class DownloadAnimationView: UIView {
         arrow.translatesAutoresizingMaskIntoConstraints = false
         arrow.contentMode = .Center
         addSubview(arrow)
-        
-        background.topAnchor.constraintEqualToAnchor(topAnchor).active = true
-        background.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
-        background.leftAnchor.constraintEqualToAnchor(leftAnchor).active = true
-        background.rightAnchor.constraintEqualToAnchor(rightAnchor).active = true
+
+        background.centerXAnchor.constraintEqualToAnchor(centerXAnchor).active = true
+        background.centerYAnchor.constraintEqualToAnchor(centerYAnchor).active = true
         
         arrow.centerXAnchor.constraintEqualToAnchor(background.centerXAnchor).active = true
         arrow.centerYAnchor.constraintEqualToAnchor(background.centerYAnchor).active = true
-        arrow.heightAnchor.constraintEqualToConstant(59).active = true
-        arrow.widthAnchor.constraintEqualToConstant(59).active = true
     }
     
     override func intrinsicContentSize() -> CGSize {
-        return CGSize(width: 191, height: 95)
+        return background.image?.size ?? CGSize(width: 95, height: 47)
     }
     
     func startAnimating() {
