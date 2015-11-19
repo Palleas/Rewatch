@@ -22,7 +22,7 @@ extension StoredShow {
         // TODO use throws + attemptMap ?
         let stored: StoredShow
         if let localStored = showWithId(show.id, inContext: context) {
-            stored = localStored
+            stored = context.objectWithID(localStored.objectID) as! StoredShow
         } else {
             stored = NSEntityDescription.insertNewObjectForEntityForName("Show", inManagedObjectContext: context) as! StoredShow
         }
