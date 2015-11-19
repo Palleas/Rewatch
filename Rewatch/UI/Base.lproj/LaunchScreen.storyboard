@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OeilFull" translatesAutoresizingMaskIntoConstraints="NO" id="khu-G6-bqJ">
-                                <rect key="frame" x="173" y="237" width="254" height="126"/>
+                                <rect key="frame" x="252" y="276" width="96" height="48"/>
                                 <animations/>
                             </imageView>
                         </subviews>
@@ -35,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="OeilFull" width="254" height="126"/>
+        <image name="OeilFull" width="96" height="48"/>
     </resources>
 </document>
