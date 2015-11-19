@@ -32,16 +32,21 @@ class Client: NSObject {
         let seen: Bool
     }
     
+    struct Member {
+        let id: Int
+        let login: String
+        let avatar: NSURL?
+    }
+    
     let key: String
     let secret: String
     let session: NSURLSession
     var token: String? {
         didSet {
-            print("Set token to \(token)")
             authenticated.value = token != nil
-            print("Authenticated: \(authenticated.value)")
         }
     }
+    var member: Member?
     
     let authenticated = MutableProperty(false)
 
@@ -101,6 +106,14 @@ class Client: NSObject {
             })
     }
 
+    func fetchMemberInfos() -> SignalProducer<Member, NSError> {
+        return sendRequestToPath("members/infos", params: nil, method: "GET")
+            .map({ (json) -> Member in
+                let memberNode = json["member"]
+                return Member(id: memberNode["id"].intValue, login: memberNode["login"].stringValue, avatar: memberNode["avatar"].URL)
+            })
+    }
+    
     func fetchShows() -> SignalProducer<Show, NSError> {
         return sendRequestToPath("members/infos", params: nil, method: "GET")
             .flatMap(FlattenStrategy.Latest) { (payload) -> SignalProducer<Show, NSError> in
@@ -165,6 +178,7 @@ class Client: NSObject {
         }
         
         let request = NSMutableURLRequest(URL: exhangeComponents.URL!)
+        request.cachePolicy = .ReloadIgnoringLocalCacheData
         request.setValue(key, forHTTPHeaderField: "X-BetaSeries-Key")
         request.setValue("2.4", forHTTPHeaderField: "X-BetaSeries-Version")
         request.setValue(token, forHTTPHeaderField: "X-BetaSeries-Token")

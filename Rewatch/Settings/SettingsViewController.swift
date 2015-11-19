@@ -8,6 +8,18 @@
 
 import UIKit
 import KeychainSwift
+import ReactiveCocoa
+
+class MemberCell: UITableViewCell {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .Default, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
 
 class DebugCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -38,7 +50,7 @@ class SettingsViewController: UITableViewController {
         
         super.init(style: .Grouped)
         
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: MemberCellIdentifier)
+        tableView.registerClass(MemberCell.self, forCellReuseIdentifier: MemberCellIdentifier)
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: MemberActionCellIdentifier)
         tableView.registerClass(DebugCell.self, forCellReuseIdentifier: DebugCellIdentifier)
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: VersionCellIdentifier)
@@ -80,7 +92,33 @@ class SettingsViewController: UITableViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier(MemberCellIdentifier, forIndexPath: indexPath)
-                cell.textLabel?.text = "Current user (SOON)"
+                cell.textLabel?.text = "Loading..."
+                cell.textLabel?.textColor = UIColor.lightGrayColor()
+                
+                client
+                    .fetchMemberInfos()
+                    .flatMap(.Latest, transform: { (member) -> SignalProducer<(UIImage?, String), NSError> in
+                        guard let url = member.avatar else { return SignalProducer(value: (nil, member.login)) }
+
+                        return NSURLSession
+                            .sharedSession()
+                            .rac_dataWithRequest(NSURLRequest(URL: url))
+                            .map({ return UIImage(data: $0.0) })
+                            .zipWith(SignalProducer(value: member.login))
+                    })
+                    .observeOn(UIScheduler())
+                    .on(error: { error in
+                        print("Unable to load member infos: \(error)")
+                        self.tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text = "Unavailable"
+                    })
+                    .startWithNext({ (avatar, login) -> () in
+                        guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
+                        cell.imageView?.image = avatar
+                        cell.textLabel?.text = login
+                        cell.textLabel?.textColor = .darkTextColor()
+                    })
+                
+                
             } else if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier(MemberActionCellIdentifier, forIndexPath: indexPath)
                 cell.textLabel?.text = "Sync now"
