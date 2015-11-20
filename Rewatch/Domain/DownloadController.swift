@@ -41,19 +41,26 @@ class DownloadController: NSObject {
     /// and returns the number of episodes available for the random
     func download() -> SignalProducer<Int, NSError> {
         let importMoc = persistenceController.spawnManagedObjectContext()
+        let importScheduler = PersistenceScheduler(context: importMoc)
         
         return client
             .fetchShows()
-            .map({ show -> StoredShow in
-                return .showInContext(importMoc, mappedOnShow: show)
+            .flatMap(FlattenStrategy.Latest, transform: { (show) -> SignalProducer<StoredShow, NSError> in
+                return SignalProducer { observable, disposable in
+                    observable.sendNext(StoredShow.showInContext(importMoc, mappedOnShow: show))
+                    observable.sendCompleted()
+                }.startOn(importScheduler)
             })
             .flatMap(.Merge, transform: { (storedShow) -> SignalProducer<(StoredShow, StoredEpisode), NSError> in
                 let fetchEpisodeSignal = self.fetchSeenEpisodeFromShow(Int(storedShow.id))
-                    .map({ episode -> StoredEpisode in
-                        let storedEpisode: StoredEpisode = .episodeInContext(importMoc, mappedOnEpisode: episode)
-                        storedEpisode.show = storedShow
-                        
-                        return storedEpisode
+                    .flatMap(FlattenStrategy.Latest, transform: { (episode) -> SignalProducer<StoredEpisode, NSError> in
+                        print("Flatmaping ?")
+                        return SignalProducer { observable, disposable in
+                            print("bloup")
+                            
+                            observable.sendNext(StoredEpisode.episodeInContext(importMoc, mappedOnEpisode: episode))
+                            observable.sendCompleted()
+                        }.startOn(importScheduler)
                     })
                 return combineLatest(SignalProducer(value: storedShow), fetchEpisodeSignal)
             })
@@ -70,6 +77,7 @@ class DownloadController: NSObject {
                 defaults.setObject(NSDate(), forKey: DownloadControllerLastSyncKey)
                 defaults.synchronize()
             })
+            .startOn(importScheduler)
     }
     
     func fetchSeenEpisodeFromShow(id: Int) -> SignalProducer<Client.Episode, NSError> {
