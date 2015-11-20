@@ -103,6 +103,11 @@ class EpisodeViewController: UIViewController {
         
         let index = Int(arc4random_uniform(UInt32(episodes.count)))
         let randomEpisode = episodes[index]
+        
+        presentEpisode(randomEpisode)
+    }
+    
+    func presentEpisode(randomEpisode: StoredEpisode) {
         let episode = EpisodeWrapper(wrapped: randomEpisode)
 
         self.randomSound?.play()
