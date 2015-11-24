@@ -21,9 +21,7 @@ class PersistenceScheduler: SchedulerType {
         let disposable = SimpleDisposable()
         
         context.performBlock { () -> Void in
-            print("Performing something ?")
             guard !disposable.disposed else {
-                print("Not Performing anything because disposed")
                 return
             }
             

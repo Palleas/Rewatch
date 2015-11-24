@@ -45,7 +45,7 @@ class DownloadController: NSObject {
         
         return client
             .fetchShows()
-            .flatMap(FlattenStrategy.Latest, transform: { (show) -> SignalProducer<StoredShow, NSError> in
+            .flatMap(FlattenStrategy.Merge, transform: { (show) -> SignalProducer<StoredShow, NSError> in
                 return SignalProducer { observable, disposable in
                     observable.sendNext(StoredShow.showInContext(importMoc, mappedOnShow: show))
                     observable.sendCompleted()
@@ -53,11 +53,8 @@ class DownloadController: NSObject {
             })
             .flatMap(.Merge, transform: { (storedShow) -> SignalProducer<(StoredShow, StoredEpisode), NSError> in
                 let fetchEpisodeSignal = self.fetchSeenEpisodeFromShow(Int(storedShow.id))
-                    .flatMap(FlattenStrategy.Latest, transform: { (episode) -> SignalProducer<StoredEpisode, NSError> in
-                        print("Flatmaping ?")
+                    .flatMap(FlattenStrategy.Merge, transform: { (episode) -> SignalProducer<StoredEpisode, NSError> in
                         return SignalProducer { observable, disposable in
-                            print("bloup")
-                            
                             observable.sendNext(StoredEpisode.episodeInContext(importMoc, mappedOnEpisode: episode))
                             observable.sendCompleted()
                         }.startOn(importScheduler)
@@ -72,12 +69,11 @@ class DownloadController: NSObject {
                     sink.sendCompleted()
                 }
             })
-            .on(completed: {
+            .on(next: { print("Synchronized \($0) episodes") }, completed: {
                 let defaults = NSUserDefaults.standardUserDefaults()
                 defaults.setObject(NSDate(), forKey: DownloadControllerLastSyncKey)
                 defaults.synchronize()
             })
-            .startOn(importScheduler)
     }
     
     func fetchSeenEpisodeFromShow(id: Int) -> SignalProducer<Client.Episode, NSError> {
