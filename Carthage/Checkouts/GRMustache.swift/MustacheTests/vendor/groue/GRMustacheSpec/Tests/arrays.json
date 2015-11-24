@@ -1,0 +1,22 @@
+{
+  "tests": [
+    {
+      "name": "Arrays have `count` key.",
+      "data": { "array": ["a", "b", "c"] },
+      "template": "{{ array.count }}",
+      "expected": "3"
+    },
+    {
+      "name": "Arrays have `first` key.",
+      "data": { "array": ["a", "b", "c"] },
+      "template": "{{ array.first }}",
+      "expected": "a"
+    },
+    {
+      "name": "Arrays have `last` key.",
+      "data": { "array": ["a", "b", "c"] },
+      "template": "{{ array.last }}",
+      "expected": "c"
+    },
+  ]
+}

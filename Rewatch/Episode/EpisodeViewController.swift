@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import AVFoundation
+import Swifter
 
 class EpisodeWrapper: EpisodeViewData {
     typealias Element = StoredEpisode
@@ -72,6 +73,8 @@ class EpisodeViewController: UIViewController {
         rightButton.addTarget(self, action: Selector("didTapSettingsButton:"), forControlEvents: .TouchUpInside)
         rightButton.sizeToFit()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+        
+        episodeView.actionDelegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -137,5 +140,16 @@ class EpisodeViewController: UIViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         presentViewController(settings, animated: true, completion: nil)
+    }
+}
+
+extension EpisodeViewController: EpisodeViewDelegate {
+    func didTapShareButton() {
+        guard let episode = episodeView.episode as? EpisodeWrapper else { return }
+        
+        let url = NSURL(string: "http://betaseries.com/episode/\(episode.wrapped.id)")!
+        
+        let activity = UIActivityViewController(activityItems: [url], applicationActivities: [GenerateDeeplinkActivity()])
+        presentViewController(activity, animated: true, completion: nil)
     }
 }

@@ -16,7 +16,13 @@ protocol EpisodeViewData {
     var description : String { get }
 }
 
+protocol EpisodeViewDelegate: class {
+    func didTapShareButton()
+}
+
 class EpisodeView: UIView {
+    weak var actionDelegate: EpisodeViewDelegate?
+    
     @IBOutlet weak var shakeView: ShakeView!
     
     @IBOutlet weak var episodePictureHeightConstraint: NSLayoutConstraint!
@@ -109,6 +115,10 @@ class EpisodeView: UIView {
         super.awakeFromNib()
         
         backgroundColor = Stylesheet.commonBackgroundColor
+    }
+    
+    @IBAction func didTapShareButton(sender: AnyObject) {
+        actionDelegate?.didTapShareButton()
     }
 }
 
