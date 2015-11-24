@@ -47,6 +47,10 @@
 		7A8CC26F1BEB0E9F003BFE11 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */; };
 		7A8F7F931BE460C800CA501A /* HEXColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F7F921BE460C800CA501A /* HEXColor.swift */; };
 		7A91752E1BEC57D2009FAE52 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A91752D1BEC57D2009FAE52 /* RootView.swift */; };
+		7AAF0CCF1C03E67C0019F1DB /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF0CCD1C03E67C0019F1DB /* Nimble.framework */; };
+		7AAF0CD01C03E67C0019F1DB /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF0CCE1C03E67C0019F1DB /* Quick.framework */; };
+		7AAF0CD21C03E69B0019F1DB /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AAF0CCD1C03E67C0019F1DB /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7AAF0CD31C03E69B0019F1DB /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AAF0CCE1C03E67C0019F1DB /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB238D1BD0A79700E2B86E /* Client.swift */; };
 		7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */; };
 		7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */; };
@@ -101,6 +105,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7AAF0CD11C03E68B0019F1DB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7AAF0CD21C03E69B0019F1DB /* Nimble.framework in CopyFiles */,
+				7AAF0CD31C03E69B0019F1DB /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +154,8 @@
 		7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		7A8F7F921BE460C800CA501A /* HEXColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HEXColor.swift; sourceTree = "<group>"; };
 		7A91752D1BEC57D2009FAE52 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		7AAF0CCD1C03E67C0019F1DB /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		7AAF0CCE1C03E67C0019F1DB /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7ABB238D1BD0A79700E2B86E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
 		7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
@@ -191,6 +208,8 @@
 				7A73FA8B1BD69A330026D8AD /* SwiftyJSON.framework in Frameworks */,
 				7A73FA8C1BD69A330026D8AD /* ReactiveCocoa.framework in Frameworks */,
 				7A73FA8D1BD69A330026D8AD /* Result.framework in Frameworks */,
+				7AAF0CCF1C03E67C0019F1DB /* Nimble.framework in Frameworks */,
+				7AAF0CD01C03E67C0019F1DB /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +237,8 @@
 		7A2E23501BD1E1F600D0B869 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7AAF0CCD1C03E67C0019F1DB /* Nimble.framework */,
+				7AAF0CCE1C03E67C0019F1DB /* Quick.framework */,
 				7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */,
 				7AEAF54A1BE582EF005D5A8F /* Fabric.framework */,
 				7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */,
@@ -454,6 +475,7 @@
 				7A73FA7B1BD68E5F0026D8AD /* Sources */,
 				7A73FA7C1BD68E5F0026D8AD /* Frameworks */,
 				7A73FA7D1BD68E5F0026D8AD /* Resources */,
+				7AAF0CD11C03E68B0019F1DB /* CopyFiles */,
 			);
 			buildRules = (
 			);
