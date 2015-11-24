@@ -8,6 +8,28 @@
 
 import UIKit
 import CoreData
+import ReactiveCocoa
+
+class PersistenceScheduler: SchedulerType {
+    let context: NSManagedObjectContext
+
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
+    
+    func schedule(action: () -> ()) -> Disposable? {
+        let disposable = SimpleDisposable()
+        
+        context.performBlock { () -> Void in
+            guard !disposable.disposed else {
+                return
+            }
+            
+            action()
+        }
+        return disposable
+    }
+}
 
 class PersistenceController: NSObject {
     typealias InitCallback = () -> Void

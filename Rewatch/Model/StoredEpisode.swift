@@ -19,6 +19,7 @@ class StoredEpisode: NSManagedObject {
 extension StoredEpisode {
     static func episodeInContext(context: NSManagedObjectContext, mappedOnEpisode episode: Client.Episode) -> StoredEpisode {
         let stored: StoredEpisode
+        
         if let localStored = episodeWithId(episode.id, inContext: context) {
             stored = context.objectWithID(localStored.objectID) as! StoredEpisode
         } else {
