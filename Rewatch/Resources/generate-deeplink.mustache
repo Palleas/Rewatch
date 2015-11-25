@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html class="no-js"> 
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{{ show_name }} - {{ episode_title }}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<h1>{{show_name}}</h1>
+		<h2>S{{ season_number }}E{{ episode_number }} : {{ episode_title }}</h2>
+        <p>{{ summary }}</p>
+		
+		<div><a href="rewatch://episode/{{ episode_id }}">Open in Rewatch</a></div>	
+	</body>
+</html>
+

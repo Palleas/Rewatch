@@ -53,10 +53,22 @@ class RootViewController: UIViewController {
     }
     
     func transitionToViewController(controller: UIViewController) {
+        let currentViewController = childViewControllers.first
+        
         addChildViewController(controller)
         controller.willMoveToParentViewController(self)
         rootView.transitionToView(controller.view)
         controller.didMoveToParentViewController(self)
+        
+        currentViewController?.removeFromParentViewController()
+    }
+    
+    var episodeViewController: EpisodeViewController? {
+        get {
+            guard let navigation = childViewControllers.first as? UINavigationController else { return nil }
+            
+            return navigation.viewControllers.filter({ $0 is EpisodeViewController }).first as? EpisodeViewController
+        }
     }
     
 }
