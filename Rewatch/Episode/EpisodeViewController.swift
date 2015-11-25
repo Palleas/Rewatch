@@ -146,10 +146,8 @@ class EpisodeViewController: UIViewController {
 extension EpisodeViewController: EpisodeViewDelegate {
     func didTapShareButton() {
         guard let episode = episodeView.episode as? EpisodeWrapper else { return }
-        
-        let url = NSURL(string: "http://betaseries.com/episode/\(episode.wrapped.id)")!
-        
-        let activity = UIActivityViewController(activityItems: [url], applicationActivities: [GenerateDeeplinkActivity()])
+
+        let activity = UIActivityViewController(activityItems: [episode.wrapped], applicationActivities: [GenerateDeeplinkActivity()])
         presentViewController(activity, animated: true, completion: nil)
     }
 }
