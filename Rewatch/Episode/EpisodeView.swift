@@ -16,7 +16,13 @@ protocol EpisodeViewData {
     var description : String { get }
 }
 
+protocol EpisodeViewDelegate: class {
+    func didTapShareButton()
+}
+
 class EpisodeView: UIView {
+    weak var actionDelegate: EpisodeViewDelegate?
+    
     @IBOutlet weak var shakeView: ShakeView!
     
     @IBOutlet weak var episodePictureHeightConstraint: NSLayoutConstraint!
@@ -80,6 +86,7 @@ class EpisodeView: UIView {
         }
     }
     
+    @IBOutlet weak var shareButton: UIButton!
     var theme: Theme? {
         didSet {
             guard let theme = theme else { return }
@@ -91,6 +98,7 @@ class EpisodeView: UIView {
             episodeTitleLabel.textColor = theme.episodeTitleColor
             episodeContentView.backgroundColor = theme.backgroundColor
             backgroundColor = theme.backgroundColor
+            shareButton.tintColor = theme.summaryColor
         }
     }
     
@@ -110,11 +118,18 @@ class EpisodeView: UIView {
         
         backgroundColor = Stylesheet.commonBackgroundColor
     }
+    
+    @IBAction func didTapShareButton(sender: AnyObject) {
+        actionDelegate?.didTapShareButton()
+    }
 }
 
 extension EpisodeView: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        guard scrollView.contentOffset.y < -180 else { return }
+        
         let offset = abs(scrollView.contentOffset.y)
+
         if offset > 180 {
             bnwEpisodeImageView.alpha = max(180 - abs(180 - offset), 0) / 180
             episodePictureHeightConstraint.constant = abs(scrollView.contentOffset.y)

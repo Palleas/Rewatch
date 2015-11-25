@@ -58,7 +58,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        client.completeSigninWithURL(url)
+        guard let host = url.host else { return false }
+
+        if host == "oauth" {
+            client.completeSigninWithURL(url)
+        } else if host == "episode" {
+            if let episode = url.pathComponents?.filter({ $0 != "/" }).first, let episodeId = Int(episode) {
+                guard let presentedEpisode = episodeWithId(episodeId, inContext: persistence.managedObjectContext) else {
+                    return true
+                }
+                
+                let episodeViewController = (window?.rootViewController as? RootViewController)?.episodeViewController
+                episodeViewController?.presentEpisode(presentedEpisode)
+            }
+        }
         
         return true
     }

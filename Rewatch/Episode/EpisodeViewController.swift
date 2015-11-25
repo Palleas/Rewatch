@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import AVFoundation
+import Swifter
 
 class EpisodeWrapper: EpisodeViewData {
     typealias Element = StoredEpisode
@@ -72,6 +73,8 @@ class EpisodeViewController: UIViewController {
         rightButton.addTarget(self, action: Selector("didTapSettingsButton:"), forControlEvents: .TouchUpInside)
         rightButton.sizeToFit()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+        
+        episodeView.actionDelegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -103,6 +106,11 @@ class EpisodeViewController: UIViewController {
         
         let index = Int(arc4random_uniform(UInt32(episodes.count)))
         let randomEpisode = episodes[index]
+        
+        presentEpisode(randomEpisode)
+    }
+    
+    func presentEpisode(randomEpisode: StoredEpisode) {
         let episode = EpisodeWrapper(wrapped: randomEpisode)
 
         self.randomSound?.play()
@@ -132,5 +140,14 @@ class EpisodeViewController: UIViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         presentViewController(settings, animated: true, completion: nil)
+    }
+}
+
+extension EpisodeViewController: EpisodeViewDelegate {
+    func didTapShareButton() {
+        guard let episode = episodeView.episode as? EpisodeWrapper else { return }
+
+        let activity = UIActivityViewController(activityItems: [episode.wrapped], applicationActivities: [GenerateDeeplinkActivity()])
+        presentViewController(activity, animated: true, completion: nil)
     }
 }

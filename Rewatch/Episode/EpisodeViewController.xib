@@ -15,10 +15,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fBE-uC-9We" customClass="ShakeView" customModule="Rewatch" customModuleProvider="target">
-                    <rect key="frame" x="151" y="204" width="297.5" height="192"/>
+                    <rect key="frame" x="152" y="204" width="297" height="192"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGd-RR-p4Q">
-                            <rect key="frame" x="0.0" y="0.0" width="297.5" height="151"/>
+                            <rect key="frame" x="0.0" y="0.0" width="298" height="151"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shake" translatesAutoresizingMaskIntoConstraints="NO" id="Wuf-ez-aMw">
                                     <rect key="frame" x="92" y="0.0" width="113" height="119"/>
@@ -34,14 +34,14 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake your phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ae-vV-ASw">
-                            <rect key="frame" x="0.0" y="151" width="297.5" height="20.5"/>
+                            <rect key="frame" x="0.0" y="151" width="298" height="21"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get a suggested episode to rewatch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L68-6t-djE">
-                            <rect key="frame" x="0.0" y="171.5" width="297.5" height="20.5"/>
+                            <rect key="frame" x="0.0" y="172" width="298" height="20"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,38 +94,38 @@
                         </mask>
                     </variation>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZhB-br-aUZ">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZhB-br-aUZ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ca9-Qb-jjo">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="284"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="352"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q1j-gn-xJr">
-                                    <rect key="frame" x="20" y="20" width="560" height="244"/>
+                                    <rect key="frame" x="20" y="20" width="560" height="312"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the show name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0d-dq-aYj">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs3-SM-SrG">
-                                            <rect key="frame" x="0.0" y="30.5" width="560" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="31" width="560" height="20"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wri-wU-9sI">
-                                            <rect key="frame" x="0.0" y="61" width="560" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="61" width="560" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the title of the episode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFS-m6-A47">
-                                            <rect key="frame" x="0.0" y="91.5" width="560" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="92" width="560" height="20"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -141,6 +141,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQf-l2-BGh">
+                                            <rect key="frame" x="0.0" y="254" width="560" height="58"/>
+                                            <animations/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="Share"/>
+                                            <connections>
+                                                <action selector="didTapShareButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="iCe-cs-V09"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <animations/>
                                 </stackView>
@@ -196,6 +205,7 @@
                 <outlet property="episodeTitleLabel" destination="GFS-m6-A47" id="9x3-W3-VN0"/>
                 <outlet property="seasonNumberLabel" destination="zs3-SM-SrG" id="L7z-Rg-uHK"/>
                 <outlet property="shakeView" destination="fBE-uC-9We" id="hB0-X9-4P5"/>
+                <outlet property="shareButton" destination="dQf-l2-BGh" id="ptF-D8-01j"/>
                 <outlet property="showNameLabel" destination="u0d-dq-aYj" id="ONc-fj-jWf"/>
                 <outlet property="summaryLabel" destination="RST-Ka-PUq" id="NPi-7j-t3s"/>
             </connections>
@@ -204,5 +214,6 @@
     </objects>
     <resources>
         <image name="Shake" width="113" height="119"/>
+        <image name="Share" width="56" height="58"/>
     </resources>
 </document>
