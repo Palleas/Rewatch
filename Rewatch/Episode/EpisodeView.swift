@@ -86,6 +86,7 @@ class EpisodeView: UIView {
         }
     }
     
+    @IBOutlet weak var shareButton: UIButton!
     var theme: Theme? {
         didSet {
             guard let theme = theme else { return }
@@ -97,6 +98,7 @@ class EpisodeView: UIView {
             episodeTitleLabel.textColor = theme.episodeTitleColor
             episodeContentView.backgroundColor = theme.backgroundColor
             backgroundColor = theme.backgroundColor
+            shareButton.tintColor = theme.summaryColor
         }
     }
     

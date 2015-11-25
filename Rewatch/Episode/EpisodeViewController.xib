@@ -205,6 +205,7 @@
                 <outlet property="episodeTitleLabel" destination="GFS-m6-A47" id="9x3-W3-VN0"/>
                 <outlet property="seasonNumberLabel" destination="zs3-SM-SrG" id="L7z-Rg-uHK"/>
                 <outlet property="shakeView" destination="fBE-uC-9We" id="hB0-X9-4P5"/>
+                <outlet property="shareButton" destination="dQf-l2-BGh" id="ptF-D8-01j"/>
                 <outlet property="showNameLabel" destination="u0d-dq-aYj" id="ONc-fj-jWf"/>
                 <outlet property="summaryLabel" destination="RST-Ka-PUq" id="NPi-7j-t3s"/>
             </connections>
