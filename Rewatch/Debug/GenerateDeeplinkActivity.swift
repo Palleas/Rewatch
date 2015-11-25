@@ -32,10 +32,9 @@ class GenerateDeeplinkActivity: UIActivity {
         guard let episode = activityItems.filter({ $0 is StoredEpisode }).first as? StoredEpisode else { return }
         
         deepLinkViewController = GenerateDeepLinkViewController(episode: episode, completion: { (result) -> Void in
-            print(result)
             self.activityDidFinish(result == GenerateDeepLinkViewController.Result.Completed)
-            
         })
+        deepLinkViewController?.modalPresentationStyle = .OverFullScreen
     }
 
     override class func activityCategory() -> UIActivityCategory {

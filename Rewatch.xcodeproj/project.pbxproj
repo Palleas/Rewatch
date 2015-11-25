@@ -19,6 +19,7 @@
 		7A52A7101BD0544C00D78B39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */; };
 		7A52A7151BD0544C00D78B39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7141BD0544C00D78B39 /* Assets.xcassets */; };
 		7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */; };
+		7A53261A1C0566230091B139 /* GenerateDeepLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5326191C0566230091B139 /* GenerateDeepLinkView.swift */; };
 		7A5686211BF64C6A006BDEB3 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */; };
 		7A5686221BF64C6A006BDEB3 /* Mixpanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5686241BF64D6A006BDEB3 /* Analytics.swift */; };
@@ -142,6 +143,7 @@
 		7A52A7141BD0544C00D78B39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A52A7171BD0544C00D78B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A52A7191BD0544C00D78B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A5326191C0566230091B139 /* GenerateDeepLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDeepLinkView.swift; sourceTree = "<group>"; };
 		7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mixpanel.framework; path = Carthage/Build/iOS/Mixpanel.framework; sourceTree = "<group>"; };
 		7A5686241BF64D6A006BDEB3 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		7A5686271BF653B7006BDEB3 /* pop_drip.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop_drip.aif; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			children = (
 				7AAF0CD71C04DB910019F1DB /* GenerateDeeplinkActivity.swift */,
 				7AE8941F1C05290600A29F63 /* GenerateDeepLinkViewController.swift */,
+				7A5326191C0566230091B139 /* GenerateDeepLinkView.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */,
 				7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */,
 				7A0488971BE98E7400F7C890 /* DataModel.xcdatamodeld in Sources */,
+				7A53261A1C0566230091B139 /* GenerateDeepLinkView.swift in Sources */,
 				7A0488941BE98D8800F7C890 /* PersistenceController.swift in Sources */,
 				7AE2905C1BEABD65005838AB /* StoredEpisode+CoreDataProperties.swift in Sources */,
 				7A04889F1BE9AAD000F7C890 /* StoredShow.swift in Sources */,

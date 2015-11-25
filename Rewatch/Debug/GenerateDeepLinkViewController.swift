@@ -39,12 +39,13 @@ class GenerateDeepLinkViewController: UIViewController {
     }
     
     override func loadView() {
-        view = UIView()
-        view.backgroundColor = .yellowColor()
+        view = GenerateDeepLinkView()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationDidBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         do {
             let payload = ["episode_id": String(episode.id),
@@ -71,7 +72,14 @@ class GenerateDeepLinkViewController: UIViewController {
         }
     }
 
+    func applicationDidBecomeActive(note: NSNotification) {
+        server.stop()
+        completion(.Completed)
+    }
+    
     deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
+
         server.stop()
     }
 }
