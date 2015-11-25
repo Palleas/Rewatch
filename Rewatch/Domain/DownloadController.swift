@@ -55,7 +55,9 @@ class DownloadController: NSObject {
                 let fetchEpisodeSignal = self.fetchSeenEpisodeFromShow(Int(storedShow.id))
                     .flatMap(FlattenStrategy.Merge, transform: { (episode) -> SignalProducer<StoredEpisode, NSError> in
                         return SignalProducer { observable, disposable in
-                            observable.sendNext(StoredEpisode.episodeInContext(importMoc, mappedOnEpisode: episode))
+                            let storedEpisode = StoredEpisode.episodeInContext(importMoc, mappedOnEpisode: episode)
+                            storedEpisode.show = storedShow
+                            observable.sendNext(storedEpisode)
                             observable.sendCompleted()
                         }.startOn(importScheduler)
                     })
