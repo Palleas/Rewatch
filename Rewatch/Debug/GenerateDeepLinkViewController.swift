@@ -49,7 +49,7 @@ class GenerateDeepLinkViewController: UIViewController {
         
         do {
             let payload = ["episode_id": String(episode.id),
-                "show_name": episode.show?.name ?? "[No name]",
+                "show_name": episode.show?.name ?? "",
                 "episode_title": episode.title,
                 "season_number": String(episode.season),
                 "episode_number": String(episode.episode),
