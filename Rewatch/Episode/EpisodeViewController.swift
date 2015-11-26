@@ -132,6 +132,8 @@ class EpisodeViewController: UIViewController {
                 self.episodeView.episodeImageContainer.hidden = false
                 self.episodeView.episodeImageView.image = image.0
                 self.episodeView.bnwEpisodeImageView.image = image.1
+                self.episodeView.episodeImageContainer.setNeedsLayout()
+                self.episodeView.episodeImageContainer.layoutIfNeeded()
             }
     }
     
