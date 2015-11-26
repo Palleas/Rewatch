@@ -85,7 +85,7 @@ class EpisodeViewController: UIViewController {
         if episodes.count == 0 {
             let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
             let navigation = UINavigationController(rootViewController: downloadViewController)
-            presentViewController(navigation, animated: true, completion: nil)
+            parentViewController?.presentViewController(navigation, animated: true, completion: nil)
         } else {
             becomeFirstResponder()
         }
