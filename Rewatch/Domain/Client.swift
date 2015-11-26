@@ -142,7 +142,7 @@ class Client: NSObject {
     }
     
     func fetchPictureForEpisodeId(id: String) -> SignalProducer<UIImage, NSError> {
-        let request = requestForPath("pictures/episodes", params: ["id" : id, "width": "640"], method: "GET")
+        let request = requestForPath("pictures/episodes", params: ["id" : id, "width": "640", "height": "360"], method: "GET")
         return session
             .rac_dataWithRequest(request)
             .flatMap(.Latest, transform: { (data, response) -> SignalProducer<NSData, NSError> in

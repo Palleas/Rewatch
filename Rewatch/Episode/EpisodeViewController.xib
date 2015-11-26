@@ -55,7 +55,7 @@
                         <outlet property="titleLabel" destination="4ae-vV-ASw" id="Oza-cG-fqg"/>
                     </connections>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enn-gp-Ppz" userLabel="Episode Image Container">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enn-gp-Ppz" userLabel="Episode Image Container" customClass="EpisodeImageContainerView" customModule="Rewatch" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                     <subviews>
                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-TW-Eqk">
@@ -93,6 +93,10 @@
                             <exclude reference="vBA-9I-bWa"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <outlet property="bnwImageView" destination="bCY-WS-9eC" id="gmQ-nl-VGi"/>
+                        <outlet property="imageView" destination="bXL-TW-Eqk" id="7Te-nK-Ikf"/>
+                    </connections>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZhB-br-aUZ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>

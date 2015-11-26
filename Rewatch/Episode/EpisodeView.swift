@@ -126,13 +126,12 @@ class EpisodeView: UIView {
 
 extension EpisodeView: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        guard scrollView.contentOffset.y < -180 else { return }
-        
         let offset = abs(scrollView.contentOffset.y)
 
         if offset > 180 {
             bnwEpisodeImageView.alpha = max(180 - abs(180 - offset), 0) / 180
-            episodePictureHeightConstraint.constant = abs(scrollView.contentOffset.y)
         }
+
+        episodePictureHeightConstraint.constant = abs(min(0, scrollView.contentOffset.y))
     }
 }
