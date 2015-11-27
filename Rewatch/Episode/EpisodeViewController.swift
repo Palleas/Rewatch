@@ -41,6 +41,8 @@ class EpisodeViewController: UIViewController {
         return try? AVAudioPlayer(contentsOfURL: url)
     }()
     
+    lazy private(set) var shakeSignal = Signal<(), NoError>.pipe()
+    
     let client: Client
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
@@ -97,6 +99,7 @@ class EpisodeViewController: UIViewController {
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
+            shakeSignal.1.sendNext(())
             fetchRandomItem()
         }
     }
@@ -123,6 +126,7 @@ class EpisodeViewController: UIViewController {
         episodeView.episodeImageView.hidden = false
         
         client.fetchPictureForEpisodeId(String(randomEpisode.id))
+            .takeUntil(shakeSignal.0)
             .on(completed: { self.analyticsController.trackEvent(.Shake) })
             .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
                 return SignalProducer(value: (image, convertToBlackAndWhite(image)))
