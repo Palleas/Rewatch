@@ -120,24 +120,26 @@ class EpisodeViewController: UIViewController {
 
         episodeView.theme = themes[Int(arc4random_uniform(UInt32(themes.count)))]
         episodeView.episode = episode
-
+        episodeView.pictureState = .Ready
+    
         episodeView.shakeView.hidden = true
         episodeView.episodeContainerView.hidden = false
         episodeView.episodeImageView.hidden = false
         
         client.fetchPictureForEpisodeId(String(randomEpisode.id))
             .takeUntil(shakeSignal.0)
-            .on(completed: { self.analyticsController.trackEvent(.Shake) })
+            .on(started: {
+                    UIScheduler().schedule({ () -> () in
+                        self.episodeView.pictureState = .Loading
+                    })
+                },
+                completed: { self.analyticsController.trackEvent(.Shake) })
             .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
                 return SignalProducer(value: (image, convertToBlackAndWhite(image)))
             })
             .observeOn(UIScheduler())
             .startWithNext { (image) -> () in
-                self.episodeView.episodeImageContainer.hidden = false
-                self.episodeView.episodeImageView.image = image.0
-                self.episodeView.bnwEpisodeImageView.image = image.1
-                self.episodeView.episodeImageContainer.setNeedsLayout()
-                self.episodeView.episodeImageContainer.layoutIfNeeded()
+                self.episodeView.pictureState = .Loaded(image: image.0, bnwImage: image.1)
             }
     }
     

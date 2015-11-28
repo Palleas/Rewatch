@@ -18,6 +18,7 @@ class Stylesheet: NSObject {
     static let showBackgroundColor = UIColor(rgba: "#F74D40")
     static let episodeNumberTextColor = UIColor(rgba: "#222222")
     static let seasonNumberTextColor = UIColor(rgba: "#222222")
+    static let episodePictureBackgroundImageColor = UIColor(rgba: "#222222")
     
     static let buttonBorderColor = UIColor(rgba: "#979797")
     static let explainationTextColor = UIColor(rgba: "#F74E40")

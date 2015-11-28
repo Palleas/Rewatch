@@ -20,7 +20,40 @@ protocol EpisodeViewDelegate: class {
     func didTapShareButton()
 }
 
+
 class EpisodeView: UIView {
+    enum PictureState {
+        case Ready
+        case Loading
+        case Loaded(image: UIImage, bnwImage: UIImage)
+    }
+    
+    var pictureState: PictureState = .Ready {
+        didSet {
+            print("PictureState: \(pictureState)")
+            switch pictureState {
+            case .Ready:
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.episodeImageView.alpha = 0
+                    self.bnwEpisodeImageView.alpha = 0
+                })
+            case .Loading:
+                break
+            case .Loaded(let image, let bnwImage):
+                self.episodeImageView.image = image
+                self.bnwEpisodeImageView.image = bnwImage
+                self.episodeImageContainer.setNeedsLayout()
+                self.episodeImageContainer.layoutIfNeeded()
+
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.episodeImageView.alpha = 1
+                    self.bnwEpisodeImageView.alpha = 1
+                })
+
+            }
+        }
+    }
+    
     weak var actionDelegate: EpisodeViewDelegate?
     
     @IBOutlet weak var shakeView: ShakeView!
@@ -29,14 +62,11 @@ class EpisodeView: UIView {
     
     @IBOutlet weak var episodeImageContainer: UIView! {
         didSet {
-            episodeImageContainer.hidden = true
+            episodeImageContainer.backgroundColor = Stylesheet.episodePictureBackgroundImageColor
         }
     }
-    @IBOutlet weak var episodeImageView: UIImageView! {
-        didSet {
-            episodeImageView.hidden = true
-        }
-    }
+    
+    @IBOutlet weak var episodeImageView: UIImageView!
     
     @IBOutlet weak var bnwEpisodeImageView: UIImageView!
     
