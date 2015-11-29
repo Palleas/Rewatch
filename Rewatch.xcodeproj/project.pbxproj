@@ -57,6 +57,8 @@
 		7AAF0CDA1C04E11A0019F1DB /* Mustache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF0CD91C04E11A0019F1DB /* Mustache.framework */; };
 		7AAF0CDB1C04E11A0019F1DB /* Mustache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF0CD91C04E11A0019F1DB /* Mustache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AAF0CDE1C04E15B0019F1DB /* generate-deeplink.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 7AAF0CDD1C04E15B0019F1DB /* generate-deeplink.mustache */; };
+		7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11E91C0B954900CC594B /* CreditsViewController.swift */; };
+		7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */; };
 		7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB238D1BD0A79700E2B86E /* Client.swift */; };
 		7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */; };
 		7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */; };
@@ -172,6 +174,8 @@
 		7AAF0CD71C04DB910019F1DB /* GenerateDeeplinkActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDeeplinkActivity.swift; sourceTree = "<group>"; };
 		7AAF0CD91C04E11A0019F1DB /* Mustache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mustache.framework; path = Carthage/Build/iOS/Mustache.framework; sourceTree = "<group>"; };
 		7AAF0CDD1C04E15B0019F1DB /* generate-deeplink.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "generate-deeplink.mustache"; sourceTree = "<group>"; };
+		7ABA11E91C0B954900CC594B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsViewController.swift; path = Credits/CreditsViewController.swift; sourceTree = "<group>"; };
+		7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsView.swift; path = Credits/CreditsView.swift; sourceTree = "<group>"; };
 		7ABB238D1BD0A79700E2B86E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
 		7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 		7A52A70C1BD0544C00D78B39 /* Rewatch */ = {
 			isa = PBXGroup;
 			children = (
+				7ABA11E81C0B950300CC594B /* Credits */,
 				7AAF0CD61C04DACB0019F1DB /* Debug */,
 				7A5686231BF64D43006BDEB3 /* Analytics */,
 				7A8CC2631BEB0A44003BFE11 /* Domain */,
@@ -455,6 +460,15 @@
 				7AAF0CDD1C04E15B0019F1DB /* generate-deeplink.mustache */,
 			);
 			name = Templates;
+			sourceTree = "<group>";
+		};
+		7ABA11E81C0B950300CC594B /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				7ABA11E91C0B954900CC594B /* CreditsViewController.swift */,
+				7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */,
+			);
+			name = Credits;
 			sourceTree = "<group>";
 		};
 		7AF8A0021BD97FCB00969B23 /* UI */ = {
@@ -677,9 +691,11 @@
 				7AE290651BEAFC92005838AB /* DownloadAnimationView.swift in Sources */,
 				7A04889E1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift in Sources */,
 				7A91752E1BEC57D2009FAE52 /* RootView.swift in Sources */,
+				7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */,
 				7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */,
 				7AAF0CD81C04DB910019F1DB /* GenerateDeeplinkActivity.swift in Sources */,
 				7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */,
+				7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */,
 				7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */,
 				7A59CEED1BEBCAA200B17A71 /* SettingsViewController.swift in Sources */,
 				7A8F7F931BE460C800CA501A /* HEXColor.swift in Sources */,

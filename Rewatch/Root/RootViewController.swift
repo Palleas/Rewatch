@@ -36,6 +36,16 @@ class RootViewController: UIViewController {
         view = RootView()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let creditsController = CreditsViewController()
+        addChildViewController(creditsController)
+        creditsController.willMoveToParentViewController(self)
+        rootView.creditsView = creditsController.view
+        creditsController.didMoveToParentViewController(self)
+    }
+    
     func boot() {
         client.authenticated.producer.observeOn(UIScheduler()).startWithNext { (authenticated) -> () in
             let target: UIViewController
@@ -63,6 +73,10 @@ class RootViewController: UIViewController {
         currentViewController?.removeFromParentViewController()
     }
     
+    func toogleCredits() {
+        rootView.toggleCredits()
+    }
+    
     var episodeViewController: EpisodeViewController? {
         get {
             guard let navigation = childViewControllers.first as? UINavigationController else { return nil }
@@ -70,5 +84,16 @@ class RootViewController: UIViewController {
             return navigation.viewControllers.filter({ $0 is EpisodeViewController }).first as? EpisodeViewController
         }
     }
-    
+}
+
+extension UIViewController {
+    var rootViewController: RootViewController? {
+        get {
+            if let rootViewController = parentViewController as? RootViewController {
+                return rootViewController
+            }
+            
+            return parentViewController?.rootViewController
+        }
+    }
 }

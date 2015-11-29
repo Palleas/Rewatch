@@ -67,6 +67,7 @@ class EpisodeViewController: UIViewController {
 
         let leftButton = UIButton(type: .Custom)
         leftButton.setImage(UIImage(named: "Hamburger"), forState: .Normal)
+        leftButton.addTarget(self, action: Selector("didTapCreditsButton:"), forControlEvents: .TouchUpInside)
         leftButton.sizeToFit()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
         
@@ -87,7 +88,7 @@ class EpisodeViewController: UIViewController {
         if episodes.count == 0 {
             let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
             let navigation = UINavigationController(rootViewController: downloadViewController)
-            parentViewController?.presentViewController(navigation, animated: true, completion: nil)
+            rootViewController?.presentViewController(navigation, animated: true, completion: nil)
         } else {
             becomeFirstResponder()
         }
@@ -148,6 +149,10 @@ class EpisodeViewController: UIViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         presentViewController(settings, animated: true, completion: nil)
+    }
+    
+    func didTapCreditsButton(button: UIButton) {
+        rootViewController?.toogleCredits()
     }
 }
 
