@@ -128,14 +128,17 @@ class EpisodeView: UIView {
         didSet {
             guard let theme = theme else { return }
             
-            showNameLabel.textColor = theme.showNameColor
-            seasonNumberLabel.textColor = theme.seasonNumberColor
-            episodeNumberLabel.textColor = theme.episodeNumberColor
-            summaryLabel.textColor = theme.summaryColor
-            episodeTitleLabel.textColor = theme.episodeTitleColor
-            episodeContentView.backgroundColor = theme.backgroundColor
-            backgroundColor = theme.backgroundColor
-            shareButton.tintColor = theme.summaryColor
+            UIView.animateWithDuration(0.3) { () -> Void in
+                self.backgroundColor = theme.backgroundColor
+                self.episodeContentView.backgroundColor = theme.backgroundColor
+            }
+
+            self.shareButton.tintColor = theme.summaryColor
+            self.showNameLabel.textColor = theme.showNameColor
+            self.seasonNumberLabel.textColor = theme.seasonNumberColor
+            self.episodeNumberLabel.textColor = theme.episodeNumberColor
+            self.summaryLabel.textColor = theme.summaryColor
+            self.episodeTitleLabel.textColor = theme.episodeTitleColor
         }
     }
     
