@@ -66,10 +66,17 @@ class EpisodeView: UIView {
         }
     }
     
-    @IBOutlet weak var episodeImageView: UIImageView!
+    @IBOutlet weak var episodeImageView: UIImageView! {
+        didSet {
+            episodeImageView.alpha = 0
+        }
+    }
     
-    @IBOutlet weak var bnwEpisodeImageView: UIImageView!
-    
+    @IBOutlet weak var bnwEpisodeImageView: UIImageView! {
+        didSet {
+            bnwEpisodeImageView.alpha = 0
+        }
+    }
 
     @IBOutlet weak var episodeContainerView: UIScrollView! {
         didSet {
