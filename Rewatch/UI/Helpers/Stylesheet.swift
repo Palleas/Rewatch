@@ -24,6 +24,9 @@ class Stylesheet: NSObject {
     static let explainationTextColor = UIColor(rgba: "#F74E40")
     static let statusTextColor = UIColor.whiteColor()
     
+    static let creditsTitleColor = UIColor(rgba: "#F74D40")
+    static let creditsValueColor = UIColor.whiteColor()
+
     // Fonts
     static let titleFont = UIFont(name: "Roboto-Bold", size: 14)!
     static let textFont = UIFont(name: "Roboto", size: 18)!
@@ -35,6 +38,10 @@ class Stylesheet: NSObject {
     static let buttonFont = UIFont(name: "Roboto-Bold", size: 16)!
     static let explainationFont = UIFont(name: "Roboto-Light", size: 15)!
     static let statusFont = UIFont(name: "Roboto", size: 15)!
+    
+    static let creditsTitleFont = UIFont(name: "Roboto-Thin", size: 12)!
+    static let creditsValueFont = UIFont(name: "Roboto-Thin", size: 17)!
+
 
     func apply() {
         UINavigationBar.appearance().translucent = false
