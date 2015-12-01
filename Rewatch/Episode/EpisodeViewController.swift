@@ -28,7 +28,8 @@ class EpisodeWrapper: EpisodeViewData {
 
 class EpisodeViewController: UIViewController {
     let themes: [Theme] = [WhiteTheme(), RedTheme(), DarkTheme()]
-
+    private var checkInitialContentToken: dispatch_once_t = 0
+    
     var episodeView: EpisodeView {
         get {
             return view as! EpisodeView
@@ -86,9 +87,11 @@ class EpisodeViewController: UIViewController {
         episodes = persistenceController.allEpisodes()
         
         if episodes.count == 0 {
-            let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
-            let navigation = UINavigationController(rootViewController: downloadViewController)
-            rootViewController?.presentViewController(navigation, animated: true, completion: nil)
+            dispatch_once(&checkInitialContentToken, { () -> Void in
+                let downloadViewController = DownloadViewController(client: self.client, downloadController: DownloadController(client: self.client, persistenceController: self.persistenceController))
+                let navigation = UINavigationController(rootViewController: downloadViewController)
+                self.rootViewController?.presentViewController(navigation, animated: true, completion: nil)
+            })
         } else {
             becomeFirstResponder()
         }

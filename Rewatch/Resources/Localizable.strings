@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Rewatch
+
+  Created by Romain Pouclet on 2015-11-30.
+  Copyright © 2015 Perfectly-Cooked. All rights reserved.
+*/
+
+"NO_TV_SHOWS_TITLE" = "No watched episodes";
+"NO_TV_SHOWS_MESSAGE" = "We couldn't find episode you've already marked as seen on betaseries.com, which makes the app unusable. Do you want to visit betaseries and add some now?";
+"NO_TV_SHOWS_DISMISS" = "Dismiss";
+"NO_TV_SHOWS_VISIT" = "Visit Betaseries.com";
