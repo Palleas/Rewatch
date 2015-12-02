@@ -162,8 +162,15 @@ class EpisodeViewController: UIViewController {
 extension EpisodeViewController: EpisodeViewDelegate {
     func didTapShareButton() {
         guard let episode = episodeView.episode as? EpisodeWrapper else { return }
-
-        let activity = UIActivityViewController(activityItems: [episode.wrapped], applicationActivities: [GenerateDeeplinkActivity()])
+        
+        let activities: [UIActivity]?
+        if NSUserDefaults.standardUserDefaults().boolForKey("enabled_deeplinking") {
+            activities = [GenerateDeeplinkActivity()]
+        } else {
+            activities = nil
+        }
+        
+        let activity = UIActivityViewController(activityItems: [episode.wrapped], applicationActivities: activities)
         presentViewController(activity, animated: true, completion: nil)
     }
 }

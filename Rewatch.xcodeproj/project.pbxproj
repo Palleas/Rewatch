@@ -16,6 +16,7 @@
 		7A3963981C0D20F900851479 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A3963971C0D20F900851479 /* Localizable.strings */; };
 		7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4536151BD9BED700A680CB /* Stylesheet.swift */; };
 		7A4AB29B1BE82A12006FBDFD /* PictureHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AB29A1BE82A12006FBDFD /* PictureHelpers.swift */; };
+		7A4B1E0B1C0F62BD0061FAA3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A4B1E0A1C0F62BD0061FAA3 /* Settings.bundle */; };
 		7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */; };
 		7A52A7101BD0544C00D78B39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */; };
 		7A52A7151BD0544C00D78B39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7141BD0544C00D78B39 /* Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		7A4536151BD9BED700A680CB /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		7A4AB29A1BE82A12006FBDFD /* PictureHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureHelpers.swift; sourceTree = "<group>"; };
 		7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Rewatch.xcconfig; sourceTree = "<group>"; };
+		7A4B1E0A1C0F62BD0061FAA3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7A52A70A1BD0544C00D78B39 /* Rewatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A52A70D1BD0544C00D78B39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				7A7F44131BD1C4C200B3BD59 /* Keys.plist */,
 				7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */,
 				7A3963971C0D20F900851479 /* Localizable.strings */,
+				7A4B1E0A1C0F62BD0061FAA3 /* Settings.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				7AF8A01B1BD9803D00969B23 /* Roboto-ThinItalic.ttf in Resources */,
 				7AE290631BEAF50E005838AB /* DownloadViewController.xib in Resources */,
 				7AF8A0101BD9803D00969B23 /* Roboto-Black.ttf in Resources */,
+				7A4B1E0B1C0F62BD0061FAA3 /* Settings.bundle in Resources */,
 				7A52A7151BD0544C00D78B39 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
