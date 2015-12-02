@@ -170,7 +170,7 @@ extension EpisodeViewController: EpisodeViewDelegate {
             activities = nil
         }
         
-        let activity = UIActivityViewController(activityItems: [episode.wrapped], applicationActivities: activities)
+        let activity = UIActivityViewController(activityItems: [String(format: NSLocalizedString("SHARING_MESSAGE", comment: "Sharing message"), "\(episode.showName) - \(episode.title)"), episode.wrapped], applicationActivities: activities)
         presentViewController(activity, animated: true, completion: nil)
     }
 }
