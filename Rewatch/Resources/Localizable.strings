@@ -7,8 +7,8 @@
 */
 
 "NO_TV_SHOWS_TITLE" = "No watched episodes";
-"NO_TV_SHOWS_MESSAGE" = "We couldn't find episode you've already marked as seen on betaseries.com, which makes the app unusable. Do you want to visit betaseries and add some now?";
+"NO_TV_SHOWS_MESSAGE" = "We couldn't find episode you've already marked as seen on BetaSeries, which makes the app unusable. Do you want to visit BetaSeries and add some now?";
 "NO_TV_SHOWS_DISMISS" = "Dismiss";
-"NO_TV_SHOWS_VISIT" = "Visit Betaseries.com";
+"NO_TV_SHOWS_VISIT" = "Visit BetaSeries";
 
 "SHARING_MESSAGE" = "I'm rewatching \"%@\" - http://rewatchapp.com";
