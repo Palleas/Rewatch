@@ -9,15 +9,31 @@
 import UIKit
 
 class CreditsViewController: UIViewController {
-
+    var creditsView: CreditsView {
+        get {
+            return view as! CreditsView
+        }
+    }
+    
     override func loadView() {
-        view = CreditsView()
+        let creditsView = CreditsView()
+        creditsView.delegate = self
+        view = creditsView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        creditsView.delegate = self
     }
 
+}
+
+extension CreditsViewController: CreditsViewDelegate {
+    func didSelectCreditItem(item: CreditsItem) {
+        if let url = item.URL {
+            UIApplication.sharedApplication().openURL(url)
+            rootViewController?.toogleCredits()
+        }
+    }
 }

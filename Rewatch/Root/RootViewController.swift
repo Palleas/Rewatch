@@ -13,6 +13,9 @@ class RootViewController: UIViewController {
     let client: Client
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
+    let creditsController = CreditsViewController()
+
+    private(set) var currentViewController: UIViewController?
     
     var rootView: RootView {
         get {
@@ -39,7 +42,6 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let creditsController = CreditsViewController()
         addChildViewController(creditsController)
         creditsController.willMoveToParentViewController(self)
         rootView.creditsView = creditsController.view
@@ -63,7 +65,6 @@ class RootViewController: UIViewController {
     }
     
     func transitionToViewController(controller: UIViewController) {
-        let currentViewController = childViewControllers.first
         
         addChildViewController(controller)
         controller.willMoveToParentViewController(self)
@@ -71,6 +72,7 @@ class RootViewController: UIViewController {
         controller.didMoveToParentViewController(self)
         
         currentViewController?.removeFromParentViewController()
+        currentViewController = controller
     }
     
     func toogleCredits() {
