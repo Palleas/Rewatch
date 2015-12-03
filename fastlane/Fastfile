@@ -41,6 +41,7 @@ platform :ios do
   lane :beta do
     # snapshot
     sigh
+    ENV["PROFILE_UUID"] = lane_context[SharedValues::SIGH_UDID]
     gym(scheme: "Rewatch", use_legacy_build_api: true) # Build your app - more options available
     pilot(skip_submission: true)
 
