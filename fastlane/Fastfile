@@ -42,7 +42,7 @@ platform :ios do
     # snapshot
     sigh
     gym(scheme: "Rewatch", use_legacy_build_api: true) # Build your app - more options available
-    pilot
+    pilot(skip_submission: true)
 
     # sh "your_script.sh"
     # You can also use other beta testing services here
