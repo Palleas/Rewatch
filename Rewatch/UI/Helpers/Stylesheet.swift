@@ -28,7 +28,7 @@ class Stylesheet: NSObject {
     static let creditsValueColor = UIColor.whiteColor()
 
     // Fonts
-    static let titleFont = UIFont(name: "Roboto-Bold", size: 14)!
+    static let titleFont = UIFont(name: "Roboto-Bold", size: 16)!
     static let textFont = UIFont(name: "Roboto-Thin", size: 21)!
     static let showNameTextFont = UIFont(name: "Roboto-Light", size: 21)!
     static let episodeTitleTextFont = UIFont(name: "Roboto-Bold", size: 26)!
