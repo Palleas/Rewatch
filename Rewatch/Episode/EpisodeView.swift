@@ -30,7 +30,6 @@ class EpisodeView: UIView {
     
     var pictureState: PictureState = .Ready {
         didSet {
-            print("PictureState: \(pictureState)")
             switch pictureState {
             case .Ready:
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
