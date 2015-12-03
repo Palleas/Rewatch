@@ -50,10 +50,10 @@ class CreditsView: UIView {
     
     let title = UILabel()
     let creditsContainer = UIStackView()
-    let items = [CreditsItem(title: "Design", value: "Adrien Heury", URL: NSURL(string: "http://www.adrien-heury.net")),
-        CreditsItem(title: "Development", value: "Romain Pouclet", URL: NSURL(string: "http://romain-pouclet.com")),
-        CreditsItem(title: "API", value: "Betaseries.com", URL: NSURL(string: "https://betaseries.com")),
-        CreditsItem(title: "Version", value: "1.0 (beta)", URL: nil)
+    let items = [CreditsItem(title: NSLocalizedString("DESIGN", comment: "Design"), value: "Adrien Heury", URL: NSURL(string: "http://www.adrien-heury.net")),
+        CreditsItem(title: NSLocalizedString("DEVELOPMENT", comment: "Development"), value: "Romain Pouclet", URL: NSURL(string: "http://romain-pouclet.com")),
+        CreditsItem(title: NSLocalizedString("API", comment: "API"), value: "Betaseries.com", URL: NSURL(string: "https://betaseries.com")),
+        CreditsItem(title: NSLocalizedString("VERSION", comment: "Version"), value: "1.0 (beta)", URL: nil)
     ]
     
     weak var delegate: CreditsViewDelegate?

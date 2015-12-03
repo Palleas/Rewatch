@@ -12,3 +12,38 @@
 "NO_TV_SHOWS_VISIT" = "Visiter BetaSeries";
 
 "SHARING_MESSAGE" = "Je regarde à nouveau \"%@\" - http://rewatchapp.com";
+
+/* Debug section */
+"DEBUG_CENTER_SECTION" = "Debug";
+
+/* Episodes count */
+"EPISODES_COUNT" = "Nombre d'épisodes";
+
+/* Last sync */
+"LAST_SYNC" = "Dernière synchronisation";
+
+/* Loading Message */
+"LOADING_MESSAGE" = "Chargement...";
+
+/* Log out button label */
+"LOG_OUT" = "Déconnexion";
+
+/* Member section */
+"MEMBER_CENTER_SECTION" = "Membre";
+
+/* Shows count */
+"SHOWS_COUNT" = "Nombre de séries";
+
+/* Sync now button label */
+"SYNC_NOW" = "Synchroniser maintenant";
+
+/* Member infos available message */
+"UNAVAILABLE" = "Indisponible";
+
+"VERSION" = "Version";
+
+"API" = "API";
+
+"DEVELOPMENT" = "Développement";
+
+"DESIGN" = "Design";
