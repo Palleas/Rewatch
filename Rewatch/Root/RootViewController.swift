@@ -65,7 +65,6 @@ class RootViewController: UIViewController {
     }
     
     func transitionToViewController(controller: UIViewController) {
-        
         addChildViewController(controller)
         controller.willMoveToParentViewController(self)
         rootView.transitionToView(controller.view)

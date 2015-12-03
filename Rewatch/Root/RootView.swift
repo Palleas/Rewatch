@@ -13,6 +13,7 @@ class RootView: UIView {
     var creditsView: UIView? {
         didSet {
             if let creditsView = creditsView {
+                creditsView.hidden = true
                 insertSubview(creditsView, atIndex: 0)
                 creditsView.translatesAutoresizingMaskIntoConstraints = false
                 creditsView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
@@ -69,6 +70,7 @@ class RootView: UIView {
     }
     
     func toggleCredits() {
+        creditsView?.hidden = false
         if let leftContainerConstraint = self.leftContainerConstraint where leftContainerConstraint.constant > 0 {
             self.leftContainerConstraint?.constant = 0
         } else {
