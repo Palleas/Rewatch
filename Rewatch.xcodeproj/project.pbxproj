@@ -901,6 +901,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.rewatch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "$(PROFILE_UUID)";
 			};
 			name = Debug;
 		};
@@ -923,6 +924,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.rewatch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "$(PROFILE_UUID)";
 			};
 			name = Release;
 		};
