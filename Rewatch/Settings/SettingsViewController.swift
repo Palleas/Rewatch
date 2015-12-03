@@ -92,7 +92,7 @@ class SettingsViewController: UITableViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier(MemberCellIdentifier, forIndexPath: indexPath)
-                cell.textLabel?.text = "Loading..."
+                cell.textLabel?.text = NSLocalizedString("LOADING_MESSAGE", comment: "Loading Message")
                 cell.textLabel?.textColor = UIColor.lightGrayColor()
                 
                 client
@@ -108,8 +108,7 @@ class SettingsViewController: UITableViewController {
                     })
                     .observeOn(UIScheduler())
                     .on(error: { error in
-                        print("Unable to load member infos: \(error)")
-                        self.tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text = "Unavailable"
+                        self.tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text = NSLocalizedString("UNAVAILABLE", comment: "Member infos available message")
                     })
                     .startWithNext({ (avatar, login) -> () in
                         guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
@@ -121,24 +120,24 @@ class SettingsViewController: UITableViewController {
                 
             } else if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier(MemberActionCellIdentifier, forIndexPath: indexPath)
-                cell.textLabel?.text = "Sync now"
+                cell.textLabel?.text = NSLocalizedString("SYNC_NOW", comment: "Sync now button label")
                 cell.textLabel?.textColor = .blueColor()
             } else {
                 cell = tableView.dequeueReusableCellWithIdentifier(MemberActionCellIdentifier, forIndexPath: indexPath)
-                cell.textLabel?.text = "Log Out"
+                cell.textLabel?.text = NSLocalizedString("LOG_OUT", comment: "Log out button label")
                 cell.textLabel?.textColor = .redColor()
             }
         // Debug
         } else if indexPath.section == 1 {
             cell = tableView.dequeueReusableCellWithIdentifier(DebugCellIdentifier, forIndexPath: indexPath)
             if indexPath.row == 0 {
-                cell.textLabel?.text = "Number of shows"
+                cell.textLabel?.text = NSLocalizedString("SHOWS_COUNT", comment: "Shows count")
                 cell.detailTextLabel?.text = String(persistenceController.numberOfShows())
             } else if indexPath.row == 1 {
-                cell.textLabel?.text = "Number of episodes"
+                cell.textLabel?.text = NSLocalizedString("EPISODES_COUNT", comment: "Episodes count")
                 cell.detailTextLabel?.text = String(persistenceController.numberOfEpisodes())
             } else {
-                cell.textLabel?.text = "Last sync"
+                cell.textLabel?.text = NSLocalizedString("LAST_SYNC", comment: "Last sync")
                 cell.detailTextLabel?.text = lastSyncDate()
             }
         // Current Version
@@ -154,11 +153,11 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Member"
+            return NSLocalizedString("MEMBER_CENTER_SECTION", comment: "Member section")
         }
         
         if section == 1 {
-            return "Debug"
+            return NSLocalizedString("DEBUG_CENTER_SECTION", comment: "Member section")
         }
         
         return nil

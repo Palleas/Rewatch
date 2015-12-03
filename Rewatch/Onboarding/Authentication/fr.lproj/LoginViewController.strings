@@ -1,0 +1,6 @@
+
+/* Class = "UIButton"; normalTitle = "AUTHENTICATE"; ObjectID = "JUe-id-Fzi"; */
+"JUe-id-Fzi.normalTitle" = "IDENTIFICATION";
+
+/* Class = "UILabel"; text = "This will open the betaseries website where you'll be able to fill in your credentials"; ObjectID = "mZv-9U-tkZ"; */
+"mZv-9U-tkZ.text" = "Cette action va ouvrir BetaSeries pour vous permettre de vous identifier.";
