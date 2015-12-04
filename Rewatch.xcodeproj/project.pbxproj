@@ -139,11 +139,11 @@
 		7A04889C1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredShow+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A04889D1BE9AAD000F7C890 /* StoredShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredShow.swift; sourceTree = "<group>"; };
 		7A0D125C1C0FC8D5008AE9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EpisodeViewController.xib; sourceTree = "<group>"; };
-		7A0D125E1C0FC8F6008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EpisodeViewController.strings; sourceTree = "<group>"; };
+		7A0D125E1C0FC8F6008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EpisodeViewController.xib; sourceTree = "<group>"; };
 		7A0D12601C0FC995008AE9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoginViewController.xib; sourceTree = "<group>"; };
-		7A0D12631C0FC9A9008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LoginViewController.strings; sourceTree = "<group>"; };
+		7A0D12631C0FC9A9008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LoginViewController.xib; sourceTree = "<group>"; };
 		7A0D12651C0FC9B3008AE9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DownloadViewController.xib; sourceTree = "<group>"; };
-		7A0D12681C0FC9B5008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DownloadViewController.strings; sourceTree = "<group>"; };
+		7A0D12681C0FC9B5008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DownloadViewController.xib; sourceTree = "<group>"; };
 		7A0D126A1C0FCAB5008AE9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A0D126C1C0FCAB7008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 		7AAF0CD71C04DB910019F1DB /* GenerateDeeplinkActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDeeplinkActivity.swift; sourceTree = "<group>"; };
 		7AAF0CD91C04E11A0019F1DB /* Mustache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mustache.framework; path = Carthage/Build/iOS/Mustache.framework; sourceTree = "<group>"; };
 		7AAF0CDD1C04E15B0019F1DB /* generate-deeplink.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "generate-deeplink.mustache"; sourceTree = "<group>"; };
-		7ABA11E91C0B954900CC594B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsViewController.swift; path = Credits/CreditsViewController.swift; sourceTree = "<group>"; };
-		7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsView.swift; path = Credits/CreditsView.swift; sourceTree = "<group>"; };
+		7ABA11E91C0B954900CC594B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		7ABB238D1BD0A79700E2B86E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
 		7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
@@ -307,9 +307,9 @@
 		7A52A70C1BD0544C00D78B39 /* Rewatch */ = {
 			isa = PBXGroup;
 			children = (
+				7A5686231BF64D43006BDEB3 /* Analytics */,
 				7ABA11E81C0B950300CC594B /* Credits */,
 				7AAF0CD61C04DACB0019F1DB /* Debug */,
-				7A5686231BF64D43006BDEB3 /* Analytics */,
 				7A8CC2631BEB0A44003BFE11 /* Domain */,
 				7A8CC2691BEB0AC3003BFE11 /* Episode */,
 				7A1633011BD876AE00EB7281 /* Helpers */,
@@ -361,12 +361,12 @@
 		7A8CC2621BEB0A18003BFE11 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7AAF0CDC1C04E1410019F1DB /* Templates */,
 				7A5686261BF6539C006BDEB3 /* Sounds */,
+				7AAF0CDC1C04E1410019F1DB /* Templates */,
 				7A52A7191BD0544C00D78B39 /* Info.plist */,
 				7A7F44131BD1C4C200B3BD59 /* Keys.plist */,
-				7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */,
 				7A0D126B1C0FCAB5008AE9F0 /* Localizable.strings */,
+				7A4AB29C1BE82E03006FBDFD /* Rewatch.xcconfig */,
 				7A4B1E0A1C0F62BD0061FAA3 /* Settings.bundle */,
 			);
 			path = Resources;
@@ -435,11 +435,11 @@
 		7A8CC2691BEB0AC3003BFE11 /* Episode */ = {
 			isa = PBXGroup;
 			children = (
+				7A53263E1C067E4C0091B139 /* EpisodeImageContainerView.swift */,
 				7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */,
 				7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */,
 				7A0D125D1C0FC8D5008AE9F0 /* EpisodeViewController.xib */,
 				7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */,
-				7A53263E1C067E4C0091B139 /* EpisodeImageContainerView.swift */,
 			);
 			path = Episode;
 			sourceTree = "<group>";
@@ -457,9 +457,9 @@
 		7AAF0CD61C04DACB0019F1DB /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				7AAF0CD71C04DB910019F1DB /* GenerateDeeplinkActivity.swift */,
-				7AE8941F1C05290600A29F63 /* GenerateDeepLinkViewController.swift */,
 				7A5326191C0566230091B139 /* GenerateDeepLinkView.swift */,
+				7AE8941F1C05290600A29F63 /* GenerateDeepLinkViewController.swift */,
+				7AAF0CD71C04DB910019F1DB /* GenerateDeeplinkActivity.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -469,16 +469,16 @@
 			children = (
 				7AAF0CDD1C04E15B0019F1DB /* generate-deeplink.mustache */,
 			);
-			name = Templates;
+			path = Templates;
 			sourceTree = "<group>";
 		};
 		7ABA11E81C0B950300CC594B /* Credits */ = {
 			isa = PBXGroup;
 			children = (
-				7ABA11E91C0B954900CC594B /* CreditsViewController.swift */,
 				7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */,
+				7ABA11E91C0B954900CC594B /* CreditsViewController.swift */,
 			);
-			name = Credits;
+			path = Credits;
 			sourceTree = "<group>";
 		};
 		7AF8A0021BD97FCB00969B23 /* UI */ = {
@@ -744,6 +744,7 @@
 				7A0D125E1C0FC8F6008AE9F0 /* fr */,
 			);
 			name = EpisodeViewController.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 		7A0D12611C0FC995008AE9F0 /* LoginViewController.xib */ = {
@@ -753,6 +754,7 @@
 				7A0D12631C0FC9A9008AE9F0 /* fr */,
 			);
 			name = LoginViewController.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 		7A0D12661C0FC9B3008AE9F0 /* DownloadViewController.xib */ = {
@@ -762,6 +764,7 @@
 				7A0D12681C0FC9B5008AE9F0 /* fr */,
 			);
 			name = DownloadViewController.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 		7A0D126B1C0FCAB5008AE9F0 /* Localizable.strings */ = {
@@ -771,6 +774,7 @@
 				7A0D126C1C0FCAB7008AE9F0 /* fr */,
 			);
 			name = Localizable.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 		7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */ = {
