@@ -5,25 +5,43 @@ import XCPlayground
 
 XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
 
-let view = UIView(frame: CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 300)))
+let view = UIView(frame: CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 150)))
 
 XCPlaygroundPage.currentPage.liveView = view
 
+// Draw the eye
+let eyeLayer = CALayer()
+eyeLayer.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 300, height: 200))
+view.layer.addSublayer(eyeLayer)
+
+// Top line
+let topLineLayerPath = UIBezierPath()
+topLineLayerPath.moveToPoint(CGPoint(x: 30, y: 75))
+topLineLayerPath.addCurveToPoint(CGPoint(x: 270, y: 75), controlPoint1: CGPoint(x: 120, y: 0), controlPoint2: CGPoint(x: 170, y: 0))
+topLineLayerPath.addCurveToPoint(CGPoint(x: 30, y: 75), controlPoint1: CGPoint(x: 170, y: 150), controlPoint2: CGPoint(x: 120, y: 150))
+
+let topLineLayer = CAShapeLayer()
+topLineLayer.path = topLineLayerPath.CGPath
+topLineLayer.strokeColor = UIColor.whiteColor().CGColor
+topLineLayer.lineWidth = 4
+eyeLayer.addSublayer(topLineLayer)
+
+// Center piece
 let centerPiece = CALayer()
-centerPiece.frame = CGRect(origin: CGPoint(x: 75, y: 75), size: CGSize(width: 150, height: 150))
+centerPiece.frame = CGRect(origin: CGPoint(x: 100, y: 30), size: CGSize(width: 100, height: 100))
 view.layer.addSublayer(centerPiece)
 
 let arrowLayerContainer = CALayer()
-arrowLayerContainer.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 150, height: 150))
+arrowLayerContainer.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100))
 centerPiece.addSublayer(arrowLayerContainer)
 
 let arrowLayer = createArrowLayer()
-arrowLayer.position = CGPoint(x: 135, y: 75)
+arrowLayer.position = CGPoint(x: 65, y: 50)
 arrowLayerContainer.addSublayer(arrowLayer)
 
-let circlePath = UIBezierPath(arcCenter: CGPointZero, radius: 75, startAngle: 0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
+let circlePath = UIBezierPath(arcCenter: CGPointZero, radius: 30, startAngle: 0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
 let circleLayer = CAShapeLayer()
-circleLayer.position = CGPoint(x: 75, y: 75)
+circleLayer.position = CGPoint(x: 50, y: 50)
 circleLayer.path = circlePath.CGPath
 circleLayer.fillColor = UIColor.clearColor().CGColor
 circleLayer.strokeColor = RewatchColorScheme.mainColor.CGColor
