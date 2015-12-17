@@ -9,14 +9,30 @@
 import Foundation
 import Mixpanel
 
-enum AnalyticsEvent: String {
-    case Shake = "shake"
-    case Credits = "credits"
-    case Settings = "settings"
-    case ManualSync = "manual_sync"
-    case LogOut = "log_out"
-    case SupportMail = "support_mail"
-    case SupportTwitter = "support_twitter"
+enum AnalyticsEvent {
+    case Shake
+    case Credits
+    case Settings
+    case ManualSync
+    case LogOut
+    case SupportMail
+    case SupportTwitter
+    case OpenURL(NSURL)
+}
+
+extension AnalyticsEvent: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .Shake: return "shake"
+        case .Credits: return "credits"
+        case .Settings: return "settings"
+        case .ManualSync: return "manual_sync"
+        case .LogOut: return "log_out"
+        case .SupportMail: return "support_mail"
+        case .SupportTwitter: return "support_twitter"
+        case .OpenURL(_): return "open_url"
+        }
+    }
 }
 
 protocol AnalyticsController {
@@ -31,7 +47,14 @@ class MixpanelAnalyticsController: AnalyticsController {
     }
     
     func trackEvent(event: AnalyticsEvent) {
-        mixpanel.track(event.rawValue)
+        let properties: [NSObject : AnyObject]?
+        switch event {
+        case .OpenURL(let url):
+            properties = ["url": url.description]
+        default:
+            properties = [:]
+        }
+        mixpanel.track(event.description, properties: properties)
     }
 }
 

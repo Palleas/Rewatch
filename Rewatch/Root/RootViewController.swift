@@ -13,7 +13,7 @@ class RootViewController: UIViewController {
     let client: Client
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
-    let creditsController = CreditsViewController()
+    let creditsController: CreditsViewController
 
     private(set) var currentViewController: UIViewController?
     
@@ -27,6 +27,7 @@ class RootViewController: UIViewController {
         self.client = client
         self.persistenceController = persistenceController
         self.analyticsController = analyticsController
+        self.creditsController = CreditsViewController(analyticsController: analyticsController)
         
         super.init(nibName: nil, bundle: nil)
     }

@@ -15,6 +15,18 @@ class CreditsViewController: UIViewController {
         }
     }
     
+    let analyticsController: AnalyticsController
+    
+    init(analyticsController: AnalyticsController) {
+        self.analyticsController = analyticsController
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         let creditsView = CreditsView()
         creditsView.delegate = self
@@ -32,6 +44,8 @@ class CreditsViewController: UIViewController {
 extension CreditsViewController: CreditsViewDelegate {
     func didSelectCreditItem(item: CreditsItem) {
         if let url = item.URL {
+            analyticsController.trackEvent(.OpenURL(url))
+            
             UIApplication.sharedApplication().openURL(url)
             rootViewController?.toogleCredits()
         }
