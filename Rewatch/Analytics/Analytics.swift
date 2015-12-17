@@ -14,6 +14,7 @@ enum AnalyticsEvent: String {
     case Credits = "credits"
     case Settings = "settings"
     case ManualSync = "manual_sync"
+    case LogOut = "log_out"
 }
 
 protocol AnalyticsController {

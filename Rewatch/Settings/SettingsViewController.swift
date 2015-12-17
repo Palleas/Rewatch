@@ -202,6 +202,7 @@ class SettingsViewController: UITableViewController {
             let navigation = UINavigationController(rootViewController: downloadViewController)
             presentViewController(navigation, animated: true, completion: nil)
         case (0, 2):
+            analyticsController.trackEvent(.LogOut)
             let keychain = KeychainSwift()
             keychain.clear()
             
