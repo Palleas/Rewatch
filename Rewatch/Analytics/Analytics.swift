@@ -15,6 +15,8 @@ enum AnalyticsEvent: String {
     case Settings = "settings"
     case ManualSync = "manual_sync"
     case LogOut = "log_out"
+    case SupportMail = "support_mail"
+    case SupportTwitter = "support_twitter"
 }
 
 protocol AnalyticsController {

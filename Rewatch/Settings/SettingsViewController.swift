@@ -209,10 +209,14 @@ class SettingsViewController: UITableViewController {
             client.token = nil
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         case (1, 0):
+            analyticsController.trackEvent(.SupportTwitter)
+
             UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/rewatch_app")!)
             break
         case (1, 1):
             if MFMailComposeViewController.canSendMail() {
+                analyticsController.trackEvent(.SupportMail)
+                
                 let composer = MFMailComposeViewController()
                 composer.mailComposeDelegate = self
                 composer.setToRecipients(["romain@rewatchapp.com"])
