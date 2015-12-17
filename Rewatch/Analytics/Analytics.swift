@@ -13,6 +13,7 @@ enum AnalyticsEvent: String {
     case Shake = "shake"
     case Credits = "credits"
     case Settings = "settings"
+    case ManualSync = "manual_sync"
 }
 
 protocol AnalyticsController {

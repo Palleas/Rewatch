@@ -44,11 +44,13 @@ class SettingsViewController: UITableViewController {
     
     let client: Client
     let persistenceController: PersistenceController
+    let analyticsController: AnalyticsController
     
-    init(client: Client, persistenceController: PersistenceController, completion: Completion) {
+    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController, completion: Completion) {
         self.client = client
         self.persistenceController = persistenceController
         self.completion = completion
+        self.analyticsController = analyticsController
         
         super.init(style: .Grouped)
         
@@ -194,6 +196,8 @@ class SettingsViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 1):
+            analyticsController.trackEvent(.ManualSync)
+            
             let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
             let navigation = UINavigationController(rootViewController: downloadViewController)
             presentViewController(navigation, animated: true, completion: nil)
