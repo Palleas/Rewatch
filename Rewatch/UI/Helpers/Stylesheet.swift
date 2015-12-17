@@ -26,7 +26,9 @@ class Stylesheet: NSObject {
     
     static let creditsTitleColor = UIColor(rgba: "#F74D40")
     static let creditsValueColor = UIColor.whiteColor()
-
+    
+    static let arrowColor = UIColor(rgba: "#F74D40")
+    
     // Fonts
     static let titleFont = UIFont(name: "Roboto-Bold", size: 16)!
     static let textFont = UIFont(name: "Roboto-Thin", size: 18)!
