@@ -148,6 +148,7 @@ class EpisodeViewController: UIViewController {
     }
     
     func didTapSettingsButton(button: UIButton) {
+        analyticsController.trackEvent(.Settings)
         let settings = UINavigationController(rootViewController: SettingsViewController(client: client, persistenceController: persistenceController, completion: { () -> Void in
             self.dismissViewControllerAnimated(true, completion: nil)
         }))

@@ -12,6 +12,7 @@ import Mixpanel
 enum AnalyticsEvent: String {
     case Shake = "shake"
     case Credits = "credits"
+    case Settings = "settings"
 }
 
 protocol AnalyticsController {
