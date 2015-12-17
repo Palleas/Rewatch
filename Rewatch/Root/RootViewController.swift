@@ -75,6 +75,7 @@ class RootViewController: UIViewController {
     }
     
     func toogleCredits() {
+        analyticsController.trackEvent(.Credits)
         rootView.toggleCredits()
     }
     

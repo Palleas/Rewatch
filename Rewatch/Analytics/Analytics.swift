@@ -9,19 +9,9 @@
 import Foundation
 import Mixpanel
 
-enum AnalyticsEvent {
-    case Shake
-}
-
-extension AnalyticsEvent: CustomStringConvertible {
-    var description: String {
-        get {
-            switch self {
-            case .Shake:
-                return "shake"
-            }
-        }
-    }
+enum AnalyticsEvent: String {
+    case Shake = "shake"
+    case Credits = "credits"
 }
 
 protocol AnalyticsController {
@@ -36,7 +26,7 @@ class MixpanelAnalyticsController: AnalyticsController {
     }
     
     func trackEvent(event: AnalyticsEvent) {
-        mixpanel.track(event.description)
+        mixpanel.track(event.rawValue)
     }
 }
 
