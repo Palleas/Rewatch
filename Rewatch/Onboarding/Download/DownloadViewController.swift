@@ -40,11 +40,7 @@ class DownloadViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        downloadView.animationView.startAnimating()
-
         downloadController.download().observeOn(UIScheduler()).startWithNext { (count) -> () in
-            self.downloadView.animationView.stopAnimating()
-
             if count == 0 {
                 let title = NSLocalizedString("NO_TV_SHOWS_TITLE", comment: "No TV Shows alert title")
                 let message = NSLocalizedString("NO_TV_SHOWS_MESSAGE", comment: "No TV Shows alert message")

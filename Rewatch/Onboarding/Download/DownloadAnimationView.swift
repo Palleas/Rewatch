@@ -115,15 +115,6 @@ class DownloadAnimationView: UIView {
         circleLayer.addAnimation(strokeStartAnimationGroup, forKey: "animateCircle2")
         centerPiece.addAnimation(rotationAnimation, forKey: "rotationAnimation")
     }
-
-    
-    func startAnimating() {
-
-    }
-    
-    func stopAnimating() {
-
-    }
     
     override func intrinsicContentSize() -> CGSize {
         return CGSize(width: 300, height: 150)
