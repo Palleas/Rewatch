@@ -11,19 +11,19 @@ import SwiftyJSON
 import ReactiveCocoa
 import KeychainSwift
 
-class Client: NSObject {
+public class Client: NSObject {
     typealias AuthorizationHandler = (String?, ClientError?) -> Void
 
     enum ClientError: ErrorType {
         case InternalError
     }
     
-    struct Show {
+    public struct Show {
         let id: Int
         let name: String
     }
     
-    struct Episode {
+    public struct Episode {
         let id: Int
         let title: String
         let episode: Int

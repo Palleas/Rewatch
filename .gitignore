@@ -42,3 +42,6 @@ Rewatch.app.dSYM.zip
 Rewatch/Rewatch.xcconfig
 Rewatch/Resources/Rewatch.xcconfig
 Rewatch/Resources/Keys.plist
+screenshots/*.png
+screenshots/**/*.png
+screenshots/screenshots.html

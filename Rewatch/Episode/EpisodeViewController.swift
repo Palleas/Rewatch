@@ -174,4 +174,8 @@ extension EpisodeViewController: EpisodeViewDelegate {
         let activity = UIActivityViewController(activityItems: [String(format: NSLocalizedString("SHARING_MESSAGE", comment: "Sharing message"), "\(episode.showName) - \(episode.title)"), episode.wrapped], applicationActivities: activities)
         presentViewController(activity, animated: true, completion: nil)
     }
+    
+    func didTapShakeView() {
+        fetchRandomItem()
+    }
 }

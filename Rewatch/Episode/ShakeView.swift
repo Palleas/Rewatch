@@ -9,7 +9,8 @@
 import UIKit
 
 class ShakeView: UIStackView {
-    @IBOutlet var shakeimageView: UIImageView!
+    
+    @IBOutlet var shakeButton: UIButton!
     
     @IBOutlet var titleLabel: UILabel! {
         didSet {

@@ -63,6 +63,10 @@
 		7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11E91C0B954900CC594B /* CreditsViewController.swift */; };
 		7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */; };
 		7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB238D1BD0A79700E2B86E /* Client.swift */; };
+		7AC8D9131C349C78003E0684 /* RewatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D9121C349C78003E0684 /* RewatchUITests.swift */; };
+		7AC8D91B1C349D50003E0684 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D91A1C349D50003E0684 /* SnapshotHelper.swift */; };
+		7AC8D91D1C34A2CD003E0684 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D91C1C34A2CD003E0684 /* MockClient.swift */; };
+		7AC8D91F1C34A56C003E0684 /* doctor-who-episode.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7AC8D91E1C34A56C003E0684 /* doctor-who-episode.jpg */; };
 		7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */; };
 		7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */; };
 		7ADB25811BE06B09006DBDE4 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB25801BE06B09006DBDE4 /* Themes.swift */; };
@@ -94,6 +98,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		7A73FA841BD68E5F0026D8AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A52A7021BD0544C00D78B39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A52A7091BD0544C00D78B39;
+			remoteInfo = Rewatch;
+		};
+		7AC8D9151C349C78003E0684 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A52A7021BD0544C00D78B39 /* Project object */;
 			proxyType = 1;
@@ -186,6 +197,12 @@
 		7ABA11E91C0B954900CC594B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		7ABB238D1BD0A79700E2B86E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		7AC8D9101C349C78003E0684 /* RewatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AC8D9121C349C78003E0684 /* RewatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewatchUITests.swift; sourceTree = "<group>"; };
+		7AC8D9141C349C78003E0684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AC8D91A1C349D50003E0684 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		7AC8D91C1C34A2CD003E0684 /* MockClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
+		7AC8D91E1C34A56C003E0684 /* doctor-who-episode.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "doctor-who-episode.jpg"; sourceTree = "<group>"; };
 		7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
 		7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
 		7ADB25801BE06B09006DBDE4 /* Themes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
@@ -245,6 +262,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7AC8D90D1C349C78003E0684 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -288,6 +312,7 @@
 		7A52A7011BD0544C00D78B39 = {
 			isa = PBXGroup;
 			children = (
+				7AC8D9111C349C78003E0684 /* RewatchUITests */,
 				7A2E23501BD1E1F600D0B869 /* Frameworks */,
 				7A52A70B1BD0544C00D78B39 /* Products */,
 				7A52A70C1BD0544C00D78B39 /* Rewatch */,
@@ -300,6 +325,7 @@
 			children = (
 				7A52A70A1BD0544C00D78B39 /* Rewatch.app */,
 				7A73FA7F1BD68E5F0026D8AD /* RewatchTests.xctest */,
+				7AC8D9101C349C78003E0684 /* RewatchUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,6 +387,7 @@
 		7A8CC2621BEB0A18003BFE11 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7AC8D91E1C34A56C003E0684 /* doctor-who-episode.jpg */,
 				7A5686261BF6539C006BDEB3 /* Sounds */,
 				7AAF0CDC1C04E1410019F1DB /* Templates */,
 				7A52A7191BD0544C00D78B39 /* Info.plist */,
@@ -377,6 +404,7 @@
 			children = (
 				7ABB238D1BD0A79700E2B86E /* Client.swift */,
 				7AE2905E1BEACFA0005838AB /* DownloadController.swift */,
+				7AC8D91C1C34A2CD003E0684 /* MockClient.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -481,6 +509,16 @@
 			path = Credits;
 			sourceTree = "<group>";
 		};
+		7AC8D9111C349C78003E0684 /* RewatchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7AC8D91A1C349D50003E0684 /* SnapshotHelper.swift */,
+				7AC8D9121C349C78003E0684 /* RewatchUITests.swift */,
+				7AC8D9141C349C78003E0684 /* Info.plist */,
+			);
+			path = RewatchUITests;
+			sourceTree = "<group>";
+		};
 		7AF8A0021BD97FCB00969B23 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,13 +592,31 @@
 			productReference = 7A73FA7F1BD68E5F0026D8AD /* RewatchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7AC8D90F1C349C78003E0684 /* RewatchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AC8D9191C349C78003E0684 /* Build configuration list for PBXNativeTarget "RewatchUITests" */;
+			buildPhases = (
+				7AC8D90C1C349C78003E0684 /* Sources */,
+				7AC8D90D1C349C78003E0684 /* Frameworks */,
+				7AC8D90E1C349C78003E0684 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AC8D9161C349C78003E0684 /* PBXTargetDependency */,
+			);
+			name = RewatchUITests;
+			productName = RewatchUITests;
+			productReference = 7AC8D9101C349C78003E0684 /* RewatchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		7A52A7021BD0544C00D78B39 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Perfectly-Cooked";
 				TargetAttributes = {
@@ -575,6 +631,10 @@
 					};
 					7A73FA7E1BD68E5F0026D8AD = {
 						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 7A52A7091BD0544C00D78B39;
+					};
+					7AC8D90F1C349C78003E0684 = {
+						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 7A52A7091BD0544C00D78B39;
 					};
 				};
@@ -595,6 +655,7 @@
 			targets = (
 				7A52A7091BD0544C00D78B39 /* Rewatch */,
 				7A73FA7E1BD68E5F0026D8AD /* RewatchTests */,
+				7AC8D90F1C349C78003E0684 /* RewatchUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -611,6 +672,7 @@
 				7A0D125F1C0FC995008AE9F0 /* LoginViewController.xib in Resources */,
 				7AF8A0181BD9803D00969B23 /* Roboto-MediumItalic.ttf in Resources */,
 				7AF8A0141BD9803D00969B23 /* Roboto-Italic.ttf in Resources */,
+				7AC8D91F1C34A56C003E0684 /* doctor-who-episode.jpg in Resources */,
 				7AF8A0151BD9803D00969B23 /* Roboto-Light.ttf in Resources */,
 				7A7F44141BD1C4C200B3BD59 /* Keys.plist in Resources */,
 				7AF8A0131BD9803D00969B23 /* Roboto-BoldItalic.ttf in Resources */,
@@ -630,6 +692,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7A73FA7D1BD68E5F0026D8AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AC8D90E1C349C78003E0684 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -685,6 +754,7 @@
 				7ADB25811BE06B09006DBDE4 /* Themes.swift in Sources */,
 				7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */,
 				7A53263F1C067E4C0091B139 /* EpisodeImageContainerView.swift in Sources */,
+				7AC8D91D1C34A2CD003E0684 /* MockClient.swift in Sources */,
 				7A7146021BD5B3EC00492B9B /* OauthHelpers.swift in Sources */,
 				7AE2905D1BEABD65005838AB /* StoredEpisode.swift in Sources */,
 				7A8CC26D1BEB0C92003BFE11 /* LoginView.swift in Sources */,
@@ -726,6 +796,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7AC8D90C1C349C78003E0684 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AC8D9131C349C78003E0684 /* RewatchUITests.swift in Sources */,
+				7AC8D91B1C349D50003E0684 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -733,6 +812,11 @@
 			isa = PBXTargetDependency;
 			target = 7A52A7091BD0544C00D78B39 /* Rewatch */;
 			targetProxy = 7A73FA841BD68E5F0026D8AD /* PBXContainerItemProxy */;
+		};
+		7AC8D9161C349C78003E0684 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A52A7091BD0544C00D78B39 /* Rewatch */;
+			targetProxy = 7AC8D9151C349C78003E0684 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -967,6 +1051,32 @@
 			};
 			name = Release;
 		};
+		7AC8D9171C349C78003E0684 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RewatchUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.RewatchUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Rewatch;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		7AC8D9181C349C78003E0684 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RewatchUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.perfectly-cooked.RewatchUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Rewatch;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -996,6 +1106,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7AC8D9191C349C78003E0684 /* Build configuration list for PBXNativeTarget "RewatchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AC8D9171C349C78003E0684 /* Debug */,
+				7AC8D9181C349C78003E0684 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

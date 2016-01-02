@@ -1,0 +1,29 @@
+{
+  "default": {
+    "keyword": {
+      "font": "../Rewatch/UI/Fonts/Roboto-Black.ttf",
+      "color": "#ffffff"
+    },
+    "title": {
+      "font": "../Rewatch/UI/Fonts/Roboto-Black.ttf",
+      "color": "#F74E40"
+    },   
+    "background": "./background.jpg",
+    "padding": 50
+  },
+
+  "data": [
+    {
+      "filter": "login"
+    },
+    {
+      "filter": "shake"
+    },
+    {
+      "filter": "show"
+    },
+    {
+      "filter": "sync"
+    }
+  ]
+}

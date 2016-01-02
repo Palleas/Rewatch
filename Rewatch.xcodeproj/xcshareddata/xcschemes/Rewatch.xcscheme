@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Rewatch.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7AC8D90F1C349C78003E0684"
+               BuildableName = "RewatchUITests.xctest"
+               BlueprintName = "RewatchUITests"
+               ReferencedContainer = "container:Rewatch.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

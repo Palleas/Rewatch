@@ -18,6 +18,7 @@ protocol EpisodeViewData {
 
 protocol EpisodeViewDelegate: class {
     func didTapShareButton()
+    func didTapShakeView()
 }
 
 
@@ -64,7 +65,11 @@ class EpisodeView: UIView {
     }
     weak var actionDelegate: EpisodeViewDelegate?
     
-    @IBOutlet weak var shakeView: ShakeView!
+    @IBOutlet weak var shakeView: ShakeView! {
+        didSet {
+            shakeView.shakeButton.addTarget(self, action: Selector("didTapOnShakeView"), forControlEvents: .TouchUpInside)
+        }
+    }
     
     @IBOutlet weak var episodePictureHeightConstraint: NSLayoutConstraint!
     
@@ -169,6 +174,10 @@ class EpisodeView: UIView {
     
     @IBAction func didTapShareButton(sender: AnyObject) {
         actionDelegate?.didTapShareButton()
+    }
+    
+    func didTapOnShakeView() {
+        actionDelegate?.didTapShakeView()
     }
 }
 

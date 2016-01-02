@@ -37,10 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         analyticsController = MixpanelAnalyticsController(mixpanel: Mixpanel.sharedInstanceWithToken(keys["MixpanelAPIKey"]!))
 
-        let keychain = KeychainSwift()
-        let token = keychain.get("betaseries-token")
-        
-        client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
+        if let _ = NSProcessInfo.processInfo().arguments.indexOf("snapshot") {
+            client = MockClient()
+        } else {
+            let keychain = KeychainSwift()
+            let token = keychain.get("betaseries-token")
+            client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
+        }
 
         // Setup Window
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
