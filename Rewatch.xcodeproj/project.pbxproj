@@ -312,10 +312,10 @@
 		7A52A7011BD0544C00D78B39 = {
 			isa = PBXGroup;
 			children = (
-				7AC8D9111C349C78003E0684 /* RewatchUITests */,
 				7A2E23501BD1E1F600D0B869 /* Frameworks */,
 				7A52A70B1BD0544C00D78B39 /* Products */,
 				7A52A70C1BD0544C00D78B39 /* Rewatch */,
+				7AC8D9111C349C78003E0684 /* RewatchUITests */,
 				7A73FA801BD68E5F0026D8AD /* RewatchTests */,
 			);
 			sourceTree = "<group>";
@@ -1114,6 +1114,7 @@
 				7AC8D9181C349C78003E0684 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
