@@ -75,6 +75,7 @@
 		7AE2905F1BEACFA0005838AB /* DownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE2905E1BEACFA0005838AB /* DownloadController.swift */; };
 		7AE290611BEAF339005838AB /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE290601BEAF339005838AB /* DownloadView.swift */; };
 		7AE290651BEAFC92005838AB /* DownloadAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE290641BEAFC92005838AB /* DownloadAnimationView.swift */; };
+		7AE5CAA71C53D37C00D1BFC7 /* stripes.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE5CAA61C53D37C00D1BFC7 /* stripes.png */; };
 		7AE8941D1C05287100A29F63 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8941C1C05287100A29F63 /* Swifter.framework */; };
 		7AE8941E1C05287100A29F63 /* Swifter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8941C1C05287100A29F63 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AE894201C05290600A29F63 /* GenerateDeepLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8941F1C05290600A29F63 /* GenerateDeepLinkViewController.swift */; };
@@ -211,6 +212,7 @@
 		7AE2905E1BEACFA0005838AB /* DownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadController.swift; sourceTree = "<group>"; };
 		7AE290601BEAF339005838AB /* DownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		7AE290641BEAFC92005838AB /* DownloadAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadAnimationView.swift; sourceTree = "<group>"; };
+		7AE5CAA61C53D37C00D1BFC7 /* stripes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stripes.png; sourceTree = "<group>"; };
 		7AE8941C1C05287100A29F63 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		7AE8941F1C05290600A29F63 /* GenerateDeepLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDeepLinkViewController.swift; sourceTree = "<group>"; };
 		7AEAF54A1BE582EF005D5A8F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 		7A8CC2621BEB0A18003BFE11 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7AE5CAA61C53D37C00D1BFC7 /* stripes.png */,
 				7AC8D91E1C34A56C003E0684 /* doctor-who-episode.jpg */,
 				7A5686261BF6539C006BDEB3 /* Sounds */,
 				7AAF0CDC1C04E1410019F1DB /* Templates */,
@@ -673,6 +676,7 @@
 				7AF8A0181BD9803D00969B23 /* Roboto-MediumItalic.ttf in Resources */,
 				7AF8A0141BD9803D00969B23 /* Roboto-Italic.ttf in Resources */,
 				7AC8D91F1C34A56C003E0684 /* doctor-who-episode.jpg in Resources */,
+				7AE5CAA71C53D37C00D1BFC7 /* stripes.png in Resources */,
 				7AF8A0151BD9803D00969B23 /* Roboto-Light.ttf in Resources */,
 				7A7F44141BD1C4C200B3BD59 /* Keys.plist in Resources */,
 				7AF8A0131BD9803D00969B23 /* Roboto-BoldItalic.ttf in Resources */,

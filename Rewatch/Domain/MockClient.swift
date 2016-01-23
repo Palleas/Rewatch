@@ -39,4 +39,11 @@ class MockClient: Client {
         
         return SignalProducer(value: image)
     }
+    
+    override func fetchMemberInfos() -> SignalProducer<Client.Member, NSError> {
+        let url = NSBundle.mainBundle().URLForResource("stripes", withExtension: "png")
+        let member = Client.Member(id: 1, login: "David Tennant", avatar: url)
+        
+        return SignalProducer(value: member)
+    }
 }
