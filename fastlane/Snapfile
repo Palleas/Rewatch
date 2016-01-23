@@ -1,5 +1,6 @@
 languages([
-  "en-US"
+  "en-US",
+  "fr-FR",
 ])
 
 devices([
@@ -9,7 +10,7 @@ devices([
   "iPhone 4s",
 ])
 
-launch_arguments("snapshot")
+launch_arguments(["snapshot"])
 scheme "Rewatch"
 output_directory "./screenshots"
 clear_previous_screenshots
