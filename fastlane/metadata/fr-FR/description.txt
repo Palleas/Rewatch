@@ -1,0 +1,9 @@
+Rewatch utilise les informations de votre compte Betaseries pour vous suggérer un épisode à revoir.
+
+* Connectez votre compte BetaSeries
+* Secouez votre téléphone
+* Regardez votre épisode favoris à nouveau!
+
+Rewatch se synchronise avec votre compte Betaseries.
+
+Contactez-nous à romain@rewatchapp.com et via @rewatch_app sur Twitter.
