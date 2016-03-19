@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveCocoa
 import AVFoundation
-import Swifter
 
 class EpisodeWrapper: EpisodeViewData {
     typealias Element = StoredEpisode
@@ -163,15 +162,8 @@ class EpisodeViewController: UIViewController {
 extension EpisodeViewController: EpisodeViewDelegate {
     func didTapShareButton() {
         guard let episode = episodeView.episode as? EpisodeWrapper else { return }
-        
-        let activities: [UIActivity]?
-        if NSUserDefaults.standardUserDefaults().boolForKey("enabled_deeplinking") {
-            activities = [GenerateDeeplinkActivity()]
-        } else {
-            activities = nil
-        }
-        
-        let activity = UIActivityViewController(activityItems: [String(format: NSLocalizedString("SHARING_MESSAGE", comment: "Sharing message"), "\(episode.showName) - \(episode.title)"), episode.wrapped], applicationActivities: activities)
+
+        let activity = UIActivityViewController(activityItems: [String(format: NSLocalizedString("SHARING_MESSAGE", comment: "Sharing message"), "\(episode.showName) - \(episode.title)"), episode.wrapped], applicationActivities: nil)
         presentViewController(activity, animated: true, completion: nil)
     }
     

@@ -26,7 +26,6 @@
 		7A52A7101BD0544C00D78B39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A70F1BD0544C00D78B39 /* LoginViewController.swift */; };
 		7A52A7151BD0544C00D78B39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7141BD0544C00D78B39 /* Assets.xcassets */; };
 		7A52A7181BD0544C00D78B39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A52A7161BD0544C00D78B39 /* LaunchScreen.storyboard */; };
-		7A53261A1C0566230091B139 /* GenerateDeepLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5326191C0566230091B139 /* GenerateDeepLinkView.swift */; };
 		7A53263F1C067E4C0091B139 /* EpisodeImageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A53263E1C067E4C0091B139 /* EpisodeImageContainerView.swift */; };
 		7A5686211BF64C6A006BDEB3 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */; };
 		7A5686221BF64C6A006BDEB3 /* Mixpanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -57,9 +56,7 @@
 		7AAF0CD01C03E67C0019F1DB /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF0CCE1C03E67C0019F1DB /* Quick.framework */; };
 		7AAF0CD21C03E69B0019F1DB /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AAF0CCD1C03E67C0019F1DB /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AAF0CD31C03E69B0019F1DB /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AAF0CCE1C03E67C0019F1DB /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7AAF0CD81C04DB910019F1DB /* GenerateDeeplinkActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAF0CD71C04DB910019F1DB /* GenerateDeeplinkActivity.swift */; };
 		7AAF0CDA1C04E11A0019F1DB /* Mustache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF0CD91C04E11A0019F1DB /* Mustache.framework */; };
-		7AAF0CDE1C04E15B0019F1DB /* generate-deeplink.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 7AAF0CDD1C04E15B0019F1DB /* generate-deeplink.mustache */; };
 		7AB207CE1C700B0300114527 /* BetaSeriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB207C91C700AE400114527 /* BetaSeriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11E91C0B954900CC594B /* CreditsViewController.swift */; };
 		7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */; };
@@ -79,7 +76,6 @@
 		7AE290651BEAFC92005838AB /* DownloadAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE290641BEAFC92005838AB /* DownloadAnimationView.swift */; };
 		7AE5CAA71C53D37C00D1BFC7 /* stripes.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE5CAA61C53D37C00D1BFC7 /* stripes.png */; };
 		7AE8941D1C05287100A29F63 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8941C1C05287100A29F63 /* Swifter.framework */; };
-		7AE894201C05290600A29F63 /* GenerateDeepLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8941F1C05290600A29F63 /* GenerateDeepLinkViewController.swift */; };
 		7AEAF54C1BE582EF005D5A8F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEAF54A1BE582EF005D5A8F /* Fabric.framework */; };
 		7AEAF54D1BE582EF005D5A8F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */; };
 		7AED90551BD7F7EE002B024C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AED90541BD7F7EE002B024C /* RootViewController.swift */; };
@@ -201,7 +197,6 @@
 		7A52A7141BD0544C00D78B39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A52A7171BD0544C00D78B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A52A7191BD0544C00D78B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A5326191C0566230091B139 /* GenerateDeepLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDeepLinkView.swift; sourceTree = "<group>"; };
 		7A53263E1C067E4C0091B139 /* EpisodeImageContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeImageContainerView.swift; sourceTree = "<group>"; };
 		7A5686201BF64C6A006BDEB3 /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mixpanel.framework; path = Carthage/Build/iOS/Mixpanel.framework; sourceTree = "<group>"; };
 		7A5686241BF64D6A006BDEB3 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -223,9 +218,7 @@
 		7A91752D1BEC57D2009FAE52 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		7AAF0CCD1C03E67C0019F1DB /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		7AAF0CCE1C03E67C0019F1DB /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		7AAF0CD71C04DB910019F1DB /* GenerateDeeplinkActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDeeplinkActivity.swift; sourceTree = "<group>"; };
 		7AAF0CD91C04E11A0019F1DB /* Mustache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mustache.framework; path = Carthage/Build/iOS/Mustache.framework; sourceTree = "<group>"; };
-		7AAF0CDD1C04E15B0019F1DB /* generate-deeplink.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "generate-deeplink.mustache"; sourceTree = "<group>"; };
 		7AB207C31C700AE400114527 /* BetaSeriesKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BetaSeriesKit.xcodeproj; path = ../BetaSeriesKit/BetaSeriesKit.xcodeproj; sourceTree = "<group>"; };
 		7ABA11E91C0B954900CC594B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
@@ -247,7 +240,6 @@
 		7AE290641BEAFC92005838AB /* DownloadAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadAnimationView.swift; sourceTree = "<group>"; };
 		7AE5CAA61C53D37C00D1BFC7 /* stripes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stripes.png; sourceTree = "<group>"; };
 		7AE8941C1C05287100A29F63 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
-		7AE8941F1C05290600A29F63 /* GenerateDeepLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDeepLinkViewController.swift; sourceTree = "<group>"; };
 		7AEAF54A1BE582EF005D5A8F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		7AEAF54B1BE582EF005D5A8F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		7AED90541BD7F7EE002B024C /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -374,7 +366,6 @@
 			children = (
 				7A5686231BF64D43006BDEB3 /* Analytics */,
 				7ABA11E81C0B950300CC594B /* Credits */,
-				7AAF0CD61C04DACB0019F1DB /* Debug */,
 				7A8CC2631BEB0A44003BFE11 /* Domain */,
 				7A8CC2691BEB0AC3003BFE11 /* Episode */,
 				7A1633011BD876AE00EB7281 /* Helpers */,
@@ -429,7 +420,6 @@
 				7AE5CAA61C53D37C00D1BFC7 /* stripes.png */,
 				7AC8D91E1C34A56C003E0684 /* doctor-who-episode.jpg */,
 				7A5686261BF6539C006BDEB3 /* Sounds */,
-				7AAF0CDC1C04E1410019F1DB /* Templates */,
 				7A52A7191BD0544C00D78B39 /* Info.plist */,
 				7A7F44131BD1C4C200B3BD59 /* Keys.plist */,
 				7A0D126B1C0FCAB5008AE9F0 /* Localizable.strings */,
@@ -523,24 +513,6 @@
 				7AED90541BD7F7EE002B024C /* RootViewController.swift */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		7AAF0CD61C04DACB0019F1DB /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				7A5326191C0566230091B139 /* GenerateDeepLinkView.swift */,
-				7AE8941F1C05290600A29F63 /* GenerateDeepLinkViewController.swift */,
-				7AAF0CD71C04DB910019F1DB /* GenerateDeeplinkActivity.swift */,
-			);
-			path = Debug;
-			sourceTree = "<group>";
-		};
-		7AAF0CDC1C04E1410019F1DB /* Templates */ = {
-			isa = PBXGroup;
-			children = (
-				7AAF0CDD1C04E15B0019F1DB /* generate-deeplink.mustache */,
-			);
-			path = Templates;
 			sourceTree = "<group>";
 		};
 		7AB207C41C700AE400114527 /* Products */ = {
@@ -751,7 +723,6 @@
 			files = (
 				7A0D125B1C0FC8D5008AE9F0 /* EpisodeViewController.xib in Resources */,
 				7AF8A0121BD9803D00969B23 /* Roboto-Bold.ttf in Resources */,
-				7AAF0CDE1C04E15B0019F1DB /* generate-deeplink.mustache in Resources */,
 				7AF8A0161BD9803D00969B23 /* Roboto-LightItalic.ttf in Resources */,
 				7A0D125F1C0FC995008AE9F0 /* LoginViewController.xib in Resources */,
 				7AF8A0181BD9803D00969B23 /* Roboto-MediumItalic.ttf in Resources */,
@@ -844,14 +815,12 @@
 				7A8CC26D1BEB0C92003BFE11 /* LoginView.swift in Sources */,
 				7AE290611BEAF339005838AB /* DownloadView.swift in Sources */,
 				7A4AB29B1BE82A12006FBDFD /* PictureHelpers.swift in Sources */,
-				7AE894201C05290600A29F63 /* GenerateDeepLinkViewController.swift in Sources */,
 				7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */,
 				7AED90551BD7F7EE002B024C /* RootViewController.swift in Sources */,
 				7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */,
 				7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */,
 				7A0488971BE98E7400F7C890 /* DataModel.xcdatamodeld in Sources */,
 				7AF3692C1C8F8AFC005DD7F1 /* Flow.swift in Sources */,
-				7A53261A1C0566230091B139 /* GenerateDeepLinkView.swift in Sources */,
 				7A0488941BE98D8800F7C890 /* PersistenceController.swift in Sources */,
 				7AE2905C1BEABD65005838AB /* StoredEpisode+CoreDataProperties.swift in Sources */,
 				7AF369321C8F8B8C005DD7F1 /* BetaseriesAuthenticationFlow.swift in Sources */,
@@ -864,7 +833,6 @@
 				7A0B9C411C717399002B2572 /* BetaseriesNetworkController.swift in Sources */,
 				7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */,
 				7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */,
-				7AAF0CD81C04DB910019F1DB /* GenerateDeeplinkActivity.swift in Sources */,
 				7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */,
 				7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */,
 				7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */,
