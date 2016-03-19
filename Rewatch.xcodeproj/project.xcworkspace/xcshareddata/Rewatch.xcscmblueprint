@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2DDC9166166D4FFFB7E3C3F20A88F285A4533B47",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "ACBDD8D9B27CF715E1030F42153337F328D24223" : 0,
+    "2DDC9166166D4FFFB7E3C3F20A88F285A4533B47" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B9501338-3BC3-4734-B5EC-B5A33505EC9F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "ACBDD8D9B27CF715E1030F42153337F328D24223" : "BetaSeriesKit\/",
+    "2DDC9166166D4FFFB7E3C3F20A88F285A4533B47" : "Rewatch\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Rewatch",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Rewatch.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Palleas\/Rewatch.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2DDC9166166D4FFFB7E3C3F20A88F285A4533B47"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Palleas\/BSKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ACBDD8D9B27CF715E1030F42153337F328D24223"
+    }
+  ]
+}

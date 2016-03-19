@@ -10,8 +10,11 @@ import UIKit
 import SwiftyJSON
 import ReactiveCocoa
 import KeychainSwift
+import BetaSeriesKit
 
 public class Client: NSObject {
+    let bsclient: BetaSeriesKit.Client
+    
     typealias AuthorizationHandler = (String?, ClientError?) -> Void
 
     enum ClientError: ErrorType {
@@ -49,10 +52,12 @@ public class Client: NSObject {
     var member: Member?
     
     let authenticated = MutableProperty(false)
-
+    
     lazy private var urlPipe = Signal<NSURL, NSError>.pipe()
     
     init(key: String, secret: String, token: String? = nil) {
+        self.bsclient = BetaSeriesKit.Client(key: key)
+        
         self.key = key
         self.secret = secret
         

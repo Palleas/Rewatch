@@ -50,19 +50,23 @@ class RootViewController: UIViewController {
     }
     
     func boot() {
-        client.authenticated.producer.observeOn(UIScheduler()).startWithNext { (authenticated) -> () in
-            let target: UIViewController
-
-            if authenticated {
-                let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController)
-                target = UINavigationController(rootViewController: episode)
-            } else {
-                let login = LoginViewController(client: self.client, persistenceController: self.persistenceController)
-                target = UINavigationController(rootViewController: login)
-            }
-
-            self.transitionToViewController(target)
-        }
+        let login = LoginViewController(persistenceController: self.persistenceController)
+//        login.signal.on(next: { networkController in
+//            print(networkController)
+//        })
+        //        client.authenticated.producer.observeOn(UIScheduler()).startWithNext { (authenticated) -> () in
+//            let target: UIViewController
+//
+//            if authenticated {
+//                let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController)
+//                target = UINavigationController(rootViewController: episode)
+//            } else {
+//                let login = LoginViewController(client: self.client, persistenceController: self.persistenceController)
+//                target = UINavigationController(rootViewController: login)
+//            }
+//
+            self.transitionToViewController(login)
+//        }
     }
     
     func transitionToViewController(controller: UIViewController) {

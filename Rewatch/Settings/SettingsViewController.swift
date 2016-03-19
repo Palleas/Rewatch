@@ -116,7 +116,7 @@ class SettingsViewController: UITableViewController {
                             .zipWith(SignalProducer(value: member.login))
                     })
                     .observeOn(UIScheduler())
-                    .on(error: { error in
+                    .on(failed: { error in
                         self.tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text = NSLocalizedString("UNAVAILABLE", comment: "Member infos available message")
                     })
                     .startWithNext({ (avatar, login) -> () in
