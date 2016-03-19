@@ -10,8 +10,6 @@ import UIKit
 import ReactiveCocoa
 import BetaSeriesKit
 
-class WTFController: NetworkController {}
-
 class LoginViewController: UIViewController {
     let persistenceController: PersistenceController
 
@@ -20,8 +18,6 @@ class LoginViewController: UIViewController {
             return view as! LoginView
         }
     }
-    
-    private let networkController = MutableProperty<NetworkController>(WTFController())
     
     init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
@@ -50,20 +46,11 @@ extension LoginViewController: LoginViewDelegate {
         let client = BetaSeriesKit.Client(key: keys["BetaseriesAPIKey"]!)
         let secret = keys["BetaseriesAPISecret"]!
         
-        let producer: SignalProducer<NetworkController, AuthenticationFlowError> = BetaseriesAuthenticationFlow(client: client, secret: secret)
-            .signalProducer
-//            .promoteErrors(NSError)
-//            .flatMap(FlattenStrategy.Latest) { (client) -> SignalProducer<NetworkController, NoError> in
-//                return SignalProducer<NetworkController, NoError>(value: BetaseriesNetworkController(client: client))
-//            }
-//            .flatMap(FlattenStrategy.Latest) {
-//            }
-//            .map { BetaseriesNetworkController(client: $0) }
-        
-//        networkController <~ producer
-        
-        producer.startWithNext {
-                print("Possible Network controller: \($0)")
+        client
+            .authenticate(secret)
+            .map { BetaseriesContentController(authenticatedClient: $0) }
+            .startWithNext { authenticatedClient in
+                print("Authenticated client: \(authenticatedClient)")
             }
     }
 }
