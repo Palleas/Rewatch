@@ -74,6 +74,8 @@ enum ContentError: ErrorType {
 }
 
 protocol ContentController {
+
+    var rawLogin: String? { get }
     
     func fetchShows() -> SignalProducer<Show, ContentError>
     func fetchEpisodes(show: Show) -> SignalProducer<Episode, ContentError>
@@ -81,6 +83,11 @@ protocol ContentController {
 }
 
 class UnauthenticatedContentController: ContentController {
+    
+    var rawLogin: String? {
+        return nil
+    }
+    
     func fetchEpisodes(show: Show) -> SignalProducer<Episode, ContentError> {
         return SignalProducer(error: .UnauthenticatedError)
     }
@@ -93,6 +100,10 @@ class UnauthenticatedContentController: ContentController {
 class BetaseriesContentController: ContentController {
     
     let authenticatedClient: AuthenticatedClient
+
+    var rawLogin: String? {
+        return authenticatedClient.token
+    }
 
     init(authenticatedClient: AuthenticatedClient) {
         self.authenticatedClient = authenticatedClient

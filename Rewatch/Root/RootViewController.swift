@@ -50,31 +50,29 @@ class RootViewController: UIViewController {
     }
     
     func boot() {
-        let login = LoginViewController(persistenceController: self.persistenceController)
-        login
-            .contentController
-            .producer
-            .filter { $0 is BetaseriesContentController }
-            .observeOn(UIScheduler())
-            .startWithNext { contentController in
-
-            }
-                //        login.signal.on(next: { networkController in
-//            print(networkController)
-//        })
-        //        client.authenticated.producer.observeOn(UIScheduler()).startWithNext { (authenticated) -> () in
-//            let target: UIViewController
-//
-//            if authenticated {
-//                let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController)
-//                target = UINavigationController(rootViewController: episode)
-//            } else {
-//                let login = LoginViewController(client: self.client, persistenceController: self.persistenceController)
-//                target = UINavigationController(rootViewController: login)
-//            }
-//
-            self.transitionToViewController(login)
-//        }
+        let authenticationController = AuthenticationController()
+        if let contentController = authenticationController.retrieveContentController() {
+            let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
+            transitionToViewController(UINavigationController(rootViewController: episode))
+        } else {
+            let login = LoginViewController(persistenceController: self.persistenceController)
+            login
+                .contentController
+                .producer
+                .filter { $0 is BetaseriesContentController }
+                .observeOn(UIScheduler())
+                .startWithNext { contentController in
+                    
+                    authenticationController.saveToken(contentController.rawLogin!)
+                    
+                    let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
+                    
+                    self.dismissViewControllerAnimated(true) {
+                        self.transitionToViewController(UINavigationController(rootViewController: episode))
+                    }
+                }
+            presentViewController(UINavigationController(rootViewController: login), animated: true, completion: nil)
+        }
     }
     
     func transitionToViewController(controller: UIViewController) {

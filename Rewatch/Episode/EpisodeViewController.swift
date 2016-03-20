@@ -49,7 +49,7 @@ class EpisodeViewController: UIViewController {
     
     var episodes: [StoredEpisode] = []
     
-    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController) {
+    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController, contentController: ContentController) {
         self.client = client
         self.persistenceController = persistenceController
         self.analyticsController = analyticsController

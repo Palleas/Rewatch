@@ -17,6 +17,7 @@
 		7A0D125F1C0FC995008AE9F0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0D12611C0FC995008AE9F0 /* LoginViewController.xib */; };
 		7A0D12641C0FC9B3008AE9F0 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0D12661C0FC9B3008AE9F0 /* DownloadViewController.xib */; };
 		7A0D12691C0FCAB5008AE9F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A0D126B1C0FCAB5008AE9F0 /* Localizable.strings */; };
+		7A1D074E1C9F51A90031F7F8 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D074D1C9F51A90031F7F8 /* AuthenticationController.swift */; };
 		7A2E23521BD1E20F00D0B869 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */; };
 		7A2E23531BD1E20F00D0B869 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4536151BD9BED700A680CB /* Stylesheet.swift */; };
@@ -182,6 +183,7 @@
 		7A0D12681C0FC9B5008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DownloadViewController.xib; sourceTree = "<group>"; };
 		7A0D126A1C0FCAB5008AE9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A0D126C1C0FCAB7008AE9F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7A1D074D1C9F51A90031F7F8 /* AuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		7A2E23511BD1E20F00D0B869 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		7A4536151BD9BED700A680CB /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		7A4AB29A1BE82A12006FBDFD /* PictureHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureHelpers.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				7A75620E1C9DAF4900622D26 /* ContentController.swift */,
+				7A1D074D1C9F51A90031F7F8 /* AuthenticationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -829,6 +832,7 @@
 				7A0B9C411C717399002B2572 /* BetaseriesNetworkController.swift in Sources */,
 				7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */,
 				7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */,
+				7A1D074E1C9F51A90031F7F8 /* AuthenticationController.swift in Sources */,
 				7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */,
 				7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */,
 				7A4536161BD9BED700A680CB /* Stylesheet.swift in Sources */,
