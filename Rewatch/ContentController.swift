@@ -70,6 +70,7 @@ struct BetaseriesEpisode: Episode {
 
 enum ContentError: ErrorType {
     case ClientError
+    case UnauthenticatedError
 }
 
 protocol ContentController {
@@ -77,6 +78,16 @@ protocol ContentController {
     func fetchShows() -> SignalProducer<Show, ContentError>
     func fetchEpisodes(show: Show) -> SignalProducer<Episode, ContentError>
     
+}
+
+class UnauthenticatedContentController: ContentController {
+    func fetchEpisodes(show: Show) -> SignalProducer<Episode, ContentError> {
+        return SignalProducer(error: .UnauthenticatedError)
+    }
+    
+    func fetchShows() -> SignalProducer<Show, ContentError> {
+        return SignalProducer(error: .UnauthenticatedError)
+    }
 }
 
 class BetaseriesContentController: ContentController {

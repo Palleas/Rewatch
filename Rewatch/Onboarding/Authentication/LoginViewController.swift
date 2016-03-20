@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
         }
     }
     
+    let contentController = MutableProperty<ContentController>(UnauthenticatedContentController())
+    
     init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
         
@@ -49,8 +51,10 @@ extension LoginViewController: LoginViewDelegate {
         client
             .authenticate(secret)
             .map { BetaseriesContentController(authenticatedClient: $0) }
+            .observeOn(UIScheduler())
             .startWithNext { authenticatedClient in
                 print("Authenticated client: \(authenticatedClient)")
+                self.contentController.value = authenticatedClient
             }
     }
 }

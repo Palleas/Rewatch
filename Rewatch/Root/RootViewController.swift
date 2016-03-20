@@ -51,7 +51,15 @@ class RootViewController: UIViewController {
     
     func boot() {
         let login = LoginViewController(persistenceController: self.persistenceController)
-//        login.signal.on(next: { networkController in
+        login
+            .contentController
+            .producer
+            .filter { $0 is BetaseriesContentController }
+            .observeOn(UIScheduler())
+            .startWithNext { contentController in
+
+            }
+                //        login.signal.on(next: { networkController in
 //            print(networkController)
 //        })
         //        client.authenticated.producer.observeOn(UIScheduler()).startWithNext { (authenticated) -> () in
