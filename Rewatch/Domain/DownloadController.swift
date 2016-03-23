@@ -27,12 +27,10 @@ func lastSyncDate() -> String? {
 
 class DownloadController: NSObject {
     
-    let client: Client
     let contentController: ContentController
     let persistenceController: PersistenceController
     
-    init(client: Client, contentController: ContentController, persistenceController: PersistenceController) {
-        self.client = client
+    init(contentController: ContentController, persistenceController: PersistenceController) {
         self.contentController = contentController
         self.persistenceController = persistenceController
         
@@ -50,7 +48,6 @@ class DownloadController: NSObject {
 
         // Import shows into local database
         let importShowsSignal = fetchShows.flatMap(.Merge, transform: { (show) -> SignalProducer<StoredShow, ContentError> in
-            print("show \(show.title)")
             return SignalProducer { observable, disposable in
                 observable.sendNext(StoredShow.showInContext(importMoc, mappedOnShow: show))
                 observable.sendCompleted()

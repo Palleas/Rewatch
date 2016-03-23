@@ -10,7 +10,6 @@ import UIKit
 import ReactiveCocoa
 
 class RootViewController: UIViewController {
-    let client: Client
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
     let creditsController: CreditsViewController
@@ -23,8 +22,7 @@ class RootViewController: UIViewController {
         }
     }
     
-    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController) {
-        self.client = client
+    init(persistenceController: PersistenceController, analyticsController: AnalyticsController) {
         self.persistenceController = persistenceController
         self.analyticsController = analyticsController
         self.creditsController = CreditsViewController(analyticsController: analyticsController)
@@ -52,7 +50,7 @@ class RootViewController: UIViewController {
     func boot() {
         let authenticationController = AuthenticationController()
         if let contentController = authenticationController.retrieveContentController() {
-            let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
+            let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
             transitionToViewController(UINavigationController(rootViewController: episode))
         } else {
             let login = LoginViewController(persistenceController: self.persistenceController)
@@ -65,7 +63,7 @@ class RootViewController: UIViewController {
                     
                     authenticationController.saveToken(contentController.rawLogin!)
                     
-                    let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
+                    let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
                     
                     self.dismissViewControllerAnimated(true) {
                         self.transitionToViewController(UINavigationController(rootViewController: episode))

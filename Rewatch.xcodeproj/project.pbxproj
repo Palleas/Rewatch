@@ -56,10 +56,8 @@
 		7A91752E1BEC57D2009FAE52 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A91752D1BEC57D2009FAE52 /* RootView.swift */; };
 		7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11E91C0B954900CC594B /* CreditsViewController.swift */; };
 		7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */; };
-		7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB238D1BD0A79700E2B86E /* Client.swift */; };
 		7AC8D9131C349C78003E0684 /* RewatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D9121C349C78003E0684 /* RewatchUITests.swift */; };
 		7AC8D91B1C349D50003E0684 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D91A1C349D50003E0684 /* SnapshotHelper.swift */; };
-		7AC8D91D1C34A2CD003E0684 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D91C1C34A2CD003E0684 /* MockClient.swift */; };
 		7AC8D91F1C34A56C003E0684 /* doctor-who-episode.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7AC8D91E1C34A56C003E0684 /* doctor-who-episode.jpg */; };
 		7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */; };
 		7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */; };
@@ -182,12 +180,10 @@
 		7A91752D1BEC57D2009FAE52 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		7ABA11E91C0B954900CC594B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
-		7ABB238D1BD0A79700E2B86E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7AC8D9101C349C78003E0684 /* RewatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC8D9121C349C78003E0684 /* RewatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewatchUITests.swift; sourceTree = "<group>"; };
 		7AC8D9141C349C78003E0684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AC8D91A1C349D50003E0684 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
-		7AC8D91C1C34A2CD003E0684 /* MockClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		7AC8D91E1C34A56C003E0684 /* doctor-who-episode.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "doctor-who-episode.jpg"; sourceTree = "<group>"; };
 		7ADB257C1BE063FB006DBDE4 /* ShakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
 		7ADB257E1BE068FF006DBDE4 /* EpisodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
@@ -392,9 +388,7 @@
 		7A8CC2631BEB0A44003BFE11 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				7ABB238D1BD0A79700E2B86E /* Client.swift */,
 				7AE2905E1BEACFA0005838AB /* DownloadController.swift */,
-				7AC8D91C1C34A2CD003E0684 /* MockClient.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -726,7 +720,6 @@
 				7A53263F1C067E4C0091B139 /* EpisodeImageContainerView.swift in Sources */,
 				7A75620F1C9DAF4900622D26 /* ContentController.swift in Sources */,
 				7A0B9C3E1C717367002B2572 /* NetworkController.swift in Sources */,
-				7AC8D91D1C34A2CD003E0684 /* MockClient.swift in Sources */,
 				7A7146021BD5B3EC00492B9B /* OauthHelpers.swift in Sources */,
 				7AE2905D1BEABD65005838AB /* StoredEpisode.swift in Sources */,
 				7A8CC26D1BEB0C92003BFE11 /* LoginView.swift in Sources */,
@@ -734,7 +727,6 @@
 				7A4AB29B1BE82A12006FBDFD /* PictureHelpers.swift in Sources */,
 				7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */,
 				7AED90551BD7F7EE002B024C /* RootViewController.swift in Sources */,
-				7ABB238E1BD0A79700E2B86E /* Client.swift in Sources */,
 				7ADB257D1BE063FB006DBDE4 /* ShakeView.swift in Sources */,
 				7A0488971BE98E7400F7C890 /* DataModel.xcdatamodeld in Sources */,
 				7A0488941BE98D8800F7C890 /* PersistenceController.swift in Sources */,

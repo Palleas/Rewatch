@@ -42,12 +42,10 @@ class SettingsViewController: UITableViewController {
     let SupportCellIdentifier = "SupportCell"
     let completion: Completion
     
-    let client: Client
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
     
-    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController, completion: Completion) {
-        self.client = client
+    init(persistenceController: PersistenceController, analyticsController: AnalyticsController, completion: Completion) {
         self.persistenceController = persistenceController
         self.completion = completion
         self.analyticsController = analyticsController
@@ -104,27 +102,28 @@ class SettingsViewController: UITableViewController {
                 cell.textLabel?.text = NSLocalizedString("LOADING_MESSAGE", comment: "Loading Message")
                 cell.textLabel?.textColor = UIColor.lightGrayColor()
                 
-                client
-                    .fetchMemberInfos()
-                    .flatMap(.Latest, transform: { (member) -> SignalProducer<(UIImage?, String), NSError> in
-                        guard let url = member.avatar else { return SignalProducer(value: (nil, member.login)) }
-
-                        return NSURLSession
-                            .sharedSession()
-                            .rac_dataWithRequest(NSURLRequest(URL: url))
-                            .map({ return UIImage(data: $0.0) })
-                            .zipWith(SignalProducer(value: member.login))
-                    })
-                    .observeOn(UIScheduler())
-                    .on(failed: { error in
-                        self.tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text = NSLocalizedString("UNAVAILABLE", comment: "Member infos available message")
-                    })
-                    .startWithNext({ (avatar, login) -> () in
-                        guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-                        cell.imageView?.image = avatar
-                        cell.textLabel?.text = login
-                        cell.textLabel?.textColor = .darkTextColor()
-                    })
+                // TODO add missing user informations
+//                client
+//                    .fetchMemberInfos()
+//                    .flatMap(.Latest, transform: { (member) -> SignalProducer<(UIImage?, String), NSError> in
+//                        guard let url = member.avatar else { return SignalProducer(value: (nil, member.login)) }
+//
+//                        return NSURLSession
+//                            .sharedSession()
+//                            .rac_dataWithRequest(NSURLRequest(URL: url))
+//                            .map({ return UIImage(data: $0.0) })
+//                            .zipWith(SignalProducer(value: member.login))
+//                    })
+//                    .observeOn(UIScheduler())
+//                    .on(failed: { error in
+//                        self.tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text = NSLocalizedString("UNAVAILABLE", comment: "Member infos available message")
+//                    })
+//                    .startWithNext({ (avatar, login) -> () in
+//                        guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
+//                        cell.imageView?.image = avatar
+//                        cell.textLabel?.text = login
+//                        cell.textLabel?.textColor = .darkTextColor()
+//                    })
                 
                 
             } else if indexPath.row == 1 {
@@ -202,11 +201,11 @@ class SettingsViewController: UITableViewController {
 //            let navigation = UINavigationController(rootViewController: downloadViewController)
 //            presentViewController(navigation, animated: true, completion: nil)
         case (0, 2):
+            // TODO: FIX logout
             analyticsController.trackEvent(.LogOut)
             let keychain = KeychainSwift()
             keychain.clear()
             
-            client.token = nil
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         case (1, 0):
             analyticsController.trackEvent(.SupportTwitter)

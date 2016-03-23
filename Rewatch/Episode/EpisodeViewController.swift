@@ -43,15 +43,13 @@ class EpisodeViewController: UIViewController {
     
     lazy private(set) var shakeSignal = Signal<(), NoError>.pipe()
     
-    let client: Client
     let persistenceController: PersistenceController
     let contentController: ContentController
     let analyticsController: AnalyticsController
     
     var episodes: [StoredEpisode] = []
     
-    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController, contentController: ContentController) {
-        self.client = client
+    init(persistenceController: PersistenceController, analyticsController: AnalyticsController, contentController: ContentController) {
         self.persistenceController = persistenceController
         self.contentController = contentController
         self.analyticsController = analyticsController
@@ -89,8 +87,8 @@ class EpisodeViewController: UIViewController {
         
         if episodes.count == 0 {
             dispatch_once(&checkInitialContentToken, { () -> Void in
-                let downloadController = DownloadController(client: self.client, contentController: self.contentController, persistenceController: self.persistenceController)
-                let downloadViewController = DownloadViewController(client: self.client, downloadController: downloadController)
+                let downloadController = DownloadController(contentController: self.contentController, persistenceController: self.persistenceController)
+                let downloadViewController = DownloadViewController(downloadController: downloadController)
                 let navigation = UINavigationController(rootViewController: downloadViewController)
                 self.rootViewController?.presentViewController(navigation, animated: true, completion: nil)
             })
@@ -131,27 +129,28 @@ class EpisodeViewController: UIViewController {
         episodeView.shakeView.hidden = true
         episodeView.episodeContainerView.hidden = false
         episodeView.episodeImageView.hidden = false
-        
-        client.fetchPictureForEpisodeId(String(randomEpisode.id))
-            .takeUntil(shakeSignal.0)
-            .on(started: {
-                    UIScheduler().schedule({ () -> () in
-                        self.episodeView.pictureState = .Loading
-                    })
-                },
-                completed: { self.analyticsController.trackEvent(.Shake) })
-            .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
-                return SignalProducer(value: (image, convertToBlackAndWhite(image)))
-            })
-            .observeOn(UIScheduler())
-            .startWithNext { (image) -> () in
-                self.episodeView.pictureState = .Loaded(image: image.0, bnwImage: image.1)
-            }
+
+// TODO fetch episode picture
+//        client.fetchPictureForEpisodeId(String(randomEpisode.id))
+//            .takeUntil(shakeSignal.0)
+//            .on(started: {
+//                    UIScheduler().schedule({ () -> () in
+//                        self.episodeView.pictureState = .Loading
+//                    })
+//                },
+//                completed: { self.analyticsController.trackEvent(.Shake) })
+//            .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
+//                return SignalProducer(value: (image, convertToBlackAndWhite(image)))
+//            })
+//            .observeOn(UIScheduler())
+//            .startWithNext { (image) -> () in
+//                self.episodeView.pictureState = .Loaded(image: image.0, bnwImage: image.1)
+//            }
     }
     
     func didTapSettingsButton(button: UIButton) {
         analyticsController.trackEvent(.Settings)
-        let settings = UINavigationController(rootViewController: SettingsViewController(client: client, persistenceController: persistenceController, analyticsController: analyticsController, completion: { () -> Void in
+        let settings = UINavigationController(rootViewController: SettingsViewController(persistenceController: persistenceController, analyticsController: analyticsController, completion: { () -> Void in
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         presentViewController(settings, animated: true, completion: nil)

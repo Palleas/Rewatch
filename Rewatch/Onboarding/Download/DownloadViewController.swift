@@ -10,7 +10,6 @@ import UIKit
 import ReactiveCocoa
 
 class DownloadViewController: UIViewController {
-    let client: Client
     let downloadController: DownloadController
     
     var downloadView: DownloadView {
@@ -19,8 +18,7 @@ class DownloadViewController: UIViewController {
         }
     }
     
-    init(client: Client, downloadController: DownloadController) {
-        self.client = client
+    init(downloadController: DownloadController) {
         self.downloadController = downloadController
         
         super.init(nibName: nil, bundle: nil)
