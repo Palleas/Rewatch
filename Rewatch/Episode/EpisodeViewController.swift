@@ -18,7 +18,7 @@ class EpisodeWrapper: EpisodeViewData {
         self.wrapped = wrapped
     }
     
-    var showName : String { get { return wrapped.show?.name ?? "" } }
+    var showName : String { get { return wrapped.show?.title ?? "" } }
     var title : String { get { return wrapped.title ?? "" } }
     var season : String { get { return String(wrapped.season) } }
     var number : String { get { return String(wrapped.episode) } }
@@ -45,6 +45,7 @@ class EpisodeViewController: UIViewController {
     
     let client: Client
     let persistenceController: PersistenceController
+    let contentController: ContentController
     let analyticsController: AnalyticsController
     
     var episodes: [StoredEpisode] = []
@@ -52,6 +53,7 @@ class EpisodeViewController: UIViewController {
     init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController, contentController: ContentController) {
         self.client = client
         self.persistenceController = persistenceController
+        self.contentController = contentController
         self.analyticsController = analyticsController
         
         super.init(nibName: nil, bundle: nil)
@@ -87,7 +89,8 @@ class EpisodeViewController: UIViewController {
         
         if episodes.count == 0 {
             dispatch_once(&checkInitialContentToken, { () -> Void in
-                let downloadViewController = DownloadViewController(client: self.client, downloadController: DownloadController(client: self.client, persistenceController: self.persistenceController))
+                let downloadController = DownloadController(client: self.client, contentController: self.contentController, persistenceController: self.persistenceController)
+                let downloadViewController = DownloadViewController(client: self.client, downloadController: downloadController)
                 let navigation = UINavigationController(rootViewController: downloadViewController)
                 self.rootViewController?.presentViewController(navigation, animated: true, completion: nil)
             })

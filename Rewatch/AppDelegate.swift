@@ -92,10 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        let downloadController = DownloadController(client: client, persistenceController: persistence)
-        downloadController
-            .download()
-            .on(failed: { _ in completionHandler(.Failed) })
-            .startWithNext({ completionHandler($0 > 0 ? .NewData : .NoData) })
+//        let downloadController = DownloadController(client: client, persistenceController: persistence)
+//        downloadController
+//            .download()
+//            .on(failed: { _ in completionHandler(.Failed) })
+//            .startWithNext({ completionHandler($0 > 0 ? .NewData : .NoData) })
     }
 }

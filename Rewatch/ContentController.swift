@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 protocol Show {
     var id: Int { get }
-    var name: String { get }
+    var title: String { get }
 }
 
 protocol Episode {
@@ -30,8 +30,8 @@ struct BetaseriesShow: Show {
         return wrappedShow.id
     }
     
-    var name: String {
-        return wrappedShow.name
+    var title: String {
+        return wrappedShow.title
     }
     
     init(wrappedShow: BetaSeriesKit.Show) {
@@ -78,7 +78,7 @@ protocol ContentController {
     var rawLogin: String? { get }
     
     func fetchShows() -> SignalProducer<Show, ContentError>
-    func fetchEpisodes(show: Show) -> SignalProducer<Episode, ContentError>
+    func fetchEpisodes(id: Int) -> SignalProducer<Episode, ContentError>
     
 }
 
@@ -88,7 +88,7 @@ class UnauthenticatedContentController: ContentController {
         return nil
     }
     
-    func fetchEpisodes(show: Show) -> SignalProducer<Episode, ContentError> {
+    func fetchEpisodes(id: Int) -> SignalProducer<Episode, ContentError> {
         return SignalProducer(error: .UnauthenticatedError)
     }
     
@@ -109,11 +109,9 @@ class BetaseriesContentController: ContentController {
         self.authenticatedClient = authenticatedClient
     }
     
-    func fetchEpisodes(show: Show) -> SignalProducer<Episode, ContentError> {
-        guard let betaseriesShow = show as? BetaseriesShow else { return SignalProducer(error: ContentError.ClientError) }
-        
+    func fetchEpisodes(id: Int) -> SignalProducer<Episode, ContentError> {
         let episodes = authenticatedClient
-            .fetchEpisodes(betaseriesShow.wrappedShow)
+            .fetchEpisodes(id)
             .flatMapError { _ in return SignalProducer(error: ContentError.ClientError) }
 
         return episodes.map { episode in BetaseriesEpisode(wrappedEpisode: episode) }

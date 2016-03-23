@@ -198,9 +198,9 @@ class SettingsViewController: UITableViewController {
         case (0, 1):
             analyticsController.trackEvent(.ManualSync)
             
-            let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
-            let navigation = UINavigationController(rootViewController: downloadViewController)
-            presentViewController(navigation, animated: true, completion: nil)
+//            let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
+//            let navigation = UINavigationController(rootViewController: downloadViewController)
+//            presentViewController(navigation, animated: true, completion: nil)
         case (0, 2):
             analyticsController.trackEvent(.LogOut)
             let keychain = KeychainSwift()

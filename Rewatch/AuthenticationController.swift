@@ -20,7 +20,9 @@ class AuthenticationController {
 
     func retrieveContentController() -> ContentController? {
         if let token = keychain.get("rewatch-raw-login") {
-            return BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: "", token: token))
+            let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
+
+            return BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))
         }
         
         return nil
