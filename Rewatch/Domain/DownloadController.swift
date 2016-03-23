@@ -59,9 +59,8 @@ class DownloadController: NSObject {
         
         // Import episode
         let importEpisodesSignal = importShowsSignal.flatMap(.Merge) { (storedShow) -> SignalProducer<(StoredShow, StoredEpisode), ContentError> in
-            let fetchEpisodeSignal = self.fetchSeenEpisodeFromShow(Int(storedShow.id))
+            let fetchEpisodeSignal = self.contentController.fetchEpisodes(Int(storedShow.id))
                 .flatMap(FlattenStrategy.Merge, transform: { (episode) -> SignalProducer<StoredEpisode, ContentError> in
-                    print("episode: \(episode)")
                     return SignalProducer { observable, disposable in
                         let storedEpisode = StoredEpisode.episodeInContext(importMoc, mappedOnEpisode: episode)
                         storedEpisode.show = storedShow
@@ -77,36 +76,19 @@ class DownloadController: NSObject {
             return SignalProducer<Int, ContentError> { sink, disposable in
                 try! importMoc.save()
                 sink.sendNext(showsAndEpisodes.count)
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(NSDate(), forKey: DownloadControllerLastSyncKey)
+                defaults.synchronize()
+
                 sink.sendCompleted()
             }
         }
-//            return SignalProducer { sink, disposable in
-//                try! importMoc.save()
-//                sink.sendNext(shows.count)
-//                sink.sendCompleted()
-//            }
-//        }
-        //            .flatMap(.Latest, transform: { (shows) -> SignalProducer<Int, ContentError> in
-//                return SignalProducer { sink, disposable in
-//                    try! importMoc.save()
-//                    sink.sendNext(shows.count)
-//                    sink.sendCompleted()
-//                }
-//            })
-//            .on(next: { print("Synchronized \($0) episodes") }, completed: {
-//                let defaults = NSUserDefaults.standardUserDefaults()
-//                defaults.setObject(NSDate(), forKey: DownloadControllerLastSyncKey)
-//                defaults.synchronize()
-//            })
-        
+
         return finalCountdownSignalProducer
     }
     
     func fetchSeenEpisodeFromShow(id: Int) -> SignalProducer<Episode, ContentError> {
         return self.contentController.fetchEpisodes(id)
-//        return self.client
-//            .fetchEpisodesFromShow(id)
-//            .filter({ $0.seen })
-//    }
     }
 }

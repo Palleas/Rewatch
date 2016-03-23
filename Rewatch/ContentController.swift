@@ -112,6 +112,7 @@ class BetaseriesContentController: ContentController {
     func fetchEpisodes(id: Int) -> SignalProducer<Episode, ContentError> {
         let episodes = authenticatedClient
             .fetchEpisodes(id)
+            .filter { $0.seen }
             .flatMapError { _ in return SignalProducer(error: ContentError.ClientError) }
 
         return episodes.map { episode in BetaseriesEpisode(wrappedEpisode: episode) }
