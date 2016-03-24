@@ -23,6 +23,11 @@ protocol Episode {
     var summary: String { get }
 }
 
+protocol Member {
+    var login: String { get }
+    var avatar: NSURL? { get }
+}
+
 struct BetaseriesShow: Show {
     let wrappedShow: BetaSeriesKit.Show
     
@@ -68,6 +73,22 @@ struct BetaseriesEpisode: Episode {
     
 }
 
+struct BetaSeriesMember: Member {
+    let wrappedMember: BetaSeriesKit.Member
+
+    init(wrappedMember: BetaSeriesKit.Member) {
+        self.wrappedMember = wrappedMember
+    }
+
+    var login: String {
+        return wrappedMember.login
+    }
+
+    var avatar: NSURL? {
+        return wrappedMember.avatar
+    }
+}
+
 enum ContentError: ErrorType {
     case ClientError
     case UnauthenticatedError
@@ -80,6 +101,7 @@ protocol ContentController {
     func fetchShows() -> SignalProducer<Show, ContentError>
     func fetchEpisodes(id: Int) -> SignalProducer<Episode, ContentError>
     func fetchPictureForEpisode(id: Int) -> SignalProducer<UIImage, ContentError>
+    func fetchMemberInfos() -> SignalProducer<Member, ContentError>
 }
 
 class UnauthenticatedContentController: ContentController {
@@ -99,6 +121,10 @@ class UnauthenticatedContentController: ContentController {
     func fetchPictureForEpisode(id: Int) -> SignalProducer<UIImage, ContentError> {
         return SignalProducer(error: .UnauthenticatedError)
     }
+
+    func fetchMemberInfos() -> SignalProducer<Member, ContentError> {
+        return SignalProducer(error: .UnauthenticatedError)
+    }
 }
 
 class BetaseriesContentController: ContentController {
@@ -112,7 +138,14 @@ class BetaseriesContentController: ContentController {
     init(authenticatedClient: AuthenticatedClient) {
         self.authenticatedClient = authenticatedClient
     }
-    
+
+    func fetchMemberInfos() -> SignalProducer<Member, ContentError> {
+        return authenticatedClient
+            .fetchMemberInfos()
+            .map { member in BetaSeriesMember(wrappedMember: member) }
+            .flatMapError { _ in return SignalProducer(error: ContentError.ClientError) }
+    }
+
     func fetchEpisodes(id: Int) -> SignalProducer<Episode, ContentError> {
         let episodes = authenticatedClient
             .fetchEpisodes(id)
