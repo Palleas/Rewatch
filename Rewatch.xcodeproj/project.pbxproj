@@ -49,6 +49,7 @@
 		7A7F44191BD1DDE700B3BD59 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44161BD1DDE700B3BD59 /* Result.framework */; };
 		7A7F441A1BD1DDE700B3BD59 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44161BD1DDE700B3BD59 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A8096321BE1A965002F5278 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8096311BE1A965002F5278 /* Reveal.framework */; };
+		7A81C47E1CA49CED002DE0DE /* BetaSeriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEED1E81CA20BB6000AC770 /* BetaSeriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */; };
 		7A8CC26D1BEB0C92003BFE11 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8CC26C1BEB0C92003BFE11 /* LoginView.swift */; };
 		7A8CC26F1BEB0E9F003BFE11 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */; };
@@ -113,6 +114,7 @@
 			files = (
 				7A7146001BD5B02500492B9B /* KeychainSwift.framework in Embed Frameworks */,
 				7A7F44181BD1DDE700B3BD59 /* ReactiveCocoa.framework in Embed Frameworks */,
+				7A81C47E1CA49CED002DE0DE /* BetaSeriesKit.framework in Embed Frameworks */,
 				7A7F441A1BD1DDE700B3BD59 /* Result.framework in Embed Frameworks */,
 				7A2E23531BD1E20F00D0B869 /* SwiftyJSON.framework in Embed Frameworks */,
 				7A5686221BF64C6A006BDEB3 /* Mixpanel.framework in Embed Frameworks */,
@@ -685,6 +687,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mixpanel.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BetaSeriesKit.framework",
 			);
 			name = "Copy Carthage frameworks";
 			outputPaths = (

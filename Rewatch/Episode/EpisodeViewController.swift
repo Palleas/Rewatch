@@ -130,22 +130,23 @@ class EpisodeViewController: UIViewController {
         episodeView.episodeContainerView.hidden = false
         episodeView.episodeImageView.hidden = false
 
-// TODO fetch episode picture
-//        client.fetchPictureForEpisodeId(String(randomEpisode.id))
-//            .takeUntil(shakeSignal.0)
-//            .on(started: {
-//                    UIScheduler().schedule({ () -> () in
-//                        self.episodeView.pictureState = .Loading
-//                    })
-//                },
-//                completed: { self.analyticsController.trackEvent(.Shake) })
-//            .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
-//                return SignalProducer(value: (image, convertToBlackAndWhite(image)))
-//            })
-//            .observeOn(UIScheduler())
-//            .startWithNext { (image) -> () in
-//                self.episodeView.pictureState = .Loaded(image: image.0, bnwImage: image.1)
-//            }
+        contentController
+            .fetchPictureForEpisode(Int(episode.wrapped.id))
+            .takeUntil(shakeSignal.0)
+            .on(started: {
+                    UIScheduler().schedule({ () -> () in
+                        self.episodeView.pictureState = .Loading
+                    })
+                },
+                completed: { self.analyticsController.trackEvent(.Shake) }
+            )
+            .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), ContentError> in
+                return SignalProducer(value: (image, convertToBlackAndWhite(image)))
+            })
+            .observeOn(UIScheduler())
+            .startWithNext { (image) -> () in
+                self.episodeView.pictureState = .Loaded(image: image.0, bnwImage: image.1)
+            }
     }
     
     func didTapSettingsButton(button: UIButton) {

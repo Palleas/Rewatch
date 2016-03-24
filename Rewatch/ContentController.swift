@@ -79,7 +79,7 @@ protocol ContentController {
     
     func fetchShows() -> SignalProducer<Show, ContentError>
     func fetchEpisodes(id: Int) -> SignalProducer<Episode, ContentError>
-    
+    func fetchPictureForEpisode(id: Int) -> SignalProducer<UIImage, ContentError>
 }
 
 class UnauthenticatedContentController: ContentController {
@@ -93,6 +93,10 @@ class UnauthenticatedContentController: ContentController {
     }
     
     func fetchShows() -> SignalProducer<Show, ContentError> {
+        return SignalProducer(error: .UnauthenticatedError)
+    }
+
+    func fetchPictureForEpisode(id: Int) -> SignalProducer<UIImage, ContentError> {
         return SignalProducer(error: .UnauthenticatedError)
     }
 }
@@ -124,5 +128,11 @@ class BetaseriesContentController: ContentController {
             .map { show in BetaseriesShow(wrappedShow: show) }
             .flatMapError { _ in return SignalProducer(error: ContentError.ClientError) }
     }
-    
+
+    func fetchPictureForEpisode(id: Int) -> SignalProducer<UIImage, ContentError> {
+        return authenticatedClient
+            .fetchImageForEpisode(id, width: 960, height: 960)
+            .flatMapError { _ in return SignalProducer(error: ContentError.ClientError) }
+    }
+
 }
