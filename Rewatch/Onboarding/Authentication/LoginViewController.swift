@@ -8,9 +8,9 @@
 
 import UIKit
 import ReactiveCocoa
+import BetaSeriesKit
 
 class LoginViewController: UIViewController {
-    let client: Client
     let persistenceController: PersistenceController
 
     var loginView: LoginView {
@@ -19,8 +19,9 @@ class LoginViewController: UIViewController {
         }
     }
     
-    init(client: Client, persistenceController: PersistenceController) {
-        self.client = client
+    let contentController = MutableProperty<ContentController>(UnauthenticatedContentController())
+    
+    init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
         
         super.init(nibName: nil, bundle: nil)
@@ -28,20 +29,6 @@ class LoginViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @IBAction func authenticate(sender: AnyObject) {
-        client.authenticate()
-            .on(next: { (client) -> () in
-                if let token = client.token {
-                    print("Storing token \(token)")
-                    storeToken(token)
-                }
-            })
-            .observeOn(UIScheduler())
-            .startWithNext { (authenticatedClient) -> () in
-                self.performSegueWithIdentifier("DownloadSegue", sender: self)
-            }
     }
     
     override func viewDidLoad() {
@@ -55,14 +42,19 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewDelegate {
+
     func didStartAuthenticationInLoginView(loginView: LoginView) {
-        client.authenticate()
-            .on(next: {
-                if let token = $0.token {
-                    storeToken(token)
-                }
-            })
+        let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
+        let client = BetaSeriesKit.Client(key: keys["BetaseriesAPIKey"]!)
+        let secret = keys["BetaseriesAPISecret"]!
+        
+        client
+            .authenticate(secret)
+            .map { BetaseriesContentController(authenticatedClient: $0) }
             .observeOn(UIScheduler())
-            .startWithCompleted({ print("Authentication complete") })
+            .startWithNext { authenticatedClient in
+                print("Authenticated client: \(authenticatedClient)")
+                self.contentController.value = authenticatedClient
+            }
     }
 }

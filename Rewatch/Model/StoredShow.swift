@@ -18,7 +18,7 @@ class StoredShow: NSManagedObject {
 
 
 extension StoredShow {
-    static func showInContext(context: NSManagedObjectContext, mappedOnShow show: Client.Show) -> StoredShow {
+    static func showInContext(context: NSManagedObjectContext, mappedOnShow show: Show) -> StoredShow {
         // TODO use throws + attemptMap ?
         let stored: StoredShow
         
@@ -29,7 +29,7 @@ extension StoredShow {
         }
 
         stored.id = Int64(show.id)
-        stored.name = show.name
+        stored.title = show.title
         
         return stored
     }

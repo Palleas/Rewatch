@@ -15,7 +15,7 @@ import CoreData
 extension StoredShow {
 
     @NSManaged var id: Int64
-    @NSManaged var name: String?
+    @NSManaged var title: String?
     @NSManaged var episodes: NSSet?
 
 }

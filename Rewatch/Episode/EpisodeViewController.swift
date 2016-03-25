@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveCocoa
 import AVFoundation
-import Swifter
 
 class EpisodeWrapper: EpisodeViewData {
     typealias Element = StoredEpisode
@@ -19,7 +18,7 @@ class EpisodeWrapper: EpisodeViewData {
         self.wrapped = wrapped
     }
     
-    var showName : String { get { return wrapped.show?.name ?? "" } }
+    var showName : String { get { return wrapped.show?.title ?? "" } }
     var title : String { get { return wrapped.title ?? "" } }
     var season : String { get { return String(wrapped.season) } }
     var number : String { get { return String(wrapped.episode) } }
@@ -44,15 +43,15 @@ class EpisodeViewController: UIViewController {
     
     lazy private(set) var shakeSignal = Signal<(), NoError>.pipe()
     
-    let client: Client
     let persistenceController: PersistenceController
+    let contentController: ContentController
     let analyticsController: AnalyticsController
     
     var episodes: [StoredEpisode] = []
     
-    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController) {
-        self.client = client
+    init(persistenceController: PersistenceController, analyticsController: AnalyticsController, contentController: ContentController) {
         self.persistenceController = persistenceController
+        self.contentController = contentController
         self.analyticsController = analyticsController
         
         super.init(nibName: nil, bundle: nil)
@@ -88,7 +87,8 @@ class EpisodeViewController: UIViewController {
         
         if episodes.count == 0 {
             dispatch_once(&checkInitialContentToken, { () -> Void in
-                let downloadViewController = DownloadViewController(client: self.client, downloadController: DownloadController(client: self.client, persistenceController: self.persistenceController))
+                let downloadController = DownloadController(contentController: self.contentController, persistenceController: self.persistenceController)
+                let downloadViewController = DownloadViewController(downloadController: downloadController)
                 let navigation = UINavigationController(rootViewController: downloadViewController)
                 self.rootViewController?.presentViewController(navigation, animated: true, completion: nil)
             })
@@ -129,16 +129,18 @@ class EpisodeViewController: UIViewController {
         episodeView.shakeView.hidden = true
         episodeView.episodeContainerView.hidden = false
         episodeView.episodeImageView.hidden = false
-        
-        client.fetchPictureForEpisodeId(String(randomEpisode.id))
+
+        contentController
+            .fetchPictureForEpisode(Int(episode.wrapped.id))
             .takeUntil(shakeSignal.0)
             .on(started: {
                     UIScheduler().schedule({ () -> () in
                         self.episodeView.pictureState = .Loading
                     })
                 },
-                completed: { self.analyticsController.trackEvent(.Shake) })
-            .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), NSError> in
+                completed: { self.analyticsController.trackEvent(.Shake) }
+            )
+            .flatMap(FlattenStrategy.Latest, transform: { (image) -> SignalProducer<(UIImage, UIImage), ContentError> in
                 return SignalProducer(value: (image, convertToBlackAndWhite(image)))
             })
             .observeOn(UIScheduler())
@@ -149,7 +151,7 @@ class EpisodeViewController: UIViewController {
     
     func didTapSettingsButton(button: UIButton) {
         analyticsController.trackEvent(.Settings)
-        let settings = UINavigationController(rootViewController: SettingsViewController(client: client, persistenceController: persistenceController, analyticsController: analyticsController, completion: { () -> Void in
+        let settings = UINavigationController(rootViewController: SettingsViewController(contentController: contentController, persistenceController: persistenceController, analyticsController: analyticsController, completion: { () -> Void in
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         presentViewController(settings, animated: true, completion: nil)
@@ -163,15 +165,8 @@ class EpisodeViewController: UIViewController {
 extension EpisodeViewController: EpisodeViewDelegate {
     func didTapShareButton() {
         guard let episode = episodeView.episode as? EpisodeWrapper else { return }
-        
-        let activities: [UIActivity]?
-        if NSUserDefaults.standardUserDefaults().boolForKey("enabled_deeplinking") {
-            activities = [GenerateDeeplinkActivity()]
-        } else {
-            activities = nil
-        }
-        
-        let activity = UIActivityViewController(activityItems: [String(format: NSLocalizedString("SHARING_MESSAGE", comment: "Sharing message"), "\(episode.showName) - \(episode.title)"), episode.wrapped], applicationActivities: activities)
+
+        let activity = UIActivityViewController(activityItems: [String(format: NSLocalizedString("SHARING_MESSAGE", comment: "Sharing message"), "\(episode.showName) - \(episode.title)"), episode.wrapped], applicationActivities: nil)
         presentViewController(activity, animated: true, completion: nil)
     }
     

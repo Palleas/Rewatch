@@ -17,7 +17,7 @@ class StoredEpisode: NSManagedObject {
 }
 
 extension StoredEpisode {
-    static func episodeInContext(context: NSManagedObjectContext, mappedOnEpisode episode: Client.Episode) -> StoredEpisode {
+    static func episodeInContext(context: NSManagedObjectContext, mappedOnEpisode episode: Episode) -> StoredEpisode {
         let stored: StoredEpisode
         
         if let localStored = episodeWithId(episode.id, inContext: context) {

@@ -12,7 +12,7 @@ import Fabric
 import Crashlytics
 import CoreData
 import Mixpanel
-
+import BetaSeriesKit
 import ReactiveCocoa
 
 @UIApplicationMain
@@ -37,14 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         analyticsController = MixpanelAnalyticsController(mixpanel: Mixpanel.sharedInstanceWithToken(keys["MixpanelAPIKey"]!))
 
-        if let _ = NSProcessInfo.processInfo().arguments.indexOf("snapshot") {
-            client = MockClient()
-        } else {
-            let keychain = KeychainSwift()
-            let token = keychain.get("betaseries-token")
-            client = Client(key: keys["BetaseriesAPIKey"]!, secret: keys["BetaseriesAPISecret"]!, token: token)
-        }
-
         // Setup Window
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window = window
@@ -55,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
 
-        window.rootViewController = RootViewController(client: self.client, persistenceController: self.persistence, analyticsController: analyticsController)
+        window.rootViewController = RootViewController(persistenceController: self.persistence, analyticsController: analyticsController)
         window.makeKeyAndVisible()
         return true
     }
@@ -64,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let host = url.host else { return false }
 
         if host == "oauth" {
-            client.completeSigninWithURL(url)
+            BetaSeriesKit.Client.completeSignIn(url)
         } else if host == "episode" {
             if let episode = url.pathComponents?.filter({ $0 != "/" }).first, let episodeId = Int(episode) {
                 guard let presentedEpisode = episodeWithId(episodeId, inContext: persistence.managedObjectContext) else {
@@ -92,10 +84,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        let downloadController = DownloadController(client: client, persistenceController: persistence)
-        downloadController
-            .download()
-            .on(error: { _ in completionHandler(.Failed) })
-            .startWithNext({ completionHandler($0 > 0 ? .NewData : .NoData) })
+//        let downloadController = DownloadController(client: client, persistenceController: persistence)
+//        downloadController
+//            .download()
+//            .on(failed: { _ in completionHandler(.Failed) })
+//            .startWithNext({ completionHandler($0 > 0 ? .NewData : .NoData) })
     }
 }

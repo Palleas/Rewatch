@@ -41,13 +41,13 @@ class SettingsViewController: UITableViewController {
     let VersionCellIdentifier = "VersionCell"
     let SupportCellIdentifier = "SupportCell"
     let completion: Completion
-    
-    let client: Client
+
+    let contentController: ContentController
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
     
-    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController, completion: Completion) {
-        self.client = client
+    init(contentController: ContentController, persistenceController: PersistenceController, analyticsController: AnalyticsController, completion: Completion) {
+        self.contentController = contentController
         self.persistenceController = persistenceController
         self.completion = completion
         self.analyticsController = analyticsController
@@ -103,30 +103,19 @@ class SettingsViewController: UITableViewController {
                 cell = tableView.dequeueReusableCellWithIdentifier(MemberCellIdentifier, forIndexPath: indexPath)
                 cell.textLabel?.text = NSLocalizedString("LOADING_MESSAGE", comment: "Loading Message")
                 cell.textLabel?.textColor = UIColor.lightGrayColor()
-                
-                client
-                    .fetchMemberInfos()
-                    .flatMap(.Latest, transform: { (member) -> SignalProducer<(UIImage?, String), NSError> in
-                        guard let url = member.avatar else { return SignalProducer(value: (nil, member.login)) }
 
-                        return NSURLSession
-                            .sharedSession()
-                            .rac_dataWithRequest(NSURLRequest(URL: url))
-                            .map({ return UIImage(data: $0.0) })
-                            .zipWith(SignalProducer(value: member.login))
-                    })
+                contentController
+                    .fetchMemberInfos()
                     .observeOn(UIScheduler())
-                    .on(error: { error in
+                    .on(failed: { _ in
                         self.tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text = NSLocalizedString("UNAVAILABLE", comment: "Member infos available message")
                     })
-                    .startWithNext({ (avatar, login) -> () in
+                    .startWithNext({ (member) in
                         guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-                        cell.imageView?.image = avatar
-                        cell.textLabel?.text = login
+
+                        cell.textLabel?.text = member.login
                         cell.textLabel?.textColor = .darkTextColor()
                     })
-                
-                
             } else if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier(MemberActionCellIdentifier, forIndexPath: indexPath)
                 cell.textLabel?.text = NSLocalizedString("SYNC_NOW", comment: "Sync now button label")
@@ -170,7 +159,7 @@ class SettingsViewController: UITableViewController {
 
         return cell
     }
-    
+
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return NSLocalizedString("MEMBER_CENTER_SECTION", comment: "Member section")
@@ -197,16 +186,16 @@ class SettingsViewController: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (0, 1):
             analyticsController.trackEvent(.ManualSync)
-            
-            let downloadViewController = DownloadViewController(client: client, downloadController: DownloadController(client: client, persistenceController: persistenceController))
+
+            let downloadViewController = DownloadViewController(downloadController: DownloadController(contentController: contentController, persistenceController: persistenceController))
             let navigation = UINavigationController(rootViewController: downloadViewController)
             presentViewController(navigation, animated: true, completion: nil)
         case (0, 2):
+            // TODO: FIX logout
             analyticsController.trackEvent(.LogOut)
             let keychain = KeychainSwift()
             keychain.clear()
             
-            client.token = nil
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         case (1, 0):
             analyticsController.trackEvent(.SupportTwitter)
@@ -230,6 +219,13 @@ class SettingsViewController: UITableViewController {
     
     func didTapDismissSettingsPanel() {
         completion()
+    }
+
+    func loadImageAtURL(url: NSURL) -> SignalProducer<UIImage?, NSError> {
+        return NSURLSession
+            .sharedSession()
+            .rac_dataWithRequest(NSURLRequest(URL: url))
+            .map({ return UIImage(data: $0.0) })
     }
 }
 

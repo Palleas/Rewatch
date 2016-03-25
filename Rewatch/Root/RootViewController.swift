@@ -10,7 +10,6 @@ import UIKit
 import ReactiveCocoa
 
 class RootViewController: UIViewController {
-    let client: Client
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
     let creditsController: CreditsViewController
@@ -23,8 +22,7 @@ class RootViewController: UIViewController {
         }
     }
     
-    init(client: Client, persistenceController: PersistenceController, analyticsController: AnalyticsController) {
-        self.client = client
+    init(persistenceController: PersistenceController, analyticsController: AnalyticsController) {
         self.persistenceController = persistenceController
         self.analyticsController = analyticsController
         self.creditsController = CreditsViewController(analyticsController: analyticsController)
@@ -50,18 +48,28 @@ class RootViewController: UIViewController {
     }
     
     func boot() {
-        client.authenticated.producer.observeOn(UIScheduler()).startWithNext { (authenticated) -> () in
-            let target: UIViewController
-
-            if authenticated {
-                let episode = EpisodeViewController(client: self.client, persistenceController: self.persistenceController, analyticsController: self.analyticsController)
-                target = UINavigationController(rootViewController: episode)
-            } else {
-                let login = LoginViewController(client: self.client, persistenceController: self.persistenceController)
-                target = UINavigationController(rootViewController: login)
-            }
-
-            self.transitionToViewController(target)
+        let authenticationController = AuthenticationController()
+        if let contentController = authenticationController.retrieveContentController() {
+            let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
+            transitionToViewController(UINavigationController(rootViewController: episode))
+        } else {
+            let login = LoginViewController(persistenceController: self.persistenceController)
+            login
+                .contentController
+                .producer
+                .filter { $0 is BetaseriesContentController }
+                .observeOn(UIScheduler())
+                .startWithNext { contentController in
+                    
+                    authenticationController.saveToken(contentController.rawLogin!)
+                    
+                    let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
+                    
+                    self.dismissViewControllerAnimated(true) {
+                        self.transitionToViewController(UINavigationController(rootViewController: episode))
+                    }
+                }
+            presentViewController(UINavigationController(rootViewController: login), animated: true, completion: nil)
         }
     }
     

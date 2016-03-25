@@ -1,52 +1,39 @@
-//: Playground - noun: a place where people can play
 
 import UIKit
 import XCPlayground
 
 XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
 
-let view = UIView(frame: CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 150)))
+let view = UIView(frame: CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 300)))
 
 XCPlaygroundPage.currentPage.liveView = view
 
-// Draw the eye
-let eyeLayer = CALayer()
-eyeLayer.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 300, height: 200))
-view.layer.addSublayer(eyeLayer)
+let color = UIColor(red: 247/255, green: 78/255, blue: 64/255, alpha: 1)
 
-// Top line
-let topLineLayerPath = UIBezierPath()
-topLineLayerPath.moveToPoint(CGPoint(x: 30, y: 75))
-topLineLayerPath.addCurveToPoint(CGPoint(x: 270, y: 75), controlPoint1: CGPoint(x: 120, y: 0), controlPoint2: CGPoint(x: 170, y: 0))
-topLineLayerPath.addCurveToPoint(CGPoint(x: 30, y: 75), controlPoint1: CGPoint(x: 170, y: 150), controlPoint2: CGPoint(x: 120, y: 150))
-
-let topLineLayer = CAShapeLayer()
-topLineLayer.path = topLineLayerPath.CGPath
-topLineLayer.strokeColor = UIColor.whiteColor().CGColor
-topLineLayer.lineWidth = 4
-eyeLayer.addSublayer(topLineLayer)
-
-// Center piece
-let centerPiece = CALayer()
-centerPiece.frame = CGRect(origin: CGPoint(x: 100, y: 30), size: CGSize(width: 100, height: 100))
-view.layer.addSublayer(centerPiece)
+let arrowPath = UIBezierPath()
+arrowPath.moveToPoint(CGPoint(x: 0, y: 0))
+arrowPath.addLineToPoint(CGPoint(x: 30, y: 0))
+arrowPath.addLineToPoint(CGPoint(x: 15, y: 15))
+arrowPath.addLineToPoint(CGPoint(x: 0, y: 0))
 
 let arrowLayerContainer = CALayer()
-arrowLayerContainer.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100))
-centerPiece.addSublayer(arrowLayerContainer)
+arrowLayerContainer.frame = CGRect(origin: CGPoint(x: 50, y: 50), size: CGSize(width: 200, height: 200))
+view.layer.addSublayer(arrowLayerContainer)
 
-let arrowLayer = createArrowLayer()
-arrowLayer.position = CGPoint(x: 65, y: 50)
+let arrowLayer = CAShapeLayer()
+arrowLayer.path = arrowPath.CGPath
+arrowLayer.fillColor = color.CGColor
+arrowLayer.position = CGPoint(x: 185, y: 100)
 arrowLayerContainer.addSublayer(arrowLayer)
 
-let circlePath = UIBezierPath(arcCenter: CGPointZero, radius: 30, startAngle: 0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
+let circlePath = UIBezierPath(arcCenter: CGPointZero, radius: 100, startAngle: 0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
 let circleLayer = CAShapeLayer()
-circleLayer.position = CGPoint(x: 50, y: 50)
+circleLayer.position = CGPoint(x: 150, y: 150)
 circleLayer.path = circlePath.CGPath
 circleLayer.fillColor = UIColor.clearColor().CGColor
-circleLayer.strokeColor = RewatchColorScheme.mainColor.CGColor
+circleLayer.strokeColor = color.CGColor
 circleLayer.lineWidth = 5.0;
-centerPiece.addSublayer(circleLayer)
+view.layer.addSublayer(circleLayer)
 
 let arrowRotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
 arrowRotationAnimation.fromValue = 0
@@ -67,10 +54,10 @@ strokeEndAnimation.toValue = 1
 strokeEndAnimation.duration = 1.0
 strokeEndAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 
-let strokeEndAnimationGroup = CAAnimationGroup()
-strokeEndAnimationGroup.duration = 1.5
-strokeEndAnimationGroup.repeatCount = HUGE
-strokeEndAnimationGroup.animations = [strokeEndAnimation]
+let animationGroup = CAAnimationGroup()
+animationGroup.duration = 1.5
+animationGroup.repeatCount = HUGE
+animationGroup.animations = [strokeEndAnimation]
 
 let strokeStartAnimation = CABasicAnimation(keyPath: "strokeStart")
 strokeStartAnimation.beginTime = 0.5
@@ -81,12 +68,12 @@ strokeStartAnimation.removedOnCompletion = false
 strokeStartAnimation.fillMode = kCAFillModeForwards
 strokeStartAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 
-let strokeStartAnimationGroup = CAAnimationGroup()
-strokeStartAnimationGroup.duration = 1.5
-strokeStartAnimationGroup.removedOnCompletion = false
-strokeStartAnimationGroup.fillMode = kCAFillModeForwards
-strokeStartAnimationGroup.repeatCount = HUGE
-strokeStartAnimationGroup.animations = [strokeStartAnimation]
+let animationGroup2 = CAAnimationGroup()
+animationGroup2.duration = 1.5
+animationGroup2.removedOnCompletion = false
+animationGroup2.fillMode = kCAFillModeForwards
+animationGroup2.repeatCount = HUGE
+animationGroup2.animations = [strokeStartAnimation]
 
 let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
 rotationAnimation.fromValue = 0
@@ -95,6 +82,6 @@ rotationAnimation.duration = 4
 rotationAnimation.repeatCount = HUGE
 
 circleLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-circleLayer.addAnimation(strokeEndAnimationGroup, forKey: "animateCircle")
-circleLayer.addAnimation(strokeStartAnimationGroup, forKey: "animateCircle2")
-centerPiece.addAnimation(rotationAnimation, forKey: "rotationAnimation")
+circleLayer.addAnimation(animationGroup, forKey: "animateCircle")
+circleLayer.addAnimation(animationGroup2, forKey: "animateCircle2")
+view.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")

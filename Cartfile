@@ -1,6 +1,5 @@
-github "ReactiveCocoa/ReactiveCocoa" "swift2"
-github "SwiftyJSON/SwiftyJSON" "2.3.0"
+github "ReactiveCocoa/ReactiveCocoa" "v4.0.0"
+github "SwiftyJSON/SwiftyJSON" "2.3.3"
 github "exchangegroup/keychain-swift" "3.0.7"
-github "mixpanel/mixpanel-iphone" "v2.9.1"
-github "groue/GRMustache.swift" == 0.11.0
-github "palleas/swifter" "share-framework-scheme"
+github "mixpanel/mixpanel-iphone" "v2.9.4"
+github "palleas/BetaSeriesKit" "0.3"
