@@ -67,7 +67,7 @@ class EpisodeView: UIView {
     
     @IBOutlet weak var shakeView: ShakeView! {
         didSet {
-            shakeView.shakeButton.addTarget(self, action: Selector("didTapOnShakeView"), forControlEvents: .TouchUpInside)
+            shakeView.shakeButton.addTarget(self, action: #selector(EpisodeView.didTapOnShakeView), forControlEvents: .TouchUpInside)
         }
     }
     

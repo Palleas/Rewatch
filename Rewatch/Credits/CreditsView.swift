@@ -68,7 +68,7 @@ class CreditsView: UIView {
             creditsContainer.addArrangedSubview(view)
             
             if let _ = item.URL {
-                view.valueLabel.addTarget(self, action: Selector("didTapCreditItem:"), forControlEvents: .TouchUpInside)
+                view.valueLabel.addTarget(self, action: #selector(CreditsView.didTapCreditItem(_:)), forControlEvents: .TouchUpInside)
             }
         }
 

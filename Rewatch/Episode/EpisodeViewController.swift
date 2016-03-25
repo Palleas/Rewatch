@@ -67,13 +67,13 @@ class EpisodeViewController: UIViewController {
 
         let leftButton = UIButton(type: .Custom)
         leftButton.setImage(UIImage(named: "Hamburger"), forState: .Normal)
-        leftButton.addTarget(self, action: Selector("didTapCreditsButton:"), forControlEvents: .TouchUpInside)
+        leftButton.addTarget(self, action: #selector(EpisodeViewController.didTapCreditsButton(_:)), forControlEvents: .TouchUpInside)
         leftButton.sizeToFit()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
         
         let rightButton = UIButton(type: .Custom)
         rightButton.setImage(UIImage(named: "Options"), forState: .Normal)
-        rightButton.addTarget(self, action: Selector("didTapSettingsButton:"), forControlEvents: .TouchUpInside)
+        rightButton.addTarget(self, action: #selector(EpisodeViewController.didTapSettingsButton(_:)), forControlEvents: .TouchUpInside)
         rightButton.sizeToFit()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
         
