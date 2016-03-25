@@ -38,7 +38,18 @@ class EpisodeViewController: UIViewController {
     lazy private(set) var randomSound: AVAudioPlayer? = {
         guard let path = NSBundle.mainBundle().pathForResource("pop_drip", ofType: "aif") else { return nil }
         let url = NSURL.fileURLWithPath(path)
-        return try? AVAudioPlayer(contentsOfURL: url)
+
+        do {
+            let player = try AVAudioPlayer(contentsOfURL: url)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            return player
+        } catch {
+            print("Unable to init audio player: \(error)")
+        }
+
+        return nil
     }()
     
     lazy private(set) var shakeSignal = Signal<(), NoError>.pipe()
