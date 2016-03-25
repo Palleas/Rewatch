@@ -1,0 +1,1 @@
+- Fixed a bug with the slightly annoying sound you hear when you shake your phone. Now it will no longer pause your music. Sorry about that.
