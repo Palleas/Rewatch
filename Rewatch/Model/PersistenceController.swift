@@ -130,7 +130,19 @@ class PersistenceController: NSObject {
 
         return managedObjectContext.countForFetchRequest(request, error: nil)
     }
-    
+
+    func allShows() -> [StoredShow] {
+        let request = NSFetchRequest(entityName: "Show")
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+
+        do {
+            let episodes = try managedObjectContext.executeFetchRequest(request)
+            return episodes as! [StoredShow]
+        } catch {
+            return []
+        }
+    }
+
     func numberOfShows() -> Int {
         let request = NSFetchRequest(entityName: "Show")
         

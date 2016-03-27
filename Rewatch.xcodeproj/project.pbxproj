@@ -50,6 +50,7 @@
 		7A7F441A1BD1DDE700B3BD59 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F44161BD1DDE700B3BD59 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A8096321BE1A965002F5278 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8096311BE1A965002F5278 /* Reveal.framework */; };
 		7A81C47E1CA49CED002DE0DE /* BetaSeriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEED1E81CA20BB6000AC770 /* BetaSeriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A81C4801CA88D33002DE0DE /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81C47F1CA88D33002DE0DE /* ShowTableViewCell.swift */; };
 		7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */; };
 		7A8CC26D1BEB0C92003BFE11 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8CC26C1BEB0C92003BFE11 /* LoginView.swift */; };
 		7A8CC26F1BEB0E9F003BFE11 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */; };
@@ -175,6 +176,7 @@
 		7A7F44151BD1DDE700B3BD59 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		7A7F44161BD1DDE700B3BD59 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		7A8096311BE1A965002F5278 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		7A81C47F1CA88D33002DE0DE /* ShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		7A8CC26C1BEB0C92003BFE11 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */,
+				7A81C47F1CA88D33002DE0DE /* ShowTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				7A0B9C411C717399002B2572 /* BetaseriesNetworkController.swift in Sources */,
 				7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */,
 				7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */,
+				7A81C4801CA88D33002DE0DE /* ShowTableViewCell.swift in Sources */,
 				7A1D074E1C9F51A90031F7F8 /* AuthenticationController.swift in Sources */,
 				7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */,
 				7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */,

@@ -1,0 +1,55 @@
+//
+//  ShowTableViewCell.swift
+//  Rewatch
+//
+//  Created by Romain Pouclet on 2016-03-27.
+//  Copyright © 2016 Perfectly-Cooked. All rights reserved.
+//
+
+import UIKit
+
+class ShowTableViewCell: UITableViewCell {
+    private let titleLabel = UILabel()
+    private let showSwitch = UISwitch()
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .Default, reuseIdentifier: reuseIdentifier)
+
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(titleLabel)
+        showSwitch.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(showSwitch)
+
+        titleLabel.leftAnchor.constraintEqualToAnchor(contentView.leftAnchor, constant: 10).active = true
+        titleLabel.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
+        titleLabel.rightAnchor.constraintEqualToAnchor(showSwitch.leftAnchor).active = true
+        titleLabel.textColor = .whiteColor()
+        titleLabel.font = Stylesheet.showCellTitleFont
+
+        showSwitch.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -10).active = true
+        showSwitch.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
+        showSwitch.onTintColor = Stylesheet.switchOnTintColor
+
+        selectionStyle = .None
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        titleLabel.text = nil
+        showSwitch.on = true
+    }
+
+    func configureWithTitle(title: String, includeInRandom: Bool) {
+        titleLabel.text = title
+        showSwitch.on = includeInRandom
+    }
+
+    func toogle() {
+        showSwitch.setOn(!showSwitch.on, animated: true)
+    }
+}
