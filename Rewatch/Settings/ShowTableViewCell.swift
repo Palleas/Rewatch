@@ -45,13 +45,6 @@ class ShowTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-
-        titleLabel.text = nil
-        showSwitch.on = true
-    }
-
     func configureWithTitle(title: String, includeInRandom: Bool) {
         titleLabel.text = title
         showSwitch.on = includeInRandom
