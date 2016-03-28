@@ -161,7 +161,7 @@ class SettingsViewController: UITableViewController {
     }
 
     func didTapCancelButton() {
-
+        completion(result: .Cancelled)
     }
 
     func didTapDoneButton() {
