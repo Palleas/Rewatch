@@ -177,8 +177,8 @@ class SettingsViewController: UITableViewController {
 extension SettingsViewController: ShowTableViewCellDelegate {
     func didToggleCell(cell: ShowTableViewCell, on: Bool) {
         guard let showIndex = tableView.indexPathForCell(cell)?.row else { return }
-        let show = shows[showIndex]
+        guard let show = persistenceController.switchShowWithId(Int(shows[showIndex].id), on: on, inContext: context) else { return }
 
-        persistenceController.switchShowWithId(Int(show.id), on: on, inContext: context)
+        shows[showIndex] = show
     }
 }
