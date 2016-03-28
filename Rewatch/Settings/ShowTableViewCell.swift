@@ -50,7 +50,7 @@ class ShowTableViewCell: UITableViewCell {
         showSwitch.on = includeInRandom
     }
 
-    func toogle() {
+    func toggle() {
         showSwitch.setOn(!showSwitch.on, animated: true)
         showSwitch.sendActionsForControlEvents(.ValueChanged)
     }

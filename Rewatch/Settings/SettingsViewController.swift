@@ -139,13 +139,13 @@ class SettingsViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if indexPath.section == SettingsSection.TVShows.rawValue {
-            guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? ShowTableViewCell else { return nil }
+        return indexPath.section == SettingsSection.TVShows.rawValue ? indexPath : nil
+    }
 
-            cell.toogle()
-        }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? ShowTableViewCell else { return }
 
-        return nil
+        cell.toggle()
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

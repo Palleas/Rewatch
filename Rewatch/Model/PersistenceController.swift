@@ -149,9 +149,11 @@ class PersistenceController: NSObject {
         return managedObjectContext.countForFetchRequest(request, error: nil)
     }
 
-    func switchShowWithId(id: Int, on: Bool, inContext context: NSManagedObjectContext) {
-        guard let show = showWithId(id, inContext: context) else { return }
+    func switchShowWithId(id: Int, on: Bool, inContext context: NSManagedObjectContext) -> StoredShow? {
+        guard let show = showWithId(id, inContext: context) else { return nil }
         show.includeInRandom = on
+
+        return show
     }
 }
 
