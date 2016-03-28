@@ -29,6 +29,8 @@ class Stylesheet: NSObject {
     
     static let arrowColor = UIColor(rgba: "#F74D40")
     static let switchOnTintColor = UIColor(rgba: "#F74E40")
+    static let avatarBorderColor = UIColor(rgba: "#979797")
+    static let logoutBackoundColor = UIColor(rgba: "#F74D40")
 
     // Fonts
     static let titleFont = UIFont(name: "Roboto-Bold", size: 16)!
@@ -37,14 +39,16 @@ class Stylesheet: NSObject {
     static let episodeTitleTextFont = UIFont(name: "Roboto-Bold", size: 26)!
     static let episodeNumberFont = UIFont(name: "Roboto-Thin", size: 66)!
     static let seasonNumbertextFont = UIFont(name: "Roboto-Thin", size: 66)!
-
+    static let memberLoginCell = UIFont(name: "Roboto-Thin", size: 16)!
+    
     static let showCellTitleFont = UIFont(name: "Roboto-Thin", size: 20)!
-
+    static let logoutFont = UIFont(name: "Roboto-Light", size: 16)!
 
     static let buttonFont = UIFont(name: "Roboto-Bold", size: 16)!
     static let explainationFont = UIFont(name: "Roboto-Light", size: 15)!
     static let statusFont = UIFont(name: "Roboto", size: 15)!
-    
+    static let versionFont = UIFont(name: "Roboto-Thin", size: 12)!
+
     static let creditsTitleFont = UIFont(name: "Roboto-Thin", size: 12)!
     static let creditsValueFont = UIFont(name: "Roboto-Thin", size: 17)!
 

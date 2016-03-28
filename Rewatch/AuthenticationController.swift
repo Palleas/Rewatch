@@ -12,6 +12,8 @@ import KeychainSwift
 import class BetaSeriesKit.AuthenticatedClient
 
 class AuthenticationController {
+    private(set) var member : Member?
+
     enum AuthenticationControllerError: ErrorType {
         case NoTokenError
     }
@@ -22,7 +24,11 @@ class AuthenticationController {
         if let token = keychain.get("rewatch-raw-login") {
             let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
 
-            return BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))
+            let controller = BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))
+            controller.fetchMemberInfos().startWithNext { memberInfos in
+                self.member = memberInfos
+            }
+            return controller
         }
         
         return nil

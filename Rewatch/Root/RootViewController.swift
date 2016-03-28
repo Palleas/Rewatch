@@ -50,7 +50,7 @@ class RootViewController: UIViewController {
     func boot() {
         let authenticationController = AuthenticationController()
         if let contentController = authenticationController.retrieveContentController() {
-            let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
+            let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController, authenticationController: authenticationController)
             transitionToViewController(UINavigationController(rootViewController: episode))
         } else {
             let login = LoginViewController(persistenceController: self.persistenceController)
@@ -63,7 +63,7 @@ class RootViewController: UIViewController {
                     
                     authenticationController.saveToken(contentController.rawLogin!)
                     
-                    let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
+                    let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController, authenticationController: authenticationController)
                     
                     self.dismissViewControllerAnimated(true) {
                         self.transitionToViewController(UINavigationController(rootViewController: episode))

@@ -10,57 +10,56 @@ import UIKit
 import KeychainSwift
 import ReactiveCocoa
 import MessageUI
-
-class MemberCell: UITableViewCell {
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .Default, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-enum SettingsSection: Int {
-    case Member = 0
-    case TVShows = 1
-    case Support = 2
-    case Debug = 3
-
-    static var allValues: [SettingsSection] {
-        return [.Member, .TVShows, .Support, .Debug]
-    }
-}
+import CoreData
 
 class SettingsViewController: UITableViewController {
-    typealias Completion = () -> Void
-    
+    enum CompletionResult {
+        case Cancelled
+        case Success
+        case Logout
+    }
+
+    typealias Completion = (result: CompletionResult) -> Void
+
+    enum SettingsSection: Int {
+        case Member = 0
+        case TVShows = 1
+        case Support = 2
+        case Version = 3
+
+        static var allValues: [SettingsSection] {
+            return [.Member, .TVShows, .Support, .Version]
+        }
+    }
+
     let MemberCellIdentifier = "MemberCell"
     let TVShowCellIdentifier = "TVShowCell"
-    let DebugCellIdentifier = "DebugCell"
     let VersionCellIdentifier = "VersionCell"
     let SupportCellIdentifier = "SupportCell"
     let completion: Completion
 
-    let contentController: ContentController
     let persistenceController: PersistenceController
     let analyticsController: AnalyticsController
+    let authenticationController: AuthenticationController
+    let context: NSManagedObjectContext
 
     private lazy var shows: [StoredShow] = self.persistenceController.allShows()
 
-    init(contentController: ContentController, persistenceController: PersistenceController, analyticsController: AnalyticsController, completion: Completion) {
-        self.contentController = contentController
+    init(persistenceController: PersistenceController, analyticsController: AnalyticsController, authenticationController: AuthenticationController, completion: Completion) {
         self.persistenceController = persistenceController
-        self.completion = completion
+        self.context = persistenceController.spawnManagedObjectContext()
+
         self.analyticsController = analyticsController
+        self.authenticationController = authenticationController
+        self.completion = completion
+
 
         super.init(style: .Grouped)
         
-        tableView.registerClass(MemberCell.self, forCellReuseIdentifier: MemberCellIdentifier)
+        tableView.registerClass(MemberTableViewCell.self, forCellReuseIdentifier: MemberCellIdentifier)
         tableView.registerClass(ShowTableViewCell.self, forCellReuseIdentifier: TVShowCellIdentifier)
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: DebugCellIdentifier)
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: VersionCellIdentifier)
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: SupportCellIdentifier)
+        tableView.registerClass(VersionTableViewCell.self, forCellReuseIdentifier: VersionCellIdentifier)
+        tableView.registerClass(SupportTableViewCell.self, forCellReuseIdentifier: SupportCellIdentifier)
 
         tableView.separatorStyle = .None
         
@@ -70,6 +69,11 @@ class SettingsViewController: UITableViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(SettingsViewController.didTapCancelButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(SettingsViewController.didTapDoneButton))
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -91,25 +95,46 @@ class SettingsViewController: UITableViewController {
         case .Member: return 1
         case .TVShows: return shows.count
         case .Support: return 2
-        case .Debug: return 1
+        case .Version: return 1
         }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let sectionSetting = SettingsSection(rawValue: indexPath.section)!
 
-        switch sectionSetting {
-        case .Member:
-            return tableView.dequeueReusableCellWithIdentifier(MemberCellIdentifier, forIndexPath: indexPath)
-        case .TVShows:
+        switch (sectionSetting, indexPath.row) {
+        case (.Member, _):
+            let cell =  tableView.dequeueReusableCellWithIdentifier(MemberCellIdentifier, forIndexPath: indexPath) as! MemberTableViewCell
+            if let member = self.authenticationController.member {
+                cell.configureWithMemberInfos(member)
+            }
+            return cell
+        case (.TVShows, let index):
             let cell = tableView.dequeueReusableCellWithIdentifier(TVShowCellIdentifier, forIndexPath: indexPath) as! ShowTableViewCell
-            cell.configureWithTitle(shows[indexPath.row].title ?? "", includeInRandom: true)
+            cell.configureWithTitle(shows[index].title ?? "", includeInRandom: shows[index].includeInRandom)
+            cell.delegate = self
 
             return cell
-        case .Support:
-            return tableView.dequeueReusableCellWithIdentifier(SupportCellIdentifier, forIndexPath: indexPath)
-        case .Debug:
-            return tableView.dequeueReusableCellWithIdentifier(DebugCellIdentifier, forIndexPath: indexPath)
+        case (.Support, let index):
+            let cell = tableView.dequeueReusableCellWithIdentifier(SupportCellIdentifier, forIndexPath: indexPath)
+            
+            if index == 0 {
+                cell.imageView?.image = UIImage(named: "twitter")?.imageWithRenderingMode(.AlwaysTemplate)
+                cell.textLabel?.text = "@rewatch_app"
+            } else if indexPath.row == 1 {
+                cell.imageView?.image = UIImage(named: "mail")?.imageWithRenderingMode(.AlwaysTemplate)
+                cell.textLabel?.text = "romain@rewatchapp.com"
+            }
+
+            return cell
+        case (.Version, _):
+            let cell = tableView.dequeueReusableCellWithIdentifier(VersionCellIdentifier, forIndexPath: indexPath)
+
+            guard let info = NSBundle.mainBundle().infoDictionary else { return cell }
+            guard let version = info["CFBundleShortVersionString"], let buildNumber = info["CFBundleVersion"] else { return cell }
+
+            cell.textLabel?.text = "Version \(version) (\(buildNumber))"
+            return cell
         }
     }
 
@@ -127,4 +152,33 @@ class SettingsViewController: UITableViewController {
         cell.backgroundColor = .clearColor()
     }
 
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return indexPath.section == SettingsSection.Member.rawValue ? 70 : 44
+    }
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return indexPath.section == SettingsSection.Member.rawValue ? UITableViewAutomaticDimension : 44
+    }
+
+    func didTapCancelButton() {
+
+    }
+
+    func didTapDoneButton() {
+        do {
+            try context.save()
+            completion(result: .Success)
+        } catch {
+            print("Unable to save settings: \(error)")
+        }
+    }
+}
+
+extension SettingsViewController: ShowTableViewCellDelegate {
+    func didToggleCell(cell: ShowTableViewCell, on: Bool) {
+        guard let showIndex = tableView.indexPathForCell(cell)?.row else { return }
+        let show = shows[showIndex]
+
+        persistenceController.switchShowWithId(Int(show.id), on: on, inContext: context)
+    }
 }

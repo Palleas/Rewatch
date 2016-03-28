@@ -51,6 +51,9 @@
 		7A8096321BE1A965002F5278 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8096311BE1A965002F5278 /* Reveal.framework */; };
 		7A81C47E1CA49CED002DE0DE /* BetaSeriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEED1E81CA20BB6000AC770 /* BetaSeriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A81C4801CA88D33002DE0DE /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81C47F1CA88D33002DE0DE /* ShowTableViewCell.swift */; };
+		7A81C4841CA89837002DE0DE /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81C4831CA89837002DE0DE /* MemberTableViewCell.swift */; };
+		7A81C4861CA8B6FC002DE0DE /* SupportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81C4851CA8B6FC002DE0DE /* SupportTableViewCell.swift */; };
+		7A81C4881CA8B908002DE0DE /* VersionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81C4871CA8B908002DE0DE /* VersionTableViewCell.swift */; };
 		7A880B721BE17CD6004A7D7C /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */; };
 		7A8CC26D1BEB0C92003BFE11 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8CC26C1BEB0C92003BFE11 /* LoginView.swift */; };
 		7A8CC26F1BEB0E9F003BFE11 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */; };
@@ -177,7 +180,11 @@
 		7A7F44161BD1DDE700B3BD59 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		7A8096311BE1A965002F5278 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		7A81C47F1CA88D33002DE0DE /* ShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
+		7A81C4831CA89837002DE0DE /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		7A81C4851CA8B6FC002DE0DE /* SupportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportTableViewCell.swift; sourceTree = "<group>"; };
+		7A81C4871CA8B908002DE0DE /* VersionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionTableViewCell.swift; sourceTree = "<group>"; };
 		7A880B701BE17CD6004A7D7C /* EpisodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
+		7A88467C1CA8C5A3009D1A16 /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		7A8CC26C1BEB0C92003BFE11 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		7A8F7F921BE460C800CA501A /* HEXColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HEXColor.swift; sourceTree = "<group>"; };
@@ -353,6 +360,9 @@
 			children = (
 				7A59CEEC1BEBCAA200B17A71 /* SettingsViewController.swift */,
 				7A81C47F1CA88D33002DE0DE /* ShowTableViewCell.swift */,
+				7A81C4831CA89837002DE0DE /* MemberTableViewCell.swift */,
+				7A81C4851CA8B6FC002DE0DE /* SupportTableViewCell.swift */,
+				7A81C4871CA8B908002DE0DE /* VersionTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -720,6 +730,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AE2905F1BEACFA0005838AB /* DownloadController.swift in Sources */,
+				7A81C4861CA8B6FC002DE0DE /* SupportTableViewCell.swift in Sources */,
 				7A52A7101BD0544C00D78B39 /* LoginViewController.swift in Sources */,
 				7ADB25811BE06B09006DBDE4 /* Themes.swift in Sources */,
 				7A52A70E1BD0544C00D78B39 /* AppDelegate.swift in Sources */,
@@ -729,6 +740,7 @@
 				7A7146021BD5B3EC00492B9B /* OauthHelpers.swift in Sources */,
 				7AE2905D1BEABD65005838AB /* StoredEpisode.swift in Sources */,
 				7A8CC26D1BEB0C92003BFE11 /* LoginView.swift in Sources */,
+				7A81C4841CA89837002DE0DE /* MemberTableViewCell.swift in Sources */,
 				7AE290611BEAF339005838AB /* DownloadView.swift in Sources */,
 				7A4AB29B1BE82A12006FBDFD /* PictureHelpers.swift in Sources */,
 				7ADB257F1BE068FF006DBDE4 /* EpisodeView.swift in Sources */,
@@ -740,6 +752,7 @@
 				7A04889F1BE9AAD000F7C890 /* StoredShow.swift in Sources */,
 				7AED90571BD7F9F2002B024C /* DownloadViewController.swift in Sources */,
 				7AE290651BEAFC92005838AB /* DownloadAnimationView.swift in Sources */,
+				7A81C4881CA8B908002DE0DE /* VersionTableViewCell.swift in Sources */,
 				7A04889E1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift in Sources */,
 				7A91752E1BEC57D2009FAE52 /* RootView.swift in Sources */,
 				7A0B9C411C717399002B2572 /* BetaseriesNetworkController.swift in Sources */,
@@ -1091,9 +1104,10 @@
 		7A0488951BE98E7400F7C890 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7A88467C1CA8C5A3009D1A16 /* DataModel 2.xcdatamodel */,
 				7A0488961BE98E7400F7C890 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 7A0488961BE98E7400F7C890 /* DataModel.xcdatamodel */;
+			currentVersion = 7A88467C1CA8C5A3009D1A16 /* DataModel 2.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

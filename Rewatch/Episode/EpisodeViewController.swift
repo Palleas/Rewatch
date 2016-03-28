@@ -57,14 +57,16 @@ class EpisodeViewController: UIViewController {
     let persistenceController: PersistenceController
     let contentController: ContentController
     let analyticsController: AnalyticsController
-    
+    let authenticationController: AuthenticationController
+
     var episodes: [StoredEpisode] = []
     
-    init(persistenceController: PersistenceController, analyticsController: AnalyticsController, contentController: ContentController) {
+    init(persistenceController: PersistenceController, analyticsController: AnalyticsController, contentController: ContentController, authenticationController: AuthenticationController) {
         self.persistenceController = persistenceController
         self.contentController = contentController
         self.analyticsController = analyticsController
-        
+        self.authenticationController = authenticationController
+
         super.init(nibName: nil, bundle: nil)
         title = "REWATCH"
     }
@@ -162,10 +164,10 @@ class EpisodeViewController: UIViewController {
     
     func didTapSettingsButton(button: UIButton) {
         analyticsController.trackEvent(.Settings)
-        let settings = UINavigationController(rootViewController: SettingsViewController(contentController: contentController, persistenceController: persistenceController, analyticsController: analyticsController, completion: { () -> Void in
+        let settings = SettingsViewController(persistenceController: persistenceController, analyticsController: analyticsController, authenticationController: authenticationController) { result in
             self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        presentViewController(settings, animated: true, completion: nil)
+        }
+        presentViewController(UINavigationController(rootViewController: settings), animated: true, completion: nil)
     }
     
     func didTapCreditsButton(button: UIButton) {
