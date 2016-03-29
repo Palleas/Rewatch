@@ -31,14 +31,16 @@ class ShowTableViewCell: UITableViewCell {
         titleLabel.leftAnchor.constraintEqualToAnchor(contentView.leftAnchor, constant: 10).active = true
         titleLabel.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
         titleLabel.rightAnchor.constraintEqualToAnchor(showSwitch.leftAnchor).active = true
-        titleLabel.textColor = .whiteColor()
+        titleLabel.textColor = Stylesheet.settingsTintColor
+        titleLabel.highlightedTextColor = Stylesheet.settingsHighlightedTintColor
         titleLabel.font = Stylesheet.showCellTitleFont
 
         showSwitch.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -10).active = true
         showSwitch.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
         showSwitch.onTintColor = Stylesheet.switchOnTintColor
         showSwitch.addTarget(self, action: #selector(ShowTableViewCell.switchStateDidChange), forControlEvents: .ValueChanged)
-        selectionStyle = .None
+
+        selectedBackgroundView = UIView()
     }
 
     required init?(coder aDecoder: NSCoder) {

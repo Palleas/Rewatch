@@ -32,6 +32,9 @@ class Stylesheet: NSObject {
     static let avatarBorderColor = UIColor(rgba: "#979797")
     static let logoutBackoundColor = UIColor(rgba: "#F74D40")
 
+    static let settingsTintColor = UIColor.whiteColor()
+    static let settingsHighlightedTintColor = UIColor(rgba: "#F74D40")
+
     // Fonts
     static let titleFont = UIFont(name: "Roboto-Bold", size: 16)!
     static let textFont = UIFont(name: "Roboto-Thin", size: 18)!

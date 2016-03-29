@@ -19,6 +19,22 @@ class SettingsViewController: UITableViewController {
         case Logout
     }
 
+    enum SupportAccount: String {
+        case TwitterAccount = "rewatch_app"
+        case Email = "romain@rewatchapp.com"
+
+        static var supportAccounts: [SupportAccount] {
+            return [.TwitterAccount, .Email]
+        }
+
+        var icon: UIImage {
+            switch self {
+            case .TwitterAccount: return UIImage(named: "twitter")!.imageWithRenderingMode(.AlwaysTemplate)
+            case .Email: return UIImage(named: "mail")!.imageWithRenderingMode(.AlwaysTemplate)
+            }
+        }
+    }
+
     typealias Completion = (result: CompletionResult) -> Void
 
     enum SettingsSection: Int {
@@ -65,6 +81,8 @@ class SettingsViewController: UITableViewController {
         
         title = NSLocalizedString("SETTINGS_SECTION", comment: "Settings section title")
         tableView.backgroundColor = Stylesheet.appBackgroundColor
+
+        clearsSelectionOnViewWillAppear = true
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -72,6 +90,8 @@ class SettingsViewController: UITableViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(SettingsViewController.didTapCancelButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(SettingsViewController.didTapDoneButton))
     }
@@ -94,7 +114,7 @@ class SettingsViewController: UITableViewController {
         switch sectionSetting {
         case .Member: return 1
         case .TVShows: return shows.count
-        case .Support: return 2
+        case .Support: return SupportAccount.supportAccounts.count
         case .Version: return 1
         }
     }
@@ -116,15 +136,9 @@ class SettingsViewController: UITableViewController {
 
             return cell
         case (.Support, let index):
-            let cell = tableView.dequeueReusableCellWithIdentifier(SupportCellIdentifier, forIndexPath: indexPath)
-            
-            if index == 0 {
-                cell.imageView?.image = UIImage(named: "twitter")?.imageWithRenderingMode(.AlwaysTemplate)
-                cell.textLabel?.text = "@rewatch_app"
-            } else if indexPath.row == 1 {
-                cell.imageView?.image = UIImage(named: "mail")?.imageWithRenderingMode(.AlwaysTemplate)
-                cell.textLabel?.text = "romain@rewatchapp.com"
-            }
+            let cell = tableView.dequeueReusableCellWithIdentifier(SupportCellIdentifier, forIndexPath: indexPath) as! SupportTableViewCell
+            cell.icon = SupportAccount.supportAccounts[index].icon
+            cell.textLabel?.text = SupportAccount.supportAccounts[index].rawValue
 
             return cell
         case (.Version, _):
@@ -139,13 +153,28 @@ class SettingsViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return indexPath.section == SettingsSection.TVShows.rawValue ? indexPath : nil
+        guard let section = SettingsSection(rawValue: indexPath.section) else { return indexPath }
+
+        switch section {
+        case .TVShows, .Support: return indexPath
+
+        default:
+            return nil
+        }
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? ShowTableViewCell else { return }
+        guard let section = SettingsSection(rawValue: indexPath.section) else { return }
 
-        cell.toggle()
+        switch (section, indexPath.row) {
+        case (.TVShows, _):
+            (tableView.cellForRowAtIndexPath(indexPath) as? ShowTableViewCell)?.toggle()
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        case (.Support, let index):
+            handleSupportSelection(SupportAccount.supportAccounts[index])
+        default: break
+        }
+
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -158,6 +187,25 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return indexPath.section == SettingsSection.Member.rawValue ? UITableViewAutomaticDimension : 44
+    }
+
+    func handleSupportSelection(support: SupportAccount) {
+        switch support {
+        case .TwitterAccount:
+            guard let url = NSURL(string: "https://twitter.com/\(support.rawValue)") else { break }
+            analyticsController.trackEvent(.SupportTwitter)
+
+            UIApplication.sharedApplication().openURL(url)
+        case .Email:
+            guard MFMailComposeViewController.canSendMail() else { break }
+
+            analyticsController.trackEvent(.SupportMail)
+
+            let composer = MFMailComposeViewController()
+            composer.mailComposeDelegate = self
+            composer.setToRecipients([support.rawValue])
+            presentViewController(composer, animated: true, completion: nil)
+        }
     }
 
     func didTapCancelButton() {
@@ -180,5 +228,11 @@ extension SettingsViewController: ShowTableViewCellDelegate {
         guard let show = persistenceController.switchShowWithId(Int(shows[showIndex].id), on: on, inContext: context) else { return }
 
         shows[showIndex] = show
+    }
+}
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

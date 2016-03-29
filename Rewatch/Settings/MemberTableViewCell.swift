@@ -51,6 +51,8 @@ class MemberTableViewCell: UITableViewCell {
         logoutButton.bottomAnchor.constraintEqualToAnchor(avatarView.bottomAnchor).active = true
         logoutButton.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -10).active = true
         logoutButton.heightAnchor.constraintEqualToConstant(35).active = true
+
+        selectionStyle = .None
     }
 
     required init?(coder aDecoder: NSCoder) {

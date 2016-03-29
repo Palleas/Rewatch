@@ -17,6 +17,8 @@ class VersionTableViewCell: UITableViewCell {
         textLabel?.textColor = .whiteColor()
         textLabel?.font = Stylesheet.versionFont
         textLabel?.text = "--"
+
+        selectionStyle = .None
     }
     
     required init?(coder aDecoder: NSCoder) {

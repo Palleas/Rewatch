@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 func convertToBlackAndWhite(image: UIImage) -> UIImage {
     let colorSpace = CGColorSpaceCreateDeviceGray()
     let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.None.rawValue).rawValue
@@ -24,4 +23,17 @@ func convertToBlackAndWhite(image: UIImage) -> UIImage {
     }
 
     return image
+}
+
+func tintImage(image: UIImage, color: UIColor) -> UIImage {
+    let rect = CGRect(origin: .zero, size: image.size)
+
+    UIGraphicsBeginImageContextWithOptions(image.size, false, 0)
+    color.set()
+    UIRectFill(rect)
+    image.drawInRect(rect, blendMode: .DestinationIn, alpha: 1)
+    let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    return tintedImage
 }
