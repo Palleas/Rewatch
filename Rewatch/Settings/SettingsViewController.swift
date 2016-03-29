@@ -60,6 +60,19 @@ class SettingsViewController: UITableViewController {
     let context: NSManagedObjectContext
 
     private lazy var shows: [StoredShow] = self.persistenceController.allShows()
+    private lazy var showHeaderView: SettingsHeaderView = {
+        SettingsHeaderView(title: "Shows (\(self.shows.count))", actionTitle: "Select all") { headerView in
+            // FIXME range won't include every shows
+            (0..<self.shows.count)
+                .map { return self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: $0, inSection: SettingsSection.TVShows.rawValue)) }
+                .forEach { cell in
+                    if let cell = cell as? ShowTableViewCell {
+                        cell.switchOn()
+                    }
+            }
+            headerView.actionHidden = true
+        }
+    }()
 
     init(persistenceController: PersistenceController, analyticsController: AnalyticsController, authenticationController: AuthenticationController, completion: Completion) {
         self.persistenceController = persistenceController
@@ -101,11 +114,13 @@ class SettingsViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == SettingsSection.Member.rawValue {
-            return 0
+        guard let settingsSection = SettingsSection(rawValue: section) else { return 0 }
+
+        switch settingsSection {
+        case .TVShows, .Support: return 30
+        default: return 0
         }
 
-        return 30
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -189,6 +204,18 @@ class SettingsViewController: UITableViewController {
         return indexPath.section == SettingsSection.Member.rawValue ? UITableViewAutomaticDimension : 44
     }
 
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let section = SettingsSection(rawValue: section) else { return nil }
+
+        switch section {
+        case .Support:
+            return SettingsHeaderView(title: "Support")
+        case .TVShows:
+            return showHeaderView
+        default: return nil
+        }
+    }
+
     func handleSupportSelection(support: SupportAccount) {
         switch support {
         case .TwitterAccount:
@@ -228,6 +255,13 @@ extension SettingsViewController: ShowTableViewCellDelegate {
         guard let show = persistenceController.switchShowWithId(Int(shows[showIndex].id), on: on, inContext: context) else { return }
 
         shows[showIndex] = show
+
+        let shouldHideButton: Bool  = shows
+            .map { $0.includeInRandom }
+            .reduce(true, combine: { initial, current in
+                return initial && current
+            })
+        showHeaderView.actionHidden = shouldHideButton
     }
 }
 
@@ -235,4 +269,3 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-}

@@ -57,6 +57,11 @@ class ShowTableViewCell: UITableViewCell {
         showSwitch.sendActionsForControlEvents(.ValueChanged)
     }
 
+    func switchOn() {
+        showSwitch.setOn(true, animated: true)
+        showSwitch.sendActionsForControlEvents(.ValueChanged)
+    }
+
     func switchStateDidChange() {
         delegate?.didToggleCell(self, on: showSwitch.on)
     }

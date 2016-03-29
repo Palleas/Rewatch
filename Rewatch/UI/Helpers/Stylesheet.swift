@@ -39,6 +39,9 @@ class Stylesheet: NSObject {
     static let titleFont = UIFont(name: "Roboto-Bold", size: 16)!
     static let textFont = UIFont(name: "Roboto-Thin", size: 18)!
     static let showNameTextFont = UIFont(name: "Roboto-Light", size: 21)!
+    static let settingsSectionTextFont = UIFont(name: "Roboto-Thin", size: 14)!
+    static let settingsSectionActionButtonTextFont = UIFont(name: "Roboto-Thin", size: 16)!
+
     static let episodeTitleTextFont = UIFont(name: "Roboto-Bold", size: 26)!
     static let episodeNumberFont = UIFont(name: "Roboto-Thin", size: 66)!
     static let seasonNumbertextFont = UIFont(name: "Roboto-Thin", size: 66)!
