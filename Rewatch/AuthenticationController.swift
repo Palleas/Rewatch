@@ -13,6 +13,13 @@ import class BetaSeriesKit.AuthenticatedClient
 
 class AuthenticationController {
     let member = MutableProperty<Member?>(nil)
+    var contentController: ContentController? {
+        didSet {
+            contentController?.fetchMemberInfos().startWithNext { memberInfos in
+                self.member.value = memberInfos
+            }
+        }
+    }
 
     enum AuthenticationControllerError: ErrorType {
         case NoTokenError
@@ -21,14 +28,18 @@ class AuthenticationController {
     private lazy var keychain = KeychainSwift()
 
     func retrieveContentController() -> ContentController? {
+        if let contentController = contentController {
+            return contentController
+        }
+
         if let token = keychain.get("rewatch-raw-login") {
             let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
 
             let controller = BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))
-            controller.fetchMemberInfos().startWithNext { memberInfos in
-                self.member.value = memberInfos
-            }
-            return controller
+
+            self.contentController = controller
+
+            return contentController
         }
         
         return nil
@@ -39,6 +50,7 @@ class AuthenticationController {
     }
 
     func logout() {
-    
+        contentController = nil
+        member.value = nil
     }
 }

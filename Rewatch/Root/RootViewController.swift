@@ -14,6 +14,8 @@ class RootViewController: UIViewController {
     let analyticsController: AnalyticsController
     let creditsController: CreditsViewController
 
+    let authenticationController = AuthenticationController()
+
     private(set) var currentViewController: UIViewController?
     
     var rootView: RootView {
@@ -46,9 +48,33 @@ class RootViewController: UIViewController {
         rootView.creditsView = creditsController.view
         creditsController.didMoveToParentViewController(self)
     }
-    
+
+
     func boot() {
-        let authenticationController = AuthenticationController()
+        authenticationController.member.producer.observeOn(UIScheduler()).startWithNext { [weak self] member in
+            guard let strongSelf = self else { return }
+
+            if let _ = member, let contentController = self?.authenticationController.contentController {
+                let episode = EpisodeViewController(persistenceController: strongSelf.persistenceController, analyticsController: strongSelf.analyticsController, contentController: contentController, authenticationController: strongSelf.authenticationController)
+                strongSelf.transitionToViewController(UINavigationController(rootViewController: episode))
+            } else {
+                let login = LoginViewController(persistenceController: strongSelf.persistenceController)
+                login
+                    .contentController
+                    .producer
+                    .filter { $0 is BetaseriesContentController }
+                    .observeOn(UIScheduler())
+                    .startWithNext { [weak self] contentController in
+                        guard let strongSelf = self else { return }
+                        strongSelf.authenticationController.saveToken(contentController.rawLogin!)
+                        strongSelf.authenticationController.contentController = contentController
+                }
+                strongSelf.transitionToViewController(UINavigationController(rootViewController: login))
+            }
+        }
+    }
+
+    func presentEpisodeViewController() {
         if let contentController = authenticationController.retrieveContentController() {
             let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController, authenticationController: authenticationController)
             transitionToViewController(UINavigationController(rootViewController: episode))
@@ -59,16 +85,17 @@ class RootViewController: UIViewController {
                 .producer
                 .filter { $0 is BetaseriesContentController }
                 .observeOn(UIScheduler())
-                .startWithNext { contentController in
-                    
-                    authenticationController.saveToken(contentController.rawLogin!)
-                    
-                    let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController, authenticationController: authenticationController)
-                    
-                    self.dismissViewControllerAnimated(true) {
-                        self.transitionToViewController(UINavigationController(rootViewController: episode))
+                .startWithNext { [weak self] contentController in
+                    guard let strongSelf = self else { return }
+                    strongSelf.authenticationController.saveToken(contentController.rawLogin!)
+                    strongSelf.authenticationController.contentController = contentController
+
+                    let episode = EpisodeViewController(persistenceController: strongSelf.persistenceController, analyticsController: strongSelf.analyticsController, contentController: contentController, authenticationController: strongSelf.authenticationController)
+
+                    strongSelf.dismissViewControllerAnimated(true) {
+                        strongSelf.transitionToViewController(UINavigationController(rootViewController: episode))
                     }
-                }
+            }
             presentViewController(UINavigationController(rootViewController: login), animated: true, completion: nil)
         }
     }
