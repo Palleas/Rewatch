@@ -9,10 +9,16 @@
 import UIKit
 import class ReactiveCocoa.UIScheduler
 
+protocol MemberTableViewCellDelegate: class {
+    func didTapLogoutButton()
+}
+
 class MemberTableViewCell: UITableViewCell {
     private let avatarView = UIImageView()
     private let usernameLabel = UILabel()
     private let logoutButton = UIButton(type: .Custom)
+
+    weak var delegate: MemberTableViewCellDelegate?
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Default, reuseIdentifier: reuseIdentifier)
@@ -51,6 +57,7 @@ class MemberTableViewCell: UITableViewCell {
         logoutButton.bottomAnchor.constraintEqualToAnchor(avatarView.bottomAnchor).active = true
         logoutButton.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -10).active = true
         logoutButton.heightAnchor.constraintEqualToConstant(35).active = true
+        logoutButton.addTarget(self, action: #selector(didTapLogoutButton), forControlEvents: .TouchUpInside)
 
         selectionStyle = .None
     }
@@ -77,4 +84,7 @@ class MemberTableViewCell: UITableViewCell {
         usernameLabel.text = nil
     }
 
+    func didTapLogoutButton() {
+        delegate?.didTapLogoutButton()
+    }
 }

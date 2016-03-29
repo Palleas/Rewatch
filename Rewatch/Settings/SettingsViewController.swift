@@ -143,6 +143,8 @@ class SettingsViewController: UITableViewController {
             if let member = self.authenticationController.member {
                 cell.configureWithMemberInfos(member)
             }
+            cell.delegate = self
+
             return cell
         case (.TVShows, let index):
             let cell = tableView.dequeueReusableCellWithIdentifier(TVShowCellIdentifier, forIndexPath: indexPath) as! ShowTableViewCell
@@ -269,3 +271,20 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+}
+
+extension SettingsViewController: MemberTableViewCellDelegate {
+    func didTapLogoutButton() {
+        // TODO: a nicer UIAlertView would be nice, eh?
+        let title = NSLocalizedString("LOGOUT_CONFIRM_TITLE", comment: "Logout confirm title")
+        let message = NSLocalizedString("LOGOUT_CONFIRM_MESSAGE", comment: "Logout confirm message")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button label"), style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("LOGOUT_CONFIRM_LOGOUT", comment: "Logout button label"), style: .Destructive) { [weak self] action in
+            self?.authenticationController.logout()
+            self?.dismissViewControllerAnimated(true, completion: nil)
+        })
+
+        presentViewController(alert, animated: true, completion: nil)
+    }
+}

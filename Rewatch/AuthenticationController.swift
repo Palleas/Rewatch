@@ -38,4 +38,7 @@ class AuthenticationController {
         keychain.set(token, forKey: "rewatch-raw-login")
     }
 
+    func logout() {
+    
+    }
 }
