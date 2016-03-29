@@ -51,6 +51,8 @@ class RootViewController: UIViewController {
 
 
     func boot() {
+        // TODO: There is probablt something nicer to be done here
+        // Like Flow controller with SignalProducers and shit
         authenticationController.member.producer.observeOn(UIScheduler()).startWithNext { [weak self] member in
             guard let strongSelf = self else { return }
 
