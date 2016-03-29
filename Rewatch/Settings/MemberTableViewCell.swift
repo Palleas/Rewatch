@@ -79,11 +79,6 @@ class MemberTableViewCell: UITableViewCell {
         }
     }
 
-    override func prepareForReuse() {
-        avatarView.image = nil
-        usernameLabel.text = nil
-    }
-
     func didTapLogoutButton() {
         delegate?.didTapLogoutButton()
     }

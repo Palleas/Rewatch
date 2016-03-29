@@ -12,7 +12,7 @@ import KeychainSwift
 import class BetaSeriesKit.AuthenticatedClient
 
 class AuthenticationController {
-    private(set) var member : Member?
+    let member = MutableProperty<Member?>(nil)
 
     enum AuthenticationControllerError: ErrorType {
         case NoTokenError
@@ -26,7 +26,7 @@ class AuthenticationController {
 
             let controller = BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))
             controller.fetchMemberInfos().startWithNext { memberInfos in
-                self.member = memberInfos
+                self.member.value = memberInfos
             }
             return controller
         }

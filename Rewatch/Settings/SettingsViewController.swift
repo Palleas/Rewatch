@@ -107,6 +107,12 @@ class SettingsViewController: UITableViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(SettingsViewController.didTapCancelButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(SettingsViewController.didTapDoneButton))
+
+        let memberProducer = authenticationController.member.producer.ignoreNil()
+        memberProducer.observeOn(UIScheduler()).startWithNext() { member in
+            guard let memberCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: SettingsSection.Member.rawValue)) as? MemberTableViewCell else { return }
+            memberCell.configureWithMemberInfos(member)
+        }
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -140,9 +146,6 @@ class SettingsViewController: UITableViewController {
         switch (sectionSetting, indexPath.row) {
         case (.Member, _):
             let cell =  tableView.dequeueReusableCellWithIdentifier(MemberCellIdentifier, forIndexPath: indexPath) as! MemberTableViewCell
-            if let member = self.authenticationController.member {
-                cell.configureWithMemberInfos(member)
-            }
             cell.delegate = self
 
             return cell
