@@ -19,11 +19,12 @@ class LoginViewController: UIViewController {
         }
     }
     
-    let contentController = MutableProperty<ContentController>(UnauthenticatedContentController())
-    
-    init(persistenceController: PersistenceController) {
+    let authenticationController: AuthenticationController
+
+    init(persistenceController: PersistenceController, authenticationController: AuthenticationController) {
         self.persistenceController = persistenceController
-        
+        self.authenticationController = authenticationController
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -52,9 +53,8 @@ extension LoginViewController: LoginViewDelegate {
             .authenticate(secret)
             .map { BetaseriesContentController(authenticatedClient: $0) }
             .observeOn(UIScheduler())
-            .startWithNext { authenticatedClient in
-                print("Authenticated client: \(authenticatedClient)")
-                self.contentController.value = authenticatedClient
+            .startWithNext { [weak self] contentController in
+                self?.authenticationController.contentController.value = contentController
             }
     }
 }

@@ -51,57 +51,35 @@ class RootViewController: UIViewController {
 
 
     func boot() {
-        // TODO: There is probablt something nicer to be done here
-        // Like Flow controller with SignalProducers and shit
-        authenticationController.member.producer.observeOn(UIScheduler()).startWithNext { [weak self] member in
-            guard let strongSelf = self else { return }
-
-            if let _ = member, let contentController = self?.authenticationController.contentController {
-                let episode = EpisodeViewController(persistenceController: strongSelf.persistenceController, analyticsController: strongSelf.analyticsController, contentController: contentController, authenticationController: strongSelf.authenticationController)
-                strongSelf.transitionToViewController(UINavigationController(rootViewController: episode))
-            } else {
-                let login = LoginViewController(persistenceController: strongSelf.persistenceController)
-                login
-                    .contentController
-                    .producer
-                    .filter { $0 is BetaseriesContentController }
-                    .observeOn(UIScheduler())
-                    .startWithNext { [weak self] contentController in
-                        guard let strongSelf = self else { return }
-                        strongSelf.authenticationController.saveToken(contentController.rawLogin!)
-                        strongSelf.authenticationController.contentController = contentController
+        authenticationController.contentController.producer
+            .flatMap(FlattenStrategy.Latest) { (contentController) -> SignalProducer<UIViewController, NoError> in
+                if let _ = contentController {
+                    return SignalProducer(value: self.createEpisodeController())
+                } else {
+                    return SignalProducer(value: self.createLoginViewController())
                 }
-                strongSelf.transitionToViewController(UINavigationController(rootViewController: login))
             }
-        }
+            .observeOn(UIScheduler())
+            .startWithNext { [weak self] viewController in
+                self?.transitionToViewController(viewController)
+            }
+
+        authenticationController.retrieveContentController()
     }
 
-    func presentEpisodeViewController() {
-        if let contentController = authenticationController.retrieveContentController() {
-            let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController, authenticationController: authenticationController)
-            transitionToViewController(UINavigationController(rootViewController: episode))
-        } else {
-            let login = LoginViewController(persistenceController: self.persistenceController)
-            login
-                .contentController
-                .producer
-                .filter { $0 is BetaseriesContentController }
-                .observeOn(UIScheduler())
-                .startWithNext { [weak self] contentController in
-                    guard let strongSelf = self else { return }
-                    strongSelf.authenticationController.saveToken(contentController.rawLogin!)
-                    strongSelf.authenticationController.contentController = contentController
-
-                    let episode = EpisodeViewController(persistenceController: strongSelf.persistenceController, analyticsController: strongSelf.analyticsController, contentController: contentController, authenticationController: strongSelf.authenticationController)
-
-                    strongSelf.dismissViewControllerAnimated(true) {
-                        strongSelf.transitionToViewController(UINavigationController(rootViewController: episode))
-                    }
-            }
-            presentViewController(UINavigationController(rootViewController: login), animated: true, completion: nil)
-        }
+    // TODO: move this code into a VC factory of some sort
+    func createLoginViewController() -> UIViewController {
+        let loginViewController = LoginViewController(persistenceController: persistenceController, authenticationController: authenticationController)
+        return UINavigationController(rootViewController: loginViewController)
     }
-    
+
+    // TODO: move this code into a VC factory of some sort
+    func createEpisodeController() -> UIViewController {
+        let episodeViewcontroller = EpisodeViewController(persistenceController: persistenceController, analyticsController: self.analyticsController, contentController: authenticationController.contentController.value!, authenticationController: authenticationController)
+
+        return UINavigationController(rootViewController: episodeViewcontroller)
+    }
+
     func transitionToViewController(controller: UIViewController) {
         addChildViewController(controller)
         controller.willMoveToParentViewController(self)

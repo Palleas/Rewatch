@@ -13,13 +13,7 @@ import class BetaSeriesKit.AuthenticatedClient
 
 class AuthenticationController {
     let member = MutableProperty<Member?>(nil)
-    var contentController: ContentController? {
-        didSet {
-            contentController?.fetchMemberInfos().startWithNext { memberInfos in
-                self.member.value = memberInfos
-            }
-        }
-    }
+    let contentController = MutableProperty<ContentController?>(nil)
 
     enum AuthenticationControllerError: ErrorType {
         case NoTokenError
@@ -27,22 +21,28 @@ class AuthenticationController {
     
     private lazy var keychain = KeychainSwift()
 
-    func retrieveContentController() -> ContentController? {
-        if let contentController = contentController {
-            return contentController
-        }
+    init() {
+        let promotedProducer = contentController.producer.ignoreNil().promoteErrors(ContentError)
+        promotedProducer
+            .flatMap(FlattenStrategy.Latest) { (contentController) -> SignalProducer<Member, ContentError> in
+                return contentController.fetchMemberInfos()
+            }
+            .startWithNext { [weak self] member in
+                print("Got member \(member)")
+                self?.member.value = member
+            }
+    }
+
+    func retrieveContentController() {
+        guard contentController.value == nil else { return }
 
         if let token = keychain.get("rewatch-raw-login") {
             let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
 
             let controller = BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))
 
-            self.contentController = controller
-
-            return contentController
+            self.contentController.value = controller
         }
-        
-        return nil
     }
     
     func saveToken(token: String) {
@@ -50,7 +50,7 @@ class AuthenticationController {
     }
 
     func logout() {
-        contentController = nil
+        contentController.value = nil
         member.value = nil
     }
 }
