@@ -28,7 +28,6 @@ class AuthenticationController {
                 return contentController.fetchMemberInfos()
             }
             .startWithNext { [weak self] member in
-                print("Got member \(member)")
                 self?.member.value = member
             }
     }
