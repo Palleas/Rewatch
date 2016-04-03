@@ -58,6 +58,7 @@ class MemberTableViewCell: UITableViewCell {
         logoutButton.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -10).active = true
         logoutButton.heightAnchor.constraintEqualToConstant(35).active = true
         logoutButton.addTarget(self, action: #selector(didTapLogoutButton), forControlEvents: .TouchUpInside)
+        logoutButton.layer.cornerRadius = 17
 
         selectionStyle = .None
     }
