@@ -116,7 +116,9 @@ class PersistenceController: NSObject {
     func allEpisodes() -> [StoredEpisode] {
         let request = NSFetchRequest(entityName: "Episode")
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
+        request.predicate = NSPredicate(format: "show.includeInRandom = 1")
+        request.shouldRefreshRefetchedObjects = true
+
         do {
             let episodes = try managedObjectContext.executeFetchRequest(request)
             return episodes as! [StoredEpisode]

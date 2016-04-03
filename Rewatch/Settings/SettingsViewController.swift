@@ -244,6 +244,7 @@ class SettingsViewController: UITableViewController {
     func didTapDoneButton() {
         do {
             try context.save()
+            persistenceController.save()
             completion(result: .Success)
         } catch {
             print("Unable to save settings: \(error)")
