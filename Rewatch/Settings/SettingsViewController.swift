@@ -59,21 +59,8 @@ class SettingsViewController: UITableViewController {
     let authenticationController: AuthenticationController
     let context: NSManagedObjectContext
 
-    private lazy var shows: [StoredShow] = self.persistenceController.allShows()
-    private lazy var showHeaderView: SettingsHeaderView = {
-        SettingsHeaderView(title: "Shows (\(self.shows.count))", actionTitle: "Select all") { headerView in
-            // FIXME range won't include every shows
-            (0..<self.shows.count)
-                .map { return self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: $0, inSection: SettingsSection.TVShows.rawValue)) }
-                .forEach { cell in
-                    if let cell = cell as? ShowTableViewCell {
-                        cell.switchOn()
-                    }
-            }
-            headerView.actionHidden = true
-        }
-    }()
-
+    private var shows = [StoredShow]()
+    private var showHeaderView: SettingsHeaderView?
     init(persistenceController: PersistenceController, analyticsController: AnalyticsController, authenticationController: AuthenticationController, completion: Completion) {
         self.persistenceController = persistenceController
         self.context = persistenceController.spawnManagedObjectContext()
@@ -81,7 +68,6 @@ class SettingsViewController: UITableViewController {
         self.analyticsController = analyticsController
         self.authenticationController = authenticationController
         self.completion = completion
-
 
         super.init(style: .Grouped)
         
@@ -96,6 +82,15 @@ class SettingsViewController: UITableViewController {
         tableView.backgroundColor = Stylesheet.appBackgroundColor
 
         clearsSelectionOnViewWillAppear = true
+
+        showHeaderView = SettingsHeaderView(title: "Shows (\(self.shows.count))", actionTitle: "Select all") { [unowned self] headerView in
+            self.shows
+                .filter { !$0.includeInRandom }
+                .forEach { $0.includeInRandom = true }
+
+            self.tableView.reloadSections(NSIndexSet(index: SettingsSection.TVShows.rawValue), withRowAnimation: .Automatic)
+            headerView.actionHidden = true
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -104,6 +99,8 @@ class SettingsViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+        shows = self.persistenceController.allShows(context)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(SettingsViewController.didTapCancelButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(SettingsViewController.didTapDoneButton))
@@ -257,16 +254,15 @@ class SettingsViewController: UITableViewController {
 extension SettingsViewController: ShowTableViewCellDelegate {
     func didToggleCell(cell: ShowTableViewCell, on: Bool) {
         guard let showIndex = tableView.indexPathForCell(cell)?.row else { return }
-        guard let show = persistenceController.switchShowWithId(Int(shows[showIndex].id), on: on, inContext: context) else { return }
 
-        shows[showIndex] = show
+        shows[showIndex].includeInRandom = on
 
         let shouldHideButton: Bool  = shows
             .map { $0.includeInRandom }
             .reduce(true, combine: { initial, current in
                 return initial && current
             })
-        showHeaderView.actionHidden = shouldHideButton
+        showHeaderView?.actionHidden = shouldHideButton
     }
 }
 
