@@ -14,6 +14,8 @@ class RootViewController: UIViewController {
     let analyticsController: AnalyticsController
     let creditsController: CreditsViewController
 
+    let authenticationController = AuthenticationController()
+
     private(set) var currentViewController: UIViewController?
     
     var rootView: RootView {
@@ -46,33 +48,38 @@ class RootViewController: UIViewController {
         rootView.creditsView = creditsController.view
         creditsController.didMoveToParentViewController(self)
     }
-    
+
+
     func boot() {
-        let authenticationController = AuthenticationController()
-        if let contentController = authenticationController.retrieveContentController() {
-            let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
-            transitionToViewController(UINavigationController(rootViewController: episode))
-        } else {
-            let login = LoginViewController(persistenceController: self.persistenceController)
-            login
-                .contentController
-                .producer
-                .filter { $0 is BetaseriesContentController }
-                .observeOn(UIScheduler())
-                .startWithNext { contentController in
-                    
-                    authenticationController.saveToken(contentController.rawLogin!)
-                    
-                    let episode = EpisodeViewController(persistenceController: self.persistenceController, analyticsController: self.analyticsController, contentController: contentController)
-                    
-                    self.dismissViewControllerAnimated(true) {
-                        self.transitionToViewController(UINavigationController(rootViewController: episode))
-                    }
+        authenticationController.contentController.producer
+            .flatMap(FlattenStrategy.Latest) { (contentController) -> SignalProducer<UIViewController, NoError> in
+                if let _ = contentController {
+                    return SignalProducer(value: self.createEpisodeController())
+                } else {
+                    return SignalProducer(value: self.createLoginViewController())
                 }
-            presentViewController(UINavigationController(rootViewController: login), animated: true, completion: nil)
-        }
+            }
+            .observeOn(UIScheduler())
+            .startWithNext { [weak self] viewController in
+                self?.transitionToViewController(viewController)
+            }
+
+        authenticationController.retrieveContentController()
     }
-    
+
+    // TODO: move this code into a VC factory of some sort
+    func createLoginViewController() -> UIViewController {
+        let loginViewController = LoginViewController(persistenceController: persistenceController, authenticationController: authenticationController)
+        return UINavigationController(rootViewController: loginViewController)
+    }
+
+    // TODO: move this code into a VC factory of some sort
+    func createEpisodeController() -> UIViewController {
+        let episodeViewcontroller = EpisodeViewController(persistenceController: persistenceController, analyticsController: self.analyticsController, contentController: authenticationController.contentController.value!, authenticationController: authenticationController)
+
+        return UINavigationController(rootViewController: episodeViewcontroller)
+    }
+
     func transitionToViewController(controller: UIViewController) {
         addChildViewController(controller)
         controller.willMoveToParentViewController(self)

@@ -10,7 +10,7 @@
     </entity>
     <entity name="Show" representedClassName=".StoredShow" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="includeInRandom" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="includeInRandom" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Episode" inverseName="show" inverseEntity="Episode" syncable="YES"/>
     </entity>

@@ -12,24 +12,44 @@ import KeychainSwift
 import class BetaSeriesKit.AuthenticatedClient
 
 class AuthenticationController {
+    let member = MutableProperty<Member?>(nil)
+    let contentController = MutableProperty<ContentController?>(nil)
+
     enum AuthenticationControllerError: ErrorType {
         case NoTokenError
     }
     
     private lazy var keychain = KeychainSwift()
 
-    func retrieveContentController() -> ContentController? {
+    init() {
+        let promotedProducer = contentController.producer.ignoreNil().promoteErrors(ContentError)
+        promotedProducer
+            .flatMap(FlattenStrategy.Latest) { (contentController) -> SignalProducer<Member, ContentError> in
+                return contentController.fetchMemberInfos()
+            }
+            .startWithNext { [weak self] member in
+                self?.member.value = member
+            }
+    }
+
+    func retrieveContentController() {
+        guard contentController.value == nil else { return }
+
         if let token = keychain.get("rewatch-raw-login") {
             let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
 
-            return BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))
+            let controller = BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))
+
+            self.contentController.value = controller
         }
-        
-        return nil
     }
     
     func saveToken(token: String) {
         keychain.set(token, forKey: "rewatch-raw-login")
     }
 
+    func logout() {
+        contentController.value = nil
+        member.value = nil
+    }
 }

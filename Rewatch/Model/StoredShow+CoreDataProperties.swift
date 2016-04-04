@@ -17,5 +17,6 @@ extension StoredShow {
     @NSManaged var id: Int64
     @NSManaged var title: String?
     @NSManaged var episodes: NSSet?
+    @NSManaged var includeInRandom: Bool
 
 }

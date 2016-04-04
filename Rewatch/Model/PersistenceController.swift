@@ -116,7 +116,9 @@ class PersistenceController: NSObject {
     func allEpisodes() -> [StoredEpisode] {
         let request = NSFetchRequest(entityName: "Episode")
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
+        request.predicate = NSPredicate(format: "show.includeInRandom = 1")
+        request.shouldRefreshRefetchedObjects = true
+
         do {
             let episodes = try managedObjectContext.executeFetchRequest(request)
             return episodes as! [StoredEpisode]
@@ -130,11 +132,30 @@ class PersistenceController: NSObject {
 
         return managedObjectContext.countForFetchRequest(request, error: nil)
     }
-    
+
+    func allShows(context: NSManagedObjectContext? = nil) -> [StoredShow] {
+        let request = NSFetchRequest(entityName: "Show")
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+
+        do {
+            let episodes = try (context ?? managedObjectContext).executeFetchRequest(request)
+            return episodes as! [StoredShow]
+        } catch {
+            return []
+        }
+    }
+
     func numberOfShows() -> Int {
         let request = NSFetchRequest(entityName: "Show")
         
         return managedObjectContext.countForFetchRequest(request, error: nil)
+    }
+
+    func switchShowWithId(id: Int, on: Bool, inContext context: NSManagedObjectContext) -> StoredShow? {
+        guard let show = showWithId(id, inContext: context) else { return nil }
+        show.includeInRandom = on
+
+        return show
     }
 }
 
