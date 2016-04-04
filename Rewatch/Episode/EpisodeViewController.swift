@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import AVFoundation
+import enum Result.NoError
 
 class EpisodeWrapper: EpisodeViewData {
     typealias Element = StoredEpisode

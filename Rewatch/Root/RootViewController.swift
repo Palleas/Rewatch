@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import enum Result.NoError
 
 class RootViewController: UIViewController {
     let persistenceController: PersistenceController
