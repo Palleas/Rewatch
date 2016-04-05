@@ -14,9 +14,7 @@ protocol ShowTableViewCellDelegate: class {
 
 class ShowTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
-    private let showSwitch = UISwitch()
-
-    var switched: Bool { return showSwitch.on }
+    private let showCheckmark = UIImageView(image: UIImage(named: "check"))
 
     weak var delegate: ShowTableViewCellDelegate?
 
@@ -25,20 +23,18 @@ class ShowTableViewCell: UITableViewCell {
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel)
-        showSwitch.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(showSwitch)
+        showCheckmark.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(showCheckmark)
 
         titleLabel.leftAnchor.constraintEqualToAnchor(contentView.leftAnchor, constant: 10).active = true
         titleLabel.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
-        titleLabel.rightAnchor.constraintEqualToAnchor(showSwitch.leftAnchor).active = true
+        titleLabel.rightAnchor.constraintEqualToAnchor(showCheckmark.leftAnchor).active = true
         titleLabel.textColor = Stylesheet.settingsTintColor
         titleLabel.highlightedTextColor = Stylesheet.settingsHighlightedTintColor
         titleLabel.font = Stylesheet.showCellTitleFont
 
-        showSwitch.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -10).active = true
-        showSwitch.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
-        showSwitch.onTintColor = Stylesheet.switchOnTintColor
-        showSwitch.addTarget(self, action: #selector(ShowTableViewCell.switchStateDidChange), forControlEvents: .ValueChanged)
+        showCheckmark.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -10).active = true
+        showCheckmark.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
 
         selectedBackgroundView = UIView()
     }
@@ -49,20 +45,6 @@ class ShowTableViewCell: UITableViewCell {
 
     func configureWithTitle(title: String, includeInRandom: Bool) {
         titleLabel.text = title
-        showSwitch.on = includeInRandom
-    }
-
-    func toggle() {
-        showSwitch.setOn(!showSwitch.on, animated: true)
-        showSwitch.sendActionsForControlEvents(.ValueChanged)
-    }
-
-    func switchOn() {
-        showSwitch.setOn(true, animated: true)
-        showSwitch.sendActionsForControlEvents(.ValueChanged)
-    }
-
-    func switchStateDidChange() {
-        delegate?.didToggleCell(self, on: showSwitch.on)
+        showCheckmark.hidden = !includeInRandom
     }
 }

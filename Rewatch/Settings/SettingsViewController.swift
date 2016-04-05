@@ -102,6 +102,8 @@ class SettingsViewController: UITableViewController {
 
         shows = self.persistenceController.allShows(context)
 
+        reloadSelectAllButton()
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(SettingsViewController.didTapCancelButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(SettingsViewController.didTapDoneButton))
 
@@ -184,9 +186,11 @@ class SettingsViewController: UITableViewController {
         guard let section = SettingsSection(rawValue: indexPath.section) else { return }
 
         switch (section, indexPath.row) {
-        case (.TVShows, _):
-            (tableView.cellForRowAtIndexPath(indexPath) as? ShowTableViewCell)?.toggle()
+        case (.TVShows, let row):
+            shows[row].includeInRandom = !shows[row].includeInRandom
             tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: row, inSection: SettingsSection.TVShows.rawValue)], withRowAnimation: .Automatic)
+            reloadSelectAllButton()
         case (.Support, let index):
             handleSupportSelection(SupportAccount.supportAccounts[index])
         default: break
@@ -250,6 +254,15 @@ class SettingsViewController: UITableViewController {
             print("Unable to save settings: \(error)")
         }
     }
+
+    func reloadSelectAllButton() {
+        let shouldHideButton: Bool  = shows
+            .map { $0.includeInRandom }
+            .reduce(true, combine: { initial, current in
+                return initial && current
+            })
+        showHeaderView?.actionHidden = shouldHideButton
+    }
 }
 
 extension SettingsViewController: ShowTableViewCellDelegate {
@@ -258,12 +271,7 @@ extension SettingsViewController: ShowTableViewCellDelegate {
 
         shows[showIndex].includeInRandom = on
 
-        let shouldHideButton: Bool  = shows
-            .map { $0.includeInRandom }
-            .reduce(true, combine: { initial, current in
-                return initial && current
-            })
-        showHeaderView?.actionHidden = shouldHideButton
+        reloadSelectAllButton()
     }
 }
 
