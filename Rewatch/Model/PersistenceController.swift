@@ -76,6 +76,7 @@ class PersistenceController: NSObject {
             print("store URL is \(storeURL)")
             do {
                 try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
+
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.initCallback()
                 })
