@@ -242,6 +242,7 @@ class SettingsViewController: UITableViewController {
     }
 
     func didTapCancelButton() {
+        context.rollback()
         completion(result: .Cancelled)
     }
 
