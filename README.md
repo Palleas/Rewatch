@@ -1,2 +1,9 @@
 # Rewatch
-Rewatch your favorite (or not) TV shows episodes.
+
+## Installation instruction
+
+To Do.
+
+## License
+
+MIT.
