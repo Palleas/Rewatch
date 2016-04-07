@@ -47,7 +47,7 @@ class Stylesheet: NSObject {
     static let seasonNumbertextFont = UIFont(name: "Roboto-Thin", size: 66)!
     static let memberLoginCell = UIFont(name: "Roboto-Thin", size: 16)!
     
-    static let showCellTitleFont = UIFont(name: "Roboto-Thin", size: 20)!
+    static let showCellTitleFont = UIFont(name: "Roboto-Light", size: 20)!
     static let logoutFont = UIFont(name: "Roboto-Light", size: 16)!
 
     static let buttonFont = UIFont(name: "Roboto-Bold", size: 16)!
