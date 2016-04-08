@@ -18,11 +18,9 @@ class RootViewController: UIViewController {
     let authenticationController = AuthenticationController()
 
     private(set) var currentViewController: UIViewController?
-    
+    var creditsVisible = false
     var rootView: RootView {
-        get {
-            return view as! RootView
-        }
+        return view as! RootView
     }
     
     init(persistenceController: PersistenceController, analyticsController: AnalyticsController) {
@@ -93,9 +91,15 @@ class RootViewController: UIViewController {
     
     func toogleCredits() {
         analyticsController.trackEvent(.Credits)
+        creditsVisible = !creditsVisible
+        setNeedsStatusBarAppearanceUpdate()
         rootView.toggleCredits()
     }
-    
+
+    override func prefersStatusBarHidden() -> Bool {
+        return creditsVisible
+    }
+
     var episodeViewController: EpisodeViewController? {
         get {
             guard let navigation = childViewControllers.first as? UINavigationController else { return nil }
