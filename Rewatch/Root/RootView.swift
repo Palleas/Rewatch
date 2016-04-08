@@ -28,10 +28,21 @@ class RootView: UIView {
     var currentView: UIView?
     var containerView = UIView()
     var leftContainerConstraint: NSLayoutConstraint?
-    
+
+    let fakeStatusBar = UIView()
+
     init() {
         super.init(frame: CGRectZero)
-        
+
+        addSubview(fakeStatusBar)
+        fakeStatusBar.translatesAutoresizingMaskIntoConstraints = false
+        fakeStatusBar.topAnchor.constraintEqualToAnchor(topAnchor).active = true
+        fakeStatusBar.leftAnchor.constraintEqualToAnchor(leftAnchor).active = true
+        fakeStatusBar.rightAnchor.constraintEqualToAnchor(rightAnchor).active = true
+        fakeStatusBar.heightAnchor.constraintEqualToConstant(20).active = true
+        fakeStatusBar.backgroundColor = .whiteColor()
+
+
         addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
@@ -49,6 +60,7 @@ class RootView: UIView {
         placeholderView.bottomAnchor.constraintEqualToAnchor(containerView.bottomAnchor).active = true
 
         backgroundColor = Stylesheet.appBackgroundColor
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -59,7 +71,7 @@ class RootView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(view)
         
-        view.topAnchor.constraintEqualToAnchor(containerView.topAnchor).active = true
+        view.topAnchor.constraintEqualToAnchor(containerView.topAnchor, constant: 20).active = true
         view.leftAnchor.constraintEqualToAnchor(containerView.leftAnchor).active = true
         view.rightAnchor.constraintEqualToAnchor(containerView.rightAnchor).active = true
         view.bottomAnchor.constraintEqualToAnchor(containerView.bottomAnchor).active = true

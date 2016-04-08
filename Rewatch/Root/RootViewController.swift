@@ -97,7 +97,7 @@ class RootViewController: UIViewController {
     }
 
     override func prefersStatusBarHidden() -> Bool {
-        return creditsVisible
+        return false // creditsVisible
     }
 
     var episodeViewController: EpisodeViewController? {
