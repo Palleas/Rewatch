@@ -36,7 +36,10 @@ class RootViewController: UIViewController {
     }
     
     override func loadView() {
-        view = RootView()
+        let rootView = RootView()
+        rootView.delegate = self
+
+        view = rootView
     }
     
     override func viewDidLoad() {
@@ -111,6 +114,15 @@ class RootViewController: UIViewController {
             guard let navigation = childViewControllers.first as? UINavigationController else { return nil }
             
             return navigation.viewControllers.filter({ $0 is EpisodeViewController }).first as? EpisodeViewController
+        }
+    }
+}
+
+extension RootViewController: RootViewDelegate {
+    func didSwipeContainerBack() {
+        creditsVisible = false
+        rootView.toggleCredits() {
+            self.setNeedsStatusBarAppearanceUpdate()
         }
     }
 }
