@@ -18,11 +18,9 @@ class RootViewController: UIViewController {
     let authenticationController = AuthenticationController()
 
     private(set) var currentViewController: UIViewController?
-    
+    var creditsVisible = false
     var rootView: RootView {
-        get {
-            return view as! RootView
-        }
+        return view as! RootView
     }
     
     init(persistenceController: PersistenceController, analyticsController: AnalyticsController) {
@@ -38,7 +36,10 @@ class RootViewController: UIViewController {
     }
     
     override func loadView() {
-        view = RootView()
+        let rootView = RootView()
+        rootView.delegate = self
+
+        view = rootView
     }
     
     override func viewDidLoad() {
@@ -93,14 +94,35 @@ class RootViewController: UIViewController {
     
     func toogleCredits() {
         analyticsController.trackEvent(.Credits)
-        rootView.toggleCredits()
+        creditsVisible = !creditsVisible
+        rootView.toggleCredits() {
+            self.setNeedsStatusBarAppearanceUpdate()
+
+        }
     }
-    
+
+    override func prefersStatusBarHidden() -> Bool {
+        return creditsVisible
+    }
+
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return .Slide
+    }
+
     var episodeViewController: EpisodeViewController? {
         get {
             guard let navigation = childViewControllers.first as? UINavigationController else { return nil }
             
             return navigation.viewControllers.filter({ $0 is EpisodeViewController }).first as? EpisodeViewController
+        }
+    }
+}
+
+extension RootViewController: RootViewDelegate {
+    func didSwipeContainerBack() {
+        creditsVisible = false
+        rootView.toggleCredits() {
+            self.setNeedsStatusBarAppearanceUpdate()
         }
     }
 }

@@ -8,38 +8,49 @@
 
 import UIKit
 
+protocol RootViewDelegate: class {
+    func didSwipeContainerBack()
+}
+
 class RootView: UIView {
     let placeholderView = PlaceholderView()
     var creditsView: UIView? {
         didSet {
             if let creditsView = creditsView {
-                creditsView.hidden = true
                 insertSubview(creditsView, atIndex: 0)
                 creditsView.translatesAutoresizingMaskIntoConstraints = false
                 creditsView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
                 creditsView.leftAnchor.constraintEqualToAnchor(leftAnchor).active = true
                 creditsView.rightAnchor.constraintEqualToAnchor(rightAnchor).active = true
                 creditsView.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
-            } else {
-                creditsView?.removeFromSuperview()
             }
         }
     }
+    weak var delegate: RootViewDelegate?
     var currentView: UIView?
     var containerView = UIView()
     var leftContainerConstraint: NSLayoutConstraint?
-    
+    var dismissGesture: UISwipeGestureRecognizer?
+    let fakeStatusBar = UIView()
+
     init() {
         super.init(frame: CGRectZero)
-        
+
         addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
         leftContainerConstraint = containerView.leftAnchor.constraintEqualToAnchor(leftAnchor)
         leftContainerConstraint?.active = true
-        
         containerView.widthAnchor.constraintEqualToAnchor(widthAnchor).active = true
         containerView.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
+
+        containerView.addSubview(fakeStatusBar)
+        fakeStatusBar.translatesAutoresizingMaskIntoConstraints = false
+        fakeStatusBar.topAnchor.constraintEqualToAnchor(containerView.topAnchor).active = true
+        fakeStatusBar.leftAnchor.constraintEqualToAnchor(containerView.leftAnchor).active = true
+        fakeStatusBar.rightAnchor.constraintEqualToAnchor(containerView.rightAnchor).active = true
+        fakeStatusBar.heightAnchor.constraintEqualToConstant(20).active = true
+        fakeStatusBar.backgroundColor = .whiteColor()
 
         containerView.addSubview(placeholderView)
         placeholderView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +60,12 @@ class RootView: UIView {
         placeholderView.bottomAnchor.constraintEqualToAnchor(containerView.bottomAnchor).active = true
 
         backgroundColor = Stylesheet.appBackgroundColor
+
+        let dismissGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
+        dismissGesture.enabled = false
+        dismissGesture.direction = .Left
+        addGestureRecognizer(dismissGesture)
+        self.dismissGesture = dismissGesture
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -59,7 +76,7 @@ class RootView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(view)
         
-        view.topAnchor.constraintEqualToAnchor(containerView.topAnchor).active = true
+        view.topAnchor.constraintEqualToAnchor(containerView.topAnchor, constant: 20).active = true
         view.leftAnchor.constraintEqualToAnchor(containerView.leftAnchor).active = true
         view.rightAnchor.constraintEqualToAnchor(containerView.rightAnchor).active = true
         view.bottomAnchor.constraintEqualToAnchor(containerView.bottomAnchor).active = true
@@ -69,18 +86,24 @@ class RootView: UIView {
         }
     }
     
-    func toggleCredits() {
-        creditsView?.hidden = false
+    func toggleCredits(animation: () -> Void) {
         if let leftContainerConstraint = self.leftContainerConstraint where leftContainerConstraint.constant > 0 {
             self.leftContainerConstraint?.constant = 0
+            dismissGesture?.enabled = false
         } else {
             self.leftContainerConstraint?.constant = 200
+            dismissGesture?.enabled = true
         }
 
         UIView.animateWithDuration(0.3) { () -> Void in
+            animation()
             self.setNeedsLayout()
             self.layoutIfNeeded()
         }
+    }
+
+    func didSwipe(gesture: UISwipeGestureRecognizer) {
+        delegate?.didSwipeContainerBack()
     }
 
 }
