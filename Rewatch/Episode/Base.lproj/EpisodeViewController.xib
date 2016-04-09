@@ -24,7 +24,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCY-WS-9eC" userLabel="B&amp;W - Episode Image View">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                         </imageView>
-                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uQ-dL-XGQ" customClass="DownloadAnimationView" customModule="Rewatch" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uQ-dL-XGQ" customClass="DownloadAnimationView" customModule="Rewatch" customModuleProvider="target">
                             <rect key="frame" x="150" y="15" width="300" height="150"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -64,7 +64,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ca9-Qb-jjo">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="327"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="1047"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q1j-gn-xJr">
                                     <rect key="frame" x="20" y="20" width="560" height="287"/>
@@ -144,13 +144,13 @@
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="180" maxX="0.0" maxY="0.0"/>
                 </scrollView>
                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fBE-uC-9We" customClass="ShakeView" customModule="Rewatch" customModuleProvider="target">
-                    <rect key="frame" x="151" y="204" width="298" height="192"/>
+                    <rect key="frame" x="62" y="24" width="478" height="192"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGd-RR-p4Q">
-                            <rect key="frame" x="0.0" y="0.0" width="298" height="151"/>
+                            <rect key="frame" x="0.0" y="0.0" width="478" height="151"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbI-6Q-YiI">
-                                    <rect key="frame" x="92.5" y="0.0" width="113" height="119"/>
+                                    <rect key="frame" x="182" y="0.0" width="113" height="119"/>
                                     <accessibility key="accessibilityConfiguration" identifier="ShakeButton" label="Shake Your Phone"/>
                                     <state key="normal" image="Shake"/>
                                 </button>
@@ -163,13 +163,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Shake your phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ae-vV-ASw">
-                            <rect key="frame" x="0.0" y="151" width="298" height="21"/>
+                            <rect key="frame" x="0.0" y="151" width="478" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="To get a suggested episode to rewatch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L68-6t-djE">
-                            <rect key="frame" x="0.0" y="172" width="298" height="21"/>
+                            <rect key="frame" x="0.0" y="172" width="478" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>

@@ -36,12 +36,14 @@ class EpisodeView: UIView {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.episodeImageView.alpha = 0
                     self.bnwEpisodeImageView.alpha = 0
-                    self.downloadView.alpha = 0
                 })
+                self.downloadView.hidden = true
             case .Loading:
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.downloadView.alpha = 1
-                })
+//                UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                    self.downloadView.alpha = 1
+//                })
+                self.downloadView.hidden = false
+
             case .Loaded(let image, let bnwImage):
                 self.episodeImageView.image = image
                 self.bnwEpisodeImageView.image = bnwImage
@@ -51,8 +53,9 @@ class EpisodeView: UIView {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.episodeImageView.alpha = 1
                     self.bnwEpisodeImageView.alpha = 1
-                    self.downloadView.alpha = 0
+//                    self.downloadView.alpha = 0
                 })
+                self.downloadView.hidden = true
 
             }
         }
@@ -60,6 +63,7 @@ class EpisodeView: UIView {
     
     @IBOutlet weak var downloadView: DownloadAnimationView! {
         didSet {
+            downloadView.hidden = true
             downloadView.transform = CGAffineTransformMakeScale(0.3, 0.3)
         }
     }
