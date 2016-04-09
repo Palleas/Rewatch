@@ -14,6 +14,7 @@ import CoreData
 import Mixpanel
 import BetaSeriesKit
 import ReactiveCocoa
+import Result
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -81,13 +82,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         persistence.save()
-    }
-    
-    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-//        let downloadController = DownloadController(client: client, persistenceController: persistence)
-//        downloadController
-//            .download()
-//            .on(failed: { _ in completionHandler(.Failed) })
-//            .startWithNext({ completionHandler($0 > 0 ? .NewData : .NoData) })
     }
 }
