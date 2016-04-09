@@ -34,23 +34,21 @@ class RootView: UIView {
     init() {
         super.init(frame: CGRectZero)
 
-        addSubview(fakeStatusBar)
-        fakeStatusBar.translatesAutoresizingMaskIntoConstraints = false
-        fakeStatusBar.topAnchor.constraintEqualToAnchor(topAnchor).active = true
-        fakeStatusBar.leftAnchor.constraintEqualToAnchor(leftAnchor).active = true
-        fakeStatusBar.rightAnchor.constraintEqualToAnchor(rightAnchor).active = true
-        fakeStatusBar.heightAnchor.constraintEqualToConstant(20).active = true
-        fakeStatusBar.backgroundColor = .whiteColor()
-
-
         addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
         leftContainerConstraint = containerView.leftAnchor.constraintEqualToAnchor(leftAnchor)
         leftContainerConstraint?.active = true
-        
         containerView.widthAnchor.constraintEqualToAnchor(widthAnchor).active = true
         containerView.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
+
+        containerView.addSubview(fakeStatusBar)
+        fakeStatusBar.translatesAutoresizingMaskIntoConstraints = false
+        fakeStatusBar.topAnchor.constraintEqualToAnchor(containerView.topAnchor).active = true
+        fakeStatusBar.leftAnchor.constraintEqualToAnchor(containerView.leftAnchor).active = true
+        fakeStatusBar.rightAnchor.constraintEqualToAnchor(containerView.rightAnchor).active = true
+        fakeStatusBar.heightAnchor.constraintEqualToConstant(20).active = true
+        fakeStatusBar.backgroundColor = .whiteColor()
 
         containerView.addSubview(placeholderView)
         placeholderView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +79,7 @@ class RootView: UIView {
         }
     }
     
-    func toggleCredits() {
+    func toggleCredits(animation: () -> Void) {
         creditsView?.hidden = false
         if let leftContainerConstraint = self.leftContainerConstraint where leftContainerConstraint.constant > 0 {
             self.leftContainerConstraint?.constant = 0
@@ -90,6 +88,7 @@ class RootView: UIView {
         }
 
         UIView.animateWithDuration(0.3) { () -> Void in
+            animation()
             self.setNeedsLayout()
             self.layoutIfNeeded()
         }

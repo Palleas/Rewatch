@@ -92,12 +92,18 @@ class RootViewController: UIViewController {
     func toogleCredits() {
         analyticsController.trackEvent(.Credits)
         creditsVisible = !creditsVisible
-        setNeedsStatusBarAppearanceUpdate()
-        rootView.toggleCredits()
+        rootView.toggleCredits() {
+            self.setNeedsStatusBarAppearanceUpdate()
+
+        }
     }
 
     override func prefersStatusBarHidden() -> Bool {
-        return false // creditsVisible
+        return creditsVisible
+    }
+
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return .Slide
     }
 
     var episodeViewController: EpisodeViewController? {
