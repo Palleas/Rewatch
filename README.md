@@ -8,4 +8,4 @@ carthage bootstrap --platform ios
 
 ## License
 
-MIT.
+MIT, see `LICENSE` file.
