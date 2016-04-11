@@ -2,7 +2,9 @@
 
 ## Installation instruction
 
-To Do.
+```
+carthage bootstrap --platform ios
+```
 
 ## License
 
