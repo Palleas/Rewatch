@@ -7,8 +7,10 @@ platform :ios do
 
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
+    ensure_git_status_clean
     gym(scheme: "Rewatch", use_legacy_build_api: true)
     pilot(skip_submission: true)
+    reset_git_repo(exclude: "Carthage")
   end
 
   desc "Deploy a new version to the App Store"
