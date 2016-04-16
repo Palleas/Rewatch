@@ -1,51 +1,23 @@
-/* 
-  Localizable.strings
-  Rewatch
-
-  Created by Romain Pouclet on 2015-11-30.
-  Copyright © 2015 Perfectly-Cooked. All rights reserved.
-*/
-
 "NO_TV_SHOWS_TITLE" = "Pas d'épisodes déjà regardé";
 "NO_TV_SHOWS_MESSAGE" = "Nous n'avons pas trouvé d'épisodes que vous avez marqué comme déjà regardé sur BetasSeries, ce qui vous empêche d'utiliser l'application. Voulez-vous vous ouvrir BetaSeries pour en ajouter maintenant ?";
 "NO_TV_SHOWS_DISMISS" = "Fermer";
 "NO_TV_SHOWS_VISIT" = "Visiter BetaSeries";
-
 "SHARING_MESSAGE" = "Je regarde à nouveau \"%@\" - http://rewatchapp.com";
-
-/* Debug section */
 "DEBUG_CENTER_SECTION" = "Debug";
-
-/* Episodes count */
 "EPISODES_COUNT" = "Nombre d'épisodes";
-
-/* Last sync */
 "LAST_SYNC" = "Dernière synchronisation";
-
-/* Loading Message */
 "LOADING_MESSAGE" = "Chargement...";
-
-/* Log out button label */
 "LOG_OUT" = "Déconnexion";
-
-/* Member section */
 "MEMBER_CENTER_SECTION" = "Membre";
-
-/* Shows count */
 "SHOWS_COUNT" = "Nombre de séries";
-
-/* Sync now button label */
 "SYNC_NOW" = "Synchroniser maintenant";
-
-/* Member infos available message */
 "UNAVAILABLE" = "Indisponible";
-
 "VERSION" = "Version";
-
 "API" = "API";
-
 "DEVELOPMENT" = "Développement";
-
 "DESIGN" = "Design";
-
 "SUPPORT_SECTION" = "Support";
+"SETTINGS_SECTION" = "Réglages";
+"LOGOUT_CONFIRM_LOGOUT" = "Déconnexion";
+"LOGOUT_CONFIRM_MESSAGE" = "Êtes vous sûr de vouloir vous déconnecter ? Ne vous inquiétez pas, vous pourrez toujours revenir et vos épisodes vous attendrons.";
+"LOGOUT_CONFIRM_TITLE" = "Vous nous quittez déjà ? ";
