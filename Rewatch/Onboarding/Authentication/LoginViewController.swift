@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import BetaSeriesKit
+import SafariServices
 
 class LoginViewController: UIViewController {
     let persistenceController: PersistenceController
@@ -50,10 +51,14 @@ extension LoginViewController: LoginViewDelegate {
         let secret = keys["BetaseriesAPISecret"]!
         
         client
-            .authenticate(secret)
+            .authenticate(secret) { [unowned self] url in
+                let browser = SFSafariViewController(URL: url)
+                self.presentViewController(browser, animated: true, completion: nil)
+            }
             .map { BetaseriesContentController(authenticatedClient: $0) }
             .observeOn(UIScheduler())
             .startWithNext { [weak self] contentController in
+                self?.dismissViewControllerAnimated(true, completion: nil)
                 self?.authenticationController.contentController.value = contentController
             }
     }
