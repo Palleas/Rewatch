@@ -28,13 +28,14 @@ class ShowTableViewCell: UITableViewCell {
 
         titleLabel.leftAnchor.constraintEqualToAnchor(contentView.leftAnchor, constant: 10).active = true
         titleLabel.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
-        titleLabel.rightAnchor.constraintEqualToAnchor(showCheckmark.leftAnchor).active = true
+        titleLabel.rightAnchor.constraintEqualToAnchor(showCheckmark.leftAnchor, constant: 5).active = true
         titleLabel.textColor = Stylesheet.settingsTintColor
         titleLabel.highlightedTextColor = Stylesheet.settingsHighlightedTintColor
         titleLabel.font = Stylesheet.showCellTitleFont
 
         showCheckmark.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -10).active = true
         showCheckmark.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
+        showCheckmark.widthAnchor.constraintEqualToConstant(22).active = true
 
         selectedBackgroundView = UIView()
     }
