@@ -8,8 +8,6 @@
 
 import UIKit
 import KeychainSwift
-import Fabric
-import Crashlytics
 import CoreData
 import Mixpanel
 import BetaSeriesKit
@@ -26,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuddyBuildSDK.setup()
-        
-        Fabric.with([Crashlytics.self])
 
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
