@@ -8,10 +8,6 @@ platform :ios do
       set_info_plist_value(path: "Rewatch/Resources/Keys.plist", key: "MixpanelAPIKey", value: prompt(text: "Mixpanel API Secret?"))
     end
 
-    if !File.exist?("Rewatch/Resources/Rewatch.xcconfig")
-
-    end
-
     carthage(platform: "iOS")
   end
 
@@ -33,6 +29,6 @@ platform :ios do
     gym(scheme: "Rewatch", configuration: "Release")
     deliver(submit_for_review: false)
     
-    reset_git_repo(exclude: "Carthage")
+    reset_git_repo(exclude: ["Carthage", "Rewatch/Resources/Keys.plist"])
   end
 end
