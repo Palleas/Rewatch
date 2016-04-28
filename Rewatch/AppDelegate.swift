@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var analyticsController: AnalyticsController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        BuddyBuildSDK.setup()
+        
         Fabric.with([Crashlytics.self])
 
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
