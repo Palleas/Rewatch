@@ -2,10 +2,11 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    if !File.exist?("Rewatch/Resources/Keys.plist")
-      set_info_plist_value(path: "Rewatch/Resources/Keys.plist", key: "BetaseriesAPIKey", value: prompt(text: "Betaseries API Key?"))
-      set_info_plist_value(path: "Rewatch/Resources/Keys.plist", key: "BetaseriesAPISecret", value: prompt(text: "Betaseries API Secret?"))
-      set_info_plist_value(path: "Rewatch/Resources/Keys.plist", key: "MixpanelAPIKey", value: prompt(text: "Mixpanel API Secret?"))
+    keys_path = File.expand_path File.dirname(__FILE__) + "/../Rewatch/Resources/Keys.plist"
+    if !File.exist?(keys_path)
+      set_info_plist_value(path: keys_path, key: "BetaseriesAPIKey", value: prompt(text: "Betaseries API Key?"))
+      set_info_plist_value(path: keys_path, key: "BetaseriesAPISecret", value: prompt(text: "Betaseries API Secret?"))
+      set_info_plist_value(path: keys_path, key: "MixpanelAPIKey", value: prompt(text: "Mixpanel API Secret?"))
     end
 
     carthage(platform: "iOS")
