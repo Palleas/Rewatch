@@ -2,8 +2,12 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    keys_path = File.expand_path File.dirname(__FILE__) + "/../Rewatch/Resources/Keys.plist"
+    resources_dir = File.expand_path File.dirname(__FILE__) + "/../Rewatch/Resources"
+    keys_path = resources_dir + "/Keys.plist"
+
     if !File.exist?(keys_path)
+      FileUtils.cp(resources_dir + "/Keys.plist.dist", keys_path)
+
       set_info_plist_value(path: keys_path, key: "BetaseriesAPIKey", value: prompt(text: "Betaseries API Key?"))
       set_info_plist_value(path: keys_path, key: "BetaseriesAPISecret", value: prompt(text: "Betaseries API Secret?"))
       set_info_plist_value(path: keys_path, key: "MixpanelAPIKey", value: prompt(text: "Mixpanel API Secret?"))
