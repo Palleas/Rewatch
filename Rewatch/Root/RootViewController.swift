@@ -53,18 +53,6 @@ class RootViewController: UIViewController {
 
 
     func boot() {
-        authenticationController.contentController.producer.ignoreNil().promoteErrors(ContentError).flatMap(FlattenStrategy.Latest) { (contentController) -> SignalProducer<Int, ContentError> in
-                let date = NSUserDefaults.standardUserDefaults().objectForKey(DownloadControllerLastSyncKey) as? NSDate
-                if let date = date where date.timeIntervalSinceDate(NSDate()) < 3600 {
-                    print("No need to sync. Returning empty signal")
-                    return SignalProducer<Int, ContentError>.empty
-                }
-
-                return DownloadController(contentController: contentController, persistenceController: self.persistenceController).download()
-            }.startWithNext() { count in
-                print("Downloaded \(count) stuff")
-            }
-
         authenticationController.contentController.producer
             .flatMap(FlattenStrategy.Latest) { (contentController) -> SignalProducer<UIViewController, NoError> in
                 if let _ = contentController {

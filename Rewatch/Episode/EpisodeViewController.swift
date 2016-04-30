@@ -98,8 +98,16 @@ class EpisodeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         episodes = persistenceController.allEpisodes()
-        
-        if episodes.count == 0 {
+
+        let date = NSUserDefaults.standardUserDefaults().objectForKey(DownloadControllerLastSyncKey) as? NSDate
+        let shouldSync: Bool
+        if let date = date where date.timeIntervalSinceDate(NSDate()) >= 86400 {
+            shouldSync = true
+        } else {
+            shouldSync = false
+        }
+
+        if episodes.count == 0 || shouldSync {
             dispatch_once(&checkInitialContentToken, { () -> Void in
                 let downloadController = DownloadController(contentController: self.contentController, persistenceController: self.persistenceController)
                 let downloadViewController = DownloadViewController(downloadController: downloadController)
