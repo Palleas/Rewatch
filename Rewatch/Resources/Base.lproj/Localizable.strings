@@ -18,6 +18,8 @@
 "DESIGN" = "Design";
 "SUPPORT_SECTION" = "Support";
 "SETTINGS_SECTION" = "Settings";
+"SETTINGS_SECTION_SHOWS_COUNT" = "Shows (%d)";
+"SETTINGS_SECTION_SHOWS" = "Shows";
 "LOGOUT_CONFIRM_LOGOUT" = "Log Out";
 "LOGOUT_CONFIRM_MESSAGE" = "Are you sure you want to log out of the app? Don't worry, you can always come back and your episodes will still be there.";
 "LOGOUT_CONFIRM_TITLE" = "Leaving so soon?";

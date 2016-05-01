@@ -83,7 +83,7 @@ class SettingsViewController: UITableViewController {
 
         clearsSelectionOnViewWillAppear = true
 
-        showHeaderView = SettingsHeaderView(title: "Shows (\(self.shows.count))", actionTitle: "Select all") { [unowned self] headerView in
+        showHeaderView = SettingsHeaderView(title: NSLocalizedString("SETTINGS_SECTION_SHOWS", comment: "Shows"), actionTitle: "Select all") { [unowned self] headerView in
             self.shows
                 .filter { !$0.includeInRandom }
                 .forEach { $0.includeInRandom = true }
@@ -101,7 +101,7 @@ class SettingsViewController: UITableViewController {
         super.viewWillAppear(animated)
 
         shows = self.persistenceController.allShows(context)
-
+        showHeaderView?.configure(title: String(format: NSLocalizedString("SETTINGS_SECTION_SHOWS_COUNT", comment: "Shows count"), shows.count))
         reloadSelectAllButton()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(SettingsViewController.didTapCancelButton))

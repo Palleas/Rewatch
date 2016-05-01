@@ -18,6 +18,8 @@
 "DESIGN" = "Design";
 "SUPPORT_SECTION" = "Support";
 "SETTINGS_SECTION" = "Réglages";
+"SETTINGS_SECTION_SHOWS_COUNT" = "Séries (%d)";
+"SETTINGS_SECTION_SHOWS" = "Séries";
 "LOGOUT_CONFIRM_LOGOUT" = "Déconnexion";
 "LOGOUT_CONFIRM_MESSAGE" = "Êtes vous sûr de vouloir vous déconnecter ? Ne vous inquiétez pas, vous pourrez toujours revenir et vos épisodes vous attendrons.";
 "LOGOUT_CONFIRM_TITLE" = "Vous nous quittez déjà ? ";

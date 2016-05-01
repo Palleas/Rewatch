@@ -15,8 +15,6 @@ class SettingsHeaderView: UIView {
     private let titleLabel = UILabel()
     private var actionButton: UIButton?
 
-    private let title: String
-    private let actionTitle: String?
     private let action: ActionHandler?
 
     var actionHidden = false {
@@ -26,8 +24,6 @@ class SettingsHeaderView: UIView {
     }
 
     init(title: String, actionTitle: String? = nil, action: ActionHandler? = nil) {
-        self.title = title
-        self.actionTitle = actionTitle
         self.action = action
         super.init(frame: .zero)
 
@@ -66,5 +62,9 @@ class SettingsHeaderView: UIView {
 
     func didTapOnButton() {
         action?(self)
+    }
+
+    func configure(title title: String) {
+        titleLabel.text = title
     }
 }
