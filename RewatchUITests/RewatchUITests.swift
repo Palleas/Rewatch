@@ -27,21 +27,13 @@ class RewatchUITests: XCTestCase {
     func testSnapshots() {
         
         let app = XCUIApplication()
-        snapshot("01-login-screen")
-        
-        if deviceLanguage == "en" {
-            app.buttons["AUTHENTICATE"].tap()
-        } else {
-            app.buttons["IDENTIFICATION"].tap()
-            
-        }
-        snapshot("02-shake-screen")
+        snapshot("01-shake-screen")
         
         app.buttons["ShakeButton"].tap()
-        snapshot("03-tv-show")
+        snapshot("02-tv-show")
         
         app.navigationBars.matchingIdentifier("REWATCH").buttons["Options"].tap()
-        snapshot("04-settings")
+        snapshot("03-settings")
         
     }
 }

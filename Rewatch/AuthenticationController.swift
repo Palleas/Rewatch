@@ -34,8 +34,11 @@ class AuthenticationController {
 
     func retrieveContentController() {
         guard contentController.value == nil else { return }
-
-        if let token = keychain.get("rewatch-raw-login") {
+        // Snapshot mode enabled
+        if let _ = NSProcessInfo.processInfo().arguments.indexOf("snapshot") {
+            contentController.value = StaticContentController()
+        // Check if the user has a token in keychain
+        } else if let token = keychain.get("rewatch-raw-login") {
             let keys = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) as! [String: String]
 
             let controller = BetaseriesContentController(authenticatedClient: AuthenticatedClient(key: keys["BetaseriesAPIKey"]!, token: token))

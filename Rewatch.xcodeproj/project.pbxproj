@@ -59,6 +59,7 @@
 		7A8CC26F1BEB0E9F003BFE11 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */; };
 		7A8F7F931BE460C800CA501A /* HEXColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F7F921BE460C800CA501A /* HEXColor.swift */; };
 		7A91752E1BEC57D2009FAE52 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A91752D1BEC57D2009FAE52 /* RootView.swift */; };
+		7AA6789B1CD694ED00A0D852 /* StaticContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6789A1CD694ED00A0D852 /* StaticContentController.swift */; };
 		7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11E91C0B954900CC594B /* CreditsViewController.swift */; };
 		7ABA11EE1C0B95FD00CC594B /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */; };
 		7AC8D9131C349C78003E0684 /* RewatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D9121C349C78003E0684 /* RewatchUITests.swift */; };
@@ -193,6 +194,7 @@
 		7A8CC26E1BEB0E9F003BFE11 /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		7A8F7F921BE460C800CA501A /* HEXColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HEXColor.swift; sourceTree = "<group>"; };
 		7A91752D1BEC57D2009FAE52 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		7AA6789A1CD694ED00A0D852 /* StaticContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticContentController.swift; sourceTree = "<group>"; };
 		7ABA11E91C0B954900CC594B /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		7ABA11ED1C0B95FD00CC594B /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		7AC8D9101C349C78003E0684 /* RewatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -394,6 +396,7 @@
 			children = (
 				7A75620E1C9DAF4900622D26 /* ContentController.swift */,
 				7A1D074D1C9F51A90031F7F8 /* AuthenticationController.swift */,
+				7AA6789A1CD694ED00A0D852 /* StaticContentController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				7A04889E1BE9AAD000F7C890 /* StoredShow+CoreDataProperties.swift in Sources */,
 				7A91752E1BEC57D2009FAE52 /* RootView.swift in Sources */,
 				7A0B9C411C717399002B2572 /* BetaseriesNetworkController.swift in Sources */,
+				7AA6789B1CD694ED00A0D852 /* StaticContentController.swift in Sources */,
 				7ABA11EB1C0B954900CC594B /* CreditsViewController.swift in Sources */,
 				7A5686251BF64D6A006BDEB3 /* Analytics.swift in Sources */,
 				7A81C4801CA88D33002DE0DE /* ShowTableViewCell.swift in Sources */,
