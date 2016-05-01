@@ -25,7 +25,6 @@ class RewatchUITests: XCTestCase {
     }
     
     func testSnapshots() {
-        
         let app = XCUIApplication()
         snapshot("01-shake-screen")
         

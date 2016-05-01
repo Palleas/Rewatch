@@ -166,6 +166,9 @@ class EpisodeViewController: UIViewController {
                 return SignalProducer(value: (image, convertToBlackAndWhite(image)))
             })
             .observeOn(UIScheduler())
+            .on(failed: { error in
+                self.episodeView.pictureState = .Error
+            })
             .startWithNext { (image) -> () in
                 self.episodeView.pictureState = .Loaded(image: image.0, bnwImage: image.1)
             }

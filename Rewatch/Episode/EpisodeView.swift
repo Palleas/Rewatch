@@ -25,6 +25,7 @@ protocol EpisodeViewDelegate: class {
 class EpisodeView: UIView {
     enum PictureState {
         case Ready
+        case Error
         case Loading
         case Loaded(image: UIImage, bnwImage: UIImage)
     }
@@ -32,18 +33,14 @@ class EpisodeView: UIView {
     var pictureState: PictureState = .Ready {
         didSet {
             switch pictureState {
-            case .Ready:
+            case .Ready, .Error:
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.episodeImageView.alpha = 0
                     self.bnwEpisodeImageView.alpha = 0
                 })
                 self.downloadView.hidden = true
             case .Loading:
-//                UIView.animateWithDuration(0.3, animations: { () -> Void in
-//                    self.downloadView.alpha = 1
-//                })
                 self.downloadView.hidden = false
-
             case .Loaded(let image, let bnwImage):
                 self.episodeImageView.image = image
                 self.bnwEpisodeImageView.image = bnwImage
@@ -53,7 +50,6 @@ class EpisodeView: UIView {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.episodeImageView.alpha = 1
                     self.bnwEpisodeImageView.alpha = 1
-//                    self.downloadView.alpha = 0
                 })
                 self.downloadView.hidden = true
 
