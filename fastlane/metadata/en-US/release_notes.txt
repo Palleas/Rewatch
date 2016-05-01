@@ -1,1 +1,3 @@
+- Implemented a new settings panel in which you can select the TV Shows you actually want to rewatch episodes from.
 - Fixed a bug with the slightly annoying sound you hear when you shake your phone. Now it will no longer pause your music. Sorry about that.
+- Authentication is now performed entirely within the application, no more back and forth between Safari and Rewatch.

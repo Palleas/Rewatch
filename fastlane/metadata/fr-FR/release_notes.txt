@@ -1,0 +1,3 @@
+- Mise en place d'un nouvel écran de réglage qui vous permettra de sélectionner les séries dont vous voulez revoir les épisodes.
+- Correction du bug qui mettait votre musique en pause lorsqu'un nouvel épisode était proposé. 
+- Tout le processus d'authentification se déroule désormais dans l'application, plus d'aller-retour entre Safari et Rewatch.
