@@ -21,7 +21,7 @@ platform :ios do
     ensure_git_status_clean
     gym(scheme: "Rewatch", use_legacy_build_api: true)
     pilot(skip_submission: true)
-    reset_git_repo(exclude: "Carthage")
+    reset_git_repo(exclude: ["Carthage", "Rewatch/Resources/Keys.plist"])
   end
 
   desc "Deploy a new version to the App Store"
