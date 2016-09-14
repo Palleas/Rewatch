@@ -15,10 +15,10 @@ func convertToBlackAndWhite(image: UIImage) -> UIImage {
     let height = Int(image.size.height)
     
     let context = CGBitmapContextCreate(nil, width, height, 8, 0, colorSpace, bitmapInfo)
-    CGContextDrawImage(context, CGRect(origin: CGPointZero, size: image.size), image.CGImage)
-    let ref = CGBitmapContextCreateImage(context)
+    CGContextDrawImage(context!, CGRect(origin: CGPointZero, size: image.size), image.CGImage!)
+    let ref = CGBitmapContextCreateImage(context!)
     
-    if let ref = CGImageCreateCopy(ref) {
+    if let ref = CGImageCreateCopy(ref!) {
         return UIImage(CGImage: ref)
     }
 
@@ -35,5 +35,5 @@ func tintImage(image: UIImage, color: UIColor) -> UIImage {
     let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
 
-    return tintedImage
+    return tintedImage!
 }

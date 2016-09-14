@@ -37,7 +37,7 @@ class CreditsItemView: UIStackView {
         valueLabel.titleLabel?.font = Stylesheet.creditsValueFont
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

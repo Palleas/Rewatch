@@ -130,7 +130,7 @@ class PersistenceController: NSObject {
     func numberOfEpisodes() -> Int {
         let request = NSFetchRequest(entityName: "Episode")
 
-        return managedObjectContext.countForFetchRequest(request, error: nil)
+        return (try? managedObjectContext.countForFetchRequest(request) ?? 0)!
     }
 
     func allShows(context: NSManagedObjectContext? = nil) -> [StoredShow] {
@@ -148,7 +148,7 @@ class PersistenceController: NSObject {
     func numberOfShows() -> Int {
         let request = NSFetchRequest(entityName: "Show")
         
-        return managedObjectContext.countForFetchRequest(request, error: nil)
+        return (try? managedObjectContext.countForFetchRequest(request) ?? 0)!
     }
 
     func switchShowWithId(id: Int, on: Bool, inContext context: NSManagedObjectContext) -> StoredShow? {
